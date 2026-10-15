@@ -2,7 +2,7 @@
 
 The questions the graph and agent must answer. They drive the ontology (week 2), become the evaluation dataset (week 8), and define what the demo slice must support.
 
-**Status: 20 candidates (draft 3), awaiting ratification.** Nothing here is approved. Draft 3 revises draft 2 after a second colleague review; what changed is listed under "Changes from draft 2". The graph consumes BOR's output (`docs/design-notes/0001-consume-bor-output.md`).
+**Status: 20 candidates (draft 4), awaiting ratification.** Nothing here is approved. Draft 4 adds a scope statement (web research and document retrieval are in scope for the agent) and extra scenarios; what changed is listed under "Changes from draft 3" and "Changes from draft 2". The graph consumes BOR's output (`docs/design-notes/0001-consume-bor-output.md`).
 
 For each question, record the reliability its answer can reach: **I** (recorded assertion: a public record states it, or it follows from joining records on an official identifier), **II** (derived conclusion: a method links or classifies where the records do not say so), or **I+II** (a recorded chain with derived links).
 
@@ -33,11 +33,38 @@ Taken from what the repos' own documentation says about their outputs.
 6. **Recorded and derived stay apart.** Each recorded assertion carries its source record. Membership is derived even when every supporting edge is a recorded document. A published claim is a recorded assertion that the claim was published; whether it is true and applies to the subject is a separate, derived judgment.
 7. **Never infer ownership from a group's person anchor.** Whenever a person is named, say whether the role is recorded in a filing, attributed to a source, or inferred, and show inferred links as leads with their evidence (`CLAUDE.md`, "Publishing responsibly").
 
+## Scope
+
+The system automates the PESP *How to Research Your Landlord* method for New York City from an address. Three kinds of work are in scope, and they differ in where the answer comes from and how it is labeled.
+
+| Work | What it covers | Result is held as |
+| --- | --- | --- |
+| **Graph answers** | Recorded facts from PLUTO, ACRIS, HPD and NY DOS, and the Owner Portfolio and Operational Network layers loaded from BOR/NLR | Type I (recorded), or Type II (derived) for the layers |
+| **Web research** | Searching an entity name or address; finding the entity's state business filing, an OpenCorporates page, a foundation or nonprofit filing at an address, a program list, or a news report | `public_record` if a primary record is retrieved; `published_reporting` or `web_content` otherwise (design note 0002) |
+| **Document retrieval and extraction** | Fetching filings and attachments (incorporation papers, annual reports, tax filings) and reading names, titles and addresses from them | The document is the source. Each extracted value cites document, page and extraction method |
+
+**How web and document results are handled** (defaults, to confirm):
+
+1. **Session evidence, not graph facts.** The agent's graph access is read-only (`CLAUDE.md`). Web and document findings are held in the dossier with their provenance (`url`, `retrieved_at`, `source_category`). Writing them to the graph would be a separate, reviewed process.
+2. **Same rules as the graph.** A retrieved record is Type I. A third party's claim is a reported claim, Type I only as to its publication. Any link the agent draws from it is Type II and is shown as a lead with its evidence. The `review_status` is `unreviewed` unless a person has checked it.
+3. **Mail-drop rule applies.** An address search that returns many unrelated organizations at a hub address supports no link between them. The count and sample are reported, not the connection.
+4. **Business roles only.** Results about people stay within roles recorded in filings (`CLAUDE.md`, "Publishing responsibly"). The agent does not follow results to personal addresses, social profiles or other non-business information.
+5. **No paid or proprietary sources.** The guide advises avoiding them, and results could not be cited.
+6. **Reproducibility.** Web results change. Evaluation (week 8) runs against cached retrieval, and the answer records what was retrieved and when.
+
+**Process requirements** (the guide's method is iterative; these are tested in weeks 6–8, not as competency questions):
+
+- A new entity name or address found in a result is searched in turn, within a stated step and time budget.
+- The loop stops, and says so, at a registered-agent or mail-drop address, at an entity with no further recorded link, or at the budget.
+- Every retrieved item is logged with its source and time, whether or not it is used.
+
+**Out of scope:** legal determinations of ownership; anything about tenants or individual apartments; non-public records.
+
 ## Candidates
 
 | # | Question | Example | Reliability | Sources | Graph pattern (fill in week 3) |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Which tax lot (BBL) and building(s) (BIN) does this street address resolve to, and is the match unambiguous? | `123 Example St, Brooklyn` → BBL `3012340056`, one BIN; or one lot with three BINs | I | PLUTO; HPD registrations | |
+| 1 | Which tax lot (BBL) and building(s) (BIN) does this street address resolve to, is the match unambiguous, and what characteristics do the records give (year built, building class, residential units, assessed value)? | `123 Example St, Brooklyn` → BBL `3012340056`, one BIN, built 1931, class C1, 24 units; or one lot with three BINs | I | PLUTO; HPD registrations | |
 | 2 | Who is the HPD-registered owner of this building, and when was the registration last filed? | Registered owner `Example Holdings LLC`, filed 2025-09-01, expires 2026-09-01 | I | HPD registrations, contacts | |
 | 3 | Who is the grantee on the most recent ACRIS deed for this lot? Do the deed and the HPD registration name the same party exactly, and where they differ, what supports treating them as one entity? | Exact agreement on `123 Example St LLC`; or `Example Holdings LLC` vs `Example Holdings II LLC` with a shared officer, reported as unresolved | I+II | ACRIS master, parties, legals; HPD | |
 | 4 | Who is the managing agent, head officer or site manager HPD lists for this building? | Managing agent `Example Management Corp`, with registration dates | I | HPD contacts | |
@@ -94,6 +121,44 @@ This needs historical records and explicit date semantics (document date, record
 | Failure | Different owners inferred from a non-link; direct evidence claimed where there is only a path; stage precision presented as a link probability; pre-subdivision connectivity presented as network membership |
 | Test cases | Ordinary: a direct identity link. Difficult: a path through a third lot; a masked hub; a Louvain-split pair connected before subdivision |
 
+## Additional scenarios
+
+Each follows a step of the guide's method that the 20 questions did not exercise. They extend existing questions and are not new questions. Names and addresses are placeholders.
+
+**Q1: address not found**
+- The address is absent from the lot data but the lot appears under an alternate address, a street-name variant or a corner address: the answer reports the match it used and the alternate address, and says the resolution is inferred.
+- No match at all: reported as "no lot found" with the variants tried, and the agent does not guess a nearby lot.
+
+**Q5: filing documents beyond the dataset**
+- The dataset names only a process address and registered agent: the agent retrieves the entity's state filing and its attachments, and reports any manager, member or officer the documents name, each with document, page and extraction method.
+- The only agents named are corporate service companies: reported as such, with no person or address treated as a lead (mail-drop rule).
+- A name read from a scanned document is uncertain: reported with the extraction method and a low-confidence flag, and not used as a link on its own.
+- A retrieved filing gives a different address from the dataset: both are returned with their dates; the answer does not choose.
+
+**Q7 and Q8: similarly named entities**
+- `Example Holdings LLC` and `Example Holdings II LLC` share an agent and addresses: reported as a possible connection with that evidence, not as the same entity. Names alone support no link.
+- Similar names with no shared record: not reported as related.
+- A similarly named entity's filing names a person or address missing from the first: reported as new evidence for that entity, with its source.
+
+**Q7: other organizations at an address**
+- A business address in a filing is searched: other companies, foundations or nonprofits that list it are returned with their filings. If the address is a hub (many unrelated organizations), the answer gives the count and says whether the list is complete or a sample, and supports no link.
+- An organization's tax filing lists the address "care of" a management company: reported as an affiliation recorded in that filing, not as ownership.
+
+**Q11: reported claims and affiliations**
+- A news article states that a fund controls the owner's parent company: shown as a reported claim, with publisher, date and quoted text, unreviewed, and kept apart from the Owner Portfolio.
+- Two articles contradict each other: both are shown, contested, and neither is chosen.
+- A claim names a person whose recorded role in the filings differs: both are returned, and the person is shown only in the recorded role.
+- A claim from before the as-of date is superseded by later records: reported with both dates.
+
+**Q12: timing of transfers**
+- A sale recorded within a month of a new registration: both reported with dates, and the answer says nothing about intent.
+- A lot sold as part of a multi-lot deed: reported once as a deed with the lots it covers, and the answer states that it counts deeds, not lots.
+
+**Q20: the dossier on a real trail**
+- The trail ends at a registered-agent address after two entities: reported as the end, with the reason.
+- The trail reaches a parent company only through a news claim: the dossier presents it as a lead, and says the recorded part of the trail ended earlier.
+- Permits (DOB) or program and subsidy lists are retrieved on demand: reported with their source and not added to the graph. If DOB permits become a loaded source, a question is added.
+
 ## Notes
 
 **Mapping to the PESP guide's ten questions (p. 5).** The guide says it focuses on the first five.
@@ -104,10 +169,10 @@ This needs historical records and explicit date semantics (document date, record
 | How many properties does my landlord own, and where? | 7–10 | Answered separately for ownership and for shared operation; the two lists differ by design (Q10) |
 | Does my landlord sell frequently, or hold? | 12, 18 | Transfers are recorded facts; attributing them to the current owner is derived. Historical membership is not derivable from a current snapshot |
 | What are conditions at my building? | 14–16 | Violations are a record of what was cited, not of conditions |
-| Has there been notable news? | not covered | Needs web research. A report supports "this article states X" (recorded); whether X is true and applies is a separate, derived judgment |
+| Has there been notable news? | 11, 20 (scenarios) | Web research. A report supports "this article states X" (recorded); whether X is true and applies is a separate, derived judgment |
 | What is the financial standing? | 13 | Mortgages only; no tax-lien or distress data in the current sources |
 | Who are the people behind the company? | 5, 7, 11 | |
-| Is my building overseen by a federal or state entity? | not covered | Needs program lists not in `sources.yaml` |
+| Is my building overseen by a federal or state entity? | 20 (scenario) | Program lists retrieved on demand; not loaded in the graph |
 | What kind of company is my landlord, and who are its investors? | 5, 11 | Investors are usually not in NYC filings; expect leads only |
 | Which local regulatory agencies may influence my landlord? | not covered | Out of scope for the graph |
 
@@ -120,6 +185,13 @@ This needs historical records and explicit date semantics (document date, record
 - Q14 is the temporal test and Q12 the attribution test; neither can rely on a current-owner property.
 - Q3 and Q17 test whether ACRIS and HPD are modelled separately (title holder versus registered owner).
 - Q1 and Q9 test that lots, buildings and units are never silently equated.
+
+## Changes from draft 3
+
+- **Added** a Scope section: graph answers, web research and document retrieval are in scope, with the default handling rules and process requirements for the agent's loop.
+- **Added** the "Additional scenarios" section (Q1, Q5, Q7, Q8, Q11, Q12, Q20), one per step of the guide's method the questions did not exercise.
+- **Extended** Q1 to ask for building characteristics (year built, class, units, assessed value).
+- **Updated** the guide mapping: news and oversight are covered by scenarios; regulators remain out of scope.
 
 ## Changes from draft 2
 
@@ -137,4 +209,8 @@ This needs historical records and explicit date semantics (document date, record
 2. **Reliability convention.** Resolved by design note 0002 (accepted 2026-10-15). Still open from it: who sets `review_status`, and what justifies a change.
 3. **People in agent output.** `CLAUDE.md` limits people to roles recorded in HPD, ACRIS or DOS filings. Requirement 7 allows inferred links as labeled leads, as `CLAUDE.md` already does, but not attributed statements from news. Whether to allow those is your decision.
 4. **Contracts for the other 17 questions**, and for Q5 (DOS field availability), Q15–16 (snapshot date and denominator) and Q17 (registration applicability and ingestion completeness) in particular.
-5. **Stretch, not numbered:** news, oversight programs and regulators.
+5. **Web and document findings: storage.** Scope item 1 holds them as session evidence because the graph is read-only for the agent. Decide whether a reviewed process may later promote a finding into the graph.
+6. **LinkedIn and similar pages.** The guide's example used a LinkedIn page to tie an officer to a company. Scope rule 4 excludes personal social profiles by default, which would drop that step. Your call whether a profile that only states an employer counts as a business role.
+7. **Retrieval tooling and cache design** for the agent (week 6), and how evaluation fixtures are frozen (week 8).
+8. **DOB permits** as a loaded source, or retrieved on demand only.
+9. **Regulators** (the guide's last question) remain out of scope.
