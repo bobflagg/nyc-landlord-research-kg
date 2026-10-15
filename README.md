@@ -1,2 +1,2 @@
-# nyc-landlord-research-kg
-An 8-week course in ontology-first knowledge graphs, with a capstone NYC landlord research agent built on Neo4j, LangGraph and Deep Agents that traces each building to the LLCs, people and firms behind it, citing a public record for every claim.
+# NYC Landlord Research KG
+This repo holds my coursework and capstone for learning to build an ontology-first knowledge graph, following Jessica Talisman’s Ontology Pipeline and Jesús Barrasa’s knowledge-layer approach. The capstone automates the Private Equity Stakeholder Project’s How to Research Your Landlord method for New York City. It loads PLUTO, ACRIS, HPD registrations and NY State corporation records into a validated Neo4j graph, resolves owners into portfolios, and keeps recorded facts (Type I) separate from inferred links (Type II). A Deep Agents investigator then starts from a tenant’s address and produces an evidence-backed dossier for tenant organizers.
