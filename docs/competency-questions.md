@@ -68,7 +68,7 @@ The system automates the PESP *How to Research Your Landlord* method for New Yor
 | 2 | Who is the HPD-registered owner of this building, and when was the registration last filed? | Registered owner `Example Holdings LLC`, filed 2025-09-01, expires 2026-09-01 | I | HPD registrations, contacts | |
 | 3 | Who is the grantee on the most recent ACRIS deed for this lot? Do the deed and the HPD registration name the same party exactly, and where they differ, what supports treating them as one entity? | Exact agreement on `123 Example St LLC`; or `Example Holdings LLC` vs `Example Holdings II LLC` with a shared officer, reported as unresolved | I+II | ACRIS master, parties, legals; HPD | |
 | 4 | Who is the managing agent, head officer or site manager HPD lists for this building? | Managing agent `Example Management Corp`, with registration dates | I | HPD contacts | |
-| 5 | What does the NY DOS filing for this owner entity record: type, filing date, status, process address, and the officers or agents it names, and which of those fields does the dataset carry? | `Example Holdings LLC`, domestic LLC filed 2016, registered agent `...`; officers not carried | I | NY DOS corporations | |
+| 5 | What does the NY DOS active-entity record show for this owner entity: type, filing date, DOS process name and address, and registered agent? Where the record is absent or silent, what is known and from what source? | `Example Holdings LLC`, domestic LLC filed 2016, process address `...`, no registered agent listed; no officers, managers or members are carried for LLCs; a dissolved entity is absent from the dataset | I | NY DOS corporations (active entities only) | |
 | 6 | Was this address masked or down-weighted by a given method as an aggregator address, why, and is it also on the curated mail-drop list? | A hub office registered for 84 buildings and 35 owner-role people: masked in the Operational Network and Owner Portfolio; listed as a registered-agent service in `resolution/` | II | NLR, BOR masking; `resolution/` mail-drop list; HPD contacts | |
 | 7 | What shared evidence (people, business addresses, resolved identities) do these two entities or buildings have, and which of it was set aside as non-evidence? | Same head officer on two registrations; same hub address, set aside as an aggregator | II | HPD contacts; DOS; NLR | |
 | 8 | Which buildings belong to this building's Operational Network in the selected run, which registration and identity links connect them, and was the network a whole component or a Louvain community? | 41 BBLs; whole component; connected by a shared business address and a resolved identity | II | HPD registrations, contacts; BOR operational network | |
@@ -77,7 +77,7 @@ The system automates the PESP *How to Research Your Landlord* method for New Yor
 | 11 | What evidence supports an ownership, parent-company, management, financing or other affiliation involving this entity, which relationship is documented, and which is only hypothesized? | A mortgage lender (a financing relationship, not control); a shared officer with `Example Capital Partners` (a lead, separate from the Owner Portfolio); a disclosed agent (management) | I+II | ACRIS parties; DOS; HPD contacts | |
 | 12 | What deed transfers are recorded for this lot in the selected period, and for the lots currently attributed to its Owner Portfolio? Which of them can be attributed to the currently identified owner? | Lot sold 3 times since 2015. The portfolio's current lots changed hands 9 times in 2021, but 2 of those were by previous owners with no established link to the current one | I+II | ACRIS; BOR | |
 | 13 | What mortgages, assignments and satisfactions are recorded against the lot, in what amounts and with which lenders? | A $4.2M mortgage recorded 2021-07 to `Example Bank`, no satisfaction recorded | I | ACRIS master, parties | |
-| 14 | Which title holders and HPD-registered owners do the records support for the date of a given violation, and what gaps or conflicts prevent a definite attribution? | Class C violation issued 2023-01-10: `Prior Owner LLC` is the title holder and registrant; or a deed dated 2022-12 but recorded 2023-02, with no registration in force on the date | I | HPD violations; ACRIS; HPD registrations | |
+| 14 | Which title holders and HPD-registered owners do the records support for the date of a given violation, and what gaps or conflicts prevent a definite attribution? | Class C violation issued 2023-01-10: `Prior Owner LLC` is the title holder and registrant; or a deed dated 2022-12 but recorded 2023-02, with no registration in force on the date; or the title holder is absent from the active-only DOS snapshot | I | HPD violations; ACRIS; HPD registrations | |
 | 15 | What open violations does this building have, by class, how long have they been open, and what is the rate per residential unit? | 7 open: 1 class C, 4 B, 2 A; oldest open since 2022-02; 0.12 per unit | I | HPD violations; PLUTO | |
 | 16 | Across a chosen layer (Owner Portfolio or Operational Network), which buildings have the most open hazardous violations per unit, and how concentrated are they? | 3 of 14 lots hold 80% of the portfolio's open class C violations; the same measure over the Operational Network gives a different list | I+II | HPD violations; PLUTO; BOR layers | |
 | 17 | Is this building's registration missing, lapsed, or older than the latest deed transfer, and is a registration required for it? | Last registration 2021, deed to a new entity recorded 2023, none since | I | HPD registrations; ACRIS | |
@@ -105,9 +105,9 @@ Three questions have full contracts now, because they test the hardest requireme
 | --- | --- |
 | Inputs | Violation, or building and date; which date counts (inspection, notice or issue); perspective (as now known) |
 | Required output | Title holders supported for that date, from deeds, with document and recorded dates; registered owners in force on that date, with registration periods; whether they coincide; each gap or conflict |
-| Acceptable incomplete | Title holder supported, no registration in force; or "cannot attribute", with the reason. The records are today's version of the past, and the answer says so |
+| Acceptable incomplete | Title holder supported, no registration in force; or "cannot attribute", with the reason. The records are today's version of the past, and the answer says so. A title holder that is absent from the DOS dataset is reported as "no record in the active-entity snapshot", which says nothing about whether the entity existed on the date (the dataset holds active entities only) |
 | Failure | The current owner substituted for the historical one; one owner asserted despite a conflict; the owner of record presented as the party responsible |
-| Test cases | Ordinary: one deed, continuous registration. Difficult: deed dated before and recorded after the violation date; a lapsed registration; a sale between inspection and notice |
+| Test cases | Ordinary: one deed, continuous registration. Difficult: deed dated before and recorded after the violation date; a lapsed registration; a sale between inspection and notice; a past title holder that has since dissolved and is missing from DOS |
 
 This needs historical records and explicit date semantics (document date, recorded date, registration period, violation dates), not just `valid_from` / `valid_to` on a role.
 
@@ -134,6 +134,9 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 - The only agents named are corporate service companies: reported as such, with no person or address treated as a lead (mail-drop rule).
 - A name read from a scanned document is uncertain: reported with the extraction method and a low-confidence flag, and not used as a link on its own.
 - A retrieved filing gives a different address from the dataset: both are returned with their dates; the answer does not choose.
+- The entity is not in the dataset (dissolved, or never filed in New York): reported as "no record in the active-entity snapshot", not as non-existent. The agent then looks for a retrieved filing or an ACRIS or HPD mention, each labeled by source.
+- The DOS process name is the statutory default ("THE LIMITED LIABILITY COMPANY") or a commercial agent: reported as such and treated as no person and no lead.
+- The CEO or location fields are empty for the LLC: reported as "not carried for this entity type", and the answer does not say the entity has no officers.
 
 **Q7 and Q8: similarly named entities**
 - `Example Holdings LLC` and `Example Holdings II LLC` share an agent and addresses: reported as a possible connection with that evidence, not as the same entity. Names alone support no link.
@@ -178,6 +181,20 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 
 **The guide's worked example.** Its trail is: property record → LLC → registered address → a person → a news article → a hedge fund. In NYC the first steps use open records, but each can return names and addresses without establishing the identity or relationship the next step needs. Q20 asks for the trail with recorded facts and derived links kept apart, and must state where it stops.
 
+**NY DOS dataset (checked 2026-10-15, `n9v6-gdp6`).** Findings from the dataset's column list and counts over its 2.29M active LLCs (1.00M with a NYC county):
+
+| Field | Populated for LLCs | Meaning |
+| --- | --- | --- |
+| DOS process name and address | 100% | Where the state forwards legal service; not who runs the entity |
+| Registered agent name and address | 26.8% (26.3% NYC) | Present for about a quarter |
+| CEO name and address | 1 row | Not carried for LLCs |
+| Location name and address | 0 rows | Not carried for LLCs |
+
+- **No officers, managers or members** are available for LLCs. People behind an LLC come from HPD contacts, ACRIS parties, or retrieved filing documents (Q5, Q7, Q11).
+- **Process name is often not a person.** 92,591 LLCs show the statutory default "THE LIMITED LIABILITY COMPANY", and the most common other values are commercial agents (Northwest Registered Agent, Registered Agents Inc., Corporation Service Company, ZenBusiness). Matching on DOS process name or address meets mail-drop addresses constantly, so the mail-drop rule applies here (requirement 3, Scope rule 3).
+- **Active entities only, as of a month-end snapshot.** Dissolved entities and change history are absent. An answer about a past owner entity may find no DOS record (Q5, Q14). The extent of this for NYC buildings' past owners has not been measured; a sample of ACRIS grantees matched against the dataset would show it.
+- **Retrieval date:** `retrieved_at` for `nys_corporations` in `sources.yaml` is still null; the counts above came from the live API, not from a downloaded copy.
+
 **Coverage.**
 
 - Reliability counts: 8 recorded (Q1, 2, 4, 5, 13, 14, 15, 17), 6 derived (Q6–11), 6 mixed (Q3, 12, 16, 18, 19, 20).
@@ -192,6 +209,7 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 - **Added** the "Additional scenarios" section (Q1, Q5, Q7, Q8, Q11, Q12, Q20), one per step of the guide's method the questions did not exercise.
 - **Extended** Q1 to ask for building characteristics (year built, class, units, assessed value).
 - **Updated** the guide mapping: news and oversight are covered by scenarios; regulators remain out of scope.
+- **Recorded** the NY DOS dataset check (fields, fill rates, active-only), rewrote Q5 to match, and added the absent-entity caveat to Q14's contract and to Q5's scenarios.
 
 ## Changes from draft 2
 
@@ -208,7 +226,7 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 1. **Evidence export.** The BOR release files hold only memberships. I found no edge-level file. Q8, Q9 and Q19 need the edges, their stage and the connecting path to be exported or reproducible (requirement on the repos; design note to follow).
 2. **Reliability convention.** Resolved by design note 0002 (accepted 2026-10-15). Still open from it: who sets `review_status`, and what justifies a change.
 3. **People in agent output.** `CLAUDE.md` limits people to roles recorded in HPD, ACRIS or DOS filings. Requirement 7 allows inferred links as labeled leads, as `CLAUDE.md` already does, but not attributed statements from news. Whether to allow those is your decision.
-4. **Contracts for the other 17 questions**, and for Q5 (DOS field availability), Q15–16 (snapshot date and denominator) and Q17 (registration applicability and ingestion completeness) in particular.
+4. **Contracts for the other 17 questions**, and for Q15–16 (snapshot date and denominator), Q17 (registration applicability and ingestion completeness) and Q5 in particular. DOS field availability is closed (see Notes); Q5's contract can now be written. Still open: how many past owner entities are absent from the active-only DOS snapshot.
 5. **Web and document findings: storage.** Scope item 1 holds them as session evidence because the graph is read-only for the agent. Decide whether a reviewed process may later promote a finding into the graph.
 6. **LinkedIn and similar pages.** The guide's example used a LinkedIn page to tie an officer to a company. Scope rule 4 excludes personal social profiles by default, which would drop that step. Your call whether a profile that only states an employer counts as a business role.
 7. **Retrieval tooling and cache design** for the agent (week 6), and how evaluation fixtures are frozen (week 8).
