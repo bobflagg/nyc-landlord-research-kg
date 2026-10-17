@@ -1,0 +1,85 @@
+# Source datasets. Record retrieved_at whenever you download, so every fact
+# in the graph can carry its source and retrieval date (week 5).
+#
+# NYC Open Data and data.ny.gov are Socrata portals:
+#   page:  https://<domain>/d/<id>
+#   API:   https://<domain>/resource/<id>.json  (filter with $where, page with $limit/$offset)
+
+sources:
+  pluto:
+    name: Primary Land Use Tax Lot Output (PLUTO)
+    publisher: NYC Department of City Planning
+    domain: data.cityofnewyork.us
+    id: 64uk-42ks
+    used_for: lots (BBL), units, year built, owner name, community district for slicing
+    reliability: I
+    retrieved_at: null
+
+  acris_master:
+    name: ACRIS - Real Property Master
+    publisher: NYC Department of Finance
+    domain: data.cityofnewyork.us
+    id: bnx9-e6tj
+    used_for: recorded documents (deeds, mortgages) with dates and amounts
+    reliability: I
+    retrieved_at: null
+
+  acris_parties:
+    name: ACRIS - Real Property Parties
+    publisher: NYC Department of Finance
+    domain: data.cityofnewyork.us
+    id: 636b-3b5g
+    used_for: grantors, grantees, lenders and their addresses
+    reliability: I
+    retrieved_at: null
+
+  acris_legals:
+    name: ACRIS - Real Property Legals
+    publisher: NYC Department of Finance
+    domain: data.cityofnewyork.us
+    id: 8h5j-fqxa
+    used_for: links each ACRIS document to a BBL
+    reliability: I
+    retrieved_at: null
+
+  hpd_registrations:
+    name: Multiple Dwelling Registrations
+    publisher: NYC Department of Housing Preservation and Development
+    domain: data.cityofnewyork.us
+    id: tesw-yqqr
+    used_for: registered buildings (3+ units), registration dates
+    reliability: I
+    retrieved_at: null
+
+  hpd_contacts:
+    name: Registration Contacts
+    publisher: NYC Department of Housing Preservation and Development
+    domain: data.cityofnewyork.us
+    id: feu5-w2e2
+    used_for: owners, head officers, officers, managing agents and business addresses
+    reliability: I
+    retrieved_at: null
+
+  hpd_violations:
+    name: Housing Maintenance Code Violations
+    publisher: NYC Department of Housing Preservation and Development
+    domain: data.cityofnewyork.us
+    id: wvxf-dwi5
+    used_for: violations by class (A/B/C), status and dates
+    reliability: I
+    retrieved_at: null
+
+  nys_corporations:
+    name: Active Corporations - Beginning 1800
+    publisher: NY Department of State
+    domain: data.ny.gov
+    id: n9v6-gdp6
+    used_for: entity filings, process and registered-agent addresses
+    reliability: I
+    retrieved_at: null
+
+# Web and document findings are not datasets (design note 0002). A primary record
+# retrieved from the web is public_record (Type I); reports and other web content carry
+# source_category and review_status. Free public business registries of other states
+# are in scope for out-of-state entities; paid sources are not. For now the agent holds
+# findings as session evidence with URL and retrieval date (competency-questions, Scope).
