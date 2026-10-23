@@ -35,4 +35,6 @@ A third party's claim (for example a news article's statement that a fund contro
 - **Publishing rules** (`CLAUDE.md`, "Publishing responsibly") are unchanged. People still appear only in roles recorded in HPD, ACRIS or DOS filings. Whether attributed statements about people from reporting may be shown is a separate decision, still open.
 - **Ontology:** week 2 vocabulary needs `SourceCategory` and `ReviewStatus` concept schemes, and week 3 needs a reported-claim relationship with its own SHACL shape.
 - **Edits needed on acceptance:** the "Reliability on every fact" and "Provenance" lines in `CLAUDE.md`'s Graph conventions, and the reliability paragraph of `docs/competency-questions.md`.
-- **Revisit:** who sets `review_status`, and what justifies a change (`confirmed` after checking a primary record, say). Not decided here.
+- **Revisit:** who sets `review_status`, and what justifies a change (`confirmed` after checking a primary record, say). Not decided here. Decided in note 0003 (2026-10-17).
+- **Update 2026-10-17:** the open question on attributed statements about people from reporting is decided: they are allowed only as reported claims, attributed and `unreviewed`, never as roles (`CLAUDE.md`, "Publishing responsibly").
+- **Update 2026-10-18:** `source_category` gains a fourth value, `project_derived`, for the BOR/NLR layers and the curated mail-drop list; see note 0004.
