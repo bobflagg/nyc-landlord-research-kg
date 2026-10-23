@@ -42,6 +42,15 @@ sources:
     reliability: I
     retrieved_at: null
 
+  acris_document_codes:
+    name: ACRIS - Document Control Codes
+    publisher: NYC Department of Finance
+    domain: data.cityofnewyork.us
+    id: 7isb-wh4c
+    used_for: vocabulary source for document types (descriptions, party-type meanings). The justfixwow copy `acris_document_control_codes` has blank `doctype` values and is not used. Needed by Q3, Q12, Q14, Q18
+    reliability: I
+    retrieved_at: null
+
   hpd_registrations:
     name: Multiple Dwelling Registrations
     publisher: NYC Department of Housing Preservation and Development
@@ -69,12 +78,60 @@ sources:
     reliability: I
     retrieved_at: null
 
+  hpd_complaints:
+    name: Housing Maintenance Code Complaints and Problems
+    publisher: NYC Department of Housing Preservation and Development
+    domain: data.cityofnewyork.us
+    id: ygpa-z7cr
+    used_for: complaints and problems by building (type, category, status, dates). About 16M problem rows; use building-level aggregates only (see competency-questions, Q27)
+    reliability: I
+    retrieved_at: null
+
+  hpd_litigations:
+    name: Housing Litigations
+    publisher: NYC Department of Housing Preservation and Development
+    domain: data.cityofnewyork.us
+    id: 59kj-x8nc
+    used_for: HPD-initiated Housing Court cases against owners (case type, open date, status, harassment finding, respondent)
+    reliability: I
+    retrieved_at: null
+
   nys_corporations:
     name: Active Corporations - Beginning 1800
     publisher: NY Department of State
     domain: data.ny.gov
     id: n9v6-gdp6
     used_for: entity filings, process and registered-agent addresses
+    reliability: I
+    retrieved_at: null
+
+  # Non-Socrata inputs. No dataset id; keys are used in docs/competency-questions-detail.md.
+  bor_layers:
+    name: BOR/NLR derived layers (Owner Portfolio, Operational Network) and edge-level evidence
+    publisher: project repos (BOR, NLR)
+    domain: null
+    id: null
+    used_for: group memberships and the supporting edges, loaded as Type II (design note 0001)
+    reliability: II
+    source_category: project_derived
+    retrieved_at: null
+
+  mail_drop_list:
+    name: Curated mail-drop and registered-agent address list
+    publisher: this project (resolution/)
+    domain: null
+    id: null
+    used_for: addresses that must never on their own link two entities
+    reliability: II
+    source_category: project_derived
+    retrieved_at: null
+
+  web_research:
+    name: Web research and retrieved filings
+    publisher: various (state registries, news, nonprofit filings)
+    domain: null
+    id: null
+    used_for: session evidence with url, retrieved_at and source_category (design note 0002)
     reliability: I
     retrieved_at: null
 
