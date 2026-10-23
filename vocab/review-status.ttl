@@ -1,0 +1,48 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rs: <https://bobflagg.github.io/Watchline/vocab/review-status/> .
+
+rs: a skos:ConceptScheme ;
+    dcterms:title "Review status"@en ;
+    dcterms:description "Whether a person has checked a fact."@en ;
+    dcterms:created "2026-10-18"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Pipeline and agent may write only unreviewed and contested; a person sets confirmed, refuted and inconclusive through a review record (design note 0003). That rule is enforced by SHACL, not by this scheme. Corroboration by independent sources is evidence, not review."@en ;
+    skos:hasTopConcept rs:unreviewed, rs:contested, rs:confirmed, rs:refuted, rs:inconclusive .
+
+rs:unreviewed a skos:Concept ;
+    skos:inScheme rs: ;
+    skos:topConceptOf rs: ;
+    skos:notation "unreviewed" ;
+    skos:prefLabel "Unreviewed"@en ;
+    skos:definition "No person has checked the fact. The default."@en .
+
+rs:contested a skos:Concept ;
+    skos:inScheme rs: ;
+    skos:topConceptOf rs: ;
+    skos:notation "contested" ;
+    skos:prefLabel "Contested"@en ;
+    skos:definition "Records or reports disagree and none is decisive. Set by the pipeline or by a person."@en .
+
+rs:confirmed a skos:Concept ;
+    skos:inScheme rs: ;
+    skos:topConceptOf rs: ;
+    skos:notation "confirmed" ;
+    skos:prefLabel "Confirmed"@en ;
+    skos:definition "A person checked the fact against a primary record that states the same thing."@en .
+
+rs:refuted a skos:Concept ;
+    skos:inScheme rs: ;
+    skos:topConceptOf rs: ;
+    skos:notation "refuted" ;
+    skos:prefLabel "Refuted"@en ;
+    skos:definition "A person checked the fact and a primary record contradicts it."@en .
+
+rs:inconclusive a skos:Concept ;
+    skos:inScheme rs: ;
+    skos:topConceptOf rs: ;
+    skos:notation "inconclusive" ;
+    skos:prefLabel "Inconclusive"@en ;
+    skos:definition "A person checked the fact and could not decide."@en .

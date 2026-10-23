@@ -1,0 +1,29 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rel: <https://bobflagg.github.io/Watchline/vocab/reliability/> .
+
+rel: a skos:ConceptScheme ;
+    dcterms:title "Reliability"@en ;
+    dcterms:description "How an assertion was obtained: stated by a record, or derived by a method. Not an ordering of trust."@en ;
+    dcterms:created "2026-10-18"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The two concepts are unordered. Type I and II describe how an assertion was obtained, not how much to trust it (design note 0002). Mixed answers (I+II) are an answer-level label and are not concepts here (design note 0004)."@en ;
+    skos:hasTopConcept rel:I, rel:II .
+
+rel:I a skos:Concept ;
+    skos:inScheme rel: ;
+    skos:topConceptOf rel: ;
+    skos:notation "I" ;
+    skos:prefLabel "Recorded assertion"@en ;
+    skos:altLabel "Type I"@en ;
+    skos:definition "A public record states it, or it follows from joining records on an official identifier (BBL, BIN, document id, registration id)."@en .
+
+rel:II a skos:Concept ;
+    skos:inScheme rel: ;
+    skos:topConceptOf rel: ;
+    skos:notation "II" ;
+    skos:prefLabel "Derived conclusion"@en ;
+    skos:altLabel "Type II"@en ;
+    skos:definition "A method links or classifies where the records do not say so."@en .
