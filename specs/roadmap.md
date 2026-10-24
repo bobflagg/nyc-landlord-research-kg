@@ -45,7 +45,7 @@ Each later stage starts by extending the competency questions for its users, the
 
 Sequenced when a stage needs it:
 
-- **Production snapshot.** Load a current justfixwow snapshot, rerun BOR/NLR on it, rebuild the graph, and re-derive the evaluation answers.
+- **Production snapshot.** Load a current justfixwow snapshot, produce a new frozen BOR release for it (BOR runs once per snapshot, and the graph loads that release without rerunning it; design note 0007), rebuild the graph, and re-derive the evaluation answers.
 - **Live application and hosting** for the graph and agent.
 - **Runtime Socrata access** for freshness checks, labeled by retrieval time.
 - **Review records and a reviewer interface**, so a person can confirm or refute facts and a checked finding can enter the graph (design note 0003).
