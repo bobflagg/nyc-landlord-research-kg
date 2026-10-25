@@ -6,7 +6,7 @@ One block per question in `docs/competency-questions.md`: a real example, the sh
 
 ## How the examples were chosen
 
-- **Neutral buildings.** Ordinary rental buildings in one Brooklyn neighborhood (Sunset Park), picked by querying the data. They are not landlords from the news, and no individual is named in this file. Where a record names a person, the block says "a person (name not repeated)". The agent shows such a person only in the recorded role.
+- **Neutral buildings.** Ordinary rental buildings in one Brooklyn neighborhood (Sunset Park), picked by querying the data. They are not landlords from the news, and this file does not repeat individuals' names, to keep the examples neutral. Where a record names a person, the block says "a person (name not repeated)". The agent shows names with their role and source (design note 0009).
 - **Where the expected answers come from.** Discovered in the JustFix/WoW Postgres mirror, then checked against the Socrata source. **Where they differ, Socrata wins.** The mirror is partial and stale (competency questions, open item 10): for 438 52 Street it shows 4 open violations, Socrata shows 20.
 - **Snapshot date.** Socrata values were read on **2026-10-17**. They are the starting point for the week 8 evaluation answers and must be re-read before they are used as expected answers, because open counts and registration dates move.
 - **Verified here:** PLUTO and HPD registration fields for every BBL below, the ACRIS documents named, and the DOS lookups. Items marked **pending** have no example yet and the reason is given.
@@ -79,7 +79,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Example (A and B):** the same HPD business address, one joint mortgage naming both entities as borrowers (`2021031601183001`), DOS filings on 2020-10-14 and 2020-10-15, and similar names. Whether the address is a hub is not yet checked.
 - **Shape:** list of evidence items, each marked used or set aside.
 - **Audience:** the question behind "is it the same landlord?"
-- **Caveat:** names alone are not evidence. A masked or mail-drop address is set aside and said so.
+- **Caveat:** a name match is a lead, shown with its evidence. A masked or mail-drop address is set aside and said so.
 - **Sources:** `hpd_contacts`, `nys_corporations`, `acris_parties`, `bor_layers`.
 
 ### Q8: Operational Network of a building
@@ -190,7 +190,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Example (B):** `702 54 STREET LLC` and `702 PLAZA LLC` share a lot but no record joins them.
 - **Shape:** judgment with evidence for and against.
 - **Audience:** keeps an organizer from merging two companies, or splitting one, on spelling alone.
-- **Caveat:** a normalization match is derived. Names alone link nothing else.
+- **Caveat:** a normalization match is derived. A name match is a lead, not a link.
 - **Sources:** `acris_parties`, `hpd_contacts`, `nys_corporations`.
 
 ### Q23: A managing agent's footprint
@@ -229,7 +229,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `hpd_complaints`, `pluto`.
 
 ### Q28: Housing Court actions by HPD
-- **Example (C):** one HPD case, a Tenant Action opened 2023-05-15, status CLOSED, no harassment finding. The respondents are the owners corporation and an individual (name not repeated), shown only in the recorded respondent role.
+- **Example (C):** one HPD case, a Tenant Action opened 2023-05-15, status CLOSED, no harassment finding. The respondents are the owners corporation and an individual (name not repeated), shown with the recorded respondent role and source.
 - **Shape:** list of cases.
 - **Audience:** shows whether the city has already sued the owner, which organizers can cite.
 - **Caveat:** an HPD action is not an eviction and not a finding of liability. Match a respondent to the registered owner only by exact normalized name.

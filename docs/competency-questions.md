@@ -138,7 +138,7 @@ This needs historical records and explicit date semantics (document date, record
 | Inputs | Entity or address; sources searched; as-of date; step and time budget |
 | Required output | Each item with publisher or filing body, date, URL or document id, page, the quoted claim or extracted value, extraction method, `source_category`, `review_status`, and how it relates to the recorded facts (agrees, adds, conflicts, unrelated). For each: the basis for treating it as about this entity (exact name or address, or a lead only) |
 | Acceptable incomplete | Nothing found: "no reports or documents found in the sources searched", with the queries and dates, never "no news" or "no issues". A document unreadable, partial or behind payment: reported as an unresolved lead with the reason. An uncertain scanned name: reported with a low-confidence flag and not used as a link |
-| Failure | A claim stated as fact; ownership inferred from a report or from a document's signatory; a person shown outside a recorded role; an entity matched on name alone without saying so; contradicting reports resolved silently; a missing report read as nothing having happened |
+| Failure | A claim stated as fact; ownership inferred from a report or from a document's signatory; a person's name shown without its source and role; an entity matched on name alone without saying so; contradicting reports resolved silently; a missing report read as nothing having happened |
 | Test cases | Ordinary: an article naming the exact LLC; a retrieved filing with a named manager. Difficult: an article naming a similarly named entity; two contradicting articles; a scanned attachment with an uncertain name; a paid-only registry step; a report dated after the as-of date |
 
 ## End-to-end acceptance requirement
@@ -173,7 +173,7 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 - The CEO or location fields are empty for the LLC: reported as "not carried for this entity type", and the answer does not say the entity has no officers.
 
 **Q7 and Q8: similarly named entities**
-- `Example Holdings LLC` and `Example Holdings II LLC` share an agent and addresses: reported as a possible connection with that evidence, not as the same entity. Names alone support no link.
+- `Example Holdings LLC` and `Example Holdings II LLC` share an agent and addresses: reported as a possible connection with that evidence, not as the same entity. A name match is a lead, shown with its evidence.
 - Similar names with no shared record: not reported as related.
 - A similarly named entity's filing names a person or address missing from the first: reported as new evidence for that entity, with its source.
 
@@ -209,7 +209,7 @@ Each follows a step of the guide's method that the 20 questions did not exercise
 - A building has no complaint records: "none recorded in the snapshot period", not "no problems".
 
 **Q28: litigation**
-- The respondent field is free text and can list several parties (entities, individuals, "ET AL"). Each is reported as recorded, and an individual appears only in that recorded role. The answer does not match a respondent to an owner except by exact normalized name, and says so.
+- The respondent field is free text and can list several parties (entities, individuals, "ET AL"). Each is reported as recorded, and an individual is shown with that recorded role and source. The answer does not match a respondent to an owner except by exact normalized name, and says so.
 - The case status field mixes a status with a date (for example `GRANTED - 10/20/2006`) and some open dates are implausible: the answer reports the value as recorded, flags the implausible date, and does not repair it.
 - An HPD case is an action HPD brought against an owner. It is not an eviction case and not a finding of liability by itself: the answer says which finding the record carries (for example a harassment finding after trial or inquest).
 - A case against a prior owner is reported against the owner named at the time, with no attribution to the current owner (see Q14).

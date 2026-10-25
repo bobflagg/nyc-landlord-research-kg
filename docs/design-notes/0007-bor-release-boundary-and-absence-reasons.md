@@ -44,3 +44,5 @@ Status: **accepted 2026-10-22**; item 5 (how BOR nodes enter the graph) confirme
 - **Q26 and Q19** answers use the five reasons. Q26's example "outside source coverage for that period" is unchanged.
 - **BOR-side changes this note depends on** (listed in the BOR repository's review): reason codes for vetoes, score below threshold and the deed gate clauses; a stage for group-level policy events; a defined primary-reason precedence; source fingerprints and rule versions in the manifest; a `lot_count` rename; and the fifth top-level reason in `TOP_LEVEL_REASONS`.
 - **Revisit:** the primary-reason precedence once BOR states it; whether reviews should survive across runs when the review process is designed.
+
+Update 2026-10-24: the graph now loads the BOR build with names, so the Context's "person-free build" (second bullet) no longer applies (design note 0009).

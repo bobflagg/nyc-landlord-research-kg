@@ -62,6 +62,6 @@ Pick a district where:
 
 Officer and agent names are public records, but a public demo concentrates them. In the demo:
 
-- show people only in roles recorded in HPD, ACRIS or DOS filings (Type I);
+- show names with their role, source and reliability, and never present a name as an ownership claim (design note 0009);
 - show inferred links (Type II) between companies and buildings with their evidence and a clear "inferred" label, never as findings;
 - don't follow inferred links to individuals' personal addresses or non-business information.

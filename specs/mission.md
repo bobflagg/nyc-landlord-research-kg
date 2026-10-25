@@ -33,7 +33,7 @@ The questions and their contracts are in `docs/competency-questions.md`.
 
 ## Boundaries that hold in every stage
 
-- **People appear only in recorded roles.** A person is shown only in a role recorded in HPD, ACRIS or DOS filings. A person named in a news report may appear only as an attributed, unreviewed reported claim, never as a role.
+- **Names are shown with their source.** A name appears wherever the data has it, with its role (if any), source, reliability and snapshot. A name never asserts a role: a person named only in a report is an attributed, unreviewed reported claim, not an owner. A name match between records is a lead, not a finding (design note 0009).
 - **No personal information.** No following links to individuals' home addresses or other non-business information.
 - **Only a person marks a fact as checked.** The system can mark a fact `unreviewed` or `contested`, never `confirmed` (design note 0003).
 - **Answers state their limits.** Snapshot date, counting unit (lot, building or unit) and which ownership layer was used.

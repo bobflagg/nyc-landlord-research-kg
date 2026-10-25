@@ -25,3 +25,4 @@ The graph consumes the output of the existing resolution pipelines (`nyc-landlor
 - To revisit: the load cost of edge-level evidence at citywide scale.
 
 - **Update 2026-10-20:** BOR now has a draft release contract. The boundary, how releases are loaded and the open evidence questions are in note 0007.
+- **Update 2026-10-24:** a group's person anchor may now be stored as a display attribute of the group; it is still never a role or an owner (design note 0009).
