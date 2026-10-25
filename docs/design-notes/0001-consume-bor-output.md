@@ -21,7 +21,7 @@ The graph consumes the output of the existing resolution pipelines (`nyc-landlor
 - The graph must not treat group ids as durable identifiers. Membership is the durable content, and each assertion names its run.
 - The evidence export is a requirement on the BOR and NLR repos, not on this one. **Open:** the form it takes (edge list, stage, path) is still to be agreed.
 - `resolution/` keeps only what the graph still needs itself. **Open:** whether the curated mail-drop list stays here or comes from BOR's aggregator masking, and how the two are reconciled.
-- BOR's person anchor is not an owner. The graph stores it, if at all, as a display attribute of a group and never as a role node (see `CLAUDE.md`, "Publishing responsibly").
+- BOR's person anchor is not an owner. The graph stores it, if at all, as a display attribute of a group and never as a role node (see `docs/demo-slice.md`, "Publishing responsibly").
 - To revisit: the load cost of edge-level evidence at citywide scale.
 
 - **Update 2026-10-20:** BOR now has a draft release contract. The boundary, how releases are loaded and the open evidence questions are in note 0007.
