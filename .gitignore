@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- nyc-landlord-research-kg ---
+# Downloaded source data (re-fetch with etl/ scripts; see data/sources.yaml)
+data/raw/
+data/interim/
+# Local Neo4j container state
+neo4j/
+# macOS
+.DS_Store
+
+# Local MCP config (holds the justfixwow connection string)
+.mcp.json
