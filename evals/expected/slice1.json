@@ -1,0 +1,1453 @@
+{
+ "snapshot_id": "justfixwow-2026-05-29",
+ "derived": "2026-10-26",
+ "source": "justfixwow PostgreSQL (read-only); queries in slice1.sql",
+ "how_to_read": "Expected answers for the Slice 1 questions (Q1-Q5, Q24) on the anchor properties A-G of docs/competency-questions-detail.md, taken from the snapshot the graph is built from. Names appear with their role and source (design note 0009); a name asserts nothing beyond the role the record gives it.",
+ "rules": {
+  "name": "N1 (design note 0006)",
+  "address": "A2 (design note 0006), via etl/address.py"
+ },
+ "anchors": {
+  "A": {
+   "bbl": "3008260002",
+   "address": "5413 7 AVENUE",
+   "zip5": "11220",
+   "building_class": "C1",
+   "units_residential": 32,
+   "units_total": 32,
+   "buildings_per_pluto": 1,
+   "year_built": 1911,
+   "assessed_total": 868950,
+   "pluto_owner_name": "5413 PLAZA LLC"
+  },
+  "B": {
+   "bbl": "3008260005",
+   "address": "702 54 STREET",
+   "zip5": "11220",
+   "building_class": "C7",
+   "units_residential": 39,
+   "units_total": 45,
+   "buildings_per_pluto": 1,
+   "year_built": 1911,
+   "assessed_total": 360000,
+   "pluto_owner_name": "702 PLAZA LLC"
+  },
+  "C": {
+   "bbl": "3008070024",
+   "address": "438 52 STREET",
+   "zip5": "11220",
+   "building_class": "C1",
+   "units_residential": 32,
+   "units_total": 32,
+   "buildings_per_pluto": 1,
+   "year_built": 1931,
+   "assessed_total": 1371600,
+   "pluto_owner_name": "438 52ND ST OWNERS CORP"
+  },
+  "D": {
+   "bbl": "3008210012",
+   "address": "224 54 STREET",
+   "zip5": "11220",
+   "building_class": "C1",
+   "units_residential": 18,
+   "units_total": 18,
+   "buildings_per_pluto": 3,
+   "year_built": 1911,
+   "assessed_total": 814500,
+   "pluto_owner_name": "HP SUNSET PARK I HOUSING DEV FUND COMPAN Y, INC"
+  },
+  "E": {
+   "bbl": "3008210019",
+   "address": "234 54 STREET",
+   "zip5": "11220",
+   "building_class": "C2",
+   "units_residential": 6,
+   "units_total": 6,
+   "buildings_per_pluto": 1,
+   "year_built": 1911,
+   "assessed_total": 452700,
+   "pluto_owner_name": "PAGAN ANGEL LUIS"
+  },
+  "F": {
+   "bbl": "3008970014",
+   "address": "259 22 STREET",
+   "zip5": "11215",
+   "building_class": "D7",
+   "units_residential": 40,
+   "units_total": 41,
+   "buildings_per_pluto": 1,
+   "year_built": 2025,
+   "assessed_total": 1451700,
+   "pluto_owner_name": "259 22ND STREET LLC"
+  },
+  "G": {
+   "bbl": "3008080025",
+   "address": "548 52 STREET",
+   "zip5": "11220",
+   "building_class": "C1",
+   "units_residential": 23,
+   "units_total": 23,
+   "buildings_per_pluto": 1,
+   "year_built": 1925,
+   "assessed_total": 486450,
+   "pluto_owner_name": "K S TURNPIKE LLC"
+  }
+ },
+ "questions": {
+  "Q1": {
+   "A": {
+    "lot": {
+     "bbl": "3008260002",
+     "address": "5413 7 AVENUE",
+     "zip5": "11220",
+     "building_class": "C1",
+     "units_residential": 32,
+     "units_total": 32,
+     "buildings_per_pluto": 1,
+     "year_built": 1911,
+     "assessed_total": 868950,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3014788",
+      "hpd_address": "5413 SEVENTH AVENUE",
+      "hpd_a2_key": "5413 SEVENTH AVE 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 1,
+     "units_residential": 32
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "5413 7 AVENUE, 11220",
+     "a2_key": "5413 7 AVE 11220"
+    }
+   },
+   "B": {
+    "lot": {
+     "bbl": "3008260005",
+     "address": "702 54 STREET",
+     "zip5": "11220",
+     "building_class": "C7",
+     "units_residential": 39,
+     "units_total": 45,
+     "buildings_per_pluto": 1,
+     "year_built": 1911,
+     "assessed_total": 360000,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3014789",
+      "hpd_address": "702 54TH STREET",
+      "hpd_a2_key": "702 54TH ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 1,
+     "units_residential": 39
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "702 54 STREET, 11220",
+     "a2_key": "702 54 ST 11220"
+    }
+   },
+   "C": {
+    "lot": {
+     "bbl": "3008070024",
+     "address": "438 52 STREET",
+     "zip5": "11220",
+     "building_class": "C1",
+     "units_residential": 32,
+     "units_total": 32,
+     "buildings_per_pluto": 1,
+     "year_built": 1931,
+     "assessed_total": 1371600,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3013901",
+      "hpd_address": "438 52ND STREET",
+      "hpd_a2_key": "438 52ND ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 1,
+     "units_residential": 32
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "438 52 STREET, 11220",
+     "a2_key": "438 52 ST 11220"
+    }
+   },
+   "D": {
+    "lot": {
+     "bbl": "3008210012",
+     "address": "224 54 STREET",
+     "zip5": "11220",
+     "building_class": "C1",
+     "units_residential": 18,
+     "units_total": 18,
+     "buildings_per_pluto": 3,
+     "year_built": 1911,
+     "assessed_total": 814500,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3324448",
+      "hpd_address": "218 54TH STREET",
+      "hpd_a2_key": "218 54TH ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     },
+     {
+      "bin": "3324450",
+      "hpd_address": "220 54TH STREET",
+      "hpd_a2_key": "220 54TH ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     },
+     {
+      "bin": "3324451",
+      "hpd_address": "224 54TH STREET",
+      "hpd_a2_key": "224 54TH ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 3,
+     "units_residential": 18
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "224 54 STREET, 11220",
+     "a2_key": "224 54 ST 11220"
+    }
+   },
+   "E": {
+    "lot": {
+     "bbl": "3008210019",
+     "address": "234 54 STREET",
+     "zip5": "11220",
+     "building_class": "C2",
+     "units_residential": 6,
+     "units_total": 6,
+     "buildings_per_pluto": 1,
+     "year_built": 1911,
+     "assessed_total": 452700,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3014490",
+      "hpd_address": "234 54TH STREET",
+      "hpd_a2_key": "234 54TH ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 1,
+     "units_residential": 6
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "234 54 STREET, 11220",
+     "a2_key": "234 54 ST 11220"
+    }
+   },
+   "F": {
+    "lot": {
+     "bbl": "3008970014",
+     "address": "259 22 STREET",
+     "zip5": "11215",
+     "building_class": "D7",
+     "units_residential": 40,
+     "units_total": 41,
+     "buildings_per_pluto": 1,
+     "year_built": 2025,
+     "assessed_total": 1451700,
+     "source": "pluto"
+    },
+    "buildings": [],
+    "counts": {
+     "lots": 1,
+     "buildings": 0,
+     "units_residential": 40
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "259 22 STREET, 11215",
+     "a2_key": "259 22 ST 11215"
+    },
+    "note": "No HPD registration, so no building node; the lot answers Q1 from PLUTO alone. PLUTO says numbldgs=1."
+   },
+   "G": {
+    "lot": {
+     "bbl": "3008080025",
+     "address": "548 52 STREET",
+     "zip5": "11220",
+     "building_class": "C1",
+     "units_residential": 23,
+     "units_total": 23,
+     "buildings_per_pluto": 1,
+     "year_built": 1925,
+     "assessed_total": 486450,
+     "source": "pluto"
+    },
+    "buildings": [
+     {
+      "bin": "3013956",
+      "hpd_address": "548 52ND STREET",
+      "hpd_a2_key": "548 52ND ST 11220",
+      "reached_by_pluto_address_key": false,
+      "source": "hpd_registrations"
+     }
+    ],
+    "counts": {
+     "lots": 1,
+     "buildings": 1,
+     "units_residential": 23
+    },
+    "match": {
+     "kind": "exact_a2_key",
+     "input_address": "548 52 STREET, 11220",
+     "a2_key": "548 52 ST 11220"
+    }
+   }
+  },
+  "Q2": {
+   "A": [
+    {
+     "registration_id": "316103",
+     "bin": "3014788",
+     "hpd_building_id": "133436",
+     "house_number": "5413",
+     "street_name": "SEVENTH AVENUE",
+     "zip5": "11220",
+     "last_registration_date": "2025-09-30",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "5413 PLAZA LLC",
+     "owner_contact_type": "CorporateOwner"
+    }
+   ],
+   "B": [
+    {
+     "registration_id": "300258",
+     "bin": "3014789",
+     "hpd_building_id": "157450",
+     "house_number": "702",
+     "street_name": "54TH STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-10-24",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "702 Plaza LLC",
+     "owner_contact_type": "CorporateOwner"
+    }
+   ],
+   "C": [
+    {
+     "registration_id": "350423",
+     "bin": "3013901",
+     "hpd_building_id": "155778",
+     "house_number": "438",
+     "street_name": "52ND STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-10-23",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "438 52 ST OWNERS CORP",
+     "owner_contact_type": "CorporateOwner"
+    }
+   ],
+   "D": [
+    {
+     "registration_id": "302437",
+     "bin": "3324448",
+     "hpd_building_id": "807463",
+     "house_number": "218",
+     "street_name": "54TH STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-07-16",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "HP SUNSET PARK I HDFC INC.",
+     "owner_contact_type": "CorporateOwner"
+    },
+    {
+     "registration_id": "344220",
+     "bin": "3324450",
+     "hpd_building_id": "807464",
+     "house_number": "220",
+     "street_name": "54TH STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-07-16",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "HP SUNSET PARK I HDFC INC.",
+     "owner_contact_type": "CorporateOwner"
+    },
+    {
+     "registration_id": "331116",
+     "bin": "3324451",
+     "hpd_building_id": "157212",
+     "house_number": "224",
+     "street_name": "54TH STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-07-16",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "HP SUNSET PARK I HDFC INC",
+     "owner_contact_type": "CorporateOwner"
+    }
+   ],
+   "E": [
+    {
+     "registration_id": "306882",
+     "bin": "3014490",
+     "hpd_building_id": "157221",
+     "house_number": "234",
+     "street_name": "54TH STREET",
+     "zip5": "11220",
+     "last_registration_date": "2020-08-31",
+     "registration_end_date": "2021-09-01",
+     "registered_owner": "ANGEL L PAGAN",
+     "owner_contact_type": "IndividualOwner"
+    }
+   ],
+   "F": "no HPD registration in the snapshot",
+   "G": [
+    {
+     "registration_id": "305188",
+     "bin": "3013956",
+     "hpd_building_id": "155830",
+     "house_number": "548",
+     "street_name": "52ND STREET",
+     "zip5": "11220",
+     "last_registration_date": "2025-12-03",
+     "registration_end_date": "2026-09-01",
+     "registered_owner": "KS Turnpike LLC",
+     "owner_contact_type": "CorporateOwner"
+    }
+   ]
+  },
+  "Q3": {
+   "A": {
+    "deeds": [
+     {
+      "document_id": "2025032100031001",
+      "doc_date": "2025-03-14",
+      "recorded": "2025-04-02",
+      "amount": 0
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "5413 PLAZA LLC",
+      "grantee_n1": "5413 PLAZA LLC",
+      "address": "746 61ST STREET",
+      "zip5": "11220",
+      "vs_hpd": [
+       {
+        "registration_id": "316103",
+        "hpd_owner": "5413 PLAZA LLC",
+        "hpd_owner_n1": "5413 PLAZA LLC",
+        "name_agreement": "exact_normalized",
+        "address_agreement": "same"
+       }
+      ]
+     }
+    ],
+    "last_deed_for_value": {
+     "document_id": "2021022201130003",
+     "doc_date": "2021-02-16",
+     "recorded": "2021-02-26",
+     "amount": 5000000
+    }
+   },
+   "B": {
+    "deeds": [
+     {
+      "document_id": "2021022201130002",
+      "doc_date": "2021-02-16",
+      "recorded": "2021-02-26",
+      "amount": 6800000
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "702 PLAZA LLC",
+      "grantee_n1": "702 PLAZA LLC",
+      "address": "5 CROMWELL CIRCLE",
+      "zip5": "10304",
+      "vs_hpd": [
+       {
+        "registration_id": "300258",
+        "hpd_owner": "702 Plaza LLC",
+        "hpd_owner_n1": "702 PLAZA LLC",
+        "name_agreement": "exact_normalized",
+        "address_agreement": "differs"
+       }
+      ]
+     }
+    ]
+   },
+   "C": {
+    "deeds": [
+     {
+      "document_id": "FT_3620008345262",
+      "doc_date": "2002-03-14",
+      "recorded": "2002-04-01",
+      "amount": 0
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "438 52ND ST OWNERS CORP",
+      "grantee_n1": "438 52ND ST OWNERS CORP",
+      "address": "300 EAST SECOND ST",
+      "zip5": null,
+      "vs_hpd": [
+       {
+        "registration_id": "350423",
+        "hpd_owner": "438 52 ST OWNERS CORP",
+        "hpd_owner_n1": "438 52 ST OWNERS CORP",
+        "name_agreement": "different",
+        "address_agreement": "absent"
+       }
+      ]
+     }
+    ]
+   },
+   "D": {
+    "deeds": [
+     {
+      "document_id": "2017061600025002",
+      "doc_date": "2017-06-13",
+      "recorded": "2017-06-28",
+      "amount": 45839605
+     },
+     {
+      "document_id": "2017061600025001",
+      "doc_date": "2017-06-13",
+      "recorded": "2017-06-28",
+      "amount": 0
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+      "grantee_n1": "HP SUNSET PARK I HOUSING DEV FUND COMPANY INC",
+      "address": "152 WEST 57TH STREET",
+      "zip5": "10019",
+      "vs_hpd": [
+       {
+        "registration_id": "302437",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC.",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       },
+       {
+        "registration_id": "344220",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC.",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       },
+       {
+        "registration_id": "331116",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       }
+      ]
+     },
+     {
+      "grantee": "SUNSET PARK OWNER I LLC",
+      "grantee_n1": "SUNSET PARK OWNER I LLC",
+      "address": "152 WEST 57TH STREET",
+      "zip5": "10019",
+      "vs_hpd": [
+       {
+        "registration_id": "302437",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC.",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       },
+       {
+        "registration_id": "344220",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC.",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       },
+       {
+        "registration_id": "331116",
+        "hpd_owner": "HP SUNSET PARK I HDFC INC",
+        "hpd_owner_n1": "HP SUNSET PARK I HDFC INC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       }
+      ]
+     }
+    ],
+    "note": "Two deeds share the latest document date (2017-06-13) and recording date. The $45,839,605 deed (…002) names HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC and SUNSET PARK OWNER I LLC as grantees; the $0 deed (…001) names CLL2 LLC, NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P. and SUNSET IV EQUITIES LLC. 'Most recent' is a tie and both are reported."
+   },
+   "E": {
+    "deeds": [
+     {
+      "document_id": "2026042100334001",
+      "doc_date": "2026-03-23",
+      "recorded": "2026-04-21",
+      "amount": 800000
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "234 54TH ST LLC",
+      "grantee_n1": "234 54TH ST LLC",
+      "address": "10173 ROUTE 32",
+      "zip5": "12431",
+      "vs_hpd": [
+       {
+        "registration_id": "306882",
+        "hpd_owner": "ANGEL L PAGAN (IndividualOwner)",
+        "name_agreement": "not_comparable",
+        "address_agreement": "not_comparable"
+       }
+      ]
+     }
+    ]
+   },
+   "F": {
+    "deeds": [
+     {
+      "document_id": "2024091700040001",
+      "doc_date": "2024-09-11",
+      "recorded": "2024-10-01",
+      "amount": 12000000
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "259 22ND STREET LLC",
+      "grantee_n1": "259 22ND STREET LLC",
+      "address": "954 LEXINGTON AVENUE",
+      "zip5": "10021",
+      "vs_hpd": "no HPD registration, so no comparison"
+     }
+    ]
+   },
+   "G": {
+    "deeds": [
+     {
+      "document_id": "2018092900072001",
+      "doc_date": "2018-09-26",
+      "recorded": "2018-10-18",
+      "amount": 4000000
+     }
+    ],
+    "grantees": [
+     {
+      "grantee": "AADVA REALTY LLC",
+      "grantee_n1": "AADVA REALTY LLC",
+      "address": "14 SINCLAIR DR",
+      "zip5": "11024",
+      "vs_hpd": [
+       {
+        "registration_id": "305188",
+        "hpd_owner": "KS Turnpike LLC",
+        "hpd_owner_n1": "KS TURNPIKE LLC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       }
+      ]
+     },
+     {
+      "grantee": "K S TURNPIKE LLC",
+      "grantee_n1": "K S TURNPIKE LLC",
+      "address": "14 SINCLAIR DR",
+      "zip5": "11024",
+      "vs_hpd": [
+       {
+        "registration_id": "305188",
+        "hpd_owner": "KS Turnpike LLC",
+        "hpd_owner_n1": "KS TURNPIKE LLC",
+        "name_agreement": "different",
+        "address_agreement": "differs"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "Q4": {
+   "A": {
+    "316103": [
+     {
+      "contact_id": "31610303",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "5413 PLAZA LLC",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "31610304",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JAY WONG",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "31610305",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": "PRESIDENT",
+      "organization_name": null,
+      "person_name": "BAOZHEN CHEN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "31610310",
+      "type": "Shareholder",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "BAO ZHEN CHEN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "31610313",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JAY WONG",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   },
+   "B": {
+    "300258": [
+     {
+      "contact_id": "30025803",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "702 Plaza LLC",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "30025804",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JAY WONG",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "30025805",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": "PRESIDENT",
+      "organization_name": null,
+      "person_name": "BAOZHEN CHEN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "30025810",
+      "type": "Shareholder",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "BAOZHEN CHEN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "746",
+       "street": "61ST STREET",
+       "zip5": "11220",
+       "a2_key": "746 61ST ST 11220"
+      }
+     },
+     {
+      "contact_id": "30025813",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "Mark Hulse",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   },
+   "C": {
+    "350423": [
+     {
+      "contact_id": "35042303",
+      "type": "CorporateOwner",
+      "contact_description": "CORP",
+      "title": null,
+      "organization_name": "438 52 ST OWNERS CORP",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "300",
+       "street": "EAST 2ND STREET",
+       "zip5": "11218",
+       "a2_key": "300 EAST 2ND ST 11218"
+      }
+     },
+     {
+      "contact_id": "35042304",
+      "type": "Agent",
+      "contact_description": "CORP",
+      "title": null,
+      "organization_name": "438 52 ST. OWNERS CORP",
+      "person_name": "SAHIT HADZOVIC",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "300",
+       "street": "EAST2ND STREET",
+       "zip5": "11218",
+       "a2_key": "300 EAST2ND ST 11218"
+      }
+     },
+     {
+      "contact_id": "35042305",
+      "type": "HeadOfficer",
+      "contact_description": "CORP",
+      "title": "PRESIDENT OF CO",
+      "organization_name": null,
+      "person_name": "SAHIT HADZOVIC",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "300",
+       "street": "EAST 2ND STREET",
+       "zip5": "11218",
+       "a2_key": "300 EAST 2ND ST 11218"
+      }
+     },
+     {
+      "contact_id": "35042313",
+      "type": "SiteManager",
+      "contact_description": "CORP",
+      "title": null,
+      "organization_name": null,
+      "person_name": "SAHIT HADZOVIC",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   },
+   "D": {
+    "302437": [
+     {
+      "contact_id": "30243703",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "HP SUNSET PARK I HDFC INC.",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "30243704",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "FAIRSTEAD MANAGEMENT LLC",
+      "person_name": "DAVID FRIEDMAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "30243705",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JENNIFER LAU",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "30243713",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "RICHARD HERNANDEZ",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ],
+    "344220": [
+     {
+      "contact_id": "34422003",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "HP SUNSET PARK I HDFC INC.",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "34422004",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "FAIRSTEAD MANAGEMENT LLC",
+      "person_name": "DAVID FRIEDMAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "34422005",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JENNIFER LAU",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "34422013",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "RICHARD HERNANDEZ",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ],
+    "331116": [
+     {
+      "contact_id": "33111603",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "HP SUNSET PARK I HDFC INC",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "33111604",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "FAIRSTEAD MANAGEMENT LLC",
+      "person_name": "DAVID FRIEDMAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "33111605",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "JENNIFER LAU",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "5302",
+       "street": "SIXTH AVENUE",
+       "zip5": "11220",
+       "a2_key": "5302 SIXTH AVE 11220"
+      }
+     },
+     {
+      "contact_id": "33111613",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "RICHARD HERNANDEZ",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   },
+   "E": {
+    "306882": [
+     {
+      "contact_id": "30688202",
+      "type": "IndividualOwner",
+      "contact_description": "INDIV",
+      "title": null,
+      "organization_name": null,
+      "person_name": "ANGEL L PAGAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "234",
+       "street": "54TH",
+       "zip5": "11220",
+       "a2_key": "234 54TH 11220"
+      }
+     },
+     {
+      "contact_id": "30688204",
+      "type": "Agent",
+      "contact_description": "INDIV",
+      "title": null,
+      "organization_name": null,
+      "person_name": "ANGEL L PAGAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "234",
+       "street": "54TH",
+       "zip5": "11220",
+       "a2_key": "234 54TH 11220"
+      }
+     },
+     {
+      "contact_id": "30688214",
+      "type": "Lessee",
+      "contact_description": "INDIV",
+      "title": null,
+      "organization_name": null,
+      "person_name": "ANGEL L PAGAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "234",
+       "street": "54TH STREET",
+       "zip5": "11220",
+       "a2_key": "234 54TH ST 11220"
+      }
+     },
+     {
+      "contact_id": "30688213",
+      "type": "SiteManager",
+      "contact_description": "INDIV",
+      "title": null,
+      "organization_name": null,
+      "person_name": "ANGEL L PAGAN",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   },
+   "F": "no HPD registration in the snapshot",
+   "G": {
+    "305188": [
+     {
+      "contact_id": "30518803",
+      "type": "CorporateOwner",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": "KS Turnpike LLC",
+      "person_name": null,
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "209-19",
+       "street": "33RD ROAD",
+       "zip5": "11361",
+       "a2_key": "20919 33RD RD 11361"
+      }
+     },
+     {
+      "contact_id": "30518804",
+      "type": "Agent",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "Mahan Kiumehr",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "209-19",
+       "street": "33RD ROAD",
+       "zip5": "11361",
+       "a2_key": "20919 33RD RD 11361"
+      }
+     },
+     {
+      "contact_id": "30518805",
+      "type": "HeadOfficer",
+      "contact_description": "GEN.PART",
+      "title": "Member",
+      "organization_name": null,
+      "person_name": "Shahab Soleymani",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "6",
+       "street": "STEVEN LANE",
+       "zip5": "11023",
+       "a2_key": "6 STEVEN LN 11023"
+      }
+     },
+     {
+      "contact_id": "30518806",
+      "type": "Officer",
+      "contact_description": "GEN.PART",
+      "title": "Member",
+      "organization_name": null,
+      "person_name": "Kourosh Sioni",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": {
+       "house_number": "1385",
+       "street": "BROADWAY",
+       "zip5": "10018",
+       "a2_key": "1385 BROADWAY 10018"
+      }
+     },
+     {
+      "contact_id": "30518813",
+      "type": "SiteManager",
+      "contact_description": "GEN.PART",
+      "title": null,
+      "organization_name": null,
+      "person_name": "Mark Hulse",
+      "source": "hpd_contacts",
+      "reliability": "I",
+      "business_address": null
+     }
+    ]
+   }
+  },
+  "Q5": {
+   "A": {
+    "owner": "5413 PLAZA LLC",
+    "match": "exact_normalized",
+    "record": {
+     "dos_id": "5857246",
+     "entity_name": "5413 PLAZA LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2020-10-14",
+     "process_name": "5413 PLAZA LLC",
+     "process_address": "5 CROMWELL CIRCLE, STATEN ISLAND 10304",
+     "registered_agent": null
+    }
+   },
+   "B": {
+    "owner": "702 Plaza LLC",
+    "match": "exact_normalized",
+    "record": {
+     "dos_id": "5857608",
+     "entity_name": "702 PLAZA LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2020-10-15",
+     "process_name": "702 PLAZA LLC",
+     "process_address": "5 CROMWELL CIRCLE, STATEN ISLAND 10304",
+     "registered_agent": null
+    }
+   },
+   "C": {
+    "owner": "438 52 ST OWNERS CORP (HPD), 438 52ND ST OWNERS CORP (PLUTO, deed)",
+    "match": "none",
+    "record": null,
+    "caveat": "no record in the active-entity snapshot is not 'does not exist'"
+   },
+   "D": {
+    "owner": "HP SUNSET PARK I HDFC INC (HPD)",
+    "match": "none",
+    "record": null,
+    "caveat": "no record under the HPD spelling or the deed spelling; the deed's other grantee SUNSET PARK OWNER I LLC has a record",
+    "other": {
+     "dos_id": "5112521",
+     "entity_name": "SUNSET PARK OWNER I LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2017-03-31",
+     "process_name": "SUNSET PARK OWNER I LLC",
+     "process_address": "250 WEST 55TH STREET, NEW YORK 10019",
+     "registered_agent": null
+    }
+   },
+   "E": {
+    "owner": "HPD owner is an individual: not applicable",
+    "match": "not_applicable",
+    "record": null,
+    "deed_grantee_record": {
+     "dos_id": "7802679",
+     "entity_name": "234 54TH ST LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2026-01-09",
+     "process_name": "234 54TH ST LLC",
+     "process_address": "10173 Route 32, Freehold 12431",
+     "registered_agent": "Jian Lin"
+    },
+    "note": "the deed grantee 234 54TH ST LLC was filed 2026-01-09 and lists Jian Lin as registered agent. The HPD individual owner ANGEL L PAGAN is not the DOS entity; the deed grantor is THE ESTATE OF ANGEL PAGAN BY ANA RODRIGUEZ EXECUTO. These are records, not a finding about who owns the building."
+   },
+   "F": {
+    "owner": "no HPD registration; PLUTO owner 259 22ND STREET LLC",
+    "match": "exact_normalized_to_pluto_owner",
+    "record": {
+     "dos_id": "7185410",
+     "entity_name": "259 22ND STREET LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2023-11-16",
+     "process_name": "259 22ND STREET LLC",
+     "process_address": "100 jericho quadrangle, JERICHO 11753",
+     "registered_agent": null
+    }
+   },
+   "G": {
+    "owner": "KS Turnpike LLC (HPD)",
+    "match": "none under the HPD spelling; exact under the deed and PLUTO spelling K S TURNPIKE LLC",
+    "record": {
+     "dos_id": "3574572",
+     "entity_name": "K S TURNPIKE LLC",
+     "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+     "initial_filing_date": "2007-10-01",
+     "process_name": "KOURASH SIUNI",
+     "process_address": "6 STEVEN LANE, GREAT NECK 11024",
+     "registered_agent": null
+    },
+    "caveat": "the HPD spelling does not match under N1; do not report a match for it"
+   }
+  },
+  "Q24": {
+   "name": "5413 PLAZA LLC",
+   "n1": "5413 PLAZA LLC",
+   "acris_documents": [
+    {
+     "document_id": "2021022201130003",
+     "doctype": "DEED",
+     "doc_date": "2021-02-16",
+     "party_type": 2,
+     "bbls": [
+      "3008260002"
+     ],
+     "amount": 5000000
+    },
+    {
+     "document_id": "2021031601183001",
+     "doctype": "MTGE",
+     "doc_date": "2021-02-16",
+     "party_type": 1,
+     "bbls": [
+      "3008260002",
+      "3008260005"
+     ],
+     "amount": 8750000
+    },
+    {
+     "document_id": "2021031601183002",
+     "doctype": "AL&R",
+     "doc_date": "2021-02-16",
+     "party_type": 1,
+     "bbls": [
+      "3008260002",
+      "3008260005"
+     ],
+     "amount": 8750000
+    },
+    {
+     "document_id": "2023061400729001",
+     "doctype": "SAGE",
+     "doc_date": "2023-02-09",
+     "party_type": 1,
+     "bbls": [
+      "3008260002",
+      "3008260005"
+     ],
+     "amount": 0
+    },
+    {
+     "document_id": "2023061200959001",
+     "doctype": "TL&R",
+     "doc_date": "2023-02-14",
+     "party_type": 2,
+     "bbls": [
+      "3008260002",
+      "3008260005"
+     ],
+     "amount": 0
+    },
+    {
+     "document_id": "2025032100031001",
+     "doctype": "DEED",
+     "doc_date": "2025-03-14",
+     "party_type": 1,
+     "bbls": [
+      "3008260002"
+     ],
+     "amount": 0
+    },
+    {
+     "document_id": "2025032100031001",
+     "doctype": "DEED",
+     "doc_date": "2025-03-14",
+     "party_type": 2,
+     "bbls": [
+      "3008260002"
+     ],
+     "amount": 0
+    }
+   ],
+   "hpd": [
+    {
+     "registration_id": "316103",
+     "contact_id": "31610303",
+     "type": "CorporateOwner",
+     "bbl": "3008260002",
+     "bin": "3014788"
+    }
+   ],
+   "dos": {
+    "dos_id": "5857246",
+    "entity_name": "5413 PLAZA LLC",
+    "entity_type": "DOMESTIC LIMITED LIABILITY COMPANY",
+    "initial_filing_date": "2020-10-14",
+    "process_name": "5413 PLAZA LLC",
+    "process_address": "5 CROMWELL CIRCLE, STATEN ISLAND 10304",
+    "registered_agent": null
+   },
+   "variants": "none found: every ACRIS and HPD occurrence is spelled 5413 PLAZA LLC (HPD contact id 31610303). The related name 5413 7TH AVENUE LLC (grantor of the 2021 deed) is a different name, not a variant.",
+   "caveat": "Party-type meaning for MTGE, AL&R, SAGE and TL&R is not settled (design notes 0004, 0006): report the code, not a role name. The 2021 mortgage and its assignment cover 3008260005 as well, so the name appears against two lots. This is the set found in the snapshot, not a claim of completeness."
+  }
+ },
+ "findings": [
+  "Q1: HPD spells ordinals out or with a suffix (54TH STREET, SEVENTH AVENUE, 52ND STREET), PLUTO does not (54 STREET, 7 AVENUE, 52 STREET). Rule A2 does not map ordinals, so for all six registered anchors the HPD building key differs from the PLUTO lot key (flag reached_by_pluto_address_key). An address typed the HPD way (218 54TH STREET, 5413 SEVENTH AVENUE) does not reach the lot, and the other two buildings of lot D are reachable only through the HPD spelling. Q1 needs a decision on extending A2 with ordinal and spelled-number mapping (design note 0006).",
+  "Q3: lot D has two deeds with the same latest date; 'most recent' is a tie and is reported as one.",
+  "Q3: lot C's last deed is from 2002; lot E's deed (recorded 2026-04-21) postdates the lapsed HPD registration (period ended 2021-09-01).",
+  "Q4/Q5, lot G: HPD names an officer Kourosh Sioni; the DOS process name is KOURASH SIUNI (a spelling variant, or a different person). Under N1 these differ, so the answer reports a possible connection with the evidence and does not match them (design note 0009).",
+  "Q3/Q5: the HPD spelling KS Turnpike LLC does not match K S TURNPIKE LLC under N1, so DOS has no match for the HPD spelling.",
+  "Q24: the name also appears on three non-deed ACRIS documents beyond the mortgage that the detail file lists, and the mortgage covers two lots.",
+  "Compared with docs/competency-questions-detail.md (read from Socrata on 2026-10-17): PLUTO and HPD values for A-G agree with the snapshot; the open-violation counts that differ between the mirror and Socrata are Slice 2 and are not in this file."
+ ]
+}
