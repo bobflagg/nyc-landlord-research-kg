@@ -1,0 +1,90 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix s2c: <https://w3id.org/shacl2cypher#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:  <https://bobflagg.github.io/Watchline/ontology/core#> .
+
+# Core shapes (design note 0010). A violation fails the build. Run through
+# shacl2cypher (s2c:key and s2c:targetRelationship are its extensions), plus the
+# snapshot-reference check in etl/checks/. Allowed values between "generated"
+# markers are written from vocab/*.ttl by scripts/sync_shape_values.py.
+# Object properties are relationships: wl:on_lot is ON_LOT.
+
+# ---- Reusable provenance shape: applied with sh:node, never targeted ---------
+
+wl:ProvenanceShape a sh:NodeShape ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:reliability begin
+    ( "I" "II" )
+    # generated:reliability end
+  ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:source-category begin
+    ( "public_record" "published_reporting" "web_content" "project_derived" )
+    # generated:source-category end
+  ] ;
+  # The pipeline writes only these two (note 0003). Whether it is absent on Type I rows is checked per class.
+  sh:property [ sh:path wl:review_status ; sh:maxCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:source ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] .
+
+# ---- Property spine ----------------------------------------------------------
+
+wl:LotShape a sh:NodeShape ; sh:targetClass wl:Lot ; s2c:key "bbl" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path wl:bbl ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{10}$" ] ;
+  sh:property [ sh:path wl:address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+wl:BuildingShape a sh:NodeShape ; sh:targetClass wl:Building ; s2c:key "bin" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path wl:bin ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{7}$" ;
+                sh:not [ sh:pattern "^[1-5]0{6}$" ] ] ;
+  sh:property [ sh:path wl:address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+# ---- Parties and roles -------------------------------------------------------
+
+wl:PartyShape a sh:NodeShape ; sh:targetClass wl:Party ;
+  sh:node wl:ProvenanceShape .
+
+wl:RoleShape a sh:NodeShape ; sh:targetClass wl:Role ; s2c:key "role_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path wl:role_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  # Allowed role types belong to the HPD module's vocabulary (note 0004).
+  sh:property [ sh:path wl:role_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:source_record_id ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:held_by ; sh:class wl:Party ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:on_building ; sh:class wl:Building ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:maxCount 1 ] ;
+  # "On a building or on a lot, exactly one" is checked by etl/checks/role_attachment.cypher: shacl2cypher
+  # reads relationship paths inside sh:xone/sh:or as properties and flags every role (note 0010, item 7).
+  # A role is a recorded row: no review_status from the pipeline.
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+# ---- Snapshot catalog --------------------------------------------------------
+
+wl:SnapshotShape a sh:NodeShape ; sh:targetClass wl:Snapshot ; s2c:key "snapshot_id" ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] .
+
+# ---- Assertion edges (Type II) -----------------------------------------------
+# Reusable, not targeted here: a domain module (Slice 4) targets each relationship type with
+# s2c:targetRelationship and adds sh:node wl:AssertionEdgeShape.
+
+wl:AssertionEdgeShape a sh:NodeShape ;
+  sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] .

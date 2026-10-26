@@ -1,0 +1,95 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+
+# Core module (design note 0010). Declares classes and properties only; what the
+# data must satisfy is in core.shapes.ttl. Domain modules import this file.
+# Graph names: labels are the class local names; properties are the property
+# local names; object properties are stored as relationships named in
+# SCREAMING_SNAKE_CASE (on_lot -> ON_LOT).
+
+<https://bobflagg.github.io/Watchline/ontology/core> a owl:Ontology ;
+    dcterms:title "Watchline core ontology"@en ;
+    dcterms:created "2026-10-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    rdfs:comment "Property, lot, building, party, role, snapshot and the provenance properties shared by every fact."@en .
+
+# ---- Property spine (note 0010, item 2) -------------------------------------
+
+wl:Property a owl:Class ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "Abstract superclass of Lot and Building for shared characteristics. Never a label in the graph."@en .
+
+wl:Lot a owl:Class ; rdfs:subClassOf wl:Property ;
+    rdfs:label "Lot"@en ;
+    rdfs:comment "A tax lot, keyed by BBL. The base node: it exists for every lot in PLUTO, registered with HPD or not."@en .
+
+wl:Building a owl:Class ; rdfs:subClassOf wl:Property ;
+    rdfs:label "Building"@en ;
+    rdfs:comment "A building keyed by a real BIN. Exists only where a source gives a real BIN; placeholder BINs (1000000 style) never become buildings."@en .
+
+wl:bbl a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ;
+    rdfs:comment "Ten digits, borough + block + lot. A string: leading zeros matter."@en .
+wl:bin a owl:DatatypeProperty ; rdfs:domain wl:Building ; rdfs:range xsd:string ;
+    rdfs:comment "Seven digits. A string."@en .
+wl:address_key a owl:DatatypeProperty ; rdfs:domain wl:Property ; rdfs:range xsd:string ;
+    rdfs:comment "Comparison key from rule A2 (note 0006): house, street and zip5. Indexed. Addresses are properties, not nodes."@en .
+wl:address_text a owl:DatatypeProperty ; rdfs:domain wl:Property ; rdfs:range xsd:string ;
+    rdfs:comment "The address as the source wrote it."@en .
+
+wl:on_lot a owl:ObjectProperty ; rdfs:range wl:Lot ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( wl:Building wl:Role ) ] ;
+    rdfs:comment "A building stands on a lot; a role attaches to a lot. Structural: carries no provenance of its own (note 0010, item 4)."@en .
+wl:on_building a owl:ObjectProperty ; rdfs:domain wl:Role ; rdfs:range wl:Building ;
+    rdfs:comment "A role attaches to a building. A role is on a building or on a lot, never both."@en .
+
+# ---- Parties and roles (note 0010, item 3) ----------------------------------
+
+wl:Party a owl:Class ;
+    rdfs:label "Party"@en ;
+    rdfs:comment "Superclass of the identity nodes that appear in roles. Source subclasses are defined by the domain modules."@en .
+
+wl:Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:comment "A party's ownership or control role at a building or lot, per one source record (note 0004). The only way ownership and control are represented."@en .
+
+wl:held_by a owl:ObjectProperty ; rdfs:domain wl:Role ; rdfs:range wl:Party ;
+    rdfs:comment "The party that holds the role. Structural."@en .
+
+wl:role_id a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
+    rdfs:comment "Key of the role node, built by the loader from the source record id."@en .
+wl:role_type a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
+    rdfs:comment "Normalized role type (note 0004). The allowed values belong to the role-type vocabulary, defined with the HPD module."@en .
+wl:source_role_code a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
+    rdfs:comment "The source's own code for the role, kept as written."@en .
+wl:valid_from a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:date .
+wl:valid_to   a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:date .
+
+# ---- Snapshot catalog (notes 0005, 0008) ------------------------------------
+
+wl:Snapshot a owl:Class ;
+    rdfs:label "Snapshot"@en ;
+    rdfs:comment "One source dump. Every fact's snapshot_id must name one."@en .
+
+# ---- Provenance properties (notes 0002, 0003, 0005, 0008) -------------------
+# Flat properties on record-like nodes, on entity nodes as loaded from their
+# source, and on assertion edges. Enforced by wl:ProvenanceShape.
+
+wl:reliability a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "I or II. Values: vocab/reliability.ttl."@en .
+wl:source_category a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Values: vocab/source-category.ttl."@en .
+wl:review_status a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Values: vocab/review-status.ttl. The pipeline writes only unreviewed or contested, and never on a Type I row."@en .
+wl:source a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Source key from data/sources.yaml."@en .
+wl:source_record_id a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Id of the source row or document."@en .
+wl:snapshot_id a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Form <source>-<YYYY-MM-DD>[-rN] (note 0008). Must exist in the snapshot catalog."@en .
+wl:retrieved_at a owl:DatatypeProperty ; rdfs:range xsd:dateTime .
+wl:link_id a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Stable id of an assertion edge, so a review can point at it (note 0005)."@en .

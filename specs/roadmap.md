@@ -18,7 +18,7 @@ Goal: from an address, a cited dossier on who controls a building and how it is 
 
 | Slice | Delivers | Questions | Depends on |
 | --- | --- | --- | --- |
-| **0. Foundations** | Core ontology module and shapes (property, lot, building, entity, role, provenance, reliability, review record); core vocabularies (reliability, source category, review status); the snapshot-tagged load framework; the agent and evaluation harness; competency question examples and expected answers re-derived from the snapshot | none: a sample load validates under SHACL, and the harness runs one question end to end | Test framework, model provider, snapshot identifier |
+| **0. Foundations** | Core ontology module and shapes (property, lot, building, entity, role, provenance, reliability); core vocabularies (reliability, source category, review status); the snapshot-tagged load framework; the agent and evaluation harness; competency question examples and expected answers re-derived from the snapshot | none: a sample load validates under SHACL, and the harness runs one question end to end | Test framework, model provider, snapshot identifier |
 | **1. Who is my landlord** | Address to lot and buildings; HPD owner, agent and officers; deed grantee compared with the HPD owner; DOS entity record; everything recorded against a name | Q1, Q2, Q3, Q4, Q5, Q24 | Slice 0 |
 | **2. Conditions** | Open violations, complaints and HPD litigation at a building; missing or lapsed registration | Q15, Q17, Q27, Q28 | Slice 1 |
 | **3. Transactions and history** | Deed transfers, mortgages and satisfactions; title holder and registrant on a past date | Q12, Q13, Q14 | Slice 1. Q14 needs the violation-history gap reported or backfilled |
@@ -48,4 +48,4 @@ Sequenced when a stage needs it:
 - **Production snapshot.** Load a current justfixwow snapshot, produce a new frozen BOR release for it (BOR runs once per snapshot, and the graph loads that release without rerunning it; design note 0007), rebuild the graph, and re-derive the evaluation answers.
 - **Live application and hosting** for the graph and agent.
 - **Runtime Socrata access** for freshness checks, labeled by retrieval time.
-- **Review records and a reviewer interface**, so a person can confirm or refute facts and a checked finding can enter the graph (design note 0003).
+- **Review records and a reviewer interface**, so a person can confirm or refute facts and a checked finding can enter the graph (design note 0003). The `ReviewRecord` class and its shape are defined here, not in Slice 0 (design note 0010).

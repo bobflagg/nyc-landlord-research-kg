@@ -46,9 +46,9 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 | Constraint | Reason |
 | --- | --- |
 | The **OWL/SKOS/SHACL files in `ontology/` and `vocab/` are the source of truth** for the graph schema | The graph is ontology-first; the schema is reviewed as a model, not inferred from code |
-| **Modular ontology:** a core module (property, lot, building, entity, role, provenance, reliability, review record) imported by domain modules added per stage, each with its own SHACL shapes | Later stages add modules without rewriting the core |
+| **Modular ontology:** a core module (property, lot, building, entity, role, provenance, reliability) imported by domain modules added per stage, each with its own SHACL shapes | Later stages add modules without rewriting the core |
 | **Vocabularies are SKOS concept schemes.** A stage may add schemes and concepts; it never changes an existing concept's meaning | Earlier answers and data keep their meaning |
-| Schema changes are **versioned and come with a migration**; SHACL validation runs on every build | Several applications will read the graph |
+| Schema changes are **versioned and come with a migration**; SHACL validation (shacl2cypher, plus a snapshot-reference check) runs on every build, and a violation fails it (design note 0010) | Several applications will read the graph |
 
 ## Agent and runtime
 

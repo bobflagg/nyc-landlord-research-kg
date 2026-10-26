@@ -1,0 +1,888 @@
+{
+ "compilerVersion": "0.3.0",
+ "dialect": "neo4j",
+ "inputs": [
+  {
+   "path": "ontology/core.shapes.ttl",
+   "role": "shapes",
+   "sha256": "bc21cbf86624911b04bd02bbd861a41f0ebc7ffef920ac16c45bef8cc06c20fb"
+  }
+ ],
+ "options": {
+  "allowRemoteImports": false,
+  "failOnSchemaMismatch": false,
+  "lenient": false,
+  "maxPathDepth": 10,
+  "neo4jLabels": "explicit",
+  "nodeKey": null,
+  "strict": false,
+  "verbose": false
+ },
+ "recommendedIndexes": [
+  {
+   "label": "Building",
+   "property": "bin",
+   "reason": "focus key"
+  },
+  {
+   "label": "Lot",
+   "property": "bbl",
+   "reason": "focus key"
+  },
+  {
+   "label": "Role",
+   "property": "role_id",
+   "reason": "focus key"
+  },
+  {
+   "label": "Snapshot",
+   "property": "snapshot_id",
+   "reason": "focus key"
+  }
+ ],
+ "rules": [
+  {
+   "constraint": "sh:node",
+   "costClass": "scan",
+   "fingerprint": "78bf6bdd66fe4ee5",
+   "message": "wl:BuildingShape violates sh:node",
+   "name": "BuildingShape.node",
+   "path": null,
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nRETURN 'BuildingShape.node' AS ruleId, 'wl:BuildingShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:BuildingShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/sh:node",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 44
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "f7cda8cdab2f6879",
+   "message": "wl:BuildingShape violates sh:datatype on wl:address_key",
+   "name": "BuildingShape.address_key.datatype",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'BuildingShape.address_key.datatype' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:address_key' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:BuildingShape violates sh:datatype on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.address_key.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:address_key/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 47
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c3b9307a93e0acf3",
+   "message": "wl:BuildingShape violates sh:maxCount on wl:address_key",
+   "name": "BuildingShape.address_key.maxCount",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'BuildingShape.address_key.maxCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:address_key' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:maxCount on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.address_key.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:address_key/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 47
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "9d4c6618c86bd1a7",
+   "message": "wl:BuildingShape violates sh:datatype on wl:bin",
+   "name": "BuildingShape.bin.datatype",
+   "path": "wl:bin",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'BuildingShape.bin.datatype' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:bin' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:BuildingShape violates sh:datatype on wl:bin' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.bin.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:bin/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 45
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c0d5cce05dffc974",
+   "message": "wl:BuildingShape violates sh:maxCount on wl:bin",
+   "name": "BuildingShape.bin.maxCount",
+   "path": "wl:bin",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'BuildingShape.bin.maxCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:bin' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:maxCount on wl:bin' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.bin.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:bin/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 45
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "7bc26c67989db1e4",
+   "message": "wl:BuildingShape violates sh:minCount on wl:bin",
+   "name": "BuildingShape.bin.minCount",
+   "path": "wl:bin",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'BuildingShape.bin.minCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:bin' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:minCount on wl:bin' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.bin.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:bin/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 45
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:not",
+   "costClass": "scan",
+   "fingerprint": "a0f6be371d485811",
+   "message": "wl:BuildingShape violates sh:not on wl:bin",
+   "name": "BuildingShape.bin.not",
+   "path": "wl:bin",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[1-5]0{6}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[1-5]0{6}$)(?s:.*)' ELSE false END))\nRETURN 'BuildingShape.bin.not' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:bin' AS path, 'sh:not' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:BuildingShape violates sh:not on wl:bin' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[1-5]0{6}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[1-5]0{6}$)(?s:.*)' ELSE false END))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.bin.not' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:bin/sh:not",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 46
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "a908a099151373be",
+   "message": "wl:BuildingShape violates sh:pattern on wl:bin",
+   "name": "BuildingShape.bin.pattern",
+   "path": "wl:bin",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{7}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{7}$)(?s:.*)' ELSE false END)\nRETURN 'BuildingShape.bin.pattern' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:bin' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:BuildingShape violates sh:pattern on wl:bin' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nUNWIND CASE WHEN v0.`bin` IS NULL THEN [] WHEN v0.`bin` IS :: LIST<ANY> THEN v0.`bin` ELSE [v0.`bin`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{7}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{7}$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.bin.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:bin/sh:pattern",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 45
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "06e29ce6a22486e5",
+   "message": "wl:BuildingShape violates sh:class on wl:on_lot",
+   "name": "BuildingShape.on_lot.class",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nRETURN 'BuildingShape.on_lot.class' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:BuildingShape violates sh:class on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:on_lot/sh:class",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 48
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan+expand",
+   "fingerprint": "623131acd8a855dc",
+   "message": "wl:BuildingShape violates sh:maxCount on wl:on_lot",
+   "name": "BuildingShape.on_lot.maxCount",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'BuildingShape.on_lot.maxCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:maxCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:on_lot/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 48
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan+expand",
+   "fingerprint": "0a7a74c34f64a3ea",
+   "message": "wl:BuildingShape violates sh:minCount on wl:on_lot",
+   "name": "BuildingShape.on_lot.minCount",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)\nRETURN 'BuildingShape.on_lot.minCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:on_lot' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:minCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.on_lot.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:on_lot/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 48
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "4d8883377405aafa",
+   "message": "wl:BuildingShape violates sh:maxCount on wl:review_status",
+   "name": "BuildingShape.review_status.maxCount",
+   "path": "wl:review_status",
+   "queries": {
+    "detail": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'BuildingShape.review_status.maxCount' AS ruleId, 'wl:BuildingShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)} AS focus, null AS value, 'wl:BuildingShape violates sh:maxCount on wl:review_status' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Building`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Building']] + labels(v0)), key: 'bin', keyValue: v0.`bin`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'BuildingShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:BuildingShape/wl:review_status/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:BuildingShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 49
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:node",
+   "costClass": "scan",
+   "fingerprint": "ac9389c0d967c25a",
+   "message": "wl:LotShape violates sh:node",
+   "name": "LotShape.node",
+   "path": null,
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nRETURN 'LotShape.node' AS ruleId, 'wl:LotShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:LotShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/sh:node",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 38
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "04cd5387db23b641",
+   "message": "wl:LotShape violates sh:datatype on wl:address_key",
+   "name": "LotShape.address_key.datatype",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'LotShape.address_key.datatype' AS ruleId, 'wl:LotShape' AS shape, 'wl:address_key' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:LotShape violates sh:datatype on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.address_key.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:address_key/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 40
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "603bf34a3b9d0da1",
+   "message": "wl:LotShape violates sh:maxCount on wl:address_key",
+   "name": "LotShape.address_key.maxCount",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'LotShape.address_key.maxCount' AS ruleId, 'wl:LotShape' AS shape, 'wl:address_key' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, null AS value, 'wl:LotShape violates sh:maxCount on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.address_key.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:address_key/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 40
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "565bbc3117a05e42",
+   "message": "wl:LotShape violates sh:datatype on wl:bbl",
+   "name": "LotShape.bbl.datatype",
+   "path": "wl:bbl",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'LotShape.bbl.datatype' AS ruleId, 'wl:LotShape' AS shape, 'wl:bbl' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:LotShape violates sh:datatype on wl:bbl' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.bbl.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:bbl/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "7c98c8a8952de72d",
+   "message": "wl:LotShape violates sh:maxCount on wl:bbl",
+   "name": "LotShape.bbl.maxCount",
+   "path": "wl:bbl",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'LotShape.bbl.maxCount' AS ruleId, 'wl:LotShape' AS shape, 'wl:bbl' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, null AS value, 'wl:LotShape violates sh:maxCount on wl:bbl' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.bbl.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:bbl/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "1e6201804e1497a1",
+   "message": "wl:LotShape violates sh:minCount on wl:bbl",
+   "name": "LotShape.bbl.minCount",
+   "path": "wl:bbl",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'LotShape.bbl.minCount' AS ruleId, 'wl:LotShape' AS shape, 'wl:bbl' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, null AS value, 'wl:LotShape violates sh:minCount on wl:bbl' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.bbl.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:bbl/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "6302488ea304e60e",
+   "message": "wl:LotShape violates sh:pattern on wl:bbl",
+   "name": "LotShape.bbl.pattern",
+   "path": "wl:bbl",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{10}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{10}$)(?s:.*)' ELSE false END)\nRETURN 'LotShape.bbl.pattern' AS ruleId, 'wl:LotShape' AS shape, 'wl:bbl' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:LotShape violates sh:pattern on wl:bbl' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`bbl` IS NULL THEN [] WHEN v0.`bbl` IS :: LIST<ANY> THEN v0.`bbl` ELSE [v0.`bbl`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{10}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{10}$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.bbl.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:bbl/sh:pattern",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "48b785d793e14e3b",
+   "message": "wl:LotShape violates sh:maxCount on wl:review_status",
+   "name": "LotShape.review_status.maxCount",
+   "path": "wl:review_status",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'LotShape.review_status.maxCount' AS ruleId, 'wl:LotShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)} AS focus, null AS value, 'wl:LotShape violates sh:maxCount on wl:review_status' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: 'bbl', keyValue: v0.`bbl`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:LotShape/wl:review_status/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:LotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 41
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:node",
+   "costClass": "scan",
+   "fingerprint": "99de049936dabd72",
+   "message": "wl:PartyShape violates sh:node",
+   "name": "PartyShape.node",
+   "path": null,
+   "queries": {
+    "detail": "MATCH (v0:`Party`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nRETURN 'PartyShape.node' AS ruleId, 'wl:PartyShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:PartyShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Party`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'PartyShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:PartyShape/sh:node",
+   "severity": "Violation",
+   "shape": "wl:PartyShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 54
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:node",
+   "costClass": "scan",
+   "fingerprint": "306062ab1c400d4e",
+   "message": "wl:RoleShape violates sh:node",
+   "name": "RoleShape.node",
+   "path": null,
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nRETURN 'RoleShape.node' AS ruleId, 'wl:RoleShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:RoleShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/sh:node",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 57
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "e0bdca7233b6077f",
+   "message": "wl:RoleShape violates sh:class on wl:held_by",
+   "name": "RoleShape.held_by.class",
+   "path": "wl:held_by",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nMATCH (v0)-[:`HELD_BY`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Party`)\nRETURN 'RoleShape.held_by.class' AS ruleId, 'wl:RoleShape' AS shape, 'wl:held_by' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:RoleShape violates sh:class on wl:held_by' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nMATCH (v0)-[:`HELD_BY`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Party`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.held_by.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:held_by/sh:class",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 62
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan+expand",
+   "fingerprint": "d51d49626dd05ded",
+   "message": "wl:RoleShape violates sh:maxCount on wl:held_by",
+   "name": "RoleShape.held_by.maxCount",
+   "path": "wl:held_by",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`HELD_BY`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RoleShape.held_by.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:held_by' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:held_by' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`HELD_BY`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.held_by.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:held_by/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 62
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan+expand",
+   "fingerprint": "6cca30dba9c8b8ab",
+   "message": "wl:RoleShape violates sh:minCount on wl:held_by",
+   "name": "RoleShape.held_by.minCount",
+   "path": "wl:held_by",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`HELD_BY`]->(x1) RETURN DISTINCT x1 } >= 1)\nRETURN 'RoleShape.held_by.minCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:held_by' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:minCount on wl:held_by' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`HELD_BY`]->(x1) RETURN DISTINCT x1 } >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.held_by.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:held_by/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 62
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "c87d1ea8434b7d38",
+   "message": "wl:RoleShape violates sh:class on wl:on_building",
+   "name": "RoleShape.on_building.class",
+   "path": "wl:on_building",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nMATCH (v0)-[:`ON_BUILDING`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Building`)\nRETURN 'RoleShape.on_building.class' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_building' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:RoleShape violates sh:class on wl:on_building' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nMATCH (v0)-[:`ON_BUILDING`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Building`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_building.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:on_building/sh:class",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 63
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan+expand",
+   "fingerprint": "128e44dd3d12d441",
+   "message": "wl:RoleShape violates sh:maxCount on wl:on_building",
+   "name": "RoleShape.on_building.maxCount",
+   "path": "wl:on_building",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RoleShape.on_building.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_building' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:on_building/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 63
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "6a8c446d57ebaa86",
+   "message": "wl:RoleShape violates sh:class on wl:on_lot",
+   "name": "RoleShape.on_lot.class",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nRETURN 'RoleShape.on_lot.class' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'wl:RoleShape violates sh:class on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:on_lot/sh:class",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 64
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan+expand",
+   "fingerprint": "7e199997b6a5371c",
+   "message": "wl:RoleShape violates sh:maxCount on wl:on_lot",
+   "name": "RoleShape.on_lot.maxCount",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:on_lot/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 64
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "453575abbe6bd214",
+   "message": "wl:RoleShape violates sh:maxCount on wl:review_status",
+   "name": "RoleShape.review_status.maxCount",
+   "path": "wl:review_status",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'RoleShape.review_status.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:review_status' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:review_status/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 68
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "69e7e7dd68dbf6f8",
+   "message": "wl:RoleShape violates sh:datatype on wl:role_id",
+   "name": "RoleShape.role_id.datatype",
+   "path": "wl:role_id",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'RoleShape.role_id.datatype' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:RoleShape violates sh:datatype on wl:role_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_id/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 58
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c79508d96da74357",
+   "message": "wl:RoleShape violates sh:maxCount on wl:role_id",
+   "name": "RoleShape.role_id.maxCount",
+   "path": "wl:role_id",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'RoleShape.role_id.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:role_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_id/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 58
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "8390a69d0cae5fc8",
+   "message": "wl:RoleShape violates sh:minCount on wl:role_id",
+   "name": "RoleShape.role_id.minCount",
+   "path": "wl:role_id",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'RoleShape.role_id.minCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:minCount on wl:role_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_id` IS NULL THEN [] WHEN v0.`role_id` IS :: LIST<ANY> THEN v0.`role_id` ELSE [v0.`role_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_id/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 58
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "808f26928e05fe83",
+   "message": "wl:RoleShape violates sh:datatype on wl:role_type",
+   "name": "RoleShape.role_type.datatype",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'RoleShape.role_type.datatype' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_type' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:RoleShape violates sh:datatype on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_type.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_type/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 60
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "9891de4dec6f2b2e",
+   "message": "wl:RoleShape violates sh:maxCount on wl:role_type",
+   "name": "RoleShape.role_type.maxCount",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'RoleShape.role_type.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_type' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_type.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_type/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 60
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "b3f3f597945be840",
+   "message": "wl:RoleShape violates sh:minCount on wl:role_type",
+   "name": "RoleShape.role_type.minCount",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'RoleShape.role_type.minCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_type' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:minCount on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_type.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:role_type/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 60
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "2b3346817b18f8b5",
+   "message": "wl:RoleShape violates sh:datatype on wl:source_record_id",
+   "name": "RoleShape.source_record_id.datatype",
+   "path": "wl:source_record_id",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`source_record_id` IS NULL THEN [] WHEN v0.`source_record_id` IS :: LIST<ANY> THEN v0.`source_record_id` ELSE [v0.`source_record_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'RoleShape.source_record_id.datatype' AS ruleId, 'wl:RoleShape' AS shape, 'wl:source_record_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:RoleShape violates sh:datatype on wl:source_record_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nUNWIND CASE WHEN v0.`source_record_id` IS NULL THEN [] WHEN v0.`source_record_id` IS :: LIST<ANY> THEN v0.`source_record_id` ELSE [v0.`source_record_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.source_record_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:source_record_id/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 61
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "12108e7b7df6fed2",
+   "message": "wl:RoleShape violates sh:minCount on wl:source_record_id",
+   "name": "RoleShape.source_record_id.minCount",
+   "path": "wl:source_record_id",
+   "queries": {
+    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_record_id` IS NULL THEN [] WHEN v0.`source_record_id` IS :: LIST<ANY> THEN v0.`source_record_id` ELSE [v0.`source_record_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'RoleShape.source_record_id.minCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:source_record_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:minCount on wl:source_record_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_record_id` IS NULL THEN [] WHEN v0.`source_record_id` IS :: LIST<ANY> THEN v0.`source_record_id` ELSE [v0.`source_record_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.source_record_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:RoleShape/wl:source_record_id/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:RoleShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 61
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "c789182110336985",
+   "message": "wl:SnapshotShape violates sh:datatype on wl:snapshot_id",
+   "name": "SnapshotShape.snapshot_id.datatype",
+   "path": "wl:snapshot_id",
+   "queries": {
+    "detail": "MATCH (v0:`Snapshot`)\nUNWIND CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'SnapshotShape.snapshot_id.datatype' AS ruleId, 'wl:SnapshotShape' AS shape, 'wl:snapshot_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:SnapshotShape violates sh:datatype on wl:snapshot_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Snapshot`)\nUNWIND CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'SnapshotShape.snapshot_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:SnapshotShape/wl:snapshot_id/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:SnapshotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 73
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "1fcef47f785e5a2a",
+   "message": "wl:SnapshotShape violates sh:maxCount on wl:snapshot_id",
+   "name": "SnapshotShape.snapshot_id.maxCount",
+   "path": "wl:snapshot_id",
+   "queries": {
+    "detail": "MATCH (v0:`Snapshot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'SnapshotShape.snapshot_id.maxCount' AS ruleId, 'wl:SnapshotShape' AS shape, 'wl:snapshot_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:SnapshotShape violates sh:maxCount on wl:snapshot_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Snapshot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'SnapshotShape.snapshot_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:SnapshotShape/wl:snapshot_id/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:SnapshotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 73
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "826af09662fdca71",
+   "message": "wl:SnapshotShape violates sh:minCount on wl:snapshot_id",
+   "name": "SnapshotShape.snapshot_id.minCount",
+   "path": "wl:snapshot_id",
+   "queries": {
+    "detail": "MATCH (v0:`Snapshot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'SnapshotShape.snapshot_id.minCount' AS ruleId, 'wl:SnapshotShape' AS shape, 'wl:snapshot_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:SnapshotShape violates sh:minCount on wl:snapshot_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Snapshot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'SnapshotShape.snapshot_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:SnapshotShape/wl:snapshot_id/sh:minCount",
+   "severity": "Violation",
+   "shape": "wl:SnapshotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 73
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "b7644fd7975fa930",
+   "message": "wl:SnapshotShape violates sh:pattern on wl:snapshot_id",
+   "name": "SnapshotShape.snapshot_id.pattern",
+   "path": "wl:snapshot_id",
+   "queries": {
+    "detail": "MATCH (v0:`Snapshot`)\nUNWIND CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)\nRETURN 'SnapshotShape.snapshot_id.pattern' AS ruleId, 'wl:SnapshotShape' AS shape, 'wl:snapshot_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:SnapshotShape violates sh:pattern on wl:snapshot_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Snapshot`)\nUNWIND CASE WHEN v0.`snapshot_id` IS NULL THEN [] WHEN v0.`snapshot_id` IS :: LIST<ANY> THEN v0.`snapshot_id` ELSE [v0.`snapshot_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: 'snapshot_id', keyValue: v0.`snapshot_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'SnapshotShape.snapshot_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:SnapshotShape/wl:snapshot_id/sh:pattern",
+   "severity": "Violation",
+   "shape": "wl:SnapshotShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 74
+   },
+   "status": "compiled"
+  }
+ ],
+ "schemaSnapshotHash": null,
+ "schemaVersion": 1,
+ "staticDiagnostics": []
+}

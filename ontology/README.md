@@ -1,10 +1,22 @@
-# ontology/ (weeks 2–3)
+# ontology/
 
-The OWL ontology and SHACL shapes.
+OWL modules and SHACL shapes (design note 0010).
 
-- Week 2: core classes in Protégé: Building, Lot (BBL), Person, Organization, Registration, Deed, Violation, CourtCase, plus the PESP guide's roles (officer, registered agent, corporate servicer, managing agent).
-- Week 3: ownership and control as role nodes (who, what role, which building, when, per which source); the fund → portfolio company → LLC pyramid; SHACL shapes (every Violation has a BBL, class, date and source); OOPS! scan.
+| File | What |
+| --- | --- |
+| `core.ttl` | Core classes and properties: Property, Lot, Building, Party, Role, Snapshot, and the provenance properties |
+| `core.shapes.ttl` | What the data must satisfy. Allowed values between `generated` markers are written from `vocab/*.ttl` by `scripts/sync_shape_values.py` |
+| `generated/` | Cypher compiled from the shapes by `scripts/compile_shapes.py` (shacl2cypher). Committed; do not edit |
+
+Domain modules (HPD and ACRIS in Slice 1, conditions in Slice 2, ownership layers in Slice 4) are separate pairs of files that import core.
+
+Checks that SHACL cannot express are hand-written in `etl/checks/` (snapshot references, role attachment). A violation from any of them fails the build.
+
+After changing a vocabulary or the shapes:
+
+```
+uv run python scripts/sync_shape_values.py
+uv run --with shacl2cypher python scripts/compile_shapes.py
+```
 
 Record each modeling choice in `docs/design-notes/`.
-
-Done when: the ontology answers every competency question as a graph pattern, and the shapes validate the week 4 graph.
