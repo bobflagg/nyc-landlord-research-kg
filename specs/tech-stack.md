@@ -59,7 +59,8 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 | **Graph access is read-only**: templated Cypher tools first, validated text-to-Cypher as fallback, mcp-neo4j-cypher in read-only mode | Applications never change recorded evidence |
 | **Web and document findings are session evidence**, not graph facts | A finding enters the graph only through a later, reviewed process (mission, not yet in scope) |
 | **Tools and skills are grouped by question family** | A stage adds a family without changing the others |
-| Model provider, web search tool and retrieval cache: **not yet decided** | Needed before the slices that use them (roadmap) |
+| **Model: Anthropic Claude, through LangChain's `init_chat_model`/`create_agent` model strings**, set in `.env` (`AGENT_MODEL`, and `JUDGE_MODEL` for evaluations). **Tests: pytest** for deterministic checks, run in rolled-back transactions on `nyclr`; **LangSmith** datasets and evaluators for agent behavior (design note 0012) | A provider swap is a config change; deterministic tests need no model or network |
+| Web search tool and retrieval cache: **not yet decided** | Needed before the slices that use them (roadmap) |
 
 ## Extension pattern and evaluation
 
@@ -74,4 +75,4 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 
 ## Open decisions
 
-Model provider · web search tool · retrieval cache design · test framework · production hosting · the form of BOR/NLR's edge-level evidence export (design notes 0001 and 0007).
+Web search tool · retrieval cache design · production hosting · the form of BOR/NLR's edge-level evidence export (design notes 0001 and 0007).
