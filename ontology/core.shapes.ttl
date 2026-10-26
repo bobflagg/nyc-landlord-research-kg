@@ -50,8 +50,9 @@ wl:BuildingShape a sh:NodeShape ; sh:targetClass wl:Building ; s2c:key "bin" ;
 
 # ---- Parties and roles -------------------------------------------------------
 
-wl:PartyShape a sh:NodeShape ; sh:targetClass wl:Party ;
-  sh:node wl:ProvenanceShape .
+wl:PartyShape a sh:NodeShape ; sh:targetClass wl:Party ; s2c:key "party_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path wl:party_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
 
 wl:RoleShape a sh:NodeShape ; sh:targetClass wl:Role ; s2c:key "role_id" ;
   sh:node wl:ProvenanceShape ;

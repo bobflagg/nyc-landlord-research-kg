@@ -59,6 +59,9 @@ wl:Role a owl:Class ;
 wl:held_by a owl:ObjectProperty ; rdfs:domain wl:Role ; rdfs:range wl:Party ;
     rdfs:comment "The party that holds the role. Structural."@en .
 
+wl:party_id a owl:DatatypeProperty ; rdfs:domain wl:Party ; rdfs:range xsd:string ;
+    rdfs:comment "Key of the party node, built by the loader from the source's identity (note 0006)."@en .
+
 wl:role_id a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
     rdfs:comment "Key of the role node, built by the loader from the source record id."@en .
 wl:role_type a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;

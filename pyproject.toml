@@ -4,4 +4,13 @@ version = "0.1.0"
 description = "Ontology-first knowledge graph course and capstone: an NYC landlord research agent on Neo4j, LangGraph and Deep Agents."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "neo4j>=6.4.1",
+    "python-dotenv>=1.2.4",
+    "rdflib>=7.6.0",
+]
+
+[dependency-groups]
+dev = [
+    "shacl2cypher>=0.3.0",
+]
