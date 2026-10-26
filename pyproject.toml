@@ -1,0 +1,7 @@
+[project]
+name = "nyc-landlord-research-kg"
+version = "0.1.0"
+description = "Ontology-first knowledge graph course and capstone: an NYC landlord research agent on Neo4j, LangGraph and Deep Agents."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
