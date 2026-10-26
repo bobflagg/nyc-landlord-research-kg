@@ -39,8 +39,8 @@ scripts/     utilities (competency question review page)
 
 - Python 3.13 with **uv**: `uv add <pkg>`, `uv run <cmd>`. Never pip.
 - **Source data:** the local justfixwow PostgreSQL database (`postgres-justfix` MCP server in `.mcp.json`, port 5434). Read-only; it is a build input, never queried by the agent. Use the tables named in `specs/tech-stack.md`; the stale `acris_real_property_*` and `hpd_complaints` copies are not used.
-- **Graph:** Neo4j 5.26 (APOC, n10s) via `docker compose up -d`. Bolt `bolt://localhost:7688`, Browser http://localhost:7475; credentials and memory in `.env` (copy `.env.example`).
-- **Only ever connect to this repo's Neo4j.** Other instances on this machine (ports 7687/7474, such as the Watchline discovery graph) belong to other projects. Never read from or write to them.
+- **Graph:** Neo4j in Neo4j Desktop (design note 0011): database `nyclr` on `bolt://localhost:7687`. URI, user, password and database name are in `.env` (copy `.env.example`). APOC; no n10s.
+- **Only ever use the `nyclr` database.** The Desktop server also hosts other projects' databases (such as the Watchline discovery graph). Every connection names `NEO4J_DATABASE` explicitly. Never read from or write to any other database, and never create, drop or alter databases other than `nyclr`.
 - Secrets live in `.env` and `.mcp.json`. Never print, log or commit their values.
 
 ## Quick rules (full set in `specs/tech-stack.md`)

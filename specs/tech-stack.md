@@ -33,7 +33,7 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 
 | Constraint | Reason |
 | --- | --- |
-| **Neo4j 5.26** with APOC and n10s; local in Docker for development (ports 7688/7475) | Property graph for agent queries; n10s bridges the RDF ontology. Ports avoid other local instances |
+| **Neo4j** (5.26 or later) with APOC, hosted in Neo4j Desktop for development: database `nyclr` on the default port (design note 0011). No n10s | Property graph for agent queries. Shapes run as compiled Cypher (note 0010), so n10s is not needed. Desktop gives a named database on a server shared with other projects, so every connection names its database |
 | Production hosting: **not yet decided** | Decided when the live app is planned (roadmap, later horizons) |
 | **Reliability, source category and review status on every fact**; provenance (source, record id, snapshot) on every fact; validity dates where the source gives them | Outcomes 1 and 2 of the mission; design notes 0002 and 0003 |
 | **Inferred links and reported claims are their own relationships**, never properties on recorded ones | Recorded and derived must stay separable in every query |

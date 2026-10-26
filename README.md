@@ -32,16 +32,14 @@ evals/         LangSmith datasets and evaluators
 
 ## Setup
 
-1. Copy `.env.example` to `.env` and set a Neo4j password.
-2. Start the local Neo4j (5.26 LTS with APOC and n10s):
+1. Copy `.env.example` to `.env` and fill in the Neo4j connection.
+2. In Neo4j Desktop, create a DBMS (5.26 or later, with APOC) and a database named `nyclr`:
 
-   ```bash
-   docker compose up -d
+   ```cypher
+   CREATE DATABASE nyclr IF NOT EXISTS
    ```
 
-   Browser: http://localhost:7475 · Bolt: `bolt://localhost:7688`. These ports are shifted from the defaults so this database can run alongside other local Neo4j instances.
-
-   Memory defaults to 4 GB heap and 4 GB page cache, enough for one borough. For the citywide graph, raise `NEO4J_HEAP` and `NEO4J_PAGECACHE` in `.env` (page cache ideally near the store size, which `docker compose exec neo4j du -sh /data` reports) and allot Docker enough memory.
+   Bolt: `bolt://localhost:7687`. The server may host other projects' databases; this project uses only `nyclr` (design note 0011). For the citywide graph, raise the DBMS heap and page cache in Desktop's settings.
 3. Add Python dependencies as each week needs them, for example:
 
    ```bash
