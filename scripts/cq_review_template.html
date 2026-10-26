@@ -1,0 +1,750 @@
+<title>Competency Question Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky docket header with section tabs; the Questions view is a three-pane review desk
+   (filterable docket list | question file with drill-down tabs | review slip). */
+:root{
+  --paper:#f5f6f3; --sheet:#ffffff; --ink:#1b2220; --ink-2:#4a5552; --ink-3:#717c78;
+  --rule:#d9ddd8; --rule-2:#e9ece8; --wash:#eef1ed;
+  --accent:#1d6b58; --accent-ink:#ffffff; --accent-wash:#e1efe9;
+  --rec:#2d5a97; --rec-wash:#e3ebf6;      /* Type I  recorded */
+  --der:#9a5a14; --der-wash:#f6ead9;      /* Type II derived  */
+  --ok:#2f7a3f; --ok-wash:#e2f1e5;
+  --warn:#9a6a00; --warn-wash:#f7eed2;
+  --bad:#a63a32; --bad-wash:#f6e2df;
+  --info:#3b5fa8; --info-wash:#e4eaf7;
+  --muse:#6a4c9c; --muse-wash:#ece6f5;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s-1:12px; --s-2:13px; --s-3:14px; --s-4:16px; --s-5:19px; --s-6:24px; --s-7:30px;
+  --radius:6px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#121615; --sheet:#1a201e; --ink:#e6ebe8; --ink-2:#b2bcb8; --ink-3:#86918d;
+  --rule:#2f3835; --rule-2:#252c2a; --wash:#202725;
+  --accent:#4fb596; --accent-ink:#0d1412; --accent-wash:#1c3a32;
+  --rec:#86a9e0; --rec-wash:#1f2b3d; --der:#e0a35a; --der-wash:#3a2c1a;
+  --ok:#7cc98a; --ok-wash:#1e3324; --warn:#e2bd5c; --warn-wash:#3a311a;
+  --bad:#ec8b82; --bad-wash:#3d2422; --info:#93aee8; --info-wash:#1f2840;
+  --muse:#b9a2e3; --muse-wash:#2c2440; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --paper:#121615; --sheet:#1a201e; --ink:#e6ebe8; --ink-2:#b2bcb8; --ink-3:#86918d;
+  --rule:#2f3835; --rule-2:#252c2a; --wash:#202725;
+  --accent:#4fb596; --accent-ink:#0d1412; --accent-wash:#1c3a32;
+  --rec:#86a9e0; --rec-wash:#1f2b3d; --der:#e0a35a; --der-wash:#3a2c1a;
+  --ok:#7cc98a; --ok-wash:#1e3324; --warn:#e2bd5c; --warn-wash:#3a311a;
+  --bad:#ec8b82; --bad-wash:#3d2422; --info:#93aee8; --info-wash:#1f2840;
+  --muse:#b9a2e3; --muse-wash:#2c2440; color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--s-3);line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--sheet)}
+a{color:var(--accent)}
+code,.mono{font-family:var(--f-mono);font-size:.92em}
+code{background:var(--wash);border:1px solid var(--rule-2);border-radius:3px;padding:0 .3em;word-break:break-word}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--f-display);font-stretch:85%;text-wrap:balance;margin:0;line-height:1.15}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.top-inner{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 0;display:flex;flex-direction:column;gap:8px}
+.brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.brand h1{font-size:var(--s-6);font-weight:750;letter-spacing:-.01em}
+.stamp{font-family:var(--f-mono);font-size:var(--s-1);text-transform:uppercase;letter-spacing:.08em;color:var(--warn);border:1.5px solid currentColor;border-radius:3px;padding:1px 6px;transform:rotate(-1.5deg)}
+.brand .sub{color:var(--ink-3);font-size:var(--s-2)}
+.progress{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:var(--s-2);color:var(--ink-2)}
+.bar{display:flex;width:180px;height:8px;border-radius:4px;overflow:hidden;background:var(--rule-2)}
+.bar span{display:block;height:100%}
+.save{font-family:var(--f-mono);font-size:var(--s-1);color:var(--ink-3);white-space:nowrap}
+.save.err{color:var(--bad)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:6px 12px 8px;font-family:var(--f-display);font-stretch:90%;font-weight:600;font-size:var(--s-3);color:var(--ink-2);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:hover{color:var(--ink)}
+nav.tabs .n{font-family:var(--f-mono);font-size:var(--s-1);color:var(--ink-3);margin-left:4px}
+
+main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 48px}
+.view[hidden]{display:none}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:4px;font-family:var(--f-mono);font-size:11.5px;line-height:1;padding:3px 6px;border-radius:3px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink-2);white-space:nowrap}
+.rel{font-weight:500;border:0}
+.rel-I{background:var(--rec-wash);color:var(--rec)}
+.rel-II{background:var(--der-wash);color:var(--der)}
+.rel-III{background:linear-gradient(90deg,var(--rec-wash) 50%,var(--der-wash) 50%);color:var(--ink)}
+.st-verified{color:var(--ok);border-color:transparent;background:var(--ok-wash)}
+.st-partial{color:var(--warn);border-color:transparent;background:var(--warn-wash)}
+.st-pending{color:var(--bad);border-color:transparent;background:var(--bad-wash)}
+.v-ratify{--vc:var(--ok);--vw:var(--ok-wash)}
+.v-revise{--vc:var(--warn);--vw:var(--warn-wash)}
+.v-split{--vc:var(--info);--vw:var(--info-wash)}
+.v-merge{--vc:var(--info);--vw:var(--info-wash)}
+.v-drop{--vc:var(--bad);--vw:var(--bad-wash)}
+.v-discuss{--vc:var(--muse);--vw:var(--muse-wash)}
+.vchip{background:var(--vw);color:var(--vc);border-color:transparent;font-weight:500}
+.qref{font-family:var(--f-mono);font-size:.9em;font-weight:500;color:var(--accent);background:var(--accent-wash);border:0;border-radius:3px;padding:0 .3em;cursor:pointer}
+.qref:hover{text-decoration:underline}
+
+/* desk */
+.desk{display:grid;grid-template-columns:290px minmax(0,1fr) 320px;gap:16px;align-items:start}
+.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.list-panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);max-height:calc(100vh - 110px);display:flex;flex-direction:column}
+.filters{padding:10px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.filters input[type=search]{width:100%;padding:7px 9px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink);font:inherit}
+.fgroup{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.fgroup .lab{font-size:var(--s-1);color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;width:100%}
+.fbtn{font-size:12px;padding:3px 8px;border:1px solid var(--rule);background:var(--paper);border-radius:12px;cursor:pointer;color:var(--ink-2)}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fcount{font-size:var(--s-1);color:var(--ink-3)}
+.qlist{list-style:none;margin:0;padding:4px;overflow-y:auto;flex:1}
+.qitem{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:2px 8px;align-items:start;padding:7px 8px;border-radius:4px;cursor:pointer;border:1px solid transparent;width:100%;text-align:left;background:none}
+.qitem:hover{background:var(--wash)}
+.qitem[aria-current="true"]{background:var(--accent-wash);border-color:var(--accent)}
+.qnum{font-family:var(--f-mono);font-weight:500;color:var(--ink-3);font-size:var(--s-2);padding-top:1px}
+.qitem[aria-current="true"] .qnum{color:var(--accent)}
+.qtitle{font-size:var(--s-2);font-weight:500;line-height:1.3;min-width:0}
+.qmeta{grid-column:2;display:flex;gap:4px;flex-wrap:wrap}
+.vdot{width:10px;height:10px;border-radius:50%;margin-top:4px;border:1.5px solid var(--rule)}
+.vdot.set{background:var(--vc);border-color:var(--vc)}
+
+/* question file */
+.qfile{padding:20px 22px 22px;min-width:0}
+.qhead{display:flex;gap:14px;align-items:flex-start}
+.qbig{font-family:var(--f-display);font-weight:800;font-stretch:75%;font-size:46px;line-height:.9;color:var(--accent);min-width:56px}
+.qhead h2{font-size:var(--s-5);font-weight:700;color:var(--ink-2)}
+.qtext{font-size:var(--s-5);line-height:1.45;margin:6px 0 0;max-width:68ch}
+.metarow{display:flex;flex-wrap:wrap;gap:6px 14px;margin:16px 0 4px;padding:10px 0;border-block:1px solid var(--rule-2);align-items:center}
+.metarow .k{font-size:var(--s-1);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-right:4px}
+.metarow .grp{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.subtabs{display:flex;gap:4px;margin:14px 0 0;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:thin}
+.subtabs button{border:1px solid transparent;border-bottom:0;background:none;padding:7px 12px;border-radius:5px 5px 0 0;cursor:pointer;font-weight:500;color:var(--ink-2);white-space:nowrap;margin-bottom:-1px}
+.subtabs button[aria-selected="true"]{background:var(--sheet);border-color:var(--rule);color:var(--ink)}
+.subtabs button:disabled{opacity:.4;cursor:default}
+.subtabs .n{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);margin-left:3px}
+.pane{padding-top:16px}
+.field{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--rule-2)}
+.field:last-child{border-bottom:0}
+.field .fl{font-size:var(--s-1);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding-top:2px}
+.field .fv{max-width:72ch;min-width:0}
+.field .fv p{margin:0}
+.callout{border-left:3px solid var(--warn);background:var(--warn-wash);padding:8px 12px;border-radius:0 4px 4px 0;margin:0 0 12px;max-width:72ch}
+.callout.pending{border-color:var(--bad);background:var(--bad-wash)}
+.callout.info{border-color:var(--rec);background:var(--rec-wash)}
+.anchorcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:14px}
+.acard{border:1px solid var(--rule);border-radius:var(--radius);padding:10px 12px;background:var(--paper)}
+.acard .ak{font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--accent);line-height:1}
+.acard .aa{font-weight:600}
+.acard .ab{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.acard p{margin:6px 0 0;font-size:var(--s-2);color:var(--ink-2)}
+.scen{margin:0 0 16px}
+.scen h4{font-size:var(--s-4);font-weight:650;margin-bottom:6px}
+.scen ul,.plain ul{margin:0;padding-left:20px;max-width:72ch}
+.scen li{margin:4px 0}
+table.t{border-collapse:collapse;width:100%;font-size:var(--s-2)}
+table.t th,table.t td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--rule-2)}
+table.t th{font-size:var(--s-1);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:500;border-bottom-color:var(--rule)}
+.tscroll{overflow-x:auto}
+.c-el{font-weight:600;width:150px}
+.c-el.fail{color:var(--bad)}
+.c-el.inc{color:var(--warn)}
+.empty{color:var(--ink-3);font-style:italic}
+.navrow{display:flex;justify-content:space-between;gap:8px;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule-2)}
+.btn{border:1px solid var(--rule);background:var(--sheet);padding:6px 12px;border-radius:4px;cursor:pointer;font-weight:500}
+.btn:hover{background:var(--wash)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;padding:0 4px;color:var(--ink-3)}
+
+/* review slip */
+.slip{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);padding:14px 16px 16px;display:flex;flex-direction:column;gap:14px;border-top:4px solid var(--accent)}
+.slip h3{font-size:var(--s-4);font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+.slip h3 .mono{font-size:var(--s-1);color:var(--ink-3);font-weight:400}
+.sliplab{font-size:var(--s-1);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:6px;display:flex;justify-content:space-between}
+.checks{display:flex;flex-direction:column;gap:2px}
+.check{display:grid;grid-template-columns:20px minmax(0,1fr);gap:6px;padding:5px 4px;border-radius:4px;cursor:pointer;align-items:start}
+.check:hover{background:var(--wash)}
+.check input{margin:3px 0 0;accent-color:var(--accent)}
+.check b{font-weight:600;font-size:var(--s-2)}
+.check span{display:block;font-size:12px;color:var(--ink-3);line-height:1.35}
+.verdicts{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.vbtn{border:1px solid var(--rule);background:var(--paper);border-radius:4px;padding:7px 4px;cursor:pointer;font-weight:600;font-size:var(--s-2);display:flex;flex-direction:column;align-items:center;gap:1px;color:var(--ink-2)}
+.vbtn small{font-family:var(--f-mono);font-size:10px;color:var(--ink-3);font-weight:400}
+.vbtn[aria-pressed="true"]{background:var(--vw);color:var(--vc);border-color:var(--vc)}
+.slip select,.slip textarea,.ta{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:7px 9px}
+.slip textarea,.ta{min-height:120px;resize:vertical;line-height:1.45}
+.ro .slip-ro{display:block}
+.slip-ro{display:none;font-size:var(--s-2);color:var(--ink-3);background:var(--wash);padding:8px;border-radius:4px}
+
+/* generic page sections */
+.page{max-width:1100px}
+.page h2{font-size:var(--s-6);font-weight:750;margin:6px 0 4px}
+.page h3{font-size:var(--s-5);font-weight:700;margin:28px 0 8px}
+.lede{color:var(--ink-2);max-width:72ch;margin:0 0 12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;min-width:0}
+.card h4{font-size:var(--s-4);font-weight:650;margin-bottom:4px;display:flex;gap:8px;align-items:baseline}
+.card h4 .mono{color:var(--accent);font-weight:500}
+.card p{margin:4px 0 0;max-width:72ch}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:4px 16px}
+.quote{border-left:3px solid var(--accent);padding:6px 14px;margin:0 0 12px;font-size:var(--s-4);max-width:72ch;background:var(--sheet)}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
+.stat{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:10px 14px;min-width:120px}
+.stat .num{font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.stat .lbl{font-size:var(--s-1);color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+
+/* matrix */
+.matrix{border-collapse:separate;border-spacing:0;font-size:12px}
+.matrix th,.matrix td{padding:0;border-bottom:1px solid var(--rule-2)}
+.matrix thead th{height:150px;vertical-align:bottom;font-weight:500;color:var(--ink-2);position:relative;width:30px;border-bottom:1px solid var(--rule)}
+.matrix thead th div{position:absolute;left:11px;bottom:8px;transform:rotate(-60deg);transform-origin:left bottom;white-space:nowrap;font-family:var(--f-mono);font-size:11.5px}
+.matrix tbody th{text-align:left;padding:4px 12px 4px 0;font-weight:400;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis}
+.matrix tbody th button{background:none;border:0;cursor:pointer;padding:0;text-align:left;color:var(--ink)}
+.matrix tbody th button:hover{color:var(--accent)}
+.matrix td{text-align:center;width:30px;height:26px}
+.matrix td.hit::after{content:"";display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--accent);vertical-align:middle}
+.matrix td.all::after{content:"";display:inline-block;width:12px;height:12px;border-radius:2px;border:2px solid var(--accent);vertical-align:middle}
+.matrix tfoot td{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);padding-top:4px;font-variant-numeric:tabular-nums}
+.matrix tr:hover td,.matrix tr:hover th{background:var(--wash)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin:8px 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:var(--accent)}
+.legend i.o{background:none;border:2px solid var(--accent)}
+.stack{display:flex;height:26px;border-radius:4px;overflow:hidden;max-width:640px;border:1px solid var(--rule)}
+.stack div{display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden}
+
+.oi{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--rule-2)}
+.oi .on{font-family:var(--f-mono);color:var(--ink-3)}
+.oi .ot{font-weight:600}
+.oi p{margin:4px 0 0;max-width:76ch}
+.pill-resolved{background:var(--ok-wash);color:var(--ok);border:0}
+.pill-open{background:var(--bad-wash);color:var(--bad);border:0}
+.pill-partial{background:var(--warn-wash);color:var(--warn);border:0}
+.pill-out{background:var(--wash);color:var(--ink-3);border:0}
+details.more summary{cursor:pointer;color:var(--accent);font-size:var(--s-2);margin-top:6px}
+details.more{max-width:76ch}
+
+.sumtable td:first-child{white-space:nowrap}
+.copyrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.copymsg{font-size:var(--s-2);color:var(--ink-3)}
+pre.md{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:12px 14px;white-space:pre-wrap;font-family:var(--f-mono);font-size:12.5px;max-height:460px;overflow:auto;margin:0}
+
+/* narrow */
+.mobile-picker{display:none}
+@media (max-width:1180px){
+  .desk{grid-template-columns:260px minmax(0,1fr)}
+  .slip{position:static;grid-column:2}
+}
+@media (max-width:820px){
+  .desk{grid-template-columns:minmax(0,1fr)}
+  .list-panel{position:static;max-height:none}
+  .list-panel .qlist{display:none}
+  .mobile-picker{display:block;padding:0 10px 10px}
+  .mobile-picker select{width:100%;padding:8px;font:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px}
+  .slip{grid-column:1}
+  .progress{margin-left:0;width:100%}
+  .bar{flex:1}
+  .qfile{padding:16px}
+  .qbig{font-size:36px;min-width:44px}
+  .field{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .qitem,.vbtn,.fbtn{transition:background-color .12s,border-color .12s,color .12s}
+}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <h1>Competency Question Review</h1>
+      <span class="stamp" id="draftStamp">__STAMP__</span>
+      <span class="sub">nyc-landlord-research-kg · <span class="mono">docs/competency-questions.md</span></span>
+      <div class="progress" aria-live="polite">
+        <span id="progText">0 reviewed</span>
+        <div class="bar" id="progBar" aria-hidden="true"></div>
+        <span class="save" id="saveState">Connecting…</span>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-questions" aria-selected="true" data-view="questions">Questions<span class="n" id="tabQn">__COUNT__</span></button>
+      <button role="tab" id="tab-coverage" aria-selected="false" data-view="coverage">Coverage</button>
+      <button role="tab" id="tab-requirements" aria-selected="false" data-view="requirements">Requirements &amp; scope</button>
+      <button role="tab" id="tab-anchors" aria-selected="false" data-view="anchors">Example buildings</button>
+      <button role="tab" id="tab-openitems" aria-selected="false" data-view="openitems">Open items<span class="n" id="tabOi"></span></button>
+      <button role="tab" id="tab-summary" aria-selected="false" data-view="summary">Review summary</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- QUESTIONS -->
+  <section class="view" id="view-questions">
+    <div class="desk">
+      <aside class="panel list-panel" aria-label="Question list">
+        <div class="filters">
+          <input type="search" id="q-search" placeholder="Search questions, examples, caveats" aria-label="Search questions">
+          <div class="fgroup" role="group" aria-label="Reliability">
+            <span class="lab">Reliability</span>
+            <button class="fbtn" data-f="rel" data-v="I" aria-pressed="false">I</button>
+            <button class="fbtn" data-f="rel" data-v="II" aria-pressed="false">II</button>
+            <button class="fbtn" data-f="rel" data-v="I+II" aria-pressed="false">I+II</button>
+          </div>
+          <div class="fgroup" role="group" aria-label="Example status">
+            <span class="lab">Example</span>
+            <button class="fbtn" data-f="ex" data-v="verified" aria-pressed="false">Verified</button>
+            <button class="fbtn" data-f="ex" data-v="partial" aria-pressed="false">Partial</button>
+            <button class="fbtn" data-f="ex" data-v="pending" aria-pressed="false">Pending</button>
+          </div>
+          <div class="fgroup" role="group" aria-label="Review status">
+            <span class="lab">Review</span>
+            <button class="fbtn" data-f="rv" data-v="none" aria-pressed="false">Not reviewed</button>
+            <button class="fbtn" data-f="rv" data-v="ratify" aria-pressed="false">Ratify</button>
+            <button class="fbtn" data-f="rv" data-v="revise" aria-pressed="false">Revise</button>
+            <button class="fbtn" data-f="rv" data-v="other" aria-pressed="false">Split / merge / drop / discuss</button>
+          </div>
+          <div class="fgroup" role="group" aria-label="Has">
+            <span class="lab">Has</span>
+            <button class="fbtn" data-f="has" data-v="contract" aria-pressed="false">Answer contract</button>
+            <button class="fbtn" data-f="has" data-v="scenarios" aria-pressed="false">Scenarios</button>
+          </div>
+          <span class="fcount" id="fcount"></span>
+        </div>
+        <div class="mobile-picker"><label class="fcount" for="q-pick">Jump to question</label><select id="q-pick"></select></div>
+        <ul class="qlist" id="qlist"></ul>
+      </aside>
+
+      <article class="panel qfile" id="qfile" aria-live="polite"></article>
+
+      <aside class="panel slip" id="slip" aria-label="Review">
+        <h3>Your review <span class="mono" id="slipWhen"></span></h3>
+        <div class="slip-ro">You can read this review but not change it.</div>
+        <div>
+          <div class="sliplab"><span>Week 1 completeness</span><span id="checkCount"></span></div>
+          <div class="checks" id="checks"></div>
+        </div>
+        <div>
+          <div class="sliplab"><span>Verdict</span><span class="kbd" title="Keyboard: 1–6">1–6</span></div>
+          <div class="verdicts" id="verdicts"></div>
+        </div>
+        <div>
+          <label class="sliplab" for="relSel"><span>Reliability</span></label>
+          <select id="relSel">
+            <option value="">Keep as drafted</option>
+            <option value="I">Change to I (recorded)</option>
+            <option value="II">Change to II (derived)</option>
+            <option value="I+II">Change to I+II (mixed)</option>
+          </select>
+        </div>
+        <div>
+          <label class="sliplab" for="notes"><span>Notes and proposed wording</span></label>
+          <textarea id="notes" placeholder="What to change, split, merge or check. Proposed wording goes here too."></textarea>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section class="view page" id="view-coverage" hidden></section>
+  <!-- REQUIREMENTS -->
+  <section class="view page" id="view-requirements" hidden></section>
+  <!-- ANCHORS -->
+  <section class="view page" id="view-anchors" hidden></section>
+  <!-- OPEN ITEMS -->
+  <section class="view page" id="view-openitems" hidden></section>
+  <!-- SUMMARY -->
+  <section class="view page" id="view-summary" hidden></section>
+</main>
+
+<script type="application/json" id="cq-data">__DATA__</script>
+<script>
+(function(){
+const D = JSON.parse(document.getElementById('cq-data').textContent);
+const Q = D.questions;
+const byN = Object.fromEntries(Q.map(q=>[q.n,q]));
+const $ = (s,el=document)=>el.querySelector(s);
+const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+
+const SOURCES = [
+  ['pluto','PLUTO'],['acris_master','ACRIS master'],['acris_parties','ACRIS parties'],['acris_legals','ACRIS legals'],
+  ['hpd_registrations','HPD registrations'],['hpd_contacts','HPD contacts'],['hpd_violations','HPD violations'],
+  ['hpd_complaints','HPD complaints'],['hpd_litigations','HPD litigations'],['nys_corporations','NY DOS corporations'],
+  ['bor_layers','BOR layers'],['mail_drop_list','Mail-drop list'],['web_research','Web research']];
+const SRC_LABEL = Object.fromEntries(SOURCES);
+const VERDICTS = [
+  ['ratify','Ratify','Keep as written'],['revise','Revise','Change wording'],['split','Split','Two needs'],
+  ['merge','Merge','Overlaps another'],['drop','Drop','Not needed'],['discuss','Discuss','Unsure']];
+const VLABEL = Object.fromEntries(VERDICTS.map(v=>[v[0],v[1]]));
+const CHECKS = [
+  ['wording','Specific wording','A right answer can be told from a wrong one.'],
+  ['example','Real example','A named NYC address, BBL or entity to test on.'],
+  ['shape','Answer shape','Entity, list, count, yes/no, timeline or chain.'],
+  ['audience','Who it is for','Why an organizer would ask it.'],
+  ['reliability','Reliability','I, II or I+II, and the caveat for inferred links.'],
+  ['sources','Sources','Datasets that can answer it are named.']];
+
+/* ---------- inline markdown ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function md(s){
+  if(s==null) return '';
+  const codes=[];
+  let t = esc(s).replace(/`([^`]+)`/g,(m,c)=>{codes.push(c);return '\u0000'+(codes.length-1)+'\u0000';});
+  t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  t = t.replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=[\s).,;:]|$)/g,'$1<em>$2</em>');
+  t = t.replace(/\bQ(\d{1,2})(?:–Q?(\d{1,2}))?\b/g,(m,a,b)=>{
+    if(b){return qlink(+a)+'–'+qlink(+b,true);}
+    return qlink(+a);
+  });
+  t = t.replace(/\u0000(\d+)\u0000/g,(m,i)=>'<code>'+codes[+i]+'</code>');
+  return t;
+}
+function qlink(n,bare){ if(!byN[n]) return 'Q'+n; return '<button class="qref" data-q="'+n+'" title="'+esc(byN[n].title)+'">'+(bare?'':'Q')+n+'</button>'; }
+function relChip(r){const cls=r==='I'?'rel-I':r==='II'?'rel-II':'rel-III';const lab=r==='I'?'I recorded':r==='II'?'II derived':'I+II mixed';return '<span class="chip rel '+cls+'" title="Reliability">'+lab+'</span>';}
+function stChip(s){const lab={verified:'Example verified',partial:'Example partial',pending:'Example pending'}[s];return '<span class="chip st-'+s+'">'+lab+'</span>';}
+function vChip(v){return v?'<span class="chip vchip v-'+v+'">'+VLABEL[v]+'</span>':'';}
+
+/* ---------- review state ---------- */
+const reviews = {};          // n -> {verdict, checks, rel, notes, updatedAt}
+let overall = {notes:''};
+let db=null, store='none', canWrite=true;
+const writeChains = {};
+const pendingWrites = {};   // n -> writes not yet confirmed; local state wins until they land
+function key(n){return 'q'+String(n).padStart(2,'0');}
+// Always hand out an editable copy: records from the database arrive frozen (read-only).
+function plain(o){return JSON.parse(JSON.stringify(o));}
+function getR(n){const r=reviews[n]?plain(reviews[n]):{verdict:'',checks:{},rel:'',notes:''}; if(!r.checks) r.checks={}; return r;}
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function setSave(t,err){const el=$('#saveState');el.textContent=t;el.classList.toggle('err',!!err);}
+
+function persist(n){
+  const body = Object.assign({}, getR(n), {n, updatedAt:new Date().toISOString()});
+  reviews[n]=body;
+  if(store==='db'){
+    const id=key(n);
+    setSave('Saving…');
+    pendingWrites[n]=(pendingWrites[n]||0)+1;
+    // each queued write sends the latest local state, so a burst of clicks ends with everything in it
+    writeChains[id] = (writeChains[id]||Promise.resolve()).then(()=>db.doc('reviews/'+id).set(reviews[n])).then(()=>{ if(pendingWrites[n]===1) setSave('Saved'); }).catch(e=>{
+      if(e&&e.code==='invalid_argument'){canWrite=false;applyRO();setSave('Read only',true);} else setSave('Not saved: '+(e&&e.code||'error'),true);
+    }).finally(()=>{ pendingWrites[n]=Math.max(0,(pendingWrites[n]||1)-1); });
+  } else { lsSet('cqr-reviews', reviews); setSave('Saved in this browser only'); }
+  refreshAll();
+}
+function persistOverall(){
+  overall.updatedAt=new Date().toISOString();
+  if(store==='db'){
+    setSave('Saving…');
+    writeChains.meta=(writeChains.meta||Promise.resolve()).then(()=>db.doc('meta/overall').set(overall)).then(()=>setSave('Saved')).catch(e=>setSave('Not saved: '+(e&&e.code||'error'),true));
+  } else { lsSet('cqr-overall', overall); setSave('Saved in this browser only'); }
+  renderSummaryExport();
+}
+function applyRO(){ document.body.classList.toggle('ro',!canWrite); $$('#slip input,#slip select,#slip textarea,#slip .vbtn,#overallNotes').forEach(el=>el.disabled=!canWrite); }
+
+/* ---------- filters / list ---------- */
+const F = {q:'',rel:new Set(),ex:new Set(),rv:new Set(),has:new Set()};
+let cur = 1, subtab='overview';
+function hay(q){return [q.question,q.title,q.example,(q.detail||[]).map(d=>d.text).join(' '),(q.scenarios||[]).map(s=>s.label+' '+s.items.join(' ')).join(' '),q.sourcesText,getR(q.n).notes].join(' ').toLowerCase();}
+function rvClass(v){if(!v) return 'none'; if(v==='ratify'||v==='revise') return v; return 'other';}
+function visible(){
+  return Q.filter(q=>{
+    if(F.q && !hay(q).includes(F.q)) return false;
+    if(F.rel.size && !F.rel.has(q.reliability)) return false;
+    if(F.ex.size && !F.ex.has(q.exampleStatus)) return false;
+    if(F.rv.size && !F.rv.has(rvClass(getR(q.n).verdict))) return false;
+    if(F.has.has('contract') && !q.contract) return false;
+    if(F.has.has('scenarios') && !(q.scenarios&&q.scenarios.length)) return false;
+    return true;
+  });
+}
+function renderList(){
+  const vis = visible();
+  $('#fcount').textContent = vis.length===Q.length ? 'Showing all '+Q.length : 'Showing '+vis.length+' of '+Q.length;
+  $('#qlist').innerHTML = vis.map(q=>{
+    const r=getR(q.n);
+    return '<li><button class="qitem '+(r.verdict?'v-'+r.verdict:'')+'" data-q="'+q.n+'" aria-current="'+(q.n===cur)+'">'+
+      '<span class="qnum">Q'+q.n+'</span><span class="qtitle">'+esc(q.title)+'</span>'+
+      '<span class="vdot '+(r.verdict?'set':'')+'" title="'+(r.verdict?VLABEL[r.verdict]:'Not reviewed')+'"></span>'+
+      '<span class="qmeta">'+relChip(q.reliability)+(q.exampleStatus!=='verified'?stChip(q.exampleStatus):'')+(q.contract?'<span class="chip">contract</span>':'')+'</span>'+
+    '</button></li>';}).join('') || '<li class="empty" style="padding:12px">No questions match these filters.</li>';
+  $('#q-pick').innerHTML = Q.map(q=>'<option value="'+q.n+'"'+(q.n===cur?' selected':'')+'>Q'+q.n+' · '+esc(q.title)+(getR(q.n).verdict?' · '+VLABEL[getR(q.n).verdict]:'')+'</option>').join('');
+}
+
+/* ---------- question file ---------- */
+function detailItems(q,pred){return (q.detail||[]).filter(pred);}
+function renderFile(){
+  const q=byN[cur];
+  const ex=detailItems(q,d=>/^Example|^Checked/.test(d.label));
+  const pend=detailItems(q,d=>d.label==='Pending');
+  const get=l=>(q.detail||[]).find(d=>d.label===l);
+  const tabs=[
+    ['overview','Overview',null,true],
+    ['example','Examples',ex.length,ex.length>0],
+    ['scenarios','Scenarios',(q.scenarios||[]).reduce((a,s)=>a+s.items.length,0),!!(q.scenarios&&q.scenarios.length)],
+    ['contract','Answer contract',null,!!q.contract],
+    ['links','Coverage links',((q.pesp||[]).length+(q.coverageNotes||[]).length)||null,true]];
+  if(!tabs.find(t=>t[0]===subtab&&t[3])) subtab='overview';
+  let h='<div class="qhead"><div class="qbig">Q'+q.n+'</div><div><h2>'+esc(q.title)+'</h2><p class="qtext">'+md(q.question)+'</p></div></div>';
+  h+='<div class="metarow"><div class="grp"><span class="k">Reliability</span>'+relChip(q.reliability)+'</div>'+
+     '<div class="grp"><span class="k">Example</span>'+stChip(q.exampleStatus)+'</div>'+
+     '<div class="grp"><span class="k">Sources</span>'+(q.sourceKeys[0]==='all'?'<span class="chip">all sources</span>':q.sourceKeys.map(k=>'<span class="chip" title="'+k+'">'+esc(SRC_LABEL[k]||k)+'</span>').join(''))+'</div>'+
+     (q.anchors.length?'<div class="grp"><span class="k">Buildings</span>'+q.anchors.map(a=>'<span class="chip" title="'+esc(anchorBy[a].address)+'">'+a+'</span>').join('')+'</div>':'')+
+     '</div>';
+  h+='<div class="subtabs" role="tablist" aria-label="Question detail">'+tabs.map(t=>'<button role="tab" data-sub="'+t[0]+'" aria-selected="'+(subtab===t[0])+'" '+(t[3]?'':'disabled')+'>'+t[1]+(t[2]?'<span class="n">'+t[2]+'</span>':'')+'</button>').join('')+'</div>';
+  h+='<div class="pane" role="tabpanel">';
+  if(subtab==='overview'){
+    if(q.exampleStatus==='pending') h+='<div class="callout pending">'+md('No verified example yet. '+(pend[0]?pend[0].text:(ex[0]?ex[0].text.replace(/\*\*pending[^*]*\*\*\s*/i,''):'')))+'</div>';
+    else if(pend.length) h+='<div class="callout">'+md('Pending: '+pend.map(p=>p.text).join(' '))+'</div>';
+    const rows=[
+      ['Example in table',q.example],['Answer shape',get('Shape')&&get('Shape').text],['Who asks, and why',get('Audience')&&get('Audience').text],
+      ['Caveat the agent gives',get('Caveat')&&get('Caveat').text],['Sources (table)',q.sourcesText],['Sources (keys)',get('Sources')&&get('Sources').text]];
+    h+=rows.filter(r=>r[1]).map(r=>'<div class="field"><div class="fl">'+r[0]+'</div><div class="fv">'+md(r[1])+'</div></div>').join('');
+  }
+  if(subtab==='example'){
+    h+=ex.map(e=>'<div class="field"><div class="fl">'+esc(e.label)+'</div><div class="fv">'+md(e.text)+'</div></div>').join('');
+    if(pend.length) h+='<div class="field"><div class="fl">Pending</div><div class="fv">'+md(pend.map(p=>p.text).join(' '))+'</div></div>';
+    if(q.anchors.length){
+      h+='<div class="anchorcards">'+q.anchors.map(a=>anchorCard(anchorBy[a])).join('')+'</div>';
+    }
+    h+='<p class="fcount" style="margin-top:12px">'+md(D.chosen[2]||'')+'</p>';
+  }
+  if(subtab==='scenarios'){
+    h+='<p class="lede">'+md(D.scenarioIntro)+'</p>';
+    h+=(q.scenarios||[]).map(s=>'<div class="scen"><h4>'+md(s.label.charAt(0).toUpperCase()+s.label.slice(1))+'</h4><ul>'+s.items.map(i=>'<li>'+md(i)+'</li>').join('')+'</ul></div>').join('');
+  }
+  if(subtab==='contract'&&q.contract){
+    h+='<div class="tscroll"><table class="t"><thead><tr><th>Element</th><th>Specification</th></tr></thead><tbody>'+
+      q.contract.rows.map(r=>'<tr><td class="c-el '+(r.element==='Failure'?'fail':r.element==='Acceptable incomplete'?'inc':'')+'">'+esc(r.element)+'</td><td>'+md(r.spec)+'</td></tr>').join('')+'</tbody></table></div>';
+    if(q.contract.note) h+='<div class="callout info" style="margin-top:12px">'+md(q.contract.note)+'</div>';
+  }
+  if(subtab==='links'){
+    h+='<div class="field"><div class="fl">PESP guide questions</div><div class="fv">'+((q.pesp||[]).length?'<ul style="margin:0;padding-left:18px">'+q.pesp.map(p=>'<li>'+esc(p)+'</li>').join('')+'</ul>':'<span class="empty">Not mapped to a PESP question</span>')+'</div></div>';
+    h+='<div class="field"><div class="fl">Coverage notes</div><div class="fv">'+((q.coverageNotes||[]).length?'<ul style="margin:0;padding-left:18px">'+q.coverageNotes.map(c=>'<li>'+md(c)+'</li>').join('')+'</ul>':'<span class="empty">No coverage note names this question</span>')+'</div></div>';
+    const refs=new Set(); const all=[q.question,q.example,(q.detail||[]).map(d=>d.text).join(' '),(q.scenarios||[]).map(s=>s.items.join(' ')).join(' '),q.contract?q.contract.rows.map(r=>r.spec).join(' '):''].join(' ');
+    (all.match(/\bQ\d{1,2}\b/g)||[]).forEach(m=>{const n=+m.slice(1);if(n!==q.n&&byN[n])refs.add(n);});
+    const back=Q.filter(o=>o.n!==q.n&&new RegExp('\\bQ'+q.n+'\\b').test([o.question,o.example,(o.detail||[]).map(d=>d.text).join(' '),(o.scenarios||[]).map(s=>s.items.join(' ')).join(' ')].join(' '))).map(o=>o.n);
+    h+='<div class="field"><div class="fl">Refers to</div><div class="fv">'+(refs.size?[...refs].sort((a,b)=>a-b).map(n=>qlink(n)+' '+esc(byN[n].title)).join('<br>'):'<span class="empty">None</span>')+'</div></div>';
+    h+='<div class="field"><div class="fl">Referred to by</div><div class="fv">'+(back.length?back.map(n=>qlink(n)+' '+esc(byN[n].title)).join('<br>'):'<span class="empty">None</span>')+'</div></div>';
+  }
+  h+='</div>';
+  const i=Q.findIndex(x=>x.n===cur);
+  h+='<div class="navrow"><button class="btn" data-go="-1" '+(i===0?'disabled':'')+'>← Q'+(i>0?Q[i-1].n:'')+'</button><span class="fcount"><span class="kbd">j</span> <span class="kbd">k</span> or arrow keys to move</span><button class="btn" data-go="1" '+(i===Q.length-1?'disabled':'')+'>Q'+(i<Q.length-1?Q[i+1].n:'')+' →</button></div>';
+  $('#qfile').innerHTML=h;
+}
+const anchorBy=Object.fromEntries(D.anchors.map(a=>[a.key,a]));
+function anchorCard(a){return '<div class="acard"><div style="display:flex;gap:10px;align-items:baseline"><span class="ak">'+a.key+'</span><span><span class="aa">'+esc(a.address)+'</span><br><span class="ab">BBL '+esc(a.bbl)+'</span></span></div><p>'+md(a.what)+'</p></div>';}
+
+/* ---------- review slip ---------- */
+function renderSlip(){
+  const r=getR(cur);
+  $('#checks').innerHTML=CHECKS.map(c=>'<label class="check"><input type="checkbox" id="chk-'+c[0]+'" data-c="'+c[0]+'" '+(r.checks&&r.checks[c[0]]?'checked':'')+'><span><b>'+c[1]+'</b><span>'+c[2]+'</span></span></label>').join('');
+  const n=CHECKS.filter(c=>r.checks&&r.checks[c[0]]).length;
+  $('#checkCount').textContent=n+' of 6';
+  $('#verdicts').innerHTML=VERDICTS.map((v,i)=>'<button class="vbtn v-'+v[0]+'" data-v="'+v[0]+'" aria-pressed="'+(r.verdict===v[0])+'" title="'+v[2]+' (key '+(i+1)+')">'+v[1]+'<small>'+v[2]+'</small></button>').join('');
+  $('#relSel').value=r.rel||'';
+  if(document.activeElement!==$('#notes')) $('#notes').value=r.notes||'';
+  $('#slipWhen').textContent='Q'+cur+(r.updatedAt?' · '+new Date(r.updatedAt).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'');
+  applyRO();
+}
+
+/* ---------- progress ---------- */
+function renderProgress(){
+  const counts={}; let done=0;
+  Q.forEach(q=>{const v=getR(q.n).verdict; if(v){done++;counts[v]=(counts[v]||0)+1;}});
+  $('#progText').textContent=done+' of '+Q.length+' reviewed';
+  $('#progBar').innerHTML=VERDICTS.map(v=>counts[v[0]]?'<span class="v-'+v[0]+'" style="width:'+(counts[v[0]]/Q.length*100)+'%;background:var(--vc)" title="'+v[1]+': '+counts[v[0]]+'"></span>':'').join('');
+}
+
+/* ---------- coverage view ---------- */
+function renderCoverage(){
+  const relc={I:0,II:0,'I+II':0}; Q.forEach(q=>relc[q.reliability]++);
+  const exc={verified:0,partial:0,pending:0}; Q.forEach(q=>exc[q.exampleStatus]++);
+  let h='<h2>Coverage</h2><p class="lede">How the '+Q.length+' candidates spread across reliability, example status, data sources and the PESP guide\'s questions. Click any question to open it.</p>';
+  h+='<div class="stats">'+
+    '<div class="stat"><div class="num" style="color:var(--rec)">'+relc.I+'</div><div class="lbl">I recorded</div></div>'+
+    '<div class="stat"><div class="num" style="color:var(--der)">'+relc.II+'</div><div class="lbl">II derived</div></div>'+
+    '<div class="stat"><div class="num">'+relc['I+II']+'</div><div class="lbl">I+II mixed</div></div>'+
+    '<div class="stat"><div class="num" style="color:var(--ok)">'+exc.verified+'</div><div class="lbl">Examples verified</div></div>'+
+    '<div class="stat"><div class="num" style="color:var(--warn)">'+exc.partial+'</div><div class="lbl">Partial</div></div>'+
+    '<div class="stat"><div class="num" style="color:var(--bad)">'+exc.pending+'</div><div class="lbl">Pending</div></div></div>';
+  h+='<h3>Questions by data source</h3><div class="legend"><span><i></i>Named in the question\'s sources</span><span><i class="o"></i>"All sources" (integration and absence questions)</span></div>';
+  h+='<div class="tscroll"><table class="matrix"><thead><tr><th style="width:auto;height:auto"></th>'+SOURCES.map(s=>'<th><div>'+esc(s[1])+'</div></th>').join('')+'</tr></thead><tbody>';
+  const tot={};
+  Q.forEach(q=>{
+    h+='<tr><th><button data-q="'+q.n+'"><span class="mono" style="color:var(--ink-3)">Q'+q.n+'</span> '+esc(q.title)+'</button></th>';
+    SOURCES.forEach(s=>{const all=q.sourceKeys[0]==='all';const hit=q.sourceKeys.includes(s[0]);if(hit)tot[s[0]]=(tot[s[0]]||0)+1;h+='<td class="'+(hit?'hit':all?'all':'')+'" title="Q'+q.n+' · '+esc(s[1])+'"></td>';});
+    h+='</tr>';
+  });
+  h+='</tbody><tfoot><tr><td style="text-align:right;padding-right:12px">Questions naming it</td>'+SOURCES.map(s=>'<td>'+(tot[s[0]]||0)+'</td>').join('')+'</tr></tfoot></table></div>';
+  h+='<h3>PESP guide questions</h3><p class="lede">The guide lists ten questions and says it focuses on the first five.</p><div class="sheet tscroll"><table class="t"><thead><tr><th>PESP question</th><th>Covered by</th><th>Note</th></tr></thead><tbody>'+
+    D.pesp.map((p,i)=>'<tr><td style="min-width:220px">'+(i<5?'<strong>':'')+esc(p.question)+(i<5?'</strong>':'')+'</td><td style="min-width:120px">'+(p.nums.length?p.nums.map(n=>qlink(n)).join(' '):'<span class="chip pill-out">not covered</span>')+'</td><td>'+md(p.note)+'</td></tr>').join('')+'</tbody></table></div>';
+  h+='<h3>What the set is designed to test</h3><div class="sheet"><ul class="plain" style="padding-left:20px">'+D.coverage.slice(1).map(c=>'<li style="margin:8px 0">'+md(c)+'</li>').join('')+'</ul></div>';
+  h+='<h3>Pending examples</h3><div class="sheet tscroll"><table class="t"><thead><tr><th>Needs</th><th>Questions</th></tr></thead><tbody>'+D.pending.map(r=>'<tr><td>'+md(r[0])+'</td><td>'+md(r[1])+'</td></tr>').join('')+'</tbody></table></div>';
+  $('#view-coverage').innerHTML=h;
+}
+
+/* ---------- requirements view ---------- */
+function numbered(items){return items.map(r=>'<div class="oi"><div class="on">'+r.n+'</div><div><div class="ot">'+md(r.title)+'</div><p>'+md(r.text)+'</p></div></div>').join('');}
+function renderRequirements(){
+  let h='<h2>Requirements &amp; scope</h2>';
+  h+=D.preamble.slice(0,4).map(p=>'<p class="lede">'+md(p)+'</p>').join('');
+  h+='<h3>Vocabulary used in the questions</h3>'+D.vocab.intro.slice(0,1).map(p=>'<p class="lede">'+md(p)+'</p>').join('');
+  h+='<div class="sheet tscroll"><table class="t"><thead><tr><th>Term</th><th>Meaning</th><th>Reliability</th></tr></thead><tbody>'+D.vocab.rows.map(r=>'<tr><td style="min-width:150px">'+md(r[0])+'</td><td>'+md(r[1])+'</td><td>'+relChip(r[2].trim())+'</td></tr>').join('')+'</tbody></table></div>';
+  if(D.vocab.intro[1]) h+='<div class="callout" style="margin-top:12px">'+md(D.vocab.intro[1])+'</div>';
+  h+='<h3>Requirements that apply to every answer</h3><p class="lede">'+md(D.requirements.intro)+'</p><div class="sheet">'+numbered(D.requirements.items)+'</div>';
+  h+='<h3>Scope</h3><p class="lede">'+md(D.scope.intro)+'</p><div class="sheet tscroll"><table class="t"><thead><tr><th>Work</th><th>What it covers</th><th>Result is held as</th></tr></thead><tbody>'+D.scope.rows.map(r=>'<tr><td style="min-width:130px">'+md(r[0])+'</td><td>'+md(r[1])+'</td><td>'+md(r[2])+'</td></tr>').join('')+'</tbody></table></div>';
+  h+='<h3>How web and document results are handled <span class="chip pill-partial">defaults, to confirm</span></h3><div class="sheet">'+numbered(D.scope.handling)+'</div>';
+  h+='<h3>Process requirements</h3><p class="lede">'+md(D.scope.processHead.replace(/^\(|\):$/g,''))+'</p><div class="sheet"><ul class="plain" style="padding-left:20px">'+D.scope.process.map(p=>'<li style="margin:8px 0">'+md(p)+'</li>').join('')+'</ul></div>';
+  h+='<div class="callout pending" style="margin-top:14px">'+md(D.scope.out)+'</div>';
+  h+='<h3>End-to-end acceptance requirement</h3><blockquote class="quote">'+md(D.e2e.quote)+'</blockquote>'+D.e2e.after.map(p=>'<p class="lede">'+md(p)+'</p>').join('')+'<div class="sheet">'+numbered(D.e2e.items)+'</div>';
+  h+='<h3>The guide\'s worked example</h3><p class="lede">'+md(D.worked)+'</p>';
+  $('#view-requirements').innerHTML=h;
+}
+
+/* ---------- anchors view ---------- */
+function renderAnchors(){
+  let h='<h2>Example buildings</h2><p class="lede">The neutral Sunset Park properties the examples are drawn from, and which questions use each one.</p>';
+  h+='<div class="cards">'+D.anchors.map(a=>'<div class="card"><div style="display:flex;gap:12px;align-items:baseline"><span class="ak" style="font-family:var(--f-display);font-weight:800;font-size:30px;color:var(--accent);line-height:1">'+a.key+'</span><div><div style="font-weight:600">'+esc(a.address)+'</div><div class="mono" style="color:var(--ink-3)">BBL '+esc(a.bbl)+'</div></div></div><p>'+md(a.what)+'</p><p style="margin-top:10px"><span class="fcount">Used by </span>'+(a.questions.length?a.questions.map(n=>qlink(n)).join(' '):'<span class="empty">no question</span>')+'</p></div>').join('')+'</div>';
+  h+=D.anchorNotes.map(p=>'<div class="callout info" style="margin-top:14px">'+md(p)+'</div>').join('');
+  h+='<h3>How the examples were chosen</h3><div class="sheet"><ul class="plain" style="padding-left:20px">'+D.chosen.map(c=>'<li style="margin:8px 0">'+md(c)+'</li>').join('')+'</ul></div>';
+  h+='<h3>'+md(D.dos.head.replace(/\*\*/g,''))+'</h3><div class="sheet tscroll"><table class="t"><thead><tr><th>Field</th><th>Populated for LLCs</th><th>Meaning</th></tr></thead><tbody>'+D.dos.rows.map(r=>'<tr><td>'+md(r[0])+'</td><td class="mono">'+md(r[1])+'</td><td>'+md(r[2])+'</td></tr>').join('')+'</tbody></table></div><div class="sheet" style="margin-top:10px"><ul class="plain" style="padding-left:20px">'+D.dos.bullets.map(b=>'<li style="margin:8px 0">'+md(b)+'</li>').join('')+'</ul></div>';
+  $('#view-anchors').innerHTML=h;
+}
+
+/* ---------- open items view ---------- */
+function moreHtml(lines){
+  let out='',tbl=[];
+  const flush=()=>{ if(!tbl.length) return; const rows=tbl.filter(l=>!/^\|\s*-/.test(l)).map(l=>l.replace(/^\||\|$/g,'').split(' | ').map(c=>c.trim()));
+    out+='<div class="tscroll" style="margin:8px 0"><table class="t"><thead><tr>'+rows[0].map(c=>'<th>'+md(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+md(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>'; tbl=[]; };
+  lines.forEach(l=>{ if(l.startsWith('|')){tbl.push(l);return;} flush(); out+= l.startsWith('- ')?'<p style="padding-left:12px">• '+md(l.slice(2))+'</p>':'<p>'+md(l)+'</p>'; });
+  flush(); return out;
+}
+function renderOpenItems(){
+  const st={resolved:'Resolved',open:'Open',partial:'Partly resolved',out:'Out of scope'};
+  const openN=D.openItems.filter(o=>o.state==='open'||o.state==='partial').length;
+  $('#tabOi').textContent=openN+' open';
+  let h='<h2>Open items</h2><p class="lede">'+openN+' of '+D.openItems.length+' items still need a decision or work. Resolved items stay listed so their decisions are visible during review.</p><div class="sheet">';
+  h+=D.openItems.map(o=>'<div class="oi"><div class="on">'+o.n+'</div><div><div class="ot">'+md(o.title)+' <span class="chip pill-'+o.state+'">'+st[o.state]+'</span></div><p>'+md(o.text)+'</p>'+(o.more.length?'<details class="more"><summary>Data findings and value lists</summary>'+moreHtml(o.more)+'</details>':'')+'</div></div>').join('');
+  h+='</div><h3>Change history</h3>'+D.changes.map(c=>'<details class="more sheet" style="padding:10px 16px;margin-bottom:8px"><summary style="font-weight:600">'+esc(c.title)+' · '+c.items.length+' changes</summary><ul style="padding-left:20px">'+c.items.map(i=>'<li style="margin:6px 0">'+md(i)+'</li>').join('')+'</ul></details>').join('');
+  $('#view-openitems').innerHTML=h;
+}
+
+/* ---------- summary view ---------- */
+function summaryMarkdown(){
+  const date=new Date().toISOString().slice(0,10);
+  let out='# Competency questions: review of '+(D.draft||'the current draft')+'\n\nReviewed '+date+'. '+Q.filter(q=>getR(q.n).verdict).length+' of '+Q.length+' questions have a verdict.\n';
+  if(overall.notes&&overall.notes.trim()) out+='\n## Overall notes\n\n'+overall.notes.trim()+'\n';
+  VERDICTS.forEach(v=>{
+    const qs=Q.filter(q=>getR(q.n).verdict===v[0]); if(!qs.length) return;
+    out+='\n## '+v[1]+' ('+qs.length+')\n';
+    qs.forEach(q=>{const r=getR(q.n);const miss=CHECKS.filter(c=>!(r.checks&&r.checks[c[0]])).map(c=>c[1].toLowerCase());
+      out+='\n- **Q'+q.n+' '+q.title+'**'+(r.rel?' · reliability → '+r.rel+' (was '+q.reliability+')':'')+(miss.length?' · not yet: '+miss.join(', '):' · week 1 complete')+(r.notes&&r.notes.trim()?'\n  '+r.notes.trim().replace(/\n/g,'\n  '):'')+'\n';});
+  });
+  const un=Q.filter(q=>!getR(q.n).verdict); if(un.length) out+='\n## Not yet reviewed ('+un.length+')\n\n'+un.map(q=>'Q'+q.n).join(', ')+'\n';
+  return out;
+}
+function renderSummaryExport(){ const pre=$('#mdOut'); if(pre) pre.textContent=summaryMarkdown(); }
+function renderSummary(){
+  const counts={}; VERDICTS.forEach(v=>counts[v[0]]=0); let none=0;
+  Q.forEach(q=>{const v=getR(q.n).verdict; if(v)counts[v]++; else none++;});
+  let h='<h2>Review summary</h2><p class="lede">Every verdict and note in one place. '+(store==='db'?'Your review is saved with this page, so Claude can read it back and apply the changes to the question files.':'Your review is saved in this browser only. Copy the summary below to hand it to Claude.')+'</p>';
+  h+='<div class="stats">'+VERDICTS.map(v=>'<div class="stat v-'+v[0]+'"><div class="num" style="color:var(--vc)">'+counts[v[0]]+'</div><div class="lbl">'+v[1]+'</div></div>').join('')+'<div class="stat"><div class="num" style="color:var(--ink-3)">'+none+'</div><div class="lbl">Not reviewed</div></div></div>';
+  h+='<h3>Overall notes</h3><textarea class="ta" id="overallNotes" placeholder="Notes about the set as a whole: gaps, overlaps, numbering, anything not tied to one question.">'+esc(overall.notes||'')+'</textarea>';
+  h+='<h3>Decisions by question</h3><div class="sheet tscroll"><table class="t sumtable"><thead><tr><th>Question</th><th>Verdict</th><th>Week 1</th><th>Reliability</th><th>Notes</th></tr></thead><tbody>'+
+    Q.map(q=>{const r=getR(q.n);const n=CHECKS.filter(c=>r.checks&&r.checks[c[0]]).length;return '<tr><td>'+qlink(q.n)+' '+esc(q.title)+'</td><td>'+(r.verdict?vChip(r.verdict):'<span class="empty">none</span>')+'</td><td class="mono">'+n+'/6</td><td>'+(r.rel?relChip(q.reliability)+' → '+relChip(r.rel):relChip(q.reliability))+'</td><td>'+(r.notes?esc(r.notes).replace(/\n/g,'<br>'):'')+'</td></tr>';}).join('')+'</tbody></table></div>';
+  h+='<h3>Summary as Markdown</h3><div class="copyrow"><button class="btn primary" id="copyMd">Copy summary</button><span class="copymsg" id="copyMsg"></span></div><pre class="md" id="mdOut" tabindex="0"></pre>';
+  $('#view-summary').innerHTML=h;
+  renderSummaryExport(); applyRO();
+}
+
+/* ---------- views & routing ---------- */
+let view='questions';
+function showView(v,push){
+  view=v;
+  $$('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.view===v));
+  $$('.view').forEach(s=>s.hidden=s.id!=='view-'+v);
+  if(v==='summary') renderSummary();
+  if(push!==false){ try{history.replaceState(null,'',v==='questions'?'#q'+cur:'#'+v);}catch(e){} }
+  try{localStorage.setItem('cqr-view',v);}catch(e){}
+}
+function openQ(n,keepSub){
+  if(!byN[n]) return;
+  cur=n; if(!keepSub) subtab='overview';
+  renderList(); renderFile(); renderSlip();
+  if(view!=='questions') showView('questions',false);
+  try{history.replaceState(null,'','#q'+n);}catch(e){}
+  try{localStorage.setItem('cqr-cur',n);}catch(e){}
+  const li=$('.qitem[data-q="'+n+'"]'); if(li) li.scrollIntoView({block:'nearest'});
+}
+function refreshAll(){ renderList(); renderProgress(); if(view==='summary'){renderSummary();} }
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-q]');
+  if(t && !t.closest('#q-pick')){ const wasOther=view!=='questions'; openQ(+t.dataset.q); if(wasOther){ showView('questions'); window.scrollTo({top:0}); } else if(!t.closest('.qlist')){ const f=document.getElementById('qfile'); if(f.getBoundingClientRect().top<0) f.scrollIntoView({block:'start'}); } return; }
+  const tab=e.target.closest('nav.tabs button'); if(tab){ showView(tab.dataset.view); return; }
+  const sub=e.target.closest('[data-sub]'); if(sub&&!sub.disabled){ subtab=sub.dataset.sub; renderFile(); return; }
+  const go=e.target.closest('[data-go]'); if(go){ step(+go.dataset.go); return; }
+  const fb=e.target.closest('.fbtn'); if(fb){ const s=F[fb.dataset.f]; const v=fb.dataset.v; s.has(v)?s.delete(v):s.add(v); fb.setAttribute('aria-pressed',s.has(v)); renderList(); return; }
+  const vb=e.target.closest('.vbtn'); if(vb&&canWrite){ const r=getR(cur); r.verdict = r.verdict===vb.dataset.v?'':vb.dataset.v; reviews[cur]=r; persist(cur); renderSlip(); return; }
+  if(e.target.id==='copyMd'){ const txt=summaryMarkdown(); const msg=$('#copyMsg');
+    try{ navigator.clipboard.writeText(txt).then(()=>msg.textContent='Copied.').catch(()=>{selectPre();msg.textContent='Selected. Press Ctrl+C or ⌘C to copy.';}); }catch(err){selectPre();msg.textContent='Selected. Press Ctrl+C or ⌘C to copy.';} }
+});
+function selectPre(){const el=$('#mdOut');const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);}
+$('#checks').addEventListener('change',e=>{ if(!canWrite) return; const r=getR(cur); r.checks=Object.assign({},r.checks,{[e.target.dataset.c]:e.target.checked}); reviews[cur]=r; persist(cur); renderSlip(); });
+$('#relSel').addEventListener('change',e=>{ const r=getR(cur); r.rel=e.target.value; reviews[cur]=r; persist(cur); });
+let noteT=null;
+$('#notes').addEventListener('input',e=>{ const n=cur; const r=getR(n); r.notes=e.target.value; reviews[n]=r; setSave('Unsaved changes'); clearTimeout(noteT); noteT=setTimeout(()=>persist(n),900); });
+$('#notes').addEventListener('blur',()=>{ if(noteT){clearTimeout(noteT);noteT=null;persist(cur);} });
+let ovT=null;
+document.addEventListener('input',e=>{ if(e.target.id==='overallNotes'){ overall.notes=e.target.value; setSave('Unsaved changes'); clearTimeout(ovT); ovT=setTimeout(persistOverall,900);} });
+$('#q-search').addEventListener('input',e=>{F.q=e.target.value.trim().toLowerCase();renderList();});
+$('#q-pick').addEventListener('change',e=>openQ(+e.target.value));
+function step(d){ const vis=visible(); let list=vis.some(q=>q.n===cur)?vis:Q; let i=list.findIndex(q=>q.n===cur); const nx=list[i+d]; if(nx) openQ(nx.n); }
+document.addEventListener('keydown',e=>{
+  if(view!=='questions') return;
+  const tag=(e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='textarea'||tag==='select'||e.metaKey||e.ctrlKey||e.altKey) return;
+  if(e.key==='j'||e.key==='ArrowRight'||e.key==='ArrowDown'){ if(e.key.startsWith('Arrow')&&e.target.closest('[role=tablist]')) return; e.preventDefault(); step(1); }
+  else if(e.key==='k'||e.key==='ArrowLeft'||e.key==='ArrowUp'){ if(e.key.startsWith('Arrow')&&e.target.closest('[role=tablist]')) return; e.preventDefault(); step(-1); }
+  else if(/^[1-6]$/.test(e.key)&&canWrite){ const v=VERDICTS[+e.key-1][0]; const r=getR(cur); r.verdict=r.verdict===v?'':v; reviews[cur]=r; persist(cur); renderSlip(); }
+});
+
+/* ---------- boot ---------- */
+function boot(){
+  const h=(location.hash||'').slice(1);
+  let start=1, startView='questions';
+  try{ const c=+localStorage.getItem('cqr-cur'); if(byN[c]) start=c; const v=localStorage.getItem('cqr-view'); if(v) startView=v; }catch(e){}
+  if(/^q\d+$/.test(h)&&byN[+h.slice(1)]){start=+h.slice(1);startView='questions';}
+  else if(['coverage','requirements','anchors','openitems','summary','questions'].includes(h)) startView=h;
+  renderCoverage(); renderRequirements(); renderAnchors(); renderOpenItems();
+  cur=start; renderList(); renderFile(); renderSlip(); renderProgress();
+  showView(startView,false);
+}
+// local fallback first, so the page is complete at rest
+Object.assign(reviews, lsGet('cqr-reviews')||{});
+overall = lsGet('cqr-overall') || overall;
+boot();
+setSave('Saved in this browser only');
+
+(async function(){
+  let api=null;
+  try{ api = window.claude && window.claude.use ? await window.claude.use('db') : null; }catch(e){ api=null; }
+  if(!api){ store='local'; setSave('Saved in this browser only'); return; }
+  db=api; store='db';
+  try{
+    const u = window.claude.use ? await window.claude.use('user') : null;
+    if(u && u.can){ const c = await u.can('data.write'); if(c===false){ canWrite=false; } }
+  }catch(e){}
+  setSave(canWrite?'Saved':'Read only', !canWrite);
+  // replace local state with the shared record
+  db.collection('reviews').onSnapshot(snap=>{
+    snap.docs.forEach(d=>{ const raw=d.data(); const b=raw?plain(raw):null; if(b&&b.n){ if(pendingWrites[b.n]>0) return; const loc=reviews[b.n]; if(loc&&loc.updatedAt&&b.updatedAt&&b.updatedAt<loc.updatedAt) return; if(b.n===cur && document.activeElement===$('#notes')){ const keep=reviews[b.n]&&reviews[b.n].notes; reviews[b.n]=Object.assign({},b,{notes:keep}); } else reviews[b.n]=b; } });
+    renderList(); renderSlip(); renderProgress(); if(view==='summary') renderSummary();
+  }, e=>{ setSave('Live updates stopped: '+(e&&e.code||'error'),true); });
+  db.doc('meta/overall').onSnapshot(s=>{ if(s.exists){ const b=plain(s.data()); if(document.activeElement && document.activeElement.id==='overallNotes') return; overall=Object.assign({},b); if(view==='summary') renderSummary(); } }, ()=>{});
+  applyRO();
+})();
+})();
+</script>

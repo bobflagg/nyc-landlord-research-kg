@@ -1,0 +1,14 @@
+{
+  "skillOverrides": {
+    "discovery-schema-reference": "off",
+    "anthropic-skills:discovery-schema-reference": "off"
+  },
+  "permissions": {
+    "deny": [
+      "Skill(discovery-schema-reference)",
+      "Skill(discovery-schema-reference *)",
+      "Skill(anthropic-skills:discovery-schema-reference)",
+      "Skill(anthropic-skills:discovery-schema-reference *)"
+    ]
+  }
+}

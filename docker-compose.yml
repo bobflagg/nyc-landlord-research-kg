@@ -1,0 +1,22 @@
+# Local development Neo4j for this repo: 5.26 LTS with APOC and neosemantics (n10s).
+# Ports are shifted (7475/7688) so it can run beside other local Neo4j instances.
+services:
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: nyc-landlord-kg-neo4j
+    ports:
+      - "7475:7474"   # Browser
+      - "7688:7687"   # Bolt
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:?set NEO4J_PASSWORD in .env}"
+      NEO4J_PLUGINS: '["apoc", "n10s"]'
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*,n10s.*"
+      NEO4J_server_memory_heap_initial__size: "${NEO4J_HEAP:-4G}"
+      NEO4J_server_memory_heap_max__size: "${NEO4J_HEAP:-4G}"
+      NEO4J_server_memory_pagecache_size: "${NEO4J_PAGECACHE:-4G}"
+    volumes:
+      - ./neo4j/data:/data
+      - ./neo4j/logs:/logs
+      - ./neo4j/import:/var/lib/neo4j/import
+      - ./neo4j/plugins:/plugins
+    restart: unless-stopped

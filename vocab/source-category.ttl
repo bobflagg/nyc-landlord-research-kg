@@ -1,0 +1,41 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sc: <https://bobflagg.github.io/Watchline/vocab/source-category/> .
+
+sc: a skos:ConceptScheme ;
+    dcterms:title "Source category"@en ;
+    dcterms:description "What kind of source supplied an assertion."@en ;
+    dcterms:created "2026-10-18"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Web search is a retrieval channel, not a category: a primary record found by search is public_record, with its URL and retrieved_at in the provenance (design note 0002). project_derived was added by design note 0004."@en ;
+    skos:hasTopConcept sc:public_record, sc:published_reporting, sc:web_content, sc:project_derived .
+
+sc:public_record a skos:Concept ;
+    skos:inScheme sc: ;
+    skos:topConceptOf sc: ;
+    skos:notation "public_record" ;
+    skos:prefLabel "Public record"@en ;
+    skos:definition "A government or registry record: a dataset row from PLUTO, ACRIS, HPD or NY DOS, or a primary filing retrieved from a registry."@en .
+
+sc:published_reporting a skos:Concept ;
+    skos:inScheme sc: ;
+    skos:topConceptOf sc: ;
+    skos:notation "published_reporting" ;
+    skos:prefLabel "Published reporting"@en ;
+    skos:definition "A third party's published claim, such as a news article. Reliable only as to the fact that the claim was published."@en .
+
+sc:web_content a skos:Concept ;
+    skos:inScheme sc: ;
+    skos:topConceptOf sc: ;
+    skos:notation "web_content" ;
+    skos:prefLabel "Web content"@en ;
+    skos:definition "Other web material that is neither a primary record nor reporting, such as a professional page that only states an employer or title."@en .
+
+sc:project_derived a skos:Concept ;
+    skos:inScheme sc: ;
+    skos:topConceptOf sc: ;
+    skos:notation "project_derived" ;
+    skos:prefLabel "Project-derived"@en ;
+    skos:definition "Supplied by this project's pipelines or curation: the BOR/NLR derived layers as loaded from their release, and the curated mail-drop list. The records behind a derived link keep their own source category."@en .
