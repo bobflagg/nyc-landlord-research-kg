@@ -5,6 +5,7 @@ description = "Ontology-first knowledge graph course and capstone: an NYC landlo
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "httpx>=0.28.1",
     "langchain>=1.4.7",
     "langchain-anthropic>=1.7.6",
     "langsmith[pytest]>=0.14.12",
@@ -22,4 +23,4 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
-markers = ["agent: calls a model and needs ANTHROPIC_API_KEY"]
+markers = ["agent: calls a model and needs ANTHROPIC_API_KEY", "geosupport: needs the Geosupport sidecar"]

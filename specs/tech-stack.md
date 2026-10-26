@@ -58,6 +58,7 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 | **LangChain v1, LangGraph, Deep Agents, LangSmith** | Existing stack; LangGraph for controlled flows, Deep Agents for multi-step investigation, LangSmith for traces and evaluation |
 | **Graph access is read-only**: templated Cypher tools first, validated text-to-Cypher as fallback, mcp-neo4j-cypher in read-only mode | Applications never change recorded evidence |
 | **Web and document findings are session evidence**, not graph facts | A finding enters the graph only through a later, reviewed process (mission, not yet in scope) |
+| **A typed address resolves through NYC DCP Geosupport** (release 25b, pinned), served by a sidecar container (`geosupport/`, design note 0013). The city's BBL and BIN are confirmed in the graph before they are reported; an outage is never reported as "not found". Rule A2 (note 0006) still compares stored address strings | HPD and PLUTO spell the same street differently (about half of sampled HPD buildings do not reach their PLUTO lot under A2); the city's own standardizer is the authority both derive from |
 | **Tools and skills are grouped by question family** | A stage adds a family without changing the others |
 | **Model: Anthropic Claude, through LangChain's `init_chat_model`/`create_agent` model strings**, set in `.env` (`AGENT_MODEL`, and `JUDGE_MODEL` for evaluations). **Tests: pytest** for deterministic checks, run in rolled-back transactions on `nyclr`; **LangSmith** datasets and evaluators for agent behavior (design note 0012) | A provider swap is a config change; deterministic tests need no model or network |
 | Web search tool and retrieval cache: **not yet decided** | Needed before the slices that use them (roadmap) |
@@ -71,7 +72,6 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 | **Every addition traces to a competency question**: question → vocabulary terms → ontology classes → loader → agent tool → evaluation case | Nothing is built that no question needs |
 | **Prefer the simplest model that keeps every answer citable and its reliability visible.** Add structure only when a competency question, or a requirement the specs now defer, forces it. Provenance is flat properties on each fact (design note 0005) | The agent's accuracy and citations are the product; extra structure adds load, query and validation cost |
 | **An evaluation dataset per stage, with expected answers from the build snapshot**; earlier stages' evaluations must keep passing | Regression protection as stages accumulate |
-| Test framework: **not yet decided** | Needed by Slice 0 |
 
 ## Open decisions
 

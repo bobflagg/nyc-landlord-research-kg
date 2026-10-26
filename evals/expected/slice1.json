@@ -1442,7 +1442,7 @@
   }
  },
  "findings": [
-  "Q1: HPD spells ordinals out or with a suffix (54TH STREET, SEVENTH AVENUE, 52ND STREET), PLUTO does not (54 STREET, 7 AVENUE, 52 STREET). Rule A2 does not map ordinals, so for all six registered anchors the HPD building key differs from the PLUTO lot key (flag reached_by_pluto_address_key). An address typed the HPD way (218 54TH STREET, 5413 SEVENTH AVENUE) does not reach the lot, and the other two buildings of lot D are reachable only through the HPD spelling. Q1 needs a decision on extending A2 with ordinal and spelled-number mapping (design note 0006).",
+  "Q1: HPD spells ordinals out or with a suffix (54TH STREET, SEVENTH AVENUE), PLUTO does not (54 STREET, 7 AVENUE), so rule A2 alone reaches the PLUTO lot from the HPD spelling for only about half of registered buildings (100 of 198 sampled). The expected Q1 answers therefore come through Geosupport (design note 0013): every HPD and PLUTO spelling of the anchors resolves to the BBL and BIN in this file (tests/test_geosupport_live.py).",
   "Q3: lot D has two deeds with the same latest date; 'most recent' is a tie and is reported as one.",
   "Q3: lot C's last deed is from 2002; lot E's deed (recorded 2026-04-21) postdates the lapsed HPD registration (period ended 2021-09-01).",
   "Q4/Q5, lot G: HPD names an officer Kourosh Sioni; the DOS process name is KOURASH SIUNI (a spelling variant, or a different person). Under N1 these differ, so the answer reports a possible connection with the evidence and does not match them (design note 0009).",

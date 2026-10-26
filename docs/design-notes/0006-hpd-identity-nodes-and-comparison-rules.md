@@ -4,6 +4,8 @@ Date: 2026-10-19
 
 Status: **accepted 2026-10-19**, with name rule N1 and address rule A2 chosen. Builds on notes 0001, 0004 and 0005. ACRIS party nodes remain open (see Open).
 
+*Update 2026-10-26 (note 0013):* typed addresses now resolve through Geosupport (the deferred A3 for that use). A2 remains the rule for comparing stored address strings, such as business addresses and the mail-drop list, until note 0013's open item is decided.
+
 ## Decision
 
 1. **Identity nodes for recorded parties.** Each distinct party as recorded in a source is a node: one per (contact kind, name, business address) for HPD contacts, the same grain NLR and BOR use. The node asserts only that this exact name and address were recorded. It never asserts that two records are one party; that judgment stays with BOR (Type II) and Q22.

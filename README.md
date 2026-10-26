@@ -40,7 +40,16 @@ evals/         LangSmith datasets and evaluators
    ```
 
    Bolt: `bolt://localhost:7687`. The server may host other projects' databases; this project uses only `nyclr` (design note 0011). For the citywide graph, raise the DBMS heap and page cache in Desktop's settings.
-3. Add Python dependencies as each week needs them, for example:
+3. Start the address service (NYC DCP Geosupport, release 25b; the first build downloads about 2 GB):
+
+   ```bash
+   docker build --platform=linux/amd64 -t nyclr-geosupport geosupport/
+   docker run -d --platform=linux/amd64 -p 8081:8080 --name nyclr-geosupport nyclr-geosupport
+   curl -s localhost:8081/health      # {"release":"25b"}
+   ```
+
+   It runs under emulation on Apple Silicon. Port 8081 leaves 8080 free for other projects.
+4. Add Python dependencies as each week needs them, for example:
 
    ```bash
    uv add rdflib pyshacl neo4j            # weeks 1–4

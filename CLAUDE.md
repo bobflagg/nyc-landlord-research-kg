@@ -40,6 +40,7 @@ scripts/     utilities (competency question review page)
 - Python 3.13 with **uv**: `uv add <pkg>`, `uv run <cmd>`. Never pip.
 - **Source data:** the local justfixwow PostgreSQL database (`postgres-justfix` MCP server in `.mcp.json`, port 5434). Read-only; it is a build input, never queried by the agent. Use the tables named in `specs/tech-stack.md`; the stale `acris_real_property_*` and `hpd_complaints` copies are not used.
 - **Graph:** Neo4j in Neo4j Desktop (design note 0011): database `nyclr` on `bolt://localhost:7687`. URI, user, password and database name are in `.env` (copy `.env.example`). APOC; no n10s.
+- **Addresses:** typed addresses resolve through the Geosupport sidecar (`geosupport/`, design note 0013): `docker build --platform=linux/amd64 -t nyclr-geosupport geosupport/`, then `docker run -d --platform=linux/amd64 -p 8081:8080 --name nyclr-geosupport nyclr-geosupport`. `GEOSUPPORT_URL` defaults to `http://localhost:8081`.
 - **Only ever use the `nyclr` database.** The Desktop server also hosts other projects' databases (such as the Watchline discovery graph). Every connection names `NEO4J_DATABASE` explicitly. Never read from or write to any other database, and never create, drop or alter databases other than `nyclr`.
 - Secrets live in `.env` and `.mcp.json`. Never print, log or commit their values.
 
