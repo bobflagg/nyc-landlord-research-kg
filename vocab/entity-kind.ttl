@@ -1,0 +1,71 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kind: <https://bobflagg.github.io/Watchline/vocab/entity-kind/> .
+
+kind: a skos:ConceptScheme ;
+    dcterms:title "Entity kind"@en ;
+    dcterms:description "The owner type as declared to the source. Not a legal form: DOS is the better source for that (Q5)."@en ;
+    dcterms:created "2026-10-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "A property of the registration's owner, not of the person on a contact row (design note 0004). The notation is the string stored in owner_kind; the recorded value is always kept in owner_kind_raw. Values with no concept here (ESTATE, TRUSTEE, free text) map to nothing. skos:hiddenLabel @x-hpd lists the HPD codes the loader maps from, compared case-insensitively."@en ;
+    skos:hasTopConcept kind:individual, kind:joint, kind:corporation, kind:partnership_or_llc, kind:trust, kind:co_op, kind:condo .
+
+kind:individual a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "individual" ;
+    skos:prefLabel "Individual"@en ;
+    skos:hiddenLabel "INDIV"@x-hpd ;
+    skos:definition "An owner registered as one person."@en .
+
+kind:joint a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "joint" ;
+    skos:prefLabel "Joint owners"@en ;
+    skos:hiddenLabel "JOINT"@x-hpd ;
+    skos:definition "Owners registered jointly."@en .
+
+kind:corporation a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "corporation" ;
+    skos:prefLabel "Corporation"@en ;
+    skos:hiddenLabel "CORP"@x-hpd ;
+    skos:definition "An owner registered as a corporation."@en .
+
+kind:partnership_or_llc a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "partnership_or_llc" ;
+    skos:prefLabel "Partnership or LLC"@en ;
+    skos:hiddenLabel "GEN.PART"@x-hpd ;
+    skos:hiddenLabel "PARTNERSHIP/LLC"@x-hpd ;
+    skos:hiddenLabel "LLC"@x-hpd ;
+    skos:definition "An owner registered as a general partnership, partnership or LLC. HPD's GEN.PART abbreviates general partnership, but 88.7% of owners coded so have names ending in LLC (note 0004); no HPD codebook confirms the reading."@en .
+
+kind:trust a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "trust" ;
+    skos:prefLabel "Trust"@en ;
+    skos:hiddenLabel "TRUST"@x-hpd ;
+    skos:definition "An owner registered as a trust, in any spelling of the code."@en .
+
+kind:co_op a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "co_op" ;
+    skos:prefLabel "Co-op"@en ;
+    skos:hiddenLabel "CO-OP"@x-hpd ;
+    skos:definition "An owner registered as a cooperative. Kept distinct because BOR excludes co-ops by policy."@en .
+
+kind:condo a skos:Concept ;
+    skos:inScheme kind: ;
+    skos:topConceptOf kind: ;
+    skos:notation "condo" ;
+    skos:prefLabel "Condominium"@en ;
+    skos:hiddenLabel "CONDO"@x-hpd ;
+    skos:definition "An owner registered as a condominium. Kept distinct because BOR excludes condos by policy."@en .

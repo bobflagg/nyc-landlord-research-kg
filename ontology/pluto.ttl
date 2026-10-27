@@ -1,0 +1,23 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix pluto:   <https://bobflagg.github.io/Watchline/ontology/pluto#> .
+
+# PLUTO lot attributes (design note 0014). Source `pluto`; a lot HPD knows and PLUTO does not has none of these.
+<https://bobflagg.github.io/Watchline/ontology/pluto> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline PLUTO lot attributes"@en ;
+    dcterms:created "2026-10-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+pluto:zip5 a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "5-digit zip code of the lot address."@en .
+pluto:building_class a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "PLUTO building class code, such as C1. Lot-level."@en .
+pluto:units_residential a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Residential units on the lot. Lot-level; a lot with several buildings holds the sum."@en .
+pluto:units_total a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "All units on the lot."@en .
+pluto:buildings_count a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Number of buildings PLUTO counts on the lot. May differ from the buildings the graph holds, which come from HPD registrations."@en .
+pluto:year_built a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Year built. PLUTO's 0 (unknown) is not loaded."@en .
+pluto:assessed_total a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Total assessed value in dollars."@en .
+pluto:owner_name_pluto a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "The owner name PLUTO carries, as written. A name from a source, not a role (design note 0009)."@en .
+pluto:community_district a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "Community district code, such as 307."@en .

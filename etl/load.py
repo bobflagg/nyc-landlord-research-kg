@@ -33,15 +33,26 @@ def register_snapshot(tx, snapshot_id: str, source: str, snapshot_date: date) ->
     ).consume()
 
 
-def load_nodes(tx, schema: Schema, label: str, rows: Iterable[dict]) -> int:
-    """MERGE nodes on the label's key. Each row is a flat dict that includes the key and the provenance properties."""
+def load_nodes(tx, schema: Schema, label: str, rows: Iterable[dict], also: tuple[str, ...] = (), on_create_only: tuple[str, ...] = ()) -> int:
+    """MERGE nodes on the label's key. Each row is a flat dict that includes the key and the provenance properties.
+
+    `also` adds more labels (a subclass such as HpdRole); each must be a class in the ontology.
+    `on_create_only` names properties set only when the node is new, so a later source cannot overwrite them
+    (a lot PLUTO loaded keeps source `pluto` when HPD meets it again)."""
     key = schema.keys[label]
+    for extra in also:
+        if extra not in schema.classes:
+            raise ValueError(f"unknown class {extra}")
+    set_labels = "".join(f" SET n:`{x}`" for x in also)
+    keep = ", ".join(f"n.`{p}` = row.`{p}`" for p in on_create_only)
     n = 0
     for chunk in _batches(rows):
-        tx.run(
-            f"UNWIND $rows AS row MERGE (n:`{label}` {{`{key}`: row.`{key}`}}) SET n += row",
-            rows=chunk,
-        ).consume()
+        if on_create_only:
+            q = (f"UNWIND $rows AS row MERGE (n:`{label}` {{`{key}`: row.`{key}`}}) "
+                 f"ON CREATE SET {keep} SET n += apoc.map.removeKeys(row, $keep){set_labels}")
+            tx.run(q, rows=chunk, keep=list(on_create_only)).consume()
+        else:
+            tx.run(f"UNWIND $rows AS row MERGE (n:`{label}` {{`{key}`: row.`{key}`}}) SET n += row{set_labels}", rows=chunk).consume()
         n += len(chunk)
     return n
 

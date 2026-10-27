@@ -20,6 +20,6 @@ def test_bad_row_trips_rule(tx, rule, cypher):
 
 
 def test_every_manifest_rule_is_run():
-    manifest = json.loads((ROOT / "ontology" / "generated" / "core.manifest.json").read_text())
-    assert len(compiled_rules()) == len(manifest["rules"])
+    total = sum(len(json.loads(p.read_text())["rules"]) for p in (ROOT / "ontology" / "generated").glob("*.manifest.json"))
+    assert len(compiled_rules()) == total
     assert {n for n, _ in handwritten_checks()} == {"role_attachment", "snapshot_reference"}

@@ -1,0 +1,52 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix s2c: <https://w3id.org/shacl2cypher#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:  <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix hpd: <https://bobflagg.github.io/Watchline/ontology/hpd#> .
+
+# HPD shapes (design note 0014). Values between "generated" markers are written from vocab/ by
+# scripts/sync_shape_values.py ("name:x-hpd" takes the HPD codes on skos:hiddenLabel).
+
+hpd:RegistrationShape a sh:NodeShape ; sh:targetClass hpd:Registration ; s2c:key "registration_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path hpd:registration_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]+$" ] ;
+  sh:property [ sh:path hpd:hpd_building_id ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path hpd:last_registration_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path hpd:registration_end_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path hpd:owner_kind ; sh:maxCount 1 ; sh:in
+    # generated:entity-kind begin
+    ( "individual" "joint" "corporation" "partnership_or_llc" "trust" "co_op" "condo" )
+    # generated:entity-kind end
+  ] ;
+  sh:property [ sh:path hpd:owner_kind_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  # A registration is on its lot always, and on a building when it has a real BIN.
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:on_building ; sh:class wl:Building ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_registrations" ) ] .
+
+hpd:HpdPartyShape a sh:NodeShape ; sh:targetClass hpd:HpdParty ;
+  sh:property [ sh:path wl:party_id ; sh:pattern "^[0-9a-f]{32}$" ] ;
+  sh:property [ sh:path hpd:hpd_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:role-type:x-hpd begin
+    ( "CorporateOwner" "IndividualOwner" "JointOwner" "HeadOfficer" "Officer" "Shareholder" "Agent" "SiteManager" "Lessee" )
+    # generated:role-type:x-hpd end
+  ] ;
+  sh:property [ sh:path hpd:organization_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path hpd:person_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path hpd:business_address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_contacts" ) ] .
+
+hpd:HpdRoleShape a sh:NodeShape ; sh:targetClass hpd:HpdRole ;
+  sh:property [ sh:path wl:role_type ; sh:in
+    # generated:role-type begin only=registered_owner,head_officer,officer,shareholder,managing_agent,site_manager,lessee
+    ( "registered_owner" "head_officer" "officer" "shareholder" "managing_agent" "site_manager" "lessee" )
+    # generated:role-type end
+  ] ;
+  sh:property [ sh:path wl:source_role_code ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:role-type:x-hpd begin
+    ( "CorporateOwner" "IndividualOwner" "JointOwner" "HeadOfficer" "Officer" "Shareholder" "Agent" "SiteManager" "Lessee" )
+    # generated:role-type:x-hpd end
+  ] ;
+  sh:property [ sh:path hpd:in_registration ; sh:class hpd:Registration ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path hpd:title ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_contacts" ) ] .

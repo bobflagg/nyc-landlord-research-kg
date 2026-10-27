@@ -55,7 +55,7 @@ Status: **accepted 2026-10-26.** Items 1–6 were accepted first; items 7 and 8 
 - **Edits made with this note:**
   - `specs/roadmap.md`: "review record" is removed from the Slice 0 core module, and the review-records bullet in cross-cutting work now says the class is defined there.
   - `specs/tech-stack.md`: "review record" is removed from the core module list, and the schema row says a violation fails the build.
-- **A registration without a real BIN** (396 of 203,236) has no building node, so its roles attach to the lot. This follows from decision 2 and should be confirmed when the HPD module is written in Slice 1.
+- **A registration without a real BIN** (396 of 203,236 by the first count; 757 by the fuller definition in note 0014) has no building node, so its roles attach to the lot. This follows from decision 2 and should be confirmed when the HPD module is written in Slice 1.
 - **Slice 0 exit test** is unchanged: a sample load validates under SHACL, and the harness runs one question end to end. The validation step is now shacl2cypher plus the snapshot-reference check (item 7).
 - **READMEs:** `ontology/README.md` and `vocab/README.md` still describe the old "weeks 2–3" course plan. They are rewritten with the first ontology files.
 - **Revisit:** per-source attributes on `Lot` once a second source needs them; address nodes if Q6 or Q7 needs traversal; the review class with the review process.

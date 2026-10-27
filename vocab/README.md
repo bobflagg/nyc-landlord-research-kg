@@ -1,8 +1,15 @@
-# vocab/ (weeks 1–2)
+# vocab/
 
-Controlled vocabularies and the SKOS thesaurus, in Turtle.
+Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). The namespace is `https://bobflagg.github.io/Watchline/vocab/`, one path segment per scheme. A concept's `skos:notation` is the exact string stored in the graph.
 
-- Week 1: controlled vocabularies for owner and contact roles, violation classes (A/B/C), complaint types and court case types, plus a metadata schema for source records. Start from the values the datasets actually use (HPD contact types, ACRIS document types, violation classes).
-- Week 2: encode them as SKOS concept schemes (`*.ttl`) and load them into the graph with the project's own loader (n10s is not used; design note 0011).
+| File | Scheme | Used for |
+| --- | --- | --- |
+| `reliability.ttl` | Reliability (I, II) | `reliability` on every fact |
+| `source-category.ttl` | Source category | `source_category` on every fact |
+| `review-status.ttl` | Review status | `review_status` |
+| `role-type.ttl` | Role type | `role_type` on roles (HPD now; ACRIS and DOS with their modules) |
+| `entity-kind.ttl` | Entity kind | `owner_kind` on registrations |
 
-Done when: every coded value in the week 4 datasets maps to a concept here.
+`skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
+
+Coded values are added only when a competency question uses them (design note 0004, D5); the recorded raw value is always kept.

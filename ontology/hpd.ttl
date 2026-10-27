@@ -1,0 +1,54 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix hpd:     <https://bobflagg.github.io/Watchline/ontology/hpd#> .
+
+# HPD module (design notes 0006, 0014): registrations, the parties and roles their contacts record.
+<https://bobflagg.github.io/Watchline/ontology/hpd> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline HPD module"@en ;
+    dcterms:created "2026-10-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+hpd:Registration a owl:Class ;
+    rdfs:label "Registration"@en ;
+    rdfs:comment "One HPD multiple-dwelling registration, keyed by registration id (a string). A registration says who registered, not who holds title. A building can have more than one."@en .
+
+hpd:HpdParty a owl:Class ; rdfs:subClassOf wl:Party ;
+    rdfs:label "HPD party"@en ;
+    rdfs:comment "A party as an HPD contact records it: one node per (HPD contact type, organization name, person name, business address). It asserts only that this name and address were recorded; it never says two records are one party (note 0006)."@en .
+
+hpd:HpdRole a owl:Class ; rdfs:subClassOf wl:Role ;
+    rdfs:label "HPD role"@en ;
+    rdfs:comment "A role from one HPD contact row. Carried with the labels Role and HpdRole."@en .
+
+hpd:registration_id a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:string .
+hpd:hpd_building_id a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:string ;
+    rdfs:comment "HPD's own building id. Several HPD building ids can share one BIN."@en .
+hpd:last_registration_date a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:date .
+hpd:registration_end_date a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:date .
+hpd:owner_kind a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:string ;
+    rdfs:comment "Owner type as declared to HPD, normalized. Values: vocab/entity-kind.ttl. Absent when the recorded value has no concept."@en .
+hpd:owner_kind_raw a owl:DatatypeProperty ; rdfs:domain hpd:Registration ; rdfs:range xsd:string ;
+    rdfs:comment "The recorded contactdescription, as written."@en .
+
+hpd:in_registration a owl:ObjectProperty ; rdfs:domain hpd:HpdRole ; rdfs:range hpd:Registration ;
+    rdfs:comment "The registration a role was recorded in. Structural."@en .
+
+hpd:hpd_type a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string ;
+    rdfs:comment "The HPD contact type the party was recorded under (CorporateOwner, Agent, ...). Part of the party's identity."@en .
+hpd:organization_name a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:person_name a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string ;
+    rdfs:comment "First name, middle initial and last name as recorded. Shown with its role and source (note 0009)."@en .
+hpd:business_house a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_street a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_apartment a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_city a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_state a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_zip a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
+hpd:business_address_key a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string ;
+    rdfs:comment "Rule A2 key of the business address (house, street, zip5). Indexed. A shared key is a lead, never a link by itself; mail-drop addresses never link entities."@en .
+hpd:title a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
+    rdfs:comment "The title as recorded (PRESIDENT, Member)."@en .

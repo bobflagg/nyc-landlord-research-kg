@@ -1,0 +1,85 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix role: <https://bobflagg.github.io/Watchline/vocab/role-type/> .
+
+role: a skos:ConceptScheme ;
+    dcterms:title "Role type"@en ;
+    dcterms:description "What a record says a party is to a building or lot, normalized across sources. Names the role the record gives and never implies ownership or control."@en ;
+    dcterms:created "2026-10-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Each concept's skos:notation is the string stored in role_type. skos:hiddenLabel with language tag x-hpd is the HPD contact type the loader maps from (design notes 0004 and 0014). The two groupings name what the record says, not who controls the building. ACRIS and DOS roles are added with their modules."@en ;
+    skos:hasTopConcept role:registered_principal, role:management .
+
+role:registered_principal a skos:Concept ;
+    skos:inScheme role: ;
+    skos:topConceptOf role: ;
+    skos:notation "registered_principal" ;
+    skos:prefLabel "Principal named in a registration"@en ;
+    skos:definition "The owner, officers, shareholders and lessee a registration names. A grouping of what the record says; it implies no ownership or control."@en .
+
+role:management a skos:Concept ;
+    skos:inScheme role: ;
+    skos:topConceptOf role: ;
+    skos:notation "management" ;
+    skos:prefLabel "Management"@en ;
+    skos:definition "The managing agent and site manager a registration names. A management relationship, not ownership."@en .
+
+role:registered_owner a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:registered_principal ;
+    skos:notation "registered_owner" ;
+    skos:prefLabel "Registered owner"@en ;
+    skos:hiddenLabel "CorporateOwner"@x-hpd ;
+    skos:hiddenLabel "IndividualOwner"@x-hpd ;
+    skos:hiddenLabel "JointOwner"@x-hpd ;
+    skos:definition "The party an HPD registration lists as owner, whether a corporation, an individual or joint owners. The owner kind is a property of the registration. A registration is who registered, not proof of title."@en .
+
+role:head_officer a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:registered_principal ;
+    skos:notation "head_officer" ;
+    skos:prefLabel "Head officer"@en ;
+    skos:hiddenLabel "HeadOfficer"@x-hpd ;
+    skos:definition "The officer an HPD registration lists as head of the owning entity, with the title as recorded."@en .
+
+role:officer a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:registered_principal ;
+    skos:notation "officer" ;
+    skos:prefLabel "Officer"@en ;
+    skos:hiddenLabel "Officer"@x-hpd ;
+    skos:definition "An officer an HPD registration lists for the owning entity, with the title as recorded."@en .
+
+role:shareholder a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:registered_principal ;
+    skos:notation "shareholder" ;
+    skos:prefLabel "Shareholder"@en ;
+    skos:hiddenLabel "Shareholder"@x-hpd ;
+    skos:definition "A shareholder an HPD registration lists for the owning entity."@en .
+
+role:managing_agent a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:management ;
+    skos:notation "managing_agent" ;
+    skos:prefLabel "Managing agent"@en ;
+    skos:hiddenLabel "Agent"@x-hpd ;
+    skos:definition "The building's disclosed managing agent. HPD labels this contact Managing Agent, and it is the only agent type in the data. A management relationship, not ownership."@en .
+
+role:site_manager a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:management ;
+    skos:notation "site_manager" ;
+    skos:prefLabel "Site manager"@en ;
+    skos:hiddenLabel "SiteManager"@x-hpd ;
+    skos:definition "The person an HPD registration lists as site manager, the person a tenant can reach at the building."@en .
+
+role:lessee a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:registered_principal ;
+    skos:notation "lessee" ;
+    skos:prefLabel "Lessee"@en ;
+    skos:hiddenLabel "Lessee"@x-hpd ;
+    skos:definition "A lessee an HPD registration lists for the building."@en .

@@ -19,13 +19,13 @@ class Violation:
 
 
 def compiled_rules() -> list[tuple[str, str]]:
-    text = (ROOT / "ontology" / "generated" / "core.cypher").read_text()
     out = []
-    for block in re.split(r"\n(?=// name: )", text)[1:]:
-        name = re.match(r"// name: (\S+)", block).group(1)
-        if name.endswith("#summary"):  # counting variants that need a sampleSize parameter
-            continue
-        out.append((name, "\n".join(l for l in block.splitlines() if not l.startswith("//")).rstrip().rstrip(";")))
+    for path in sorted((ROOT / "ontology" / "generated").glob("*.cypher")):
+        for block in re.split(r"\n(?=// name: )", path.read_text())[1:]:
+            name = re.match(r"// name: (\S+)", block).group(1)
+            if name.endswith("#summary"):  # counting variants that need a sampleSize parameter
+                continue
+            out.append((name, "\n".join(l for l in block.splitlines() if not l.startswith("//")).rstrip().rstrip(";")))
     return out
 
 

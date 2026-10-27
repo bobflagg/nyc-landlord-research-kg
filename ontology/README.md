@@ -6,9 +6,11 @@ OWL modules and SHACL shapes (design note 0010).
 | --- | --- |
 | `core.ttl` | Core classes and properties: Property, Lot, Building, Party, Role, Snapshot, and the provenance properties |
 | `core.shapes.ttl` | What the data must satisfy. Allowed values between `generated` markers are written from `vocab/*.ttl` by `scripts/sync_shape_values.py` |
+| `pluto.ttl`, `pluto.shapes.ttl` | PLUTO lot attributes (design note 0014) |
+| `hpd.ttl`, `hpd.shapes.ttl` | Registration, HPD party and role (design notes 0006, 0014) |
 | `generated/` | Cypher compiled from the shapes by `scripts/compile_shapes.py` (shacl2cypher). Committed; do not edit |
 
-Domain modules (HPD and ACRIS in Slice 1, conditions in Slice 2, ownership layers in Slice 4) are separate pairs of files that import core.
+Domain modules are separate pairs of files that import core: PLUTO and HPD now; ACRIS and DOS later in Slice 1, conditions in Slice 2, ownership layers in Slice 4.
 
 Checks that SHACL cannot express are hand-written in `etl/checks/` (snapshot references, role attachment). A violation from any of them fails the build.
 

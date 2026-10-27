@@ -1,0 +1,16 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:  <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix pluto: <https://bobflagg.github.io/Watchline/ontology/pluto#> .
+
+# PLUTO lot attributes (design note 0014). All optional: a lot HPD knows and PLUTO does not has none.
+pluto:LotAttributesShape a sh:NodeShape ; sh:targetClass wl:Lot ;
+  sh:property [ sh:path pluto:zip5 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{5}$" ] ;
+  sh:property [ sh:path pluto:building_class ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path pluto:units_residential ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path pluto:units_total ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path pluto:buildings_count ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path pluto:year_built ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1600 ; sh:maxInclusive 2100 ] ;
+  sh:property [ sh:path pluto:assessed_total ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path pluto:owner_name_pluto ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path pluto:community_district ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{3}$" ] .
