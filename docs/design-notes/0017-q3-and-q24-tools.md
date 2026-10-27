@@ -1,4 +1,4 @@
-# 0017: The Q3 and Q24 tools
+# 0017: The Slice 1 question tools (Q2, Q3, Q4, Q5, Q24)
 
 Date: 2026-10-27
 
@@ -8,6 +8,8 @@ Status: **proposed**, written with the first version of the tools; the points be
 
 - `compare_deed_grantee_with_hpd_owner(bbl)` (Q3) and `find_records_by_name(name)` (Q24), in `agent/tools/records.py`: templated, parameterized, read-only Cypher, run through `read_session`. Both are registered with the agent in `agent/harness.py`, whose prompt gets matching answer rules.
 - Every record returned carries its source, snapshot and reliability. Dates are ISO text.
+
+- Added after the first two: `get_hpd_registrations(bbl)` (Q2) and `get_hpd_contacts(bbl)` (Q4) in `agent/tools/hpd.py`, and `get_dos_record(name)` (Q5) in `agent/tools/dos.py`.
 
 ## Choices made while building
 
@@ -20,7 +22,12 @@ Status: **proposed**, written with the first version of the tools; the points be
 7. **Q24 matching** is the exact normalized name only: `K S Turnpike LLC` and `KS Turnpike LLC` are different names, and the tool says what it searched. Several DOS entities with one name are all returned. Results are capped (`limit`, default 50) with totals and a `truncated` flag.
 8. **Q24 covers deed documents only,** per note 0015. The expected Q24 answer for `5413 PLAZA LLC` is split: the deed rows are the Slice 1 answer; the mortgage, assignment, agreement and satisfaction rows moved to `not_loaded_yet` until Slice 3.
 
+9. **Q2** returns each registration on the lot with its buildings, registered owners, last registration date, period end and the snapshot date, plus whether the end date is before the snapshot. It does not say "lapsed": the reader judges from the dates, and a newer registration may exist outside the snapshot. A lot with no registration says so and does not say the building is exempt.
+10. **Q4** returns every contact per registration with the HPD type, the normalized role, a grouping (registered principal or management), title, name and business address. A person appears only in the HPD role recorded; a managing agent is management, not ownership.
+11. **Q5** takes the name as a source spells it and matches the exact normalized name, so the agent is told to try each spelling the records give (anchor C matches under the deed spelling and not the HPD one). It labels the process name as the entity's own name, the statutory default, or another name, flags a process address on the mail-drop list, and says that CEO and officer fields are not carried for LLCs.
+12. **Anchor A's Q2 text** in the detail document said the registration end date had passed at the snapshot; it ends 2026-09-01 and the snapshot is 2026-05-29, so the text is corrected.
+
 ## Consequences
 
-- **Tests:** `tests/test_records_tools.py` (20, on the anchor lots in a rolled-back transaction, against the Q3 and Q24 expected answers) and `tests/test_q3_q24_agent.py` (2, with the model: trajectory, keys, lead wording, no ownership claim, stated limits). Both pass.
-- **Not done:** Q5 as a tool (DOS record for an HPD owner), the Q2 and Q4 tools, a LangSmith dataset and judge evaluators for these questions, and unit counts in Q3.
+- **Tests:** `tests/test_records_tools.py` (20, Q3 and Q24) and `tests/test_hpd_dos_tools.py` (30, Q2, Q4 and Q5), on the anchor lots in a rolled-back transaction against the expected answers; and `tests/test_q3_q24_agent.py` (6, with the model: trajectory, keys, lead wording, no ownership claim, stated limits). All pass.
+- **Not done:** a LangSmith dataset and judge evaluators for these questions, unit counts in Q3, and Q26 (what each absence means).

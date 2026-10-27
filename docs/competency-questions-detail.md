@@ -36,7 +36,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Pending:** a corner or alternate-address case for the "address not found" scenario.
 
 ### Q2: HPD-registered owner
-- **Example (A):** registered owner `5413 PLAZA LLC`, registration `316103`, last registered 2025-09-30, period ends 2026-09-01. That date had passed at the snapshot and no newer registration was in the dataset.
+- **Example (A):** registered owner `5413 PLAZA LLC`, registration `316103`, last registered 2025-09-30, period ends 2026-09-01. The period had not ended at the snapshot date (2026-05-29).
 - **Shape:** entity with dates.
 - **Audience:** the registration is the legal owner of record for repairs and notices, and organizers address letters to it.
 - **Caveat:** an HPD registrant is who registered, not proof of title. State the registration period and the snapshot date.
