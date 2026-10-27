@@ -10,17 +10,17 @@
   {
    "path": "ontology/core.shapes.ttl",
    "role": "shapes",
-   "sha256": "2806bd387e5aab587bd9daa3ea3d6f36bd4cffcecefdb59cfb00e989900eef0b"
+   "sha256": "85d006e713972297001c57b8f68c1af94f4987c359d5483fe9e78c208e3ab4fe"
   },
   {
    "path": "ontology/hpd.shapes.ttl",
    "role": "shapes",
-   "sha256": "2382d37148ccd34b98d68ffc0bcaeba6934985938bf16a8a558e41a162569245"
+   "sha256": "b4a521db5cbf3de682f6fa88506eb98477d1a4c2ef6972fd2b7e13265678dbb6"
   },
   {
    "path": "ontology/pluto.shapes.ttl",
    "role": "shapes",
-   "sha256": "9f984b29b0024b24080cff42a90157a198915e69e7fd1e701734bdd0384322ca"
+   "sha256": "a1f365827a49060c6de94b055fb2cb4955f39c4150c0ccf31adb6ef6728a9f73"
   }
  ],
  "options": {
@@ -947,7 +947,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 36
+    "line": 37
    },
    "status": "compiled"
   },
@@ -967,7 +967,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 36
+    "line": 37
    },
    "status": "compiled"
   },
@@ -987,7 +987,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 31
+    "line": 32
    },
    "status": "compiled"
   },
@@ -1007,7 +1007,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 29
+    "line": 30
    },
    "status": "compiled"
   },
@@ -1027,7 +1027,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 29
+    "line": 30
    },
    "status": "compiled"
   },
@@ -1047,7 +1047,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 34
+    "line": 35
    },
    "status": "compiled"
   },
@@ -1067,7 +1067,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 34
+    "line": 35
    },
    "status": "compiled"
   },
@@ -1087,7 +1087,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 35
+    "line": 36
    },
    "status": "compiled"
   },
@@ -1107,7 +1107,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 35
+    "line": 36
    },
    "status": "compiled"
   },
@@ -1127,7 +1127,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 28
+    "line": 29
    },
    "status": "compiled"
   },
@@ -1147,7 +1147,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 37
+    "line": 38
    },
    "status": "compiled"
   },
@@ -1167,7 +1167,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 50
+    "line": 51
    },
    "status": "compiled"
   },
@@ -1187,7 +1187,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 50
+    "line": 51
    },
    "status": "compiled"
   },
@@ -1207,7 +1207,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 50
+    "line": 51
    },
    "status": "compiled"
   },
@@ -1227,7 +1227,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 51
+    "line": 52
    },
    "status": "compiled"
   },
@@ -1247,7 +1247,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 51
+    "line": 52
    },
    "status": "compiled"
   },
@@ -1267,7 +1267,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 42
+    "line": 43
    },
    "status": "compiled"
   },
@@ -1287,7 +1287,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 40
+    "line": 41
    },
    "status": "compiled"
   },
@@ -1307,7 +1307,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -1327,7 +1327,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 47
+    "line": 48
    },
    "status": "compiled"
   },
@@ -1347,7 +1347,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 45
+    "line": 46
    },
    "status": "compiled"
   },
@@ -1367,7 +1367,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 45
+    "line": 46
    },
    "status": "compiled"
   },
@@ -1687,27 +1687,7 @@
    "shape": "hpd:RegistrationShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 24
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:maxCount",
-   "costClass": "scan+expand",
-   "fingerprint": "a378e7b8d7bd7cb6",
-   "message": "hpd:RegistrationShape violates sh:maxCount on wl:on_building",
-   "name": "RegistrationShape.on_building.maxCount",
-   "path": "wl:on_building",
-   "queries": {
-    "detail": "MATCH (v0:`Registration`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RegistrationShape.on_building.maxCount' AS ruleId, 'hpd:RegistrationShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)} AS focus, null AS value, 'hpd:RegistrationShape violates sh:maxCount on wl:on_building' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Registration`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RegistrationShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "hpd:RegistrationShape/wl:on_building/sh:maxCount",
-   "severity": "Violation",
-   "shape": "hpd:RegistrationShape",
-   "source": {
-    "file": "ontology/hpd.shapes.ttl",
-    "line": 24
+    "line": 25
    },
    "status": "compiled"
   },
@@ -1727,27 +1707,7 @@
    "shape": "hpd:RegistrationShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 23
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:maxCount",
-   "costClass": "scan+expand",
-   "fingerprint": "678993e5efffc117",
-   "message": "hpd:RegistrationShape violates sh:maxCount on wl:on_lot",
-   "name": "RegistrationShape.on_lot.maxCount",
-   "path": "wl:on_lot",
-   "queries": {
-    "detail": "MATCH (v0:`Registration`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RegistrationShape.on_lot.maxCount' AS ruleId, 'hpd:RegistrationShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)} AS focus, null AS value, 'hpd:RegistrationShape violates sh:maxCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Registration`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RegistrationShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "hpd:RegistrationShape/wl:on_lot/sh:maxCount",
-   "severity": "Violation",
-   "shape": "hpd:RegistrationShape",
-   "source": {
-    "file": "ontology/hpd.shapes.ttl",
-    "line": 23
+    "line": 24
    },
    "status": "compiled"
   },
@@ -1767,7 +1727,7 @@
    "shape": "hpd:RegistrationShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 23
+    "line": 24
    },
    "status": "compiled"
   },
@@ -1787,7 +1747,7 @@
    "shape": "hpd:RegistrationShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 25
+    "line": 26
    },
    "status": "compiled"
   },
@@ -1807,7 +1767,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 14
+    "line": 15
    },
    "status": "compiled"
   },
@@ -1827,7 +1787,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 14
+    "line": 15
    },
    "status": "compiled"
   },
@@ -1847,7 +1807,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 14
+    "line": 15
    },
    "status": "compiled"
   },
@@ -1967,7 +1927,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 16
+    "line": 17
    },
    "status": "compiled"
   },
@@ -1987,7 +1947,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 16
+    "line": 17
    },
    "status": "compiled"
   },
@@ -2007,7 +1967,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 16
+    "line": 17
    },
    "status": "compiled"
   },
@@ -2027,7 +1987,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 15
+    "line": 16
    },
    "status": "compiled"
   },
@@ -2047,7 +2007,7 @@
    "shape": "pluto:LotAttributesShape",
    "source": {
     "file": "ontology/pluto.shapes.ttl",
-    "line": 15
+    "line": 16
    },
    "status": "compiled"
   },
@@ -2248,6 +2208,46 @@
    "source": {
     "file": "ontology/pluto.shapes.ttl",
     "line": 13
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "ae22ece85cd5254b",
+   "message": "pluto:LotAttributesShape violates sh:datatype on pluto:year_built_raw",
+   "name": "LotAttributesShape.year_built_raw.datatype",
+   "path": "pluto:year_built_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'LotAttributesShape.year_built_raw.datatype' AS ruleId, 'pluto:LotAttributesShape' AS shape, 'pluto:year_built_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'pluto:LotAttributesShape violates sh:datatype on pluto:year_built_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nUNWIND CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotAttributesShape.year_built_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "pluto:LotAttributesShape/pluto:year_built_raw/sh:datatype",
+   "severity": "Violation",
+   "shape": "pluto:LotAttributesShape",
+   "source": {
+    "file": "ontology/pluto.shapes.ttl",
+    "line": 14
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "07ff8b511aff0f03",
+   "message": "pluto:LotAttributesShape violates sh:maxCount on pluto:year_built_raw",
+   "name": "LotAttributesShape.year_built_raw.maxCount",
+   "path": "pluto:year_built_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'LotAttributesShape.year_built_raw.maxCount' AS ruleId, 'pluto:LotAttributesShape' AS shape, 'pluto:year_built_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'pluto:LotAttributesShape violates sh:maxCount on pluto:year_built_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Lot`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'LotAttributesShape.year_built_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "pluto:LotAttributesShape/pluto:year_built_raw/sh:maxCount",
+   "severity": "Violation",
+   "shape": "pluto:LotAttributesShape",
+   "source": {
+    "file": "ontology/pluto.shapes.ttl",
+    "line": 14
    },
    "status": "compiled"
   },
@@ -2932,26 +2932,6 @@
    "status": "compiled"
   },
   {
-   "constraint": "sh:maxCount",
-   "costClass": "scan+expand",
-   "fingerprint": "128e44dd3d12d441",
-   "message": "wl:RoleShape violates sh:maxCount on wl:on_building",
-   "name": "RoleShape.on_building.maxCount",
-   "path": "wl:on_building",
-   "queries": {
-    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RoleShape.on_building.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_building' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "wl:RoleShape/wl:on_building/sh:maxCount",
-   "severity": "Violation",
-   "shape": "wl:RoleShape",
-   "source": {
-    "file": "ontology/core.shapes.ttl",
-    "line": 65
-   },
-   "status": "compiled"
-  },
-  {
    "constraint": "sh:class",
    "costClass": "scan+expand",
    "fingerprint": "6a8c446d57ebaa86",
@@ -2963,26 +2943,6 @@
     "summary": "MATCH (v0:`Role`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
    },
    "ruleId": "wl:RoleShape/wl:on_lot/sh:class",
-   "severity": "Violation",
-   "shape": "wl:RoleShape",
-   "source": {
-    "file": "ontology/core.shapes.ttl",
-    "line": 66
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:maxCount",
-   "costClass": "scan+expand",
-   "fingerprint": "7e199997b6a5371c",
-   "message": "wl:RoleShape violates sh:maxCount on wl:on_lot",
-   "name": "RoleShape.on_lot.maxCount",
-   "path": "wl:on_lot",
-   "queries": {
-    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "wl:RoleShape/wl:on_lot/sh:maxCount",
    "severity": "Violation",
    "shape": "wl:RoleShape",
    "source": {
@@ -3007,7 +2967,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 70
+    "line": 71
    },
    "status": "compiled"
   },
@@ -3167,7 +3127,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 75
+    "line": 76
    },
    "status": "compiled"
   },
@@ -3187,7 +3147,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 75
+    "line": 76
    },
    "status": "compiled"
   },
@@ -3207,7 +3167,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 75
+    "line": 76
    },
    "status": "compiled"
   },
@@ -3227,7 +3187,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 76
+    "line": 77
    },
    "status": "compiled"
   }

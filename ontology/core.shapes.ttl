@@ -62,10 +62,11 @@ wl:RoleShape a sh:NodeShape ; sh:targetClass wl:Role ; s2c:key "role_id" ;
   sh:property [ sh:path wl:role_type ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path wl:source_record_id ; sh:minCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path wl:held_by ; sh:class wl:Party ; sh:minCount 1 ; sh:maxCount 1 ] ;
-  sh:property [ sh:path wl:on_building ; sh:class wl:Building ; sh:maxCount 1 ] ;
-  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:maxCount 1 ] ;
-  # "On a building or on a lot, exactly one" is checked by etl/checks/role_attachment.cypher: shacl2cypher
-  # reads relationship paths inside sh:xone/sh:or as properties and flags every role (note 0010, item 7).
+  sh:property [ sh:path wl:on_building ; sh:class wl:Building ] ;
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ] ;
+  # "On at least one building or lot" is checked by etl/checks/role_attachment.cypher: shacl2cypher reads
+  # relationship paths inside sh:or as properties and flags every role (note 0010, item 7). A role of a
+  # registration that covers several buildings is on each of them (note 0014).
   # A role is a recorded row: no review_status from the pipeline.
   sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
 

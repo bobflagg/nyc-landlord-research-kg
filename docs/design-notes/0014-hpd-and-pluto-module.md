@@ -38,6 +38,17 @@ The first real load failed validation with 20 violations. Two source conditions,
 
 After both fixes the district 307 build loads 13,268 PLUTO lots, 4,330 HPD-only lots, 4,381 buildings, 4,407 registrations, 15,206 parties and 17,058 roles, with 0 violations.
 
+## Found on the citywide build (2026-10-27)
+
+The citywide load (11 minutes; 858,602 PLUTO lots, 184,524 HPD-only lots, 200,765 buildings, 616,854 parties) failed validation with 841 violations, and a premise above was wrong:
+
+1. **A registration id is not always one building.** `hpd_registrations` has 203,236 rows but 193,567 distinct registration ids. The 9,669 extra rows sit in 85 registrations, a few of them very large (one covers 1,433 BINs). 81 registrations are on more than one building and 56 on more than one lot; a few rows are renewal repeats of one building (4 pairs). Earlier counts of "203,236 registrations" in this note counted rows. **Decided (the user, "(a), as recommended"):** a registration is on each lot and each real-BIN building its rows name, and its roles are on each of those buildings or lots. The shapes now say "one or more" for `Registration` and `Role`, and `role_attachment` requires at least one. Keeping only the latest registration per building was considered and rejected: it removes 76 rows and fixes none of the 81, and it loses registration history (Q13, Q17, Q26).
+   - The loader no longer splits a registration across chunks (`build._chunks`), so every row of a registration gets its contacts.
+   - After the rebuild the citywide load has no violation from this cause.
+2. **Two PLUTO lots have a year built of 914 and 920** (1150 Avenue of the Americas and 562 5 Avenue), outside the shape's 1600 to 2100 range. **Decided (the user, "(i), as recommended"):** `year_built` is left empty and the value kept as text in `year_built_raw`, as note 0015 does for dates. The range 1600 to 2100 stays.
+
+District 307 happened to hit neither.
+
 ## Alternatives considered
 
 - **Role only points to its registration** (decision 1, option B): normalized, but changes the core Role shape and doubles the hops for Q4.

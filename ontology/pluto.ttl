@@ -17,7 +17,8 @@ pluto:building_class a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xs
 pluto:units_residential a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Residential units on the lot. Lot-level; a lot with several buildings holds the sum."@en .
 pluto:units_total a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "All units on the lot."@en .
 pluto:buildings_count a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Number of buildings PLUTO counts on the lot. May differ from the buildings the graph holds, which come from HPD registrations."@en .
-pluto:year_built a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Year built. PLUTO's 0 (unknown) is not loaded."@en .
+pluto:year_built a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Year built. PLUTO's 0 (unknown) is not loaded, and a year outside 1600 to 2100 is kept as text in year_built_raw instead."@en .
+pluto:year_built_raw a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "A year built PLUTO gives that is outside 1600 to 2100 (914 and 920 occur), as written. Reported and flagged, never repaired."@en .
 pluto:assessed_total a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:integer ; rdfs:comment "Total assessed value in dollars."@en .
 pluto:owner_name_pluto a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "The owner name PLUTO carries, as written. A name from a source, not a role (design note 0009)."@en .
 pluto:community_district a owl:DatatypeProperty ; rdfs:domain wl:Lot ; rdfs:range xsd:string ; rdfs:comment "Community district code, such as 307."@en .

@@ -5,7 +5,7 @@ import json
 
 import pytest
 
-from etl.build import load_hpd, load_pluto
+from etl.build import _chunks, load_hpd, load_pluto
 from etl.config import ROOT
 from etl.hpd import contact_nodes, party_id, pick_contacts, real_bin, registration_nodes
 from etl.load import apply_schema, register_snapshot
@@ -54,6 +54,14 @@ def test_repeated_contact_id_keeps_the_most_complete_row_and_is_stable():
 def test_year_zero_and_empty_values_are_not_stored():
     lot = lot_node({"bbl": "3000000001", "address": "", "yearbuilt": 0, "unitsres": None, "cd": None}, SNAP)
     assert set(lot) == {"bbl", "reliability", "source_category", "source", "snapshot_id", "source_record_id"}
+
+
+def test_a_year_outside_the_range_is_kept_as_text_not_a_year():
+    base = {"bbl": "1012600004", "address": "", "unitsres": None, "cd": None}
+    bad = lot_node({**base, "yearbuilt": 914}, SNAP)
+    assert "year_built" not in bad and bad["year_built_raw"] == "914"
+    good = lot_node({**base, "yearbuilt": 1914}, SNAP)
+    assert good["year_built"] == 1914 and "year_built_raw" not in good
 
 
 def test_owner_kind_keeps_the_raw_value_and_unknown_maps_to_nothing():
@@ -156,3 +164,33 @@ def test_roles_without_a_building_attach_to_the_lot(session, schema):
     finally:
         tx.rollback()
 
+
+
+def test_chunks_never_split_a_registration():
+    rows = [{"registrationid": i} for i in (1, 2, 2, 2, 3, 4, 4)]
+    chunks = [[r["registrationid"] for r in c] for c in _chunks(rows, 2)]
+    assert chunks == [[1, 2, 2, 2], [3, 4, 4]]
+
+
+def test_a_registration_over_several_buildings_puts_its_roles_on_each(session, schema):
+    """Note 0014: 81 registrations cover several buildings; their roles are on every one."""
+    apply_schema(session, schema)
+    tx = session.begin_transaction()
+    try:
+        register_snapshot(tx, SNAP, "justfixwow", date(2026, 5, 29))
+        shift = 900_000_000
+        base = FIX["registrations"][0]
+        rid = base["registrationid"] + shift
+        regs = [{**base, "registrationid": rid, "bin": b, "buildingid": base["buildingid"] + shift + i}
+                for i, b in enumerate(("3991001", "3991002"))]
+        cs = [{**c, "registrationid": rid, "registrationcontactid": c["registrationcontactid"] + shift}
+              for c in FIX["contacts"] if c["registrationid"] == base["registrationid"]]
+        load_hpd(tx, schema, regs, cs, SNAP)
+        assert validate(tx, only=HPD_RULES) == []
+        ids = [f"hpd:{c['registrationcontactid']}" for c in cs]
+        r = tx.run("MATCH (role:Role)-[:ON_BUILDING]->(b:Building) WHERE role.role_id IN $ids "
+                   "RETURN count(DISTINCT b) AS buildings, count(DISTINCT role) AS roles", ids=ids).single()
+        assert (r["buildings"], r["roles"]) == (2, len(cs))
+        assert tx.run("MATCH (:Registration {registration_id: $r})-[:ON_BUILDING]->(b) RETURN count(b) AS c", r=str(rid)).single()["c"] == 2
+    finally:
+        tx.rollback()

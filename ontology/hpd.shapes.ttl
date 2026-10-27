@@ -19,9 +19,10 @@ hpd:RegistrationShape a sh:NodeShape ; sh:targetClass hpd:Registration ; s2c:key
     # generated:entity-kind end
   ] ;
   sh:property [ sh:path hpd:owner_kind_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
-  # A registration is on its lot always, and on a building when it has a real BIN.
-  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ; sh:maxCount 1 ] ;
-  sh:property [ sh:path wl:on_building ; sh:class wl:Building ; sh:maxCount 1 ] ;
+  # A registration is on each lot its rows name, and on each building with a real BIN. Most cover one of each;
+  # 81 cover several buildings (note 0014).
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:on_building ; sh:class wl:Building ] ;
   sh:property [ sh:path wl:source ; sh:in ( "hpd_registrations" ) ] .
 
 hpd:HpdPartyShape a sh:NodeShape ; sh:targetClass hpd:HpdParty ;

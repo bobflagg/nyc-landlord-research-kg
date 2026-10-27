@@ -44,7 +44,7 @@ wl:on_lot a owl:ObjectProperty ; rdfs:range wl:Lot ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( wl:Building wl:Role ) ] ;
     rdfs:comment "A building stands on a lot; a role attaches to a lot. Structural: carries no provenance of its own (note 0010, item 4)."@en .
 wl:on_building a owl:ObjectProperty ; rdfs:domain wl:Role ; rdfs:range wl:Building ;
-    rdfs:comment "A role attaches to a building. A role is on a building or on a lot, never both."@en .
+    rdfs:comment "A role attaches to a building. A role is on at least one building or lot. A registration that covers several buildings puts its roles on each of them (note 0014)."@en .
 
 # ---- Parties and roles (note 0010, item 3) ----------------------------------
 

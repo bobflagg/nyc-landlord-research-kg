@@ -1455,23 +1455,6 @@ WHERE NOT (v1:`Building`)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'RegistrationShape.on_building.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
-// name: RegistrationShape.on_building.maxCount
-// ruleId: hpd:RegistrationShape/wl:on_building/sh:maxCount
-MATCH (v0:`Registration`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)
-RETURN 'RegistrationShape.on_building.maxCount' AS ruleId, 'hpd:RegistrationShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)} AS focus, null AS value, 'hpd:RegistrationShape violates sh:maxCount on wl:on_building' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: RegistrationShape.on_building.maxCount#summary
-// ruleId: hpd:RegistrationShape/wl:on_building/sh:maxCount
-MATCH (v0:`Registration`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'RegistrationShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
 // name: RegistrationShape.on_lot.class
 // ruleId: hpd:RegistrationShape/wl:on_lot/sh:class
 MATCH (v0:`Registration`)
@@ -1490,23 +1473,6 @@ WITH DISTINCT v0, v1
 WHERE NOT (v1:`Lot`)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'RegistrationShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
-// name: RegistrationShape.on_lot.maxCount
-// ruleId: hpd:RegistrationShape/wl:on_lot/sh:maxCount
-MATCH (v0:`Registration`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)
-RETURN 'RegistrationShape.on_lot.maxCount' AS ruleId, 'hpd:RegistrationShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)} AS focus, null AS value, 'hpd:RegistrationShape violates sh:maxCount on wl:on_lot' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: RegistrationShape.on_lot.maxCount#summary
-// ruleId: hpd:RegistrationShape/wl:on_lot/sh:maxCount
-MATCH (v0:`Registration`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'RegistrationShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
 // name: RegistrationShape.on_lot.minCount
 // ruleId: hpd:RegistrationShape/wl:on_lot/sh:minCount
@@ -1964,6 +1930,42 @@ WITH DISTINCT v0, v1
 WHERE v1 IS NOT NULL AND NOT (coalesce(v1 >= 1600, false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'LotAttributesShape.year_built.minInclusive' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LotAttributesShape.year_built_raw.datatype
+// ruleId: pluto:LotAttributesShape/pluto:year_built_raw/sh:datatype
+MATCH (v0:`Lot`)
+UNWIND CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LotAttributesShape.year_built_raw.datatype' AS ruleId, 'pluto:LotAttributesShape' AS shape, 'pluto:year_built_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'pluto:LotAttributesShape violates sh:datatype on pluto:year_built_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LotAttributesShape.year_built_raw.datatype#summary
+// ruleId: pluto:LotAttributesShape/pluto:year_built_raw/sh:datatype
+MATCH (v0:`Lot`)
+UNWIND CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LotAttributesShape.year_built_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LotAttributesShape.year_built_raw.maxCount
+// ruleId: pluto:LotAttributesShape/pluto:year_built_raw/sh:maxCount
+MATCH (v0:`Lot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LotAttributesShape.year_built_raw.maxCount' AS ruleId, 'pluto:LotAttributesShape' AS shape, 'pluto:year_built_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'pluto:LotAttributesShape violates sh:maxCount on pluto:year_built_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LotAttributesShape.year_built_raw.maxCount#summary
+// ruleId: pluto:LotAttributesShape/pluto:year_built_raw/sh:maxCount
+MATCH (v0:`Lot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year_built_raw` IS NULL THEN [] WHEN v0.`year_built_raw` IS :: LIST<ANY> THEN v0.`year_built_raw` ELSE [v0.`year_built_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Lot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LotAttributesShape.year_built_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
 // name: LotAttributesShape.zip5.datatype
 // ruleId: pluto:LotAttributesShape/pluto:zip5/sh:datatype
@@ -2571,23 +2573,6 @@ WHERE NOT (v1:`Building`)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'RoleShape.on_building.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
-// name: RoleShape.on_building.maxCount
-// ruleId: wl:RoleShape/wl:on_building/sh:maxCount
-MATCH (v0:`Role`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)
-RETURN 'RoleShape.on_building.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_building' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: RoleShape.on_building.maxCount#summary
-// ruleId: wl:RoleShape/wl:on_building/sh:maxCount
-MATCH (v0:`Role`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_BUILDING`]->(x1) RETURN DISTINCT x1 } <= 1)
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'RoleShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
 // name: RoleShape.on_lot.class
 // ruleId: wl:RoleShape/wl:on_lot/sh:class
 MATCH (v0:`Role`)
@@ -2606,23 +2591,6 @@ WITH DISTINCT v0, v1
 WHERE NOT (v1:`Lot`)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'RoleShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
-// name: RoleShape.on_lot.maxCount
-// ruleId: wl:RoleShape/wl:on_lot/sh:maxCount
-MATCH (v0:`Role`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)
-RETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:maxCount on wl:on_lot' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: RoleShape.on_lot.maxCount#summary
-// ruleId: wl:RoleShape/wl:on_lot/sh:maxCount
-MATCH (v0:`Role`)
-WITH v0
-WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } <= 1)
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'RoleShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
 // name: RoleShape.review_status.maxCount
 // ruleId: wl:RoleShape/wl:review_status/sh:maxCount

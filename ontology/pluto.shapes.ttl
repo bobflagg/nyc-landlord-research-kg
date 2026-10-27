@@ -11,6 +11,7 @@ pluto:LotAttributesShape a sh:NodeShape ; sh:targetClass wl:Lot ;
   sh:property [ sh:path pluto:units_total ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
   sh:property [ sh:path pluto:buildings_count ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
   sh:property [ sh:path pluto:year_built ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1600 ; sh:maxInclusive 2100 ] ;
+  sh:property [ sh:path pluto:year_built_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path pluto:assessed_total ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
   sh:property [ sh:path pluto:owner_name_pluto ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path pluto:community_district ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{3}$" ] .

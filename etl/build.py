@@ -62,6 +62,21 @@ def load_hpd(tx, schema: Schema, registrations: list[dict], contacts: list[dict]
     return counts
 
 
+def _chunks(rows, size: int):
+    """Chunks of about `size` rows that never split one registration: the rows of a registration id that spans
+    several buildings stay together, so each gets the registration's contacts (note 0014)."""
+    chunk, last = [], None
+    for r in rows:
+        rid = str(r["registrationid"])
+        if len(chunk) >= size and rid != last:
+            yield chunk
+            chunk = []
+        chunk.append(r)
+        last = rid
+    if chunk:
+        yield chunk
+
+
 def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_rows, registrations, contacts, chunk: int = 2000,
           conflicted_bins: frozenset = frozenset()) -> dict:
     """Whole build in write transactions of `chunk` registrations. `registrations` and `contacts` are iterables
@@ -72,9 +87,9 @@ def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_
     it = iter(pluto_rows)
     while batch := list(islice(it, 5000)):
         totals["Lot (PLUTO)"] += session.execute_write(load_pluto, schema, batch, snapshot_id)
-    regs, cons = iter(registrations), iter(contacts)
+    cons = iter(contacts)
     pending = None
-    while batch := list(islice(regs, chunk)):
+    for batch in _chunks(registrations, chunk):
         last = max(int(r["registrationid"]) for r in batch)
         mine = []
         while True:
