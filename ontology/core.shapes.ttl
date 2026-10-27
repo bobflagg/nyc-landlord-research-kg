@@ -52,13 +52,14 @@ wl:BuildingShape a sh:NodeShape ; sh:targetClass wl:Building ; s2c:key "bin" ;
 
 wl:PartyShape a sh:NodeShape ; sh:targetClass wl:Party ; s2c:key "party_id" ;
   sh:node wl:ProvenanceShape ;
-  sh:property [ sh:path wl:party_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+  sh:property [ sh:path wl:party_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:name_n1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
 
 wl:RoleShape a sh:NodeShape ; sh:targetClass wl:Role ; s2c:key "role_id" ;
   sh:node wl:ProvenanceShape ;
   sh:property [ sh:path wl:role_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
-  # Allowed role types belong to the HPD module's vocabulary (note 0004).
-  sh:property [ sh:path wl:role_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  # Allowed role types, and whether one is required, belong to each source module (notes 0004, 0014, 0015).
+  sh:property [ sh:path wl:role_type ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path wl:source_record_id ; sh:minCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path wl:held_by ; sh:class wl:Party ; sh:minCount 1 ; sh:maxCount 1 ] ;
   sh:property [ sh:path wl:on_building ; sh:class wl:Building ; sh:maxCount 1 ] ;

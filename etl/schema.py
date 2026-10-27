@@ -13,7 +13,8 @@ S2C = Namespace("https://w3id.org/shacl2cypher#")
 SNAPSHOT_ID = re.compile(r"^[a-z][a-z0-9]*-\d{4}-\d{2}-\d{2}(-r\d+)?$")  # note 0008
 
 # Indexed for lookup, not unique: "who else uses this address" (note 0010, item 2).
-INDEXED = {"Lot": ["address_key"], "Building": ["address_key"], "HpdParty": ["business_address_key"]}
+INDEXED = {"Lot": ["address_key"], "Building": ["address_key"], "HpdParty": ["business_address_key", "name_n1"],
+           "AcrisParty": ["address_key", "name_n1"]}
 
 
 def _local(uri) -> str:

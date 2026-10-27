@@ -62,10 +62,13 @@ wl:held_by a owl:ObjectProperty ; rdfs:domain wl:Role ; rdfs:range wl:Party ;
 wl:party_id a owl:DatatypeProperty ; rdfs:domain wl:Party ; rdfs:range xsd:string ;
     rdfs:comment "Key of the party node, built by the loader from the source's identity (note 0006)."@en .
 
+wl:name_n1 a owl:DatatypeProperty ; rdfs:domain wl:Party ; rdfs:range xsd:string ;
+    rdfs:comment "The party's name after rule N1 (note 0006): uppercase, punctuation deleted, whitespace collapsed. Indexed for lookup. It is a normalized spelling, not a stored match: comparisons happen at query time and are leads (note 0009)."@en .
+
 wl:role_id a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
     rdfs:comment "Key of the role node, built by the loader from the source record id."@en .
 wl:role_type a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
-    rdfs:comment "Normalized role type (note 0004). The allowed values belong to the role-type vocabulary, defined with the HPD module."@en .
+    rdfs:comment "Normalized role type (note 0004). The allowed values belong to the role-type vocabulary; each source module says which it accepts and whether the type is required."@en .
 wl:source_role_code a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:string ;
     rdfs:comment "The source's own code for the role, kept as written."@en .
 wl:valid_from a owl:DatatypeProperty ; rdfs:domain wl:Role ; rdfs:range xsd:date .

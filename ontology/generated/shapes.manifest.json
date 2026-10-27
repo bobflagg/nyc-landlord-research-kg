@@ -3,14 +3,19 @@
  "dialect": "neo4j",
  "inputs": [
   {
+   "path": "ontology/acris.shapes.ttl",
+   "role": "shapes",
+   "sha256": "2437a72b642fc08fd9cdb09666cdf42068716eabc9b6bd1eb6cd85c3f6867b5f"
+  },
+  {
    "path": "ontology/core.shapes.ttl",
    "role": "shapes",
-   "sha256": "b30e1209284ee8ececc6057049fd130a8d803f1e18f7ecb49bf89ba8b0db53af"
+   "sha256": "2806bd387e5aab587bd9daa3ea3d6f36bd4cffcecefdb59cfb00e989900eef0b"
   },
   {
    "path": "ontology/hpd.shapes.ttl",
    "role": "shapes",
-   "sha256": "1d2b3bbaf282beb9410dc8e297051821167a7a4062b3ae998106c2ac242e0ccd"
+   "sha256": "2382d37148ccd34b98d68ffc0bcaeba6934985938bf16a8a558e41a162569245"
   },
   {
    "path": "ontology/pluto.shapes.ttl",
@@ -32,6 +37,11 @@
   {
    "label": "Building",
    "property": "bin",
+   "reason": "focus key"
+  },
+  {
+   "label": "Document",
+   "property": "document_id",
    "reason": "focus key"
   },
   {
@@ -61,6 +71,866 @@
   }
  ],
  "rules": [
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "a8cd798ec8ec993c",
+   "message": "acris:AcrisPartyShape violates sh:datatype on acris:party_name",
+   "name": "AcrisPartyShape.party_name.datatype",
+   "path": "acris:party_name",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`party_name` IS NULL THEN [] WHEN v0.`party_name` IS :: LIST<ANY> THEN v0.`party_name` ELSE [v0.`party_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'AcrisPartyShape.party_name.datatype' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'acris:party_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisPartyShape violates sh:datatype on acris:party_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`party_name` IS NULL THEN [] WHEN v0.`party_name` IS :: LIST<ANY> THEN v0.`party_name` ELSE [v0.`party_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.party_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/acris:party_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 35
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "868a94975b0a2a89",
+   "message": "acris:AcrisPartyShape violates sh:maxCount on acris:party_name",
+   "name": "AcrisPartyShape.party_name.maxCount",
+   "path": "acris:party_name",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`party_name` IS NULL THEN [] WHEN v0.`party_name` IS :: LIST<ANY> THEN v0.`party_name` ELSE [v0.`party_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'AcrisPartyShape.party_name.maxCount' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'acris:party_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisPartyShape violates sh:maxCount on acris:party_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`party_name` IS NULL THEN [] WHEN v0.`party_name` IS :: LIST<ANY> THEN v0.`party_name` ELSE [v0.`party_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.party_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/acris:party_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 35
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "1ea71ca7dcfd26df",
+   "message": "acris:AcrisPartyShape violates sh:datatype on wl:address_key",
+   "name": "AcrisPartyShape.address_key.datatype",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'AcrisPartyShape.address_key.datatype' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:address_key' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisPartyShape violates sh:datatype on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.address_key.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:address_key/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c18682c7034618ba",
+   "message": "acris:AcrisPartyShape violates sh:maxCount on wl:address_key",
+   "name": "AcrisPartyShape.address_key.maxCount",
+   "path": "wl:address_key",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'AcrisPartyShape.address_key.maxCount' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:address_key' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisPartyShape violates sh:maxCount on wl:address_key' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`address_key` IS NULL THEN [] WHEN v0.`address_key` IS :: LIST<ANY> THEN v0.`address_key` ELSE [v0.`address_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.address_key.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:address_key/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "78f6c06174450d1c",
+   "message": "acris:AcrisPartyShape violates sh:datatype on wl:name_n1",
+   "name": "AcrisPartyShape.name_n1.datatype",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'AcrisPartyShape.name_n1.datatype' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:name_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisPartyShape violates sh:datatype on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.name_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:name_n1/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 36
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "8e1b900176eebbaf",
+   "message": "acris:AcrisPartyShape violates sh:maxCount on wl:name_n1",
+   "name": "AcrisPartyShape.name_n1.maxCount",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'AcrisPartyShape.name_n1.maxCount' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:name_n1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisPartyShape violates sh:maxCount on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.name_n1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:name_n1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 36
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "4ca92c13fe0a7799",
+   "message": "acris:AcrisPartyShape violates sh:pattern on wl:party_id",
+   "name": "AcrisPartyShape.party_id.pattern",
+   "path": "wl:party_id",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`party_id` IS NULL THEN [] WHEN v0.`party_id` IS :: LIST<ANY> THEN v0.`party_id` ELSE [v0.`party_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^acris:[0-9a-f]{32}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^acris:[0-9a-f]{32}$)(?s:.*)' ELSE false END)\nRETURN 'AcrisPartyShape.party_id.pattern' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:party_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisPartyShape violates sh:pattern on wl:party_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`party_id` IS NULL THEN [] WHEN v0.`party_id` IS :: LIST<ANY> THEN v0.`party_id` ELSE [v0.`party_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^acris:[0-9a-f]{32}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^acris:[0-9a-f]{32}$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.party_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:party_id/sh:pattern",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 34
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "55054ab7cce91112",
+   "message": "acris:AcrisPartyShape violates sh:in on wl:source",
+   "name": "AcrisPartyShape.source.in",
+   "path": "wl:source",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_parties'], false))\nRETURN 'AcrisPartyShape.source.in' AS ruleId, 'acris:AcrisPartyShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisPartyShape violates sh:in on wl:source' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisParty`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_parties'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisPartyShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisPartyShape/wl:source/sh:in",
+   "severity": "Violation",
+   "shape": "acris:AcrisPartyShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 38
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "1685ab7c34afcedc",
+   "message": "acris:AcrisRoleShape violates sh:class on acris:in_document",
+   "name": "AcrisRoleShape.in_document.class",
+   "path": "acris:in_document",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nMATCH (v0)-[:`IN_DOCUMENT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Document`)\nRETURN 'AcrisRoleShape.in_document.class' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'acris:in_document' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'acris:AcrisRoleShape violates sh:class on acris:in_document' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nMATCH (v0)-[:`IN_DOCUMENT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Document`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.in_document.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/acris:in_document/sh:class",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 52
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan+expand",
+   "fingerprint": "3bbe1fa7286dd047",
+   "message": "acris:AcrisRoleShape violates sh:maxCount on acris:in_document",
+   "name": "AcrisRoleShape.in_document.maxCount",
+   "path": "acris:in_document",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`IN_DOCUMENT`]->(x1) RETURN DISTINCT x1 } <= 1)\nRETURN 'AcrisRoleShape.in_document.maxCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'acris:in_document' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:maxCount on acris:in_document' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`IN_DOCUMENT`]->(x1) RETURN DISTINCT x1 } <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.in_document.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/acris:in_document/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 52
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan+expand",
+   "fingerprint": "92169950092eecc7",
+   "message": "acris:AcrisRoleShape violates sh:minCount on acris:in_document",
+   "name": "AcrisRoleShape.in_document.minCount",
+   "path": "acris:in_document",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`IN_DOCUMENT`]->(x1) RETURN DISTINCT x1 } >= 1)\nRETURN 'AcrisRoleShape.in_document.minCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'acris:in_document' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:minCount on acris:in_document' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`IN_DOCUMENT`]->(x1) RETURN DISTINCT x1 } >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.in_document.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/acris:in_document/sh:minCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 52
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "92266f6ddeb91502",
+   "message": "acris:AcrisRoleShape violates sh:maxCount on wl:on_building",
+   "name": "AcrisRoleShape.on_building.maxCount",
+   "path": "wl:on_building",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`on_building` IS NULL THEN [] WHEN v0.`on_building` IS :: LIST<ANY> THEN v0.`on_building` ELSE [v0.`on_building`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'AcrisRoleShape.on_building.maxCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:on_building' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:maxCount on wl:on_building' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`on_building` IS NULL THEN [] WHEN v0.`on_building` IS :: LIST<ANY> THEN v0.`on_building` ELSE [v0.`on_building`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.on_building.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:on_building/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 54
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "e5ab8186144d3936",
+   "message": "acris:AcrisRoleShape violates sh:maxCount on wl:on_lot",
+   "name": "AcrisRoleShape.on_lot.maxCount",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`on_lot` IS NULL THEN [] WHEN v0.`on_lot` IS :: LIST<ANY> THEN v0.`on_lot` ELSE [v0.`on_lot`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'AcrisRoleShape.on_lot.maxCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:on_lot' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:maxCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`on_lot` IS NULL THEN [] WHEN v0.`on_lot` IS :: LIST<ANY> THEN v0.`on_lot` ELSE [v0.`on_lot`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:on_lot/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 55
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "e2f53c5b4bbf450e",
+   "message": "acris:AcrisRoleShape violates sh:in on wl:role_type",
+   "name": "AcrisRoleShape.role_type.in",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:role_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:role_type/sh:in",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 44
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "f223c61d03367dff",
+   "message": "acris:AcrisRoleShape violates sh:maxCount on wl:role_type",
+   "name": "AcrisRoleShape.role_type.maxCount",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'AcrisRoleShape.role_type.maxCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:role_type' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:maxCount on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.role_type.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:role_type/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 42
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "0dbd53fdbdfa780a",
+   "message": "acris:AcrisRoleShape violates sh:in on wl:source",
+   "name": "AcrisRoleShape.source.in",
+   "path": "wl:source",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_parties'], false))\nRETURN 'AcrisRoleShape.source.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:source' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_parties'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:source/sh:in",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 56
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "e6736510b6504057",
+   "message": "acris:AcrisRoleShape violates sh:in on wl:source_role_code",
+   "name": "AcrisRoleShape.source_role_code.in",
+   "path": "wl:source_role_code",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:source_role_code' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:source_role_code/sh:in",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 49
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "fc77aad370818124",
+   "message": "acris:AcrisRoleShape violates sh:maxCount on wl:source_role_code",
+   "name": "AcrisRoleShape.source_role_code.maxCount",
+   "path": "wl:source_role_code",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'AcrisRoleShape.source_role_code.maxCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:maxCount on wl:source_role_code' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source_role_code.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:source_role_code/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 47
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "f3af404907742ebe",
+   "message": "acris:AcrisRoleShape violates sh:minCount on wl:source_role_code",
+   "name": "AcrisRoleShape.source_role_code.minCount",
+   "path": "wl:source_role_code",
+   "queries": {
+    "detail": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'AcrisRoleShape.source_role_code.minCount' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'acris:AcrisRoleShape violates sh:minCount on wl:source_role_code' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source_role_code.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:AcrisRoleShape/wl:source_role_code/sh:minCount",
+   "severity": "Violation",
+   "shape": "acris:AcrisRoleShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 47
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "26857467b31f325e",
+   "message": "acris:DocumentShape violates sh:datatype on acris:amount",
+   "name": "DocumentShape.amount.datatype",
+   "path": "acris:amount",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`amount` IS NULL THEN [] WHEN v0.`amount` IS :: LIST<ANY> THEN v0.`amount` ELSE [v0.`amount`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))\nRETURN 'DocumentShape.amount.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:amount' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:amount' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`amount` IS NULL THEN [] WHEN v0.`amount` IS :: LIST<ANY> THEN v0.`amount` ELSE [v0.`amount`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.amount.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:amount/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 27
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "ddead59dad19e4c8",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:amount",
+   "name": "DocumentShape.amount.maxCount",
+   "path": "acris:amount",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`amount` IS NULL THEN [] WHEN v0.`amount` IS :: LIST<ANY> THEN v0.`amount` ELSE [v0.`amount`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.amount.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:amount' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:amount' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`amount` IS NULL THEN [] WHEN v0.`amount` IS :: LIST<ANY> THEN v0.`amount` ELSE [v0.`amount`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.amount.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:amount/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 27
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "7b129cfaf63f133d",
+   "message": "acris:DocumentShape violates sh:datatype on acris:crfn",
+   "name": "DocumentShape.crfn.datatype",
+   "path": "acris:crfn",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`crfn` IS NULL THEN [] WHEN v0.`crfn` IS :: LIST<ANY> THEN v0.`crfn` ELSE [v0.`crfn`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DocumentShape.crfn.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:crfn' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:crfn' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`crfn` IS NULL THEN [] WHEN v0.`crfn` IS :: LIST<ANY> THEN v0.`crfn` ELSE [v0.`crfn`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.crfn.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:crfn/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 13
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "d3c8448b76fd7d2f",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:crfn",
+   "name": "DocumentShape.crfn.maxCount",
+   "path": "acris:crfn",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`crfn` IS NULL THEN [] WHEN v0.`crfn` IS :: LIST<ANY> THEN v0.`crfn` ELSE [v0.`crfn`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.crfn.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:crfn' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:crfn' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`crfn` IS NULL THEN [] WHEN v0.`crfn` IS :: LIST<ANY> THEN v0.`crfn` ELSE [v0.`crfn`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.crfn.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:crfn/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 13
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "92dc5fd3eb518f68",
+   "message": "acris:DocumentShape violates sh:datatype on acris:doc_date",
+   "name": "DocumentShape.doc_date.datatype",
+   "path": "acris:doc_date",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_date` IS NULL THEN [] WHEN v0.`doc_date` IS :: LIST<ANY> THEN v0.`doc_date` ELSE [v0.`doc_date`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nRETURN 'DocumentShape.doc_date.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:doc_date' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_date` IS NULL THEN [] WHEN v0.`doc_date` IS :: LIST<ANY> THEN v0.`doc_date` ELSE [v0.`doc_date`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_date/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 24
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "fbe79c9ee00dfcb9",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:doc_date",
+   "name": "DocumentShape.doc_date.maxCount",
+   "path": "acris:doc_date",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_date` IS NULL THEN [] WHEN v0.`doc_date` IS :: LIST<ANY> THEN v0.`doc_date` ELSE [v0.`doc_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.doc_date.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:doc_date' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_date` IS NULL THEN [] WHEN v0.`doc_date` IS :: LIST<ANY> THEN v0.`doc_date` ELSE [v0.`doc_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_date/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 24
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "8e9d8375bf4bc5d6",
+   "message": "acris:DocumentShape violates sh:datatype on acris:doc_date_raw",
+   "name": "DocumentShape.doc_date_raw.datatype",
+   "path": "acris:doc_date_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_date_raw` IS NULL THEN [] WHEN v0.`doc_date_raw` IS :: LIST<ANY> THEN v0.`doc_date_raw` ELSE [v0.`doc_date_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DocumentShape.doc_date_raw.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_date_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:doc_date_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_date_raw` IS NULL THEN [] WHEN v0.`doc_date_raw` IS :: LIST<ANY> THEN v0.`doc_date_raw` ELSE [v0.`doc_date_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_date_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_date_raw/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 25
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "b2b5755d15fea834",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:doc_date_raw",
+   "name": "DocumentShape.doc_date_raw.maxCount",
+   "path": "acris:doc_date_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_date_raw` IS NULL THEN [] WHEN v0.`doc_date_raw` IS :: LIST<ANY> THEN v0.`doc_date_raw` ELSE [v0.`doc_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.doc_date_raw.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_date_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:doc_date_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_date_raw` IS NULL THEN [] WHEN v0.`doc_date_raw` IS :: LIST<ANY> THEN v0.`doc_date_raw` ELSE [v0.`doc_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_date_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_date_raw/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 25
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "d86adab31e602c63",
+   "message": "acris:DocumentShape violates sh:in on acris:doc_type",
+   "name": "DocumentShape.doc_type.in",
+   "path": "acris:doc_type",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_type/sh:in",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 16
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "ea62cca8aa8e91fb",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:doc_type",
+   "name": "DocumentShape.doc_type.maxCount",
+   "path": "acris:doc_type",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.doc_type.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:doc_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_type/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 14
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "11307e41b723f68d",
+   "message": "acris:DocumentShape violates sh:in on acris:doc_type_raw",
+   "name": "DocumentShape.doc_type_raw.in",
+   "path": "acris:doc_type_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_type_raw/sh:in",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 21
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "ce83d8959a5f6871",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:doc_type_raw",
+   "name": "DocumentShape.doc_type_raw.maxCount",
+   "path": "acris:doc_type_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.doc_type_raw.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:doc_type_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_type_raw/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 19
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "b923f1c25f00bba7",
+   "message": "acris:DocumentShape violates sh:minCount on acris:doc_type_raw",
+   "name": "DocumentShape.doc_type_raw.minCount",
+   "path": "acris:doc_type_raw",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'DocumentShape.doc_type_raw.minCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:minCount on acris:doc_type_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type_raw.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:doc_type_raw/sh:minCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 19
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "69f0f270a94d4d30",
+   "message": "acris:DocumentShape violates sh:datatype on acris:document_id",
+   "name": "DocumentShape.document_id.datatype",
+   "path": "acris:document_id",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DocumentShape.document_id.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:document_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:document_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.document_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:document_id/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "8ef65fd0306b4d27",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:document_id",
+   "name": "DocumentShape.document_id.maxCount",
+   "path": "acris:document_id",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.document_id.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:document_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:document_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.document_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:document_id/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "87c5da15beb2c625",
+   "message": "acris:DocumentShape violates sh:minCount on acris:document_id",
+   "name": "DocumentShape.document_id.minCount",
+   "path": "acris:document_id",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'DocumentShape.document_id.minCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:document_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:minCount on acris:document_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.document_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:document_id/sh:minCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "fa53836555834df3",
+   "message": "acris:DocumentShape violates sh:pattern on acris:document_id",
+   "name": "DocumentShape.document_id.pattern",
+   "path": "acris:document_id",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[A-Za-z0-9_]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[A-Za-z0-9_]+$)(?s:.*)' ELSE false END)\nRETURN 'DocumentShape.document_id.pattern' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:document_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:pattern on acris:document_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`document_id` IS NULL THEN [] WHEN v0.`document_id` IS :: LIST<ANY> THEN v0.`document_id` ELSE [v0.`document_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[A-Za-z0-9_]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[A-Za-z0-9_]+$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.document_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:document_id/sh:pattern",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "bbf328aed5652694",
+   "message": "acris:DocumentShape violates sh:datatype on acris:recorded",
+   "name": "DocumentShape.recorded.datatype",
+   "path": "acris:recorded",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`recorded` IS NULL THEN [] WHEN v0.`recorded` IS :: LIST<ANY> THEN v0.`recorded` ELSE [v0.`recorded`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nRETURN 'DocumentShape.recorded.datatype' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:recorded' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:datatype on acris:recorded' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`recorded` IS NULL THEN [] WHEN v0.`recorded` IS :: LIST<ANY> THEN v0.`recorded` ELSE [v0.`recorded`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.recorded.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:recorded/sh:datatype",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 26
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "e9d9fb6914d70047",
+   "message": "acris:DocumentShape violates sh:maxCount on acris:recorded",
+   "name": "DocumentShape.recorded.maxCount",
+   "path": "acris:recorded",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`recorded` IS NULL THEN [] WHEN v0.`recorded` IS :: LIST<ANY> THEN v0.`recorded` ELSE [v0.`recorded`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DocumentShape.recorded.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:recorded' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on acris:recorded' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`recorded` IS NULL THEN [] WHEN v0.`recorded` IS :: LIST<ANY> THEN v0.`recorded` ELSE [v0.`recorded`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.recorded.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:recorded/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 26
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:node",
+   "costClass": "scan",
+   "fingerprint": "c9ba47791d05ee24",
+   "message": "acris:DocumentShape violates sh:node",
+   "name": "DocumentShape.node",
+   "path": null,
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nRETURN 'DocumentShape.node' AS ruleId, 'acris:DocumentShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'acris:DocumentShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0, v0 AS v1\nWHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/sh:node",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 11
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "ab42241be13cf472",
+   "message": "acris:DocumentShape violates sh:class on wl:on_lot",
+   "name": "DocumentShape.on_lot.class",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nRETURN 'DocumentShape.on_lot.class' AS ruleId, 'acris:DocumentShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'acris:DocumentShape violates sh:class on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nMATCH (v0)-[:`ON_LOT`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Lot`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/wl:on_lot/sh:class",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 29
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan+expand",
+   "fingerprint": "95760413ec0a9c58",
+   "message": "acris:DocumentShape violates sh:minCount on wl:on_lot",
+   "name": "DocumentShape.on_lot.minCount",
+   "path": "wl:on_lot",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)\nRETURN 'DocumentShape.on_lot.minCount' AS ruleId, 'acris:DocumentShape' AS shape, 'wl:on_lot' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:minCount on wl:on_lot' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.on_lot.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/wl:on_lot/sh:minCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 29
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "f63854be367d15e4",
+   "message": "acris:DocumentShape violates sh:maxCount on wl:review_status",
+   "name": "DocumentShape.review_status.maxCount",
+   "path": "wl:review_status",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nRETURN 'DocumentShape.review_status.maxCount' AS ruleId, 'acris:DocumentShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, null AS value, 'acris:DocumentShape violates sh:maxCount on wl:review_status' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/wl:review_status/sh:maxCount",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 31
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "0032420987dd865c",
+   "message": "acris:DocumentShape violates sh:in on wl:source",
+   "name": "DocumentShape.source.in",
+   "path": "wl:source",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_master'], false))\nRETURN 'DocumentShape.source.in' AS ruleId, 'acris:DocumentShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on wl:source' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_master'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/wl:source/sh:in",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 30
+   },
+   "status": "compiled"
+  },
   {
    "constraint": "sh:datatype",
    "costClass": "scan",
@@ -398,6 +1268,26 @@
    "source": {
     "file": "ontology/hpd.shapes.ttl",
     "line": 42
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "270927f52a66beb3",
+   "message": "hpd:HpdRoleShape violates sh:minCount on wl:role_type",
+   "name": "HpdRoleShape.role_type.minCount",
+   "path": "wl:role_type",
+   "queries": {
+    "detail": "MATCH (v0:`HpdRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'HpdRoleShape.role_type.minCount' AS ruleId, 'hpd:HpdRoleShape' AS shape, 'wl:role_type' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['HpdRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'hpd:HpdRoleShape violates sh:minCount on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`HpdRole`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'HpdRoleShape.role_type.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "hpd:HpdRoleShape/wl:role_type/sh:minCount",
+   "severity": "Violation",
+   "shape": "hpd:HpdRoleShape",
+   "source": {
+    "file": "ontology/hpd.shapes.ttl",
+    "line": 40
    },
    "status": "compiled"
   },
@@ -1844,6 +2734,46 @@
   {
    "constraint": "sh:datatype",
    "costClass": "scan",
+   "fingerprint": "6104e181b7553874",
+   "message": "wl:PartyShape violates sh:datatype on wl:name_n1",
+   "name": "PartyShape.name_n1.datatype",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`Party`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'PartyShape.name_n1.datatype' AS ruleId, 'wl:PartyShape' AS shape, 'wl:name_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: 'party_id', keyValue: v0.`party_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'wl:PartyShape violates sh:datatype on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Party`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: 'party_id', keyValue: v0.`party_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'PartyShape.name_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:PartyShape/wl:name_n1/sh:datatype",
+   "severity": "Violation",
+   "shape": "wl:PartyShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 56
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "38e8d2fc0bb20ba4",
+   "message": "wl:PartyShape violates sh:maxCount on wl:name_n1",
+   "name": "PartyShape.name_n1.maxCount",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`Party`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'PartyShape.name_n1.maxCount' AS ruleId, 'wl:PartyShape' AS shape, 'wl:name_n1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: 'party_id', keyValue: v0.`party_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:PartyShape violates sh:maxCount on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Party`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Party']] + labels(v0)), key: 'party_id', keyValue: v0.`party_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'PartyShape.name_n1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "wl:PartyShape/wl:name_n1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "wl:PartyShape",
+   "source": {
+    "file": "ontology/core.shapes.ttl",
+    "line": 56
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
    "fingerprint": "6a674d843641cf5c",
    "message": "wl:PartyShape violates sh:datatype on wl:party_id",
    "name": "PartyShape.party_id.datatype",
@@ -1917,7 +2847,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 58
+    "line": 59
    },
    "status": "compiled"
   },
@@ -1937,7 +2867,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 63
+    "line": 64
    },
    "status": "compiled"
   },
@@ -1957,7 +2887,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 63
+    "line": 64
    },
    "status": "compiled"
   },
@@ -1977,7 +2907,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 63
+    "line": 64
    },
    "status": "compiled"
   },
@@ -1997,7 +2927,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 64
+    "line": 65
    },
    "status": "compiled"
   },
@@ -2017,7 +2947,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 64
+    "line": 65
    },
    "status": "compiled"
   },
@@ -2037,7 +2967,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 65
+    "line": 66
    },
    "status": "compiled"
   },
@@ -2057,7 +2987,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 65
+    "line": 66
    },
    "status": "compiled"
   },
@@ -2077,7 +3007,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 69
+    "line": 70
    },
    "status": "compiled"
   },
@@ -2097,7 +3027,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 59
+    "line": 60
    },
    "status": "compiled"
   },
@@ -2117,7 +3047,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 59
+    "line": 60
    },
    "status": "compiled"
   },
@@ -2137,7 +3067,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 59
+    "line": 60
    },
    "status": "compiled"
   },
@@ -2157,7 +3087,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 61
+    "line": 62
    },
    "status": "compiled"
   },
@@ -2177,27 +3107,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 61
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:minCount",
-   "costClass": "scan",
-   "fingerprint": "b3f3f597945be840",
-   "message": "wl:RoleShape violates sh:minCount on wl:role_type",
-   "name": "RoleShape.role_type.minCount",
-   "path": "wl:role_type",
-   "queries": {
-    "detail": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'RoleShape.role_type.minCount' AS ruleId, 'wl:RoleShape' AS shape, 'wl:role_type' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)} AS focus, null AS value, 'wl:RoleShape violates sh:minCount on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Role`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Role']] + labels(v0)), key: 'role_id', keyValue: v0.`role_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'RoleShape.role_type.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "wl:RoleShape/wl:role_type/sh:minCount",
-   "severity": "Violation",
-   "shape": "wl:RoleShape",
-   "source": {
-    "file": "ontology/core.shapes.ttl",
-    "line": 61
+    "line": 62
    },
    "status": "compiled"
   },
@@ -2217,7 +3127,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 62
+    "line": 63
    },
    "status": "compiled"
   },
@@ -2237,7 +3147,7 @@
    "shape": "wl:RoleShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 62
+    "line": 63
    },
    "status": "compiled"
   },
@@ -2257,7 +3167,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 74
+    "line": 75
    },
    "status": "compiled"
   },
@@ -2277,7 +3187,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 74
+    "line": 75
    },
    "status": "compiled"
   },
@@ -2297,7 +3207,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 74
+    "line": 75
    },
    "status": "compiled"
   },
@@ -2317,7 +3227,7 @@
    "shape": "wl:SnapshotShape",
    "source": {
     "file": "ontology/core.shapes.ttl",
-    "line": 75
+    "line": 76
    },
    "status": "compiled"
   }

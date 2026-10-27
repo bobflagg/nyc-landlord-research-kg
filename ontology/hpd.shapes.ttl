@@ -37,7 +37,7 @@ hpd:HpdPartyShape a sh:NodeShape ; sh:targetClass hpd:HpdParty ;
   sh:property [ sh:path wl:source ; sh:in ( "hpd_contacts" ) ] .
 
 hpd:HpdRoleShape a sh:NodeShape ; sh:targetClass hpd:HpdRole ;
-  sh:property [ sh:path wl:role_type ; sh:in
+  sh:property [ sh:path wl:role_type ; sh:minCount 1 ; sh:in
     # generated:role-type begin only=registered_owner,head_officer,officer,shareholder,managing_agent,site_manager,lessee
     ( "registered_owner" "head_officer" "officer" "shareholder" "managing_agent" "site_manager" "lessee" )
     # generated:role-type end

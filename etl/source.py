@@ -62,3 +62,38 @@ def conflicted_bins(conn) -> frozenset:
         cur.execute("""select bin from hpd_registrations where bin ~ '^[0-9]{7}$' and bin !~ '^[1-5]0{6}$'
                        group by bin having count(distinct bbl) > 1""")
         return frozenset(r["bin"] for r in cur)
+
+
+MASTER = """select distinct on (m.documentid) m.documentid, m.crfn, m.doctype, m.docdate, m.docamount, m.recordedfiled
+            from real_property_master m
+            where m.doctype = any(%s)
+              and exists (select 1 from real_property_legals l where l.documentid = m.documentid and l.bbl in ({lots}))
+            order by m.documentid, m.modifieddate desc"""  # the source repeats a document once per modification; keep the latest
+
+
+def graph_lots(conn, community_district: int | None = None) -> frozenset:
+    """BBLs the graph holds: PLUTO lots (one district, if asked) and, citywide, HPD-registered lots."""
+    sql, params = ("select bbl from pluto_latest where cd = %s", (community_district,)) if community_district else (
+        "select bbl from pluto_latest union select bbl from hpd_registrations", ())
+    with conn.cursor() as cur:
+        cur.execute(sql, params)
+        return frozenset(r["bbl"].strip() for r in cur)
+
+
+def acris_documents(conn, codes: list[str], community_district: int | None = None) -> Iterator[dict]:
+    """Latest version of each document of the given types that is on a graph lot, in document id order."""
+    lots = ("select bbl from pluto_latest where cd = %s" if community_district
+            else "select bbl from pluto_latest union select bbl from hpd_registrations")
+    return _stream(conn, "acris_documents", MASTER.format(lots=lots), (codes, *((community_district,) if community_district else ())))
+
+
+def acris_children(conn):
+    """A function that returns the (parties, legals) of a list of document ids, by index lookup."""
+    def fetch(ids: list[str]) -> tuple[list[dict], list[dict]]:
+        with conn.cursor() as cur:
+            cur.execute("select documentid, partytype, name, address1, address2, city, state, zip, country "
+                        "from real_property_parties where documentid = any(%s)", (ids,))
+            parties = cur.fetchall()
+            cur.execute("select documentid, bbl from real_property_legals where documentid = any(%s)", (ids,))
+            return parties, cur.fetchall()
+    return fetch

@@ -1,0 +1,1798 @@
+{
+ "documents": [
+  {
+   "documentid": "2003011500231001",
+   "crfn": "2003000013676",
+   "doctype": "DEEDO",
+   "docdate": "2002-12-05",
+   "docamount": 0,
+   "recordedfiled": "2003-02-07"
+  },
+  {
+   "documentid": "2003012200923001",
+   "crfn": "2003000006935",
+   "doctype": "DEEDO",
+   "docdate": "2002-12-05",
+   "docamount": 0,
+   "recordedfiled": "2003-01-28"
+  },
+  {
+   "documentid": "2003020300253001",
+   "crfn": "2003000144382",
+   "doctype": "DEEDO",
+   "docdate": "2002-12-05",
+   "docamount": 0,
+   "recordedfiled": "2003-05-28"
+  },
+  {
+   "documentid": "2017061600025001",
+   "crfn": "2017000237742",
+   "doctype": "DEED",
+   "docdate": "2017-06-13",
+   "docamount": 0,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2017061600025002",
+   "crfn": "2017000237743",
+   "doctype": "DEED",
+   "docdate": "2017-06-13",
+   "docamount": 45839605,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2018092900072001",
+   "crfn": "2018000346210",
+   "doctype": "DEED",
+   "docdate": "2018-09-26",
+   "docamount": 4000000,
+   "recordedfiled": "2018-10-18"
+  },
+  {
+   "documentid": "2021022201130001",
+   "crfn": "2021000070847",
+   "doctype": "DEED",
+   "docdate": "2021-02-05",
+   "docamount": 0,
+   "recordedfiled": "2021-02-26"
+  },
+  {
+   "documentid": "2021022201130002",
+   "crfn": "2021000070848",
+   "doctype": "DEED",
+   "docdate": "2021-02-16",
+   "docamount": 6800000,
+   "recordedfiled": "2021-02-26"
+  },
+  {
+   "documentid": "2021022201130003",
+   "crfn": "2021000070849",
+   "doctype": "DEED",
+   "docdate": "2021-02-16",
+   "docamount": 5000000,
+   "recordedfiled": "2021-02-26"
+  },
+  {
+   "documentid": "2024091700040001",
+   "crfn": "2024000256314",
+   "doctype": "DEED",
+   "docdate": "2024-09-11",
+   "docamount": 12000000,
+   "recordedfiled": "2024-10-01"
+  },
+  {
+   "documentid": "2025032100031001",
+   "crfn": "2025000089237",
+   "doctype": "DEED",
+   "docdate": "2025-03-14",
+   "docamount": 0,
+   "recordedfiled": "2025-04-02"
+  },
+  {
+   "documentid": "2026042100334001",
+   "crfn": "2026000111946",
+   "doctype": "DEED",
+   "docdate": "2026-03-23",
+   "docamount": 800000,
+   "recordedfiled": "2026-04-21"
+  },
+  {
+   "documentid": "BK_6630032700447",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1966-12-29",
+   "docamount": 0,
+   "recordedfiled": "1966-12-29"
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1972-10-10",
+   "docamount": 0,
+   "recordedfiled": "1972-10-10"
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1972-10-10",
+   "docamount": 0,
+   "recordedfiled": "1972-10-10"
+  },
+  {
+   "documentid": "BK_7330061600026",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1973-02-23",
+   "docamount": 0,
+   "recordedfiled": "1973-02-23"
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1973-03-01",
+   "docamount": 0,
+   "recordedfiled": "1973-03-01"
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1976-10-12",
+   "docamount": 0,
+   "recordedfiled": "1976-10-12"
+  },
+  {
+   "documentid": "BK_7730091600649",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1977-04-26",
+   "docamount": 0,
+   "recordedfiled": "1977-04-26"
+  },
+  {
+   "documentid": "BK_7830098300841",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1978-03-23",
+   "docamount": 0,
+   "recordedfiled": "1978-03-23"
+  },
+  {
+   "documentid": "BK_7830098300843",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1978-03-23",
+   "docamount": 0,
+   "recordedfiled": "1978-03-23"
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1978-09-13",
+   "docamount": 0,
+   "recordedfiled": "1978-09-13"
+  },
+  {
+   "documentid": "BK_7830102900876",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1978-10-27",
+   "docamount": 0,
+   "recordedfiled": "1978-10-27"
+  },
+  {
+   "documentid": "BK_7930107100841",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1979-05-09",
+   "docamount": 0,
+   "recordedfiled": "1979-05-09"
+  },
+  {
+   "documentid": "BK_7930107901553",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1979-06-18",
+   "docamount": 0,
+   "recordedfiled": "1979-06-18"
+  },
+  {
+   "documentid": "BK_7930107901555",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1979-06-18",
+   "docamount": 0,
+   "recordedfiled": "1979-06-18"
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1979-08-20",
+   "docamount": 0,
+   "recordedfiled": "1979-08-20"
+  },
+  {
+   "documentid": "BK_8030114801971",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1980-03-21",
+   "docamount": 0,
+   "recordedfiled": "1980-03-21"
+  },
+  {
+   "documentid": "BK_8030119701585",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1980-11-14",
+   "docamount": 0,
+   "recordedfiled": "1980-11-14"
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1981-01-21",
+   "docamount": 0,
+   "recordedfiled": "1981-01-21"
+  },
+  {
+   "documentid": "FT_3130000937813",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1982-12-06",
+   "docamount": 0,
+   "recordedfiled": "1982-12-08"
+  },
+  {
+   "documentid": "FT_3210007664321",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "2001-04-30",
+   "docamount": 0,
+   "recordedfiled": "2001-05-23"
+  },
+  {
+   "documentid": "FT_3240007675524",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "2001-04-30",
+   "docamount": 0,
+   "recordedfiled": "2001-05-31"
+  },
+  {
+   "documentid": "FT_3530005404653",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1996-10-18",
+   "docamount": 0,
+   "recordedfiled": "1996-10-31"
+  },
+  {
+   "documentid": "FT_3590001635159",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1991-08-15",
+   "docamount": 0,
+   "recordedfiled": "1991-08-28"
+  },
+  {
+   "documentid": "FT_3620008345262",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "2002-03-14",
+   "docamount": 0,
+   "recordedfiled": "2002-04-01"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "crfn": null,
+   "doctype": "DEED",
+   "docdate": "1982-05-26",
+   "docamount": 0,
+   "recordedfiled": "1982-05-28"
+  }
+ ],
+ "parties": [
+  {
+   "documentid": "2003011500231001",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2003011500231001",
+   "partytype": 2,
+   "name": "548 52ND STREET",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2003012200923001",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2003012200923001",
+   "partytype": 2,
+   "name": "702 54TH STREET LLC",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2003020300253001",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2003020300253001",
+   "partytype": 2,
+   "name": "5413  7TH AVENUE LLC",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025001",
+   "partytype": 2,
+   "name": "CLL2 LLC",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025001",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025001",
+   "partytype": 2,
+   "name": "SUNSET IV EQUITIES LLC",
+   "address1": "1465A FLATBUSH AVE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025002",
+   "partytype": 1,
+   "name": "CLL2 LLC",
+   "address1": "1465A FLATBUSH AVE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "146A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025002",
+   "partytype": 1,
+   "name": "SUNSET IV EQUITIES LLC",
+   "address1": "1465A FLATBUSH AVE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025002",
+   "partytype": 2,
+   "name": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025002",
+   "partytype": 2,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2018092900072001",
+   "partytype": 1,
+   "name": "548 52ND STREET LLC",
+   "address1": "C/O MR. DANIEL KORNBLUM",
+   "address2": "73 ASPINWALL STREET",
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2018092900072001",
+   "partytype": 2,
+   "name": "AADVA REALTY LLC",
+   "address1": "14 SINCLAIR DR",
+   "address2": null,
+   "city": "KINGS POINT",
+   "state": "NY",
+   "zip": "11024",
+   "country": "US"
+  },
+  {
+   "documentid": "2018092900072001",
+   "partytype": 2,
+   "name": "K S TURNPIKE LLC",
+   "address1": "14 SINCLAIR DR",
+   "address2": null,
+   "city": "KINGS POINT",
+   "state": "NY",
+   "zip": "11024",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130001",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130001",
+   "partytype": 2,
+   "name": "702 54 STREET LLC",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130002",
+   "partytype": 1,
+   "name": "702 54 STREET LLC",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130002",
+   "partytype": 2,
+   "name": "702 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130003",
+   "partytype": 1,
+   "name": "5413 7TH AVENUE LLC",
+   "address1": "73 ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10307",
+   "country": "US"
+  },
+  {
+   "documentid": "2021022201130003",
+   "partytype": 2,
+   "name": "5413 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2024091700040001",
+   "partytype": 1,
+   "name": "ST. JOHNS ROMAN CATHOLIC CHURCH IN THE CITY OF",
+   "address1": "BROOKLYN",
+   "address2": "250 21ST STREET",
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11215",
+   "country": "US"
+  },
+  {
+   "documentid": "2024091700040001",
+   "partytype": 2,
+   "name": "259 22ND STREET LLC",
+   "address1": "954 LEXINGTON AVENUE",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10021",
+   "country": "US"
+  },
+  {
+   "documentid": "2025032100031001",
+   "partytype": 1,
+   "name": "5413 PLAZA LLC",
+   "address1": "746 61ST STREET",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11220",
+   "country": "US"
+  },
+  {
+   "documentid": "2025032100031001",
+   "partytype": 2,
+   "name": "5413 PLAZA LLC",
+   "address1": "746 61ST STREET",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11220",
+   "country": "US"
+  },
+  {
+   "documentid": "2026042100334001",
+   "partytype": 1,
+   "name": "THE ESTATE OF ANGEL PAGAN BY ANA RODRIGUEZ EXECUTO",
+   "address1": "234 54TH ST",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11220",
+   "country": "US"
+  },
+  {
+   "documentid": "2026042100334001",
+   "partytype": 2,
+   "name": "234 54TH ST LLC",
+   "address1": "10173 ROUTE 32",
+   "address2": null,
+   "city": "FREEHOLD",
+   "state": "NY",
+   "zip": "12431",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_6630032700447",
+   "partytype": 1,
+   "name": "H & B MANAGEMENT INC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_6630032700447",
+   "partytype": 2,
+   "name": "FISHMAN BENJAMIN",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_6630032700447",
+   "partytype": 2,
+   "name": "FISHMAN HERMAN W",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "partytype": 1,
+   "name": "PRINCE FRANCES",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "partytype": 1,
+   "name": "PRINCE MATTHEW",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "partytype": 1,
+   "name": "PRINCE MILTON S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "partytype": 2,
+   "name": "TOM TOY INC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "partytype": 1,
+   "name": "TOM TOY INC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "partytype": 2,
+   "name": "PRINCE FRANCES",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "partytype": 2,
+   "name": "PRINCE MATTHEW",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "partytype": 2,
+   "name": "PRINCE MILTON S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061600026",
+   "partytype": 1,
+   "name": "FISHMAN BENJAMIN",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061600026",
+   "partytype": 1,
+   "name": "FISHMAN HERMAN W",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061600026",
+   "partytype": 2,
+   "name": "DASS REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 1,
+   "name": "DASS REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 2,
+   "name": "ALHADEFF NISSIN",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 2,
+   "name": "DIAMANTIS HARALAMBOS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 2,
+   "name": "SEKAS GEORGE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 2,
+   "name": "SEKAS GUS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "partytype": 2,
+   "name": "STAMBULES KOSTAS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "partytype": 1,
+   "name": "RAMADHIN DOOLAD AYE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "partytype": 1,
+   "name": "RAMADHIN RAJUMAR",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "partytype": 2,
+   "name": "RAMADHIN DOOLAD AYE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "partytype": 2,
+   "name": "RAMADHIN RAJUMAR",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7730091600649",
+   "partytype": 1,
+   "name": "PRINCE FRANCES DECD EXECUTORS OF",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7730091600649",
+   "partytype": 2,
+   "name": "PRINCE MATTHEW",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7730091600649",
+   "partytype": 2,
+   "name": "PRINCE MILTON S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098300841",
+   "partytype": 1,
+   "name": "BARANGA RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098300841",
+   "partytype": 2,
+   "name": "RACHTEL RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098300843",
+   "partytype": 1,
+   "name": "PRINCE MATTHEW",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098300843",
+   "partytype": 1,
+   "name": "PRINCE MILTON S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098300843",
+   "partytype": 2,
+   "name": "BARANGA RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "ALHADEFF NISSIM",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "DIAMANDIS HARALAMBOS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "DIAMANTIS HARALAMBOS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "SEKAS GEORGE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "SEKAS GUS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 1,
+   "name": "STAMBULES KOSTAS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "partytype": 2,
+   "name": "KORNBLUM DANIEL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830102900876",
+   "partytype": 1,
+   "name": "FRANJO REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830102900876",
+   "partytype": 2,
+   "name": "PAGAN ANGEL LUIS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107100841",
+   "partytype": 1,
+   "name": "RACHTEL REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107100841",
+   "partytype": 2,
+   "name": "T W F  DEVELOPMENT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901553",
+   "partytype": 1,
+   "name": "RACHETEL REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901553",
+   "partytype": 2,
+   "name": "T W F DEVELOPMENT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901555",
+   "partytype": 1,
+   "name": "T W F DVLPT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901555",
+   "partytype": 2,
+   "name": "RACHTEL RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "partytype": 1,
+   "name": "FERLAINO JOHN C",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "partytype": 1,
+   "name": "FRATIANNI JOHN R",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "partytype": 2,
+   "name": "HEROLD PAULINE S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "partytype": 2,
+   "name": "HEROLD ROBERT D",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030114801971",
+   "partytype": 1,
+   "name": "RAMADHIN DOOLADAYE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030114801971",
+   "partytype": 1,
+   "name": "RAMADHIN RAJKUMA",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030114801971",
+   "partytype": 2,
+   "name": "HARBRO DEVELOPMENT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030119701585",
+   "partytype": 1,
+   "name": "HEROLD PAULINE S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030119701585",
+   "partytype": 1,
+   "name": "HEROLD ROBERT D",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030119701585",
+   "partytype": 2,
+   "name": "HEENAN DAVID",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "partytype": 1,
+   "name": "RACHTEL REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "partytype": 1,
+   "name": "TWF DEVELOPMENT CORP (AS AGENT FOR)",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "partytype": 1,
+   "name": "WFB ASSOCIATES",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "partytype": 2,
+   "name": "KORNBLUM CAROL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "partytype": 2,
+   "name": "KORNBLUM DANIEL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3130000937813",
+   "partytype": 1,
+   "name": "HARBRO DEVELOPMENT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3130000937813",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STAB. ASO I",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3210007664321",
+   "partytype": 1,
+   "name": "KORNBLUM, CAROL",
+   "address1": "73  ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3210007664321",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73  ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3210007664321",
+   "partytype": 2,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73  ASPINWALL STREET",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3240007675524",
+   "partytype": 1,
+   "name": "KORNBLUM, CAROL",
+   "address1": "73  ASPINWALL ST",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3240007675524",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73  ASPINWALL ST",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3240007675524",
+   "partytype": 2,
+   "name": "KORNBLUM, DANIEL B",
+   "address1": "73  ASPINWALL ST",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3530005404653",
+   "partytype": 1,
+   "name": "TREASURE NINE REALTYINC",
+   "address1": "91  ELIZABETH ST",
+   "address2": null,
+   "city": "NY",
+   "state": "NY",
+   "zip": "10013",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3530005404653",
+   "partytype": 2,
+   "name": "ALROSE REALTY LLC",
+   "address1": "438  52 ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3590001635159",
+   "partytype": 1,
+   "name": "LUTHERAN MEDICAL CENTER",
+   "address1": "150  55TH ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3590001635159",
+   "partytype": 2,
+   "name": "TREASURE NINE REALTYINC",
+   "address1": "149/1 51 ELIZABETH ST",
+   "address2": null,
+   "city": "NY",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3620008345262",
+   "partytype": 1,
+   "name": "ALROSE REALTY LLC",
+   "address1": "60  EAST 42ND ST",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3620008345262",
+   "partytype": 2,
+   "name": "438 52ND ST OWNERS CORP",
+   "address1": "300  EAST SECOND ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "partytype": 1,
+   "name": "DEMATTEO, SALVATOREREF",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "partytype": 1,
+   "name": "FERLAINO, JOHN C DEF/ETL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "partytype": 2,
+   "name": "KORNBLUM, CAROL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "partytype": 2,
+   "name": "KORNBLUM, DANIEL B.",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  }
+ ],
+ "legals": [
+  {
+   "documentid": "2003011500231001",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2003012200923001",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2003020300253001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2018092900072001",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2021022201130001",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2021022201130002",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2021022201130003",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2024091700040001",
+   "bbl": "3008970014"
+  },
+  {
+   "documentid": "2025032100031001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2026042100334001",
+   "bbl": "3008210019"
+  },
+  {
+   "documentid": "BK_6630032700447",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "BK_7230058700739",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7230058700741",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7330061600026",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "BK_7330061700406",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "BK_7630087700475",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "BK_7730091600649",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7830098300841",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7830098300843",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7830101801938",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "BK_7830102900876",
+   "bbl": "3008210019"
+  },
+  {
+   "documentid": "BK_7930107100841",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7930107901553",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7930107901555",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7930109401635",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "BK_8030114801971",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "BK_8030119701585",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "BK_8130121200259",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "FT_3130000937813",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3210007664321",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "FT_3240007675524",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "FT_3530005404653",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3590001635159",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3620008345262",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3830000912683",
+   "bbl": "3008080025"
+  }
+ ]
+}

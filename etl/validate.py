@@ -34,13 +34,16 @@ def handwritten_checks() -> list[tuple[str, str]]:
             for p in sorted((ROOT / "etl" / "checks").glob("*.cypher"))]
 
 
-def validate(runner) -> list[Violation]:
-    """`runner` is a neo4j Session or Transaction."""
+def validate(runner, only: tuple[str, ...] | None = None) -> list[Violation]:
+    """`runner` is a neo4j Session or Transaction. `only` limits the run to rules and checks whose name starts with
+    one of the prefixes: a test that loads a few nodes into a database already holding real data checks its own
+    module's rules (the full build checks everything)."""
+    keep = (lambda name: True) if only is None else (lambda name: name.startswith(only))
     found = []
-    for name, query in compiled_rules():
+    for name, query in filter(lambda r: keep(r[0]), compiled_rules()):
         for rec in runner.run(query, limit=LIMIT):
             found.append(Violation(name, rec.get("message") or str(dict(rec))))
-    for name, query in handwritten_checks():
+    for name, query in filter(lambda r: keep(r[0]), handwritten_checks()):
         for rec in runner.run(query):
             found.append(Violation(name, str(dict(rec))))
     return found

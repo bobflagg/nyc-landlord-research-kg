@@ -7,7 +7,8 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `reliability.ttl` | Reliability (I, II) | `reliability` on every fact |
 | `source-category.ttl` | Source category | `source_category` on every fact |
 | `review-status.ttl` | Review status | `review_status` |
-| `role-type.ttl` | Role type | `role_type` on roles (HPD now; ACRIS and DOS with their modules) |
+| `role-type.ttl` | Role type | `role_type` on roles (HPD and ACRIS deed parties now; DOS with its module) |
+| `document-type.ttl` | Document type | `doc_type` on ACRIS documents (deed family only) |
 | `entity-kind.ttl` | Entity kind | `owner_kind` on registrations |
 
 `skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.

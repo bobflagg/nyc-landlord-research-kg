@@ -31,3 +31,23 @@ def hpd_role_type(contact_type: str) -> str:
 def hpd_owner_kind(description: str | None) -> str | None:
     """contactdescription to owner_kind, or None when the recorded value has no concept (the raw value is kept)."""
     return _codes("entity-kind", "x-hpd").get((description or "").strip().casefold())
+
+
+def acris_doc_type(code: str | None) -> str | None:
+    """ACRIS document type code to doc_type, or None for a code with no concept (the raw code is kept)."""
+    return _codes("document-type", "x-acris").get((code or "").strip().casefold())
+
+
+def deed_family_codes() -> list[str]:
+    """ACRIS document type codes that have a concept: the codes a build loads."""
+    g = Graph().parse(ROOT / "vocab" / "document-type.ttl")
+    return sorted(str(l) for l in g.objects(None, SKOS.hiddenLabel) if l.language == "x-acris")
+
+
+def acris_role_type(doc_type: str | None, party_type) -> str | None:
+    """Party type to role_type for a deed-family document. Party 3 means life estate retained on DEED, LE only;
+    elsewhere it has no confirmed meaning and maps to nothing."""
+    role = _codes("role-type", "x-acris").get(str(party_type).strip())
+    if role == "life_estate_retained" and doc_type != "deed_life_estate":
+        return None
+    return role

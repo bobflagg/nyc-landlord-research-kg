@@ -1,0 +1,56 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix s2c:   <https://w3id.org/shacl2cypher#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:    <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix acris: <https://bobflagg.github.io/Watchline/ontology/acris#> .
+
+# ACRIS shapes (design note 0015). Values between "generated" markers are written from vocab/ by
+# scripts/sync_shape_values.py ("name:x-acris" takes the ACRIS codes on skos:hiddenLabel).
+
+acris:DocumentShape a sh:NodeShape ; sh:targetClass acris:Document ; s2c:key "document_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path acris:document_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[A-Za-z0-9_]+$" ] ;
+  sh:property [ sh:path acris:crfn ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path acris:doc_type ; sh:maxCount 1 ; sh:in
+    # generated:document-type begin only=deed,deed_timeshare,deed_life_estate,deed_other,deed_correction,deed_restrictive_covenant,deed_pre_rpt
+    ( "deed" "deed_timeshare" "deed_life_estate" "deed_other" "deed_correction" "deed_restrictive_covenant" "deed_pre_rpt" )
+    # generated:document-type end
+  ] ;
+  sh:property [ sh:path acris:doc_type_raw ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:document-type:x-acris begin
+    ( "DEED" "DEED, TS" "DEED, LE" "DEEDO" "DEED COR" "DEED, RC" "DEEDP" )
+    # generated:document-type:x-acris end
+  ] ;
+  sh:property [ sh:path acris:doc_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path acris:doc_date_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path acris:recorded ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path acris:amount ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  # A document is loaded only when it is on a lot in the graph.
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "acris_master" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+acris:AcrisPartyShape a sh:NodeShape ; sh:targetClass acris:AcrisParty ;
+  sh:property [ sh:path wl:party_id ; sh:pattern "^acris:[0-9a-f]{32}$" ] ;
+  sh:property [ sh:path acris:party_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:name_n1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "acris_parties" ) ] .
+
+acris:AcrisRoleShape a sh:NodeShape ; sh:targetClass acris:AcrisRole ;
+  # role_type is absent for a party code with no confirmed meaning on this document type (note 0015).
+  sh:property [ sh:path wl:role_type ; sh:maxCount 1 ; sh:in
+    # generated:role-type begin only=grantor,grantee,life_estate_retained
+    ( "grantor" "grantee" "life_estate_retained" )
+    # generated:role-type end
+  ] ;
+  sh:property [ sh:path wl:source_role_code ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:role-type:x-acris begin
+    ( "1" "2" "3" )
+    # generated:role-type:x-acris end
+  ] ;
+  sh:property [ sh:path acris:in_document ; sh:class acris:Document ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  # The document is on the lots; the role is not on a building or lot itself.
+  sh:property [ sh:path wl:on_building ; sh:maxCount 0 ] ;
+  sh:property [ sh:path wl:on_lot ; sh:maxCount 0 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "acris_parties" ) ] .

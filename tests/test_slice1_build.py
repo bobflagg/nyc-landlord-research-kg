@@ -11,6 +11,9 @@ from etl.hpd import contact_nodes, party_id, pick_contacts, real_bin, registrati
 from etl.load import apply_schema, register_snapshot
 from etl.pluto import lot_node
 from etl.validate import validate
+
+HPD_RULES = ("LotShape", "LotAttributesShape", "BuildingShape", "PartyShape", "RoleShape", "RegistrationShape", "HpdPartyShape",
+             "HpdRoleShape", "role_attachment", "snapshot_reference")
 from datetime import date
 
 SNAP = "justfixwow-2026-05-29"
@@ -85,7 +88,7 @@ def anchors(session, schema):
 
 
 def test_anchors_validate_clean(anchors):
-    assert validate(anchors) == []
+    assert validate(anchors, only=HPD_RULES) == []
 
 
 def test_loading_twice_changes_nothing(anchors, schema):
@@ -145,10 +148,11 @@ def test_roles_without_a_building_attach_to_the_lot(session, schema):
         cs = [{**c, "registrationid": reg["registrationid"], "registrationcontactid": c["registrationcontactid"] + shift}
               for c in FIX["contacts"] if c["registrationid"] == FIX["registrations"][0]["registrationid"]]
         load_hpd(tx, schema, [reg], cs, SNAP)
-        assert validate(tx) == []
+        assert validate(tx, only=HPD_RULES) == []
         ids = [f"hpd:{c['registrationcontactid']}" for c in cs]
         on_lot = tx.run("MATCH (role:Role)-[:ON_LOT]->(:Lot {bbl: $b}) WHERE role.role_id IN $ids RETURN count(role) AS c", b=reg["bbl"], ids=ids).single()["c"]
         on_bld = tx.run("MATCH (role:Role)-[:ON_BUILDING]->(:Building) WHERE role.role_id IN $ids RETURN count(role) AS c", ids=ids).single()["c"]
         assert (on_lot, on_bld) == (5, 0)
     finally:
         tx.rollback()
+

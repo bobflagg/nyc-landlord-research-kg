@@ -1,0 +1,53 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix acris:   <https://bobflagg.github.io/Watchline/ontology/acris#> .
+
+# ACRIS module (design note 0015): recorded documents, the parties and roles they name. Deed family only in Slice 1.
+<https://bobflagg.github.io/Watchline/ontology/acris> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline ACRIS module"@en ;
+    dcterms:created "2026-10-27"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+acris:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:comment "One recorded ACRIS document, keyed by document id (a string). It is on each lot its legals name that is in the graph. What counts as a transfer is decided by the tools, not here (note 0004)."@en .
+
+acris:AcrisParty a owl:Class ; rdfs:subClassOf wl:Party ;
+    rdfs:label "ACRIS party"@en ;
+    rdfs:comment "A party as an ACRIS document records it: one node per (name, address line 1 and 2, city, state, zip, country). It asserts only that this name and address were recorded; it never says two records are one party (note 0006)."@en .
+
+acris:AcrisRole a owl:Class ; rdfs:subClassOf wl:Role ;
+    rdfs:label "ACRIS role"@en ;
+    rdfs:comment "A role from one ACRIS party row. It is in a document, not on a building or lot: the document is on the lots. Carried with the labels Role and AcrisRole."@en .
+
+acris:document_id a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:string .
+acris:crfn a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:string ;
+    rdfs:comment "City Register File Number."@en .
+acris:doc_type a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:string ;
+    rdfs:comment "Normalized document type. Values: vocab/document-type.ttl. Absent when the recorded code has no concept."@en .
+acris:doc_type_raw a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:string ;
+    rdfs:comment "The recorded document type code, as written."@en .
+acris:doc_date a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:date ;
+    rdfs:comment "The date on the document. Absent when the recorded date falls outside 1900 to the snapshot date; the recorded value is then in doc_date_raw."@en .
+acris:doc_date_raw a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:string ;
+    rdfs:comment "The recorded date as text, kept only when it was out of range. Reported and flagged, never repaired."@en .
+acris:recorded a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:date ;
+    rdfs:comment "The date the document was recorded or filed."@en .
+acris:amount a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xsd:integer ;
+    rdfs:comment "The consideration in dollars. A $0 deed is not evidence of anything on its own."@en .
+
+acris:in_document a owl:ObjectProperty ; rdfs:domain acris:AcrisRole ; rdfs:range acris:Document ;
+    rdfs:comment "The document a role was recorded in. Structural. A document is on lots through wl:on_lot."@en .
+
+acris:party_name a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string ;
+    rdfs:comment "The name as recorded. Shown with its role and source (note 0009)."@en .
+acris:address_line1 a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .
+acris:address_line2 a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .
+acris:city a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .
+acris:state a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .
+acris:zip a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .
+acris:country a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string .

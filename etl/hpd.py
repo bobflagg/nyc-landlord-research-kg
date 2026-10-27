@@ -4,6 +4,7 @@ import re
 from datetime import date
 
 from etl.address import a2_key
+from etl.names import n1
 from etl.pluto import provenance
 from etl.vocab import hpd_owner_kind, hpd_role_type
 
@@ -84,6 +85,9 @@ def contact_nodes(c: dict, snapshot_id: str) -> dict:
              "organization_name": _s(c.get("corporationname")), "person_name": _person(c),
              "business_house": house, "business_street": street, "business_apartment": _s(c.get("businessapartment")),
              "business_city": _s(c.get("businesscity")), "business_state": _s(c.get("businessstate")), "business_zip": zip5}
+    name = party["organization_name"] or party["person_name"]
+    if name:
+        party["name_n1"] = n1(name)
     if house and street and zip5 and house[0].isdigit():
         party["business_address_key"] = a2_key(house, street, zip5)
     cid = str(c["registrationcontactid"])

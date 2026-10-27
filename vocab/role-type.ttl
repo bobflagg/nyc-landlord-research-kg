@@ -9,8 +9,8 @@ role: a skos:ConceptScheme ;
     dcterms:description "What a record says a party is to a building or lot, normalized across sources. Names the role the record gives and never implies ownership or control."@en ;
     dcterms:created "2026-10-26"^^xsd:date ;
     owl:versionInfo "0.1.0" ;
-    skos:scopeNote "Each concept's skos:notation is the string stored in role_type. skos:hiddenLabel with language tag x-hpd is the HPD contact type the loader maps from (design notes 0004 and 0014). The two groupings name what the record says, not who controls the building. ACRIS and DOS roles are added with their modules."@en ;
-    skos:hasTopConcept role:registered_principal, role:management .
+    skos:scopeNote "Each concept's skos:notation is the string stored in role_type. skos:hiddenLabel with language tag x-hpd is the HPD contact type the loader maps from (design notes 0004 and 0014). The two groupings name what the record says, not who controls the building. skos:hiddenLabel with language tag x-acris is the ACRIS party type code, read together with the document type (note 0015). DOS roles are added with their module."@en ;
+    skos:hasTopConcept role:registered_principal, role:management, role:deed_party .
 
 role:registered_principal a skos:Concept ;
     skos:inScheme role: ;
@@ -83,3 +83,35 @@ role:lessee a skos:Concept ;
     skos:prefLabel "Lessee"@en ;
     skos:hiddenLabel "Lessee"@x-hpd ;
     skos:definition "A lessee an HPD registration lists for the building."@en .
+
+role:deed_party a skos:Concept ;
+    skos:inScheme role: ;
+    skos:topConceptOf role: ;
+    skos:notation "deed_party" ;
+    skos:prefLabel "Party named on a deed"@en ;
+    skos:definition "The grantor, grantee and life-estate party a deed names. A grouping of what the document says; a grantee is the party the document names as receiving title, not a finding of ownership."@en .
+
+role:grantor a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:deed_party ;
+    skos:notation "grantor" ;
+    skos:prefLabel "Grantor"@en ;
+    skos:hiddenLabel "1"@x-acris ;
+    skos:definition "Party 1 on a deed-family document: the grantor (grantor/seller on most codes)."@en .
+
+role:grantee a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:deed_party ;
+    skos:notation "grantee" ;
+    skos:prefLabel "Grantee"@en ;
+    skos:hiddenLabel "2"@x-acris ;
+    skos:definition "Party 2 on a deed-family document: the grantee."@en .
+
+role:life_estate_retained a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:deed_party ;
+    skos:notation "life_estate_retained" ;
+    skos:prefLabel "Life estate retained"@en ;
+    skos:hiddenLabel "3"@x-acris ;
+    skos:scopeNote "Confirmed only on DEED, LE. Party 3 on any other deed code has no concept and is kept as the raw code (note 0015)."@en ;
+    skos:definition "Party 3 on a DEED, LE document: the party that retains the life estate."@en .

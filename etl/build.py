@@ -1,4 +1,4 @@
-"""Slice 1 build: PLUTO lots, then HPD registrations, buildings, parties and roles, one snapshot.
+"""Slice 1 build: PLUTO lots, then HPD registrations, buildings, parties and roles, then ACRIS deed documents, one snapshot.
 
 Loads from iterables of source rows, so a test can pass fixtures and the CLI can stream the justfixwow database.
 PLUTO goes first, so a lot PLUTO holds keeps source `pluto` when HPD meets it again.
@@ -7,6 +7,7 @@ from collections import defaultdict
 from datetime import date
 from itertools import islice
 
+from etl.acris import document_node, party_nodes
 from etl.hpd import contact_nodes, pick_contacts, registration_nodes
 from etl.load import apply_schema, load_edges, load_nodes, register_snapshot
 from etl.pluto import lot_node
@@ -86,5 +87,55 @@ def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_
                 break
             mine.append(c)
         for k, v in session.execute_write(load_hpd, schema, batch, mine, snapshot_id, conflicted_bins).items():
+            totals[k] += v
+    return dict(totals)
+
+
+def load_acris(tx, schema: Schema, documents: list[dict], parties: list[dict], legals: list[dict], lots: frozenset,
+               snapshot_id: str, snapshot_date: date) -> dict[str, int]:
+    """Load a chunk of ACRIS documents with their parties and legals. A document is loaded only if one of its legals
+    is a lot in `lots`; the edge is made for each such lot."""
+    on_lots: dict[str, set] = defaultdict(set)
+    for lg in legals:
+        bbl = (lg.get("bbl") or "").strip()
+        if bbl in lots:
+            on_lots[str(lg["documentid"]).strip()].add(bbl)
+    docs = {}
+    for d in documents:
+        n = document_node(d, snapshot_id, snapshot_date)
+        if n["document_id"] in on_lots:
+            docs[n["document_id"]] = n
+    pnodes, rnodes, held, in_doc = {}, {}, [], []
+    for p in parties:
+        did = str(p["documentid"]).strip()
+        if did not in docs:
+            continue
+        pn = party_nodes(p, docs[did].get("doc_type"), snapshot_id)
+        pnodes[pn["party"]["party_id"]] = pn["party"]
+        rnodes[pn["role"]["role_id"]] = pn["role"]
+        held.append((pn["role"]["role_id"], pn["party"]["party_id"]))
+        in_doc.append((pn["role"]["role_id"], did))
+    counts = {
+        "Document": load_nodes(tx, schema, "Document", docs.values()),
+        "AcrisParty": load_nodes(tx, schema, "Party", pnodes.values(), also=("AcrisParty",)),
+        "AcrisRole": load_nodes(tx, schema, "Role", rnodes.values(), also=("AcrisRole",)),
+    }
+    counts["ON_LOT (Document)"] = load_edges(tx, schema, "ON_LOT", "Document", "Lot", [(d, b) for d, bs in on_lots.items() if d in docs for b in sorted(bs)])
+    counts["IN_DOCUMENT"] = load_edges(tx, schema, "IN_DOCUMENT", "Role", "Document", in_doc)
+    counts["HELD_BY (ACRIS)"] = load_edges(tx, schema, "HELD_BY", "Role", "Party", held)
+    return counts
+
+
+def build_acris(session, schema: Schema, snapshot_id: str, snapshot_date: date, documents, fetch_children, lots: frozenset,
+                chunk: int = 2000) -> dict:
+    """ACRIS deed documents in write transactions of `chunk` documents. `fetch_children(ids)` returns the parties
+    and legals of those documents (a database query in the CLI, fixtures in a test)."""
+    apply_schema(session, schema)
+    session.execute_write(register_snapshot, snapshot_id, "justfixwow", snapshot_date)
+    totals: dict[str, int] = defaultdict(int)
+    it = iter(documents)
+    while batch := list(islice(it, chunk)):
+        parties, legals = fetch_children([str(d["documentid"]).strip() for d in batch])
+        for k, v in session.execute_write(load_acris, schema, batch, parties, legals, lots, snapshot_id, snapshot_date).items():
             totals[k] += v
     return dict(totals)

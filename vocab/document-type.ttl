@@ -1,0 +1,76 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doc: <https://bobflagg.github.io/Watchline/vocab/document-type/> .
+
+doc: a skos:ConceptScheme ;
+    dcterms:title "Document type"@en ;
+    dcterms:description "The kind of recorded document, as ACRIS classifies it. Only the deed family has concepts so far (design notes 0004 and 0015); other ACRIS document types are not loaded yet."@en ;
+    dcterms:created "2026-10-27"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Each concept's skos:notation is the string stored in doc_type. skos:hiddenLabel with language tag x-acris is the ACRIS document type code the loader maps from. The vocabulary carries no flag for what counts as a transfer: that rule lives in the tools (note 0004). The raw code is always kept in doc_type_raw."@en ;
+    skos:hasTopConcept doc:deed_family .
+
+doc:deed_family a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:topConceptOf doc: ;
+    skos:notation "deed_family" ;
+    skos:prefLabel "Deed or other conveyance"@en ;
+    skos:definition "ACRIS class \"Deeds and other conveyances\". A grouping; documents carry one of the narrower concepts."@en .
+
+doc:deed a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed" ;
+    skos:prefLabel "Deed"@en ;
+    skos:hiddenLabel "DEED"@x-acris ;
+    skos:definition "ACRIS DEED. Party 1 is the grantor/seller, party 2 the grantee."@en .
+
+doc:deed_timeshare a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_timeshare" ;
+    skos:prefLabel "Deed, timeshare"@en ;
+    skos:hiddenLabel "DEED, TS"@x-acris ;
+    skos:definition "ACRIS DEED, TS: a timeshare deed."@en .
+
+doc:deed_life_estate a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_life_estate" ;
+    skos:prefLabel "Deed, life estate"@en ;
+    skos:hiddenLabel "DEED, LE"@x-acris ;
+    skos:definition "ACRIS DEED, LE: a life estate deed. Party 3 is the party retaining the life estate."@en .
+
+doc:deed_other a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_other" ;
+    skos:prefLabel "Deed, other"@en ;
+    skos:hiddenLabel "DEEDO"@x-acris ;
+    skos:definition "ACRIS DEEDO: a catch-all. It counts as a transfer only after the document is looked at (note 0004)."@en .
+
+doc:deed_correction a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_correction" ;
+    skos:prefLabel "Deed correction"@en ;
+    skos:hiddenLabel "DEED COR"@x-acris ;
+    skos:definition "ACRIS DEED COR: an index correction. Never counted as a transfer (note 0004)."@en .
+
+doc:deed_restrictive_covenant a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_restrictive_covenant" ;
+    skos:prefLabel "Deed with restrictive covenant"@en ;
+    skos:hiddenLabel "DEED, RC"@x-acris ;
+    skos:definition "ACRIS DEED, RC: a deed with a restrictive covenant."@en .
+
+doc:deed_pre_rpt a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:deed_family ;
+    skos:notation "deed_pre_rpt" ;
+    skos:prefLabel "Deed, pre real property transfer tax"@en ;
+    skos:hiddenLabel "DEEDP"@x-acris ;
+    skos:definition "ACRIS DEEDP: a deed from before the real property transfer tax."@en .
