@@ -53,3 +53,12 @@ def contacts(conn, community_district: int | None = None) -> Iterator[dict]:
                      "where r.bbl in (select bbl from pluto_latest where cd = %s)", (community_district,))
                     if community_district else ("", ()))
     return _stream(conn, "contacts", CONTACTS.format(join=join), params)
+
+
+def conflicted_bins(conn) -> frozenset:
+    """Real BINs that HPD registers on more than one lot. Citywide even for a district run, so the answer does not
+    depend on the district chosen (note 0014)."""
+    with conn.cursor() as cur:
+        cur.execute("""select bin from hpd_registrations where bin ~ '^[0-9]{7}$' and bin !~ '^[1-5]0{6}$'
+                       group by bin having count(distinct bbl) > 1""")
+        return frozenset(r["bin"] for r in cur)

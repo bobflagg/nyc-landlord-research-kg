@@ -7,7 +7,7 @@ import pytest
 
 from etl.build import load_hpd, load_pluto
 from etl.config import ROOT
-from etl.hpd import contact_nodes, party_id, real_bin, registration_nodes
+from etl.hpd import contact_nodes, party_id, pick_contacts, real_bin, registration_nodes
 from etl.load import apply_schema, register_snapshot
 from etl.pluto import lot_node
 from etl.validate import validate
@@ -29,6 +29,23 @@ def test_placeholder_and_padded_bins_are_not_buildings():
 def test_registration_without_a_real_bin_has_no_building():
     row = {**FIX["registrations"][0], "bin": "1000000"}
     assert registration_nodes(row, "GEN.PART", SNAP)["building"] is None
+
+
+def test_a_bin_on_several_lots_gets_no_building():
+    row = FIX["registrations"][0]
+    n = registration_nodes(row, "LLC", SNAP, frozenset({real_bin(row["bin"])}))
+    assert n["building"] is None and n["registration"]["registration_id"] == str(row["registrationid"])
+
+
+def test_repeated_contact_id_keeps_the_most_complete_row_and_is_stable():
+    base = {"registrationcontactid": 7, "registrationid": 1, "type": "JointOwner", "firstname": "Yun", "lastname": "Ni",
+            "businessapartment": None}
+    fuller = {**base, "firstname": "YUN", "lastname": "NI", "businessapartment": "1"}
+    other = {**base, "registrationcontactid": 8}
+    by_id = lambda cs: sorted(cs, key=lambda c: c["registrationcontactid"])
+    assert by_id(pick_contacts([base, fuller, other])) == by_id(pick_contacts([other, fuller, base]))
+    got = {c["registrationcontactid"]: c for c in pick_contacts([base, fuller, other])}
+    assert got[7] == fuller and got[8] == other and len(got) == 2
 
 
 def test_year_zero_and_empty_values_are_not_stored():
@@ -123,10 +140,15 @@ def test_roles_without_a_building_attach_to_the_lot(session, schema):
     tx = session.begin_transaction()
     try:
         register_snapshot(tx, SNAP, "justfixwow", date(2026, 5, 29))
-        reg = {**FIX["registrations"][0], "bin": "1000000"}
-        load_hpd(tx, schema, [reg], [c for c in FIX["contacts"] if c["registrationid"] == reg["registrationid"]], SNAP)
+        shift = 900_000_000  # ids no real registration or contact has, so a loaded district cannot interfere
+        reg = {**FIX["registrations"][0], "bin": "1000000", "registrationid": FIX["registrations"][0]["registrationid"] + shift}
+        cs = [{**c, "registrationid": reg["registrationid"], "registrationcontactid": c["registrationcontactid"] + shift}
+              for c in FIX["contacts"] if c["registrationid"] == FIX["registrations"][0]["registrationid"]]
+        load_hpd(tx, schema, [reg], cs, SNAP)
         assert validate(tx) == []
-        r = tx.run("MATCH (role:Role)-[:ON_LOT]->(:Lot {bbl: $b}) RETURN count(role) AS c", b=reg["bbl"]).single()
-        assert r["c"] == 5 and tx.run("MATCH (:Role)-[:ON_BUILDING]->(:Building {bin: '3014789'}) RETURN count(*) AS c").single()["c"] == 0
+        ids = [f"hpd:{c['registrationcontactid']}" for c in cs]
+        on_lot = tx.run("MATCH (role:Role)-[:ON_LOT]->(:Lot {bbl: $b}) WHERE role.role_id IN $ids RETURN count(role) AS c", b=reg["bbl"], ids=ids).single()["c"]
+        on_bld = tx.run("MATCH (role:Role)-[:ON_BUILDING]->(:Building) WHERE role.role_id IN $ids RETURN count(role) AS c", ids=ids).single()["c"]
+        assert (on_lot, on_bld) == (5, 0)
     finally:
         tx.rollback()

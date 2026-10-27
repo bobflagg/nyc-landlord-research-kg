@@ -29,6 +29,15 @@ Status: **accepted 2026-10-26** (decisions 1 to 5 chosen as recommended). Builds
 - Q1, Q2 and Q4 need the lot, the registration with its dates, and the roles. Q3 and Q5 need the HPD owner name and business address on the party. Q24 needs roles by lot. Q26 needs registrations that are missing or lapsed.
 - The expected answers (`evals/expected/slice1.json`) are the check: the seven anchor lots, loaded from `tests/fixtures/slice1_anchors.json`, give the expected Q1 lot attributes and buildings, Q2 registrations and Q4 roles with names, titles and contact ids.
 
+## Found on the first district build (2026-10-27, community district 307)
+
+The first real load failed validation with 20 violations. Two source conditions, both decided by the user ("all as recommended"):
+
+1. **Repeated contact ids.** `hpd_contacts` repeats a `registrationcontactid` with respelled text (`58TH` and `58TH STREET`, `Yun Ni` and `YUN NI`); citywide 1,028 ids over 50,014 rows, none across registrations. Because the party id hashes the text, one role got two parties. **Keep one row per id:** the most complete row, then the one that sorts first on its values, so a rerun picks the same row (`etl/hpd.py`, `pick_contacts`). The other spellings are not loaded.
+2. **A BIN on several lots.** HPD registers 238 real BINs on more than one lot (BIN 3027400 on two). **Those BINs get no building:** the registration is on its lot and its roles attach to the lot, as for a placeholder BIN. The set is computed citywide (`source.conflicted_bins`), so a district run gives the same answer as a full run. Cost: building-level detail for those buildings is absent, and Q2 and Q4 report the lot. The shape `Building.on_lot` max 1 is unchanged.
+
+After both fixes the district 307 build loads 13,268 PLUTO lots, 4,330 HPD-only lots, 4,381 buildings, 4,407 registrations, 15,206 parties and 17,058 roles, with 0 violations.
+
 ## Alternatives considered
 
 - **Role only points to its registration** (decision 1, option B): normalized, but changes the core Role shape and doubles the hops for Q4.
@@ -39,5 +48,5 @@ Status: **accepted 2026-10-26** (decisions 1 to 5 chosen as recommended). Builds
 ## Consequences
 
 - Vocabulary: `vocab/role-type.ttl`, `vocab/entity-kind.ttl`. Ontology: `ontology/pluto.ttl`, `hpd.ttl` and their shapes.
-- The citywide build has not been run: it needs `JUSTFIX_DATABASE_URL`. Everything else is tested on the anchor lots.
+- Community district 307 is built and validates clean. The citywide build has not been run.
 - Open: the ACRIS and DOS modules (deeds, grantee comparison, entity records) for Q3, Q5, Q24; the `role_type` values for ACRIS and DOS roles; corner addresses.

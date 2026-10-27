@@ -29,7 +29,8 @@ def main() -> None:
     driver, database = connect()
     with src, driver, driver.session(database=database) as session:
         totals = build(session, schema, args.snapshot_id, args.snapshot_date,
-                       source.pluto(src, cd), source.registrations(src, cd), source.contacts(src, cd))
+                       source.pluto(src, cd), source.registrations(src, cd), source.contacts(src, cd),
+                       conflicted_bins=source.conflicted_bins(src))
         print("loaded:", totals)
         violations = validate(session)
         print(f"violations: {len(violations)}")

@@ -7,7 +7,7 @@ from collections import defaultdict
 from datetime import date
 from itertools import islice
 
-from etl.hpd import contact_nodes, registration_nodes
+from etl.hpd import contact_nodes, pick_contacts, registration_nodes
 from etl.load import apply_schema, load_edges, load_nodes, register_snapshot
 from etl.pluto import lot_node
 from etl.schema import Schema
@@ -19,7 +19,8 @@ def load_pluto(tx, schema: Schema, rows, snapshot_id: str) -> int:
     return load_nodes(tx, schema, "Lot", (lot_node(r, snapshot_id) for r in rows))
 
 
-def load_hpd(tx, schema: Schema, registrations: list[dict], contacts: list[dict], snapshot_id: str) -> dict[str, int]:
+def load_hpd(tx, schema: Schema, registrations: list[dict], contacts: list[dict], snapshot_id: str,
+             conflicted_bins: frozenset = frozenset()) -> dict[str, int]:
     """Load a chunk of registrations with their contacts. Contacts of other registrations are ignored."""
     by_reg = defaultdict(list)
     for c in contacts:
@@ -28,9 +29,9 @@ def load_hpd(tx, schema: Schema, registrations: list[dict], contacts: list[dict]
     on_lot_b, on_lot_r, on_bld_r, on_lot_role, on_bld_role, in_reg, held = [], [], [], [], [], [], []
     for row in sorted(registrations, key=lambda r: str(r.get("lastregistrationdate") or "")):  # latest registration last
         rid = str(row["registrationid"])
-        cs = by_reg.get(rid, [])
+        cs = pick_contacts(by_reg.get(rid, []))
         desc = next((c.get("contactdescription") for c in cs if c.get("contactdescription")), None)  # registration-level value
-        n = registration_nodes(row, desc, snapshot_id)
+        n = registration_nodes(row, desc, snapshot_id, conflicted_bins)
         lots[n["lot"]["bbl"]] = n["lot"]
         regs.append(n["registration"])
         on_lot_r.append((rid, n["lot"]["bbl"]))
@@ -60,7 +61,8 @@ def load_hpd(tx, schema: Schema, registrations: list[dict], contacts: list[dict]
     return counts
 
 
-def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_rows, registrations, contacts, chunk: int = 2000) -> dict:
+def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_rows, registrations, contacts, chunk: int = 2000,
+          conflicted_bins: frozenset = frozenset()) -> dict:
     """Whole build in write transactions of `chunk` registrations. `registrations` and `contacts` are iterables
     ordered by registration id, so each chunk's contacts are the next ones in the stream."""
     apply_schema(session, schema)
@@ -83,6 +85,6 @@ def build(session, schema: Schema, snapshot_id: str, snapshot_date: date, pluto_
                 pending = c
                 break
             mine.append(c)
-        for k, v in session.execute_write(load_hpd, schema, batch, mine, snapshot_id).items():
+        for k, v in session.execute_write(load_hpd, schema, batch, mine, snapshot_id, conflicted_bins).items():
             totals[k] += v
     return dict(totals)

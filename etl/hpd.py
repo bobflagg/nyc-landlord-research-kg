@@ -31,10 +31,12 @@ def real_bin(v) -> str | None:
     return b if b and re.fullmatch(r"\d{7}", b) and not _PLACEHOLDER_BIN.fullmatch(b) else None
 
 
-def registration_nodes(row: dict, owner_description: str | None, snapshot_id: str) -> dict:
+def registration_nodes(row: dict, owner_description: str | None, snapshot_id: str, conflicted_bins: frozenset = frozenset()) -> dict:
     """One registration row to {registration, building (or None), lot}. The lot carries only what HPD says, and is
-    created only if PLUTO did not load it."""
+    created only if PLUTO did not load it. A BIN that HPD registers on more than one lot gets no building (note 0014)."""
     rid, bbl, bin_ = str(row["registrationid"]), str(row["bbl"]).strip(), real_bin(row.get("bin"))
+    if bin_ in conflicted_bins:
+        bin_ = None
     raw = _s(owner_description)
     reg = {"registration_id": rid, **provenance(REGISTRATIONS, snapshot_id, rid),
            "hpd_building_id": _s(row.get("buildingid")), "last_registration_date": _date(row.get("lastregistrationdate")),
@@ -61,6 +63,18 @@ def party_id(c: dict) -> str:
              c.get("businesshousenumber"), c.get("businessstreetname"), c.get("businessapartment"), c.get("businesscity"),
              c.get("businessstate"), c.get("businesszip")]
     return hashlib.md5("|".join((_s(p) or "").upper() for p in parts).encode()).hexdigest()
+
+
+def pick_contacts(contacts: list[dict]) -> list[dict]:
+    """One row per registrationcontactid. The source repeats some ids with respelled text; keep the most complete
+    row, then the one that sorts first on its values, so a rerun picks the same row (note 0014)."""
+    best: dict[str, tuple] = {}
+    for c in contacts:
+        key = (-sum(1 for v in c.values() if _s(v)), sorted((k, str(v)) for k, v in c.items()))
+        cid = str(c["registrationcontactid"])
+        if cid not in best or key < best[cid][0]:
+            best[cid] = (key, c)
+    return [c for _, c in best.values()]
 
 
 def contact_nodes(c: dict, snapshot_id: str) -> dict:
