@@ -62,7 +62,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Example (A):** `5413 PLAZA LLC`, DOS id `5857246`, domestic LLC, filed 2020-10-14. The DOS process name is the entity's own name and no registered agent is listed.
 - **Example, statutory default:** `606 56TH ST LLC` (5601 6 Avenue), filed 2023-01-06, process name `THE COMPANY`.
 - **Example, a person as process name:** `K S TURNPIKE LLC` (G), filed 2007-10-01. The process name is a person (name not repeated); it is where the state forwards service and does not say who runs the entity.
-- **Example, absent:** `438 52ND ST OWNERS CORP` (C) has no match under two spellings.
+- **Example, absent:** `HP SUNSET PARK I HDFC INC` (D) has no match under the HPD spelling or the deed spelling. **Example, spelling:** C's DOS name is `438 52ND ST. OWNERS' CORP.`, which equals the deed and PLUTO spelling `438 52ND ST OWNERS CORP` under N1 but not the HPD spelling `438 52 ST OWNERS CORP`.
 - **Shape:** entity with attributes, or "no record".
 - **Audience:** shows whether the owner is a single-purpose shell and where legal papers go.
 - **Caveat:** "no record in the active-entity snapshot" is not "does not exist". No officers or members are carried for LLCs.
@@ -215,7 +215,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `web_research`.
 
 ### Q26: What each absence means
-- **Example (C):** no DOS record under two spellings of `438 52ND ST OWNERS CORP`. **(F):** no HPD registration for a 40-unit building from 2025. **(C):** expected "excluded by policy (co-op)" in the Owner Portfolio, to confirm after the BOR export.
+- **Example (D):** no DOS record under either spelling of the owner `HP SUNSET PARK I HDFC INC`. **(F):** no HPD registration for a 40-unit building from 2025. **(C):** expected "excluded by policy (co-op)" in the Owner Portfolio, to confirm after the BOR export.
 - **Shape:** list of absences, each with a reason code.
 - **Audience:** stops "not found" being read as "nothing there".
 - **Caveat:** absence of a link is not evidence of different owners.

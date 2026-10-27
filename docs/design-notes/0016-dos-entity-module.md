@@ -20,6 +20,8 @@ Status: **accepted 2026-10-27** ("all as recommended" on E1 to E4). Builds on no
 - Fill rates: process name 4.17M, registered agent 864k, CEO 474k, location name 346k. Entity types: domestic LLC 2.02M, domestic business corporation 1.45M, domestic not-for-profit 286k.
 - One DOS address is shared by about 93,000 entities (note 0010), which is why address keys wait for Slice 5.
 
+- **Found by the citywide load (2026-10-27):** anchor C's DOS name is `438 52ND ST. OWNERS' CORP.`, which equals the deed and PLUTO spelling under N1 (punctuation deleted). The expected Q5 answer for C had said no record under two spellings, from a check that did not delete the apostrophe and periods. Corrected in `evals/expected/slice1.json` and `docs/competency-questions-detail.md`; the HPD spelling `438 52 ST OWNERS CORP` still does not match. Anchor D is now the "absent" example.
+
 ## Alternatives considered
 
 - **Only name-matched entities** (E1 b): smaller, but the selection depends on the other loads.

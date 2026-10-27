@@ -79,7 +79,9 @@ def test_a_statutory_default_process_name_is_loaded_as_written(dos):
 
 @pytest.mark.parametrize("name,found", [("5413 PLAZA LLC", True), ("702 Plaza LLC", True), ("K S TURNPIKE LLC", True),
                                         ("KS Turnpike LLC", False),   # the HPD spelling: no match under N1 (anchor G)
-                                        ("438 52 ST OWNERS CORP", False), ("438 52ND ST OWNERS CORP", False)])  # anchor C: no record
+                                        ("438 52 ST OWNERS CORP", False),   # anchor C, HPD spelling: no match
+                                        ("438 52ND ST OWNERS CORP", True),  # anchor C, deed spelling: DOS has 438 52ND ST. OWNERS' CORP.
+                                        ("HP SUNSET PARK I HDFC INC", False), ("HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC", False)])  # anchor D
 def test_name_lookup_by_n1_finds_the_exact_normalized_name_only(dos, name, found):
     got = dos.run("MATCH (e:DosEntity {name_n1: $n}) RETURN count(e) AS c", n=n1(name)).single()["c"]
     assert (got == 1) if found else (got == 0)

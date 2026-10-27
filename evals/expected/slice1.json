@@ -1278,9 +1278,18 @@
    },
    "C": {
     "owner": "438 52 ST OWNERS CORP (HPD), 438 52ND ST OWNERS CORP (PLUTO, deed)",
-    "match": "none",
-    "record": null,
-    "caveat": "no record in the active-entity snapshot is not 'does not exist'"
+    "match": "none under the HPD spelling; exact under the deed and PLUTO spelling",
+    "record": {
+     "dos_id": "2733264",
+     "entity_name": "438 52ND ST. OWNERS' CORP.",
+     "entity_type": "DOMESTIC BUSINESS CORPORATION",
+     "initial_filing_date": "2002-02-20",
+     "process_name": "438 52ND ST. OWNERS' CORP.",
+     "process_address": "300 EAST 2ND ST / APT D, BROOKLYN 11218",
+     "registered_agent": null
+    },
+    "caveat": "N1 deletes punctuation, so 438 52ND ST. OWNERS' CORP. equals the deed and PLUTO spelling 438 52ND ST OWNERS CORP. The HPD spelling 438 52 ST OWNERS CORP does not match: do not report a match for it. The DOS process address (300 East 2nd St) is the grantee address on the 2002 deed. An earlier version of this answer said no record under two spellings; that came from a check that did not delete the apostrophe and periods",
+    "note": "a name match is a lead (note 0009)"
    },
    "D": {
     "owner": "HP SUNSET PARK I HDFC INC (HPD)",
@@ -1355,50 +1364,6 @@
      "amount": 5000000
     },
     {
-     "document_id": "2021031601183001",
-     "doctype": "MTGE",
-     "doc_date": "2021-02-16",
-     "party_type": 1,
-     "bbls": [
-      "3008260002",
-      "3008260005"
-     ],
-     "amount": 8750000
-    },
-    {
-     "document_id": "2021031601183002",
-     "doctype": "AL&R",
-     "doc_date": "2021-02-16",
-     "party_type": 1,
-     "bbls": [
-      "3008260002",
-      "3008260005"
-     ],
-     "amount": 8750000
-    },
-    {
-     "document_id": "2023061400729001",
-     "doctype": "SAGE",
-     "doc_date": "2023-02-09",
-     "party_type": 1,
-     "bbls": [
-      "3008260002",
-      "3008260005"
-     ],
-     "amount": 0
-    },
-    {
-     "document_id": "2023061200959001",
-     "doctype": "TL&R",
-     "doc_date": "2023-02-14",
-     "party_type": 2,
-     "bbls": [
-      "3008260002",
-      "3008260005"
-     ],
-     "amount": 0
-    },
-    {
      "document_id": "2025032100031001",
      "doctype": "DEED",
      "doc_date": "2025-03-14",
@@ -1438,7 +1403,56 @@
     "registered_agent": null
    },
    "variants": "none found: every ACRIS and HPD occurrence is spelled 5413 PLAZA LLC (HPD contact id 31610303). The related name 5413 7TH AVENUE LLC (grantor of the 2021 deed) is a different name, not a variant.",
-   "caveat": "Party-type meaning for MTGE, AL&R, SAGE and TL&R is not settled (design notes 0004, 0006): report the code, not a role name. The 2021 mortgage and its assignment cover 3008260005 as well, so the name appears against two lots. This is the set found in the snapshot, not a claim of completeness."
+   "caveat": "Party-type meaning for MTGE, AL&R, SAGE and TL&R is not settled (design notes 0004, 0006): report the code, not a role name. The 2021 mortgage and its assignment cover 3008260005 as well, so the name appears against two lots. This is the set found in the snapshot, not a claim of completeness.",
+   "not_loaded_yet": {
+    "note": "Document types outside the deed family (mortgage, assignment, agreement, satisfaction and similar) are not in the graph until Slice 3 (Q12, Q13, design note 0015). These rows are what the snapshot holds; the Slice 1 answer must say that only deed documents were searched.",
+    "documents": [
+     {
+      "document_id": "2021031601183001",
+      "doctype": "MTGE",
+      "doc_date": "2021-02-16",
+      "party_type": 1,
+      "bbls": [
+       "3008260002",
+       "3008260005"
+      ],
+      "amount": 8750000
+     },
+     {
+      "document_id": "2021031601183002",
+      "doctype": "AL&R",
+      "doc_date": "2021-02-16",
+      "party_type": 1,
+      "bbls": [
+       "3008260002",
+       "3008260005"
+      ],
+      "amount": 8750000
+     },
+     {
+      "document_id": "2023061400729001",
+      "doctype": "SAGE",
+      "doc_date": "2023-02-09",
+      "party_type": 1,
+      "bbls": [
+       "3008260002",
+       "3008260005"
+      ],
+      "amount": 0
+     },
+     {
+      "document_id": "2023061200959001",
+      "doctype": "TL&R",
+      "doc_date": "2023-02-14",
+      "party_type": 2,
+      "bbls": [
+       "3008260002",
+       "3008260005"
+      ],
+      "amount": 0
+     }
+    ]
+   }
   }
  },
  "findings": [
