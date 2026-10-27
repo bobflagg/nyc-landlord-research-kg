@@ -1,0 +1,41 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:  <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix dos: <https://bobflagg.github.io/Watchline/ontology/dos#> .
+
+# DOS shapes (design note 0016). The key is core's party_id; a DOS entity is loaded with the labels Party and DosEntity.
+
+dos:DosEntityShape a sh:NodeShape ; sh:targetClass dos:DosEntity ;
+  sh:property [ sh:path wl:party_id ; sh:pattern "^dos:[0-9]+$" ] ;
+  sh:property [ sh:path dos:dos_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]+$" ] ;
+  sh:property [ sh:path dos:entity_name ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:name_n1 ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:initial_filing_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path dos:entity_type ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:county ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:jurisdiction ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_address_line1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_address_line2 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_city ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_state ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:process_zip ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_address_line1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_address_line2 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_city ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_state ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:registered_agent_zip ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_address_line1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_address_line2 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_city ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_state ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:ceo_zip ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_address_line1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_address_line2 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_city ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_state ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path dos:location_zip ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "dos_active_corporations" ) ] .

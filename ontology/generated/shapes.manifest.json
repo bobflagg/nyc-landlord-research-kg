@@ -13,6 +13,11 @@
    "sha256": "85d006e713972297001c57b8f68c1af94f4987c359d5483fe9e78c208e3ab4fe"
   },
   {
+   "path": "ontology/dos.shapes.ttl",
+   "role": "shapes",
+   "sha256": "65ba7b316bd84eb17640df2cfed3da3a7f2691987aa0a18a4fbfe92e8c962f8b"
+  },
+  {
    "path": "ontology/hpd.shapes.ttl",
    "role": "shapes",
    "sha256": "b4a521db5cbf3de682f6fa88506eb98477d1a4c2ef6972fd2b7e13265678dbb6"
@@ -928,6 +933,1366 @@
    "source": {
     "file": "ontology/acris.shapes.ttl",
     "line": 30
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "956e31dc738974bc",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_address_line1",
+   "name": "DosEntityShape.ceo_address_line1.datatype",
+   "path": "dos:ceo_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_address_line1` IS NULL THEN [] WHEN v0.`ceo_address_line1` IS :: LIST<ANY> THEN v0.`ceo_address_line1` ELSE [v0.`ceo_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_address_line1.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_address_line1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_address_line1` IS NULL THEN [] WHEN v0.`ceo_address_line1` IS :: LIST<ANY> THEN v0.`ceo_address_line1` ELSE [v0.`ceo_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_address_line1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_address_line1/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 31
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "bc642abfd14d76ef",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_address_line1",
+   "name": "DosEntityShape.ceo_address_line1.maxCount",
+   "path": "dos:ceo_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_address_line1` IS NULL THEN [] WHEN v0.`ceo_address_line1` IS :: LIST<ANY> THEN v0.`ceo_address_line1` ELSE [v0.`ceo_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_address_line1.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_address_line1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_address_line1` IS NULL THEN [] WHEN v0.`ceo_address_line1` IS :: LIST<ANY> THEN v0.`ceo_address_line1` ELSE [v0.`ceo_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_address_line1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_address_line1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 31
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "a44052f24da28f18",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_address_line2",
+   "name": "DosEntityShape.ceo_address_line2.datatype",
+   "path": "dos:ceo_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_address_line2` IS NULL THEN [] WHEN v0.`ceo_address_line2` IS :: LIST<ANY> THEN v0.`ceo_address_line2` ELSE [v0.`ceo_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_address_line2.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_address_line2' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_address_line2` IS NULL THEN [] WHEN v0.`ceo_address_line2` IS :: LIST<ANY> THEN v0.`ceo_address_line2` ELSE [v0.`ceo_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_address_line2.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_address_line2/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 32
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "2879f70521c6e4e0",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_address_line2",
+   "name": "DosEntityShape.ceo_address_line2.maxCount",
+   "path": "dos:ceo_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_address_line2` IS NULL THEN [] WHEN v0.`ceo_address_line2` IS :: LIST<ANY> THEN v0.`ceo_address_line2` ELSE [v0.`ceo_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_address_line2.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_address_line2' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_address_line2` IS NULL THEN [] WHEN v0.`ceo_address_line2` IS :: LIST<ANY> THEN v0.`ceo_address_line2` ELSE [v0.`ceo_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_address_line2.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_address_line2/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 32
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "470afe1a0eefbcaf",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_city",
+   "name": "DosEntityShape.ceo_city.datatype",
+   "path": "dos:ceo_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_city` IS NULL THEN [] WHEN v0.`ceo_city` IS :: LIST<ANY> THEN v0.`ceo_city` ELSE [v0.`ceo_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_city.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_city' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_city` IS NULL THEN [] WHEN v0.`ceo_city` IS :: LIST<ANY> THEN v0.`ceo_city` ELSE [v0.`ceo_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_city.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_city/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 33
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "0da3a55557f08827",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_city",
+   "name": "DosEntityShape.ceo_city.maxCount",
+   "path": "dos:ceo_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_city` IS NULL THEN [] WHEN v0.`ceo_city` IS :: LIST<ANY> THEN v0.`ceo_city` ELSE [v0.`ceo_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_city.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_city' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_city` IS NULL THEN [] WHEN v0.`ceo_city` IS :: LIST<ANY> THEN v0.`ceo_city` ELSE [v0.`ceo_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_city.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_city/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 33
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "d1b36a3e598f6622",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_name",
+   "name": "DosEntityShape.ceo_name.datatype",
+   "path": "dos:ceo_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_name` IS NULL THEN [] WHEN v0.`ceo_name` IS :: LIST<ANY> THEN v0.`ceo_name` ELSE [v0.`ceo_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_name.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_name` IS NULL THEN [] WHEN v0.`ceo_name` IS :: LIST<ANY> THEN v0.`ceo_name` ELSE [v0.`ceo_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 19
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "abfa3f7ce89d00ed",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_name",
+   "name": "DosEntityShape.ceo_name.maxCount",
+   "path": "dos:ceo_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_name` IS NULL THEN [] WHEN v0.`ceo_name` IS :: LIST<ANY> THEN v0.`ceo_name` ELSE [v0.`ceo_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_name.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_name` IS NULL THEN [] WHEN v0.`ceo_name` IS :: LIST<ANY> THEN v0.`ceo_name` ELSE [v0.`ceo_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 19
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "b012c84643827a88",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_state",
+   "name": "DosEntityShape.ceo_state.datatype",
+   "path": "dos:ceo_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_state` IS NULL THEN [] WHEN v0.`ceo_state` IS :: LIST<ANY> THEN v0.`ceo_state` ELSE [v0.`ceo_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_state.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_state' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_state` IS NULL THEN [] WHEN v0.`ceo_state` IS :: LIST<ANY> THEN v0.`ceo_state` ELSE [v0.`ceo_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_state.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_state/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 34
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "d6ded436787f5336",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_state",
+   "name": "DosEntityShape.ceo_state.maxCount",
+   "path": "dos:ceo_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_state` IS NULL THEN [] WHEN v0.`ceo_state` IS :: LIST<ANY> THEN v0.`ceo_state` ELSE [v0.`ceo_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_state.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_state' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_state` IS NULL THEN [] WHEN v0.`ceo_state` IS :: LIST<ANY> THEN v0.`ceo_state` ELSE [v0.`ceo_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_state.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_state/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 34
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "69e71ecfc71ccbed",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:ceo_zip",
+   "name": "DosEntityShape.ceo_zip.datatype",
+   "path": "dos:ceo_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_zip` IS NULL THEN [] WHEN v0.`ceo_zip` IS :: LIST<ANY> THEN v0.`ceo_zip` ELSE [v0.`ceo_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.ceo_zip.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_zip' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:ceo_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`ceo_zip` IS NULL THEN [] WHEN v0.`ceo_zip` IS :: LIST<ANY> THEN v0.`ceo_zip` ELSE [v0.`ceo_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_zip.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_zip/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 35
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "6e1c7b3654536cf8",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:ceo_zip",
+   "name": "DosEntityShape.ceo_zip.maxCount",
+   "path": "dos:ceo_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_zip` IS NULL THEN [] WHEN v0.`ceo_zip` IS :: LIST<ANY> THEN v0.`ceo_zip` ELSE [v0.`ceo_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.ceo_zip.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:ceo_zip' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:ceo_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`ceo_zip` IS NULL THEN [] WHEN v0.`ceo_zip` IS :: LIST<ANY> THEN v0.`ceo_zip` ELSE [v0.`ceo_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.ceo_zip.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:ceo_zip/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 35
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "ea26a0b9e81e6a19",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:county",
+   "name": "DosEntityShape.county.datatype",
+   "path": "dos:county",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`county` IS NULL THEN [] WHEN v0.`county` IS :: LIST<ANY> THEN v0.`county` ELSE [v0.`county`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.county.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:county' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:county' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`county` IS NULL THEN [] WHEN v0.`county` IS :: LIST<ANY> THEN v0.`county` ELSE [v0.`county`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.county.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:county/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 15
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "48d3453040abc322",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:county",
+   "name": "DosEntityShape.county.maxCount",
+   "path": "dos:county",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`county` IS NULL THEN [] WHEN v0.`county` IS :: LIST<ANY> THEN v0.`county` ELSE [v0.`county`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.county.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:county' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:county' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`county` IS NULL THEN [] WHEN v0.`county` IS :: LIST<ANY> THEN v0.`county` ELSE [v0.`county`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.county.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:county/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 15
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "dbbe6a31ae7ff59a",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:dos_id",
+   "name": "DosEntityShape.dos_id.datatype",
+   "path": "dos:dos_id",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.dos_id.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:dos_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:dos_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.dos_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:dos_id/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 10
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "5c7f6177b4890e21",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:dos_id",
+   "name": "DosEntityShape.dos_id.maxCount",
+   "path": "dos:dos_id",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.dos_id.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:dos_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:dos_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.dos_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:dos_id/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 10
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "0a19e25126aa3408",
+   "message": "dos:DosEntityShape violates sh:minCount on dos:dos_id",
+   "name": "DosEntityShape.dos_id.minCount",
+   "path": "dos:dos_id",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'DosEntityShape.dos_id.minCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:dos_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:minCount on dos:dos_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.dos_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:dos_id/sh:minCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 10
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "5b6856cd4c706901",
+   "message": "dos:DosEntityShape violates sh:pattern on dos:dos_id",
+   "name": "DosEntityShape.dos_id.pattern",
+   "path": "dos:dos_id",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)\nRETURN 'DosEntityShape.dos_id.pattern' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:dos_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:pattern on dos:dos_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`dos_id` IS NULL THEN [] WHEN v0.`dos_id` IS :: LIST<ANY> THEN v0.`dos_id` ELSE [v0.`dos_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.dos_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:dos_id/sh:pattern",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 10
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "ccedafd4ff4ec061",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:entity_name",
+   "name": "DosEntityShape.entity_name.datatype",
+   "path": "dos:entity_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.entity_name.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:entity_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:entity_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.entity_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:entity_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 11
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "9ac437982f492d19",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:entity_name",
+   "name": "DosEntityShape.entity_name.maxCount",
+   "path": "dos:entity_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.entity_name.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:entity_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:entity_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.entity_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:entity_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 11
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "00928b99956da4d0",
+   "message": "dos:DosEntityShape violates sh:minCount on dos:entity_name",
+   "name": "DosEntityShape.entity_name.minCount",
+   "path": "dos:entity_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'DosEntityShape.entity_name.minCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:entity_name' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:minCount on dos:entity_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_name` IS NULL THEN [] WHEN v0.`entity_name` IS :: LIST<ANY> THEN v0.`entity_name` ELSE [v0.`entity_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.entity_name.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:entity_name/sh:minCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 11
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "c6aa1eaf044eb79b",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:entity_type",
+   "name": "DosEntityShape.entity_type.datatype",
+   "path": "dos:entity_type",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`entity_type` IS NULL THEN [] WHEN v0.`entity_type` IS :: LIST<ANY> THEN v0.`entity_type` ELSE [v0.`entity_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.entity_type.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:entity_type' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:entity_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`entity_type` IS NULL THEN [] WHEN v0.`entity_type` IS :: LIST<ANY> THEN v0.`entity_type` ELSE [v0.`entity_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.entity_type.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:entity_type/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 14
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "64282fecd3976d2a",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:entity_type",
+   "name": "DosEntityShape.entity_type.maxCount",
+   "path": "dos:entity_type",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_type` IS NULL THEN [] WHEN v0.`entity_type` IS :: LIST<ANY> THEN v0.`entity_type` ELSE [v0.`entity_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.entity_type.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:entity_type' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:entity_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`entity_type` IS NULL THEN [] WHEN v0.`entity_type` IS :: LIST<ANY> THEN v0.`entity_type` ELSE [v0.`entity_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.entity_type.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:entity_type/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 14
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "b5a6533e577cf965",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:initial_filing_date",
+   "name": "DosEntityShape.initial_filing_date.datatype",
+   "path": "dos:initial_filing_date",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`initial_filing_date` IS NULL THEN [] WHEN v0.`initial_filing_date` IS :: LIST<ANY> THEN v0.`initial_filing_date` ELSE [v0.`initial_filing_date`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nRETURN 'DosEntityShape.initial_filing_date.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:initial_filing_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:initial_filing_date' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`initial_filing_date` IS NULL THEN [] WHEN v0.`initial_filing_date` IS :: LIST<ANY> THEN v0.`initial_filing_date` ELSE [v0.`initial_filing_date`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.initial_filing_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:initial_filing_date/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 13
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "0d7cf6063ff65a98",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:initial_filing_date",
+   "name": "DosEntityShape.initial_filing_date.maxCount",
+   "path": "dos:initial_filing_date",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`initial_filing_date` IS NULL THEN [] WHEN v0.`initial_filing_date` IS :: LIST<ANY> THEN v0.`initial_filing_date` ELSE [v0.`initial_filing_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.initial_filing_date.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:initial_filing_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:initial_filing_date' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`initial_filing_date` IS NULL THEN [] WHEN v0.`initial_filing_date` IS :: LIST<ANY> THEN v0.`initial_filing_date` ELSE [v0.`initial_filing_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.initial_filing_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:initial_filing_date/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 13
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "361dd6983e217fc4",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:jurisdiction",
+   "name": "DosEntityShape.jurisdiction.datatype",
+   "path": "dos:jurisdiction",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`jurisdiction` IS NULL THEN [] WHEN v0.`jurisdiction` IS :: LIST<ANY> THEN v0.`jurisdiction` ELSE [v0.`jurisdiction`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.jurisdiction.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:jurisdiction' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:jurisdiction' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`jurisdiction` IS NULL THEN [] WHEN v0.`jurisdiction` IS :: LIST<ANY> THEN v0.`jurisdiction` ELSE [v0.`jurisdiction`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.jurisdiction.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:jurisdiction/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 16
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c95bbd7f62db55c9",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:jurisdiction",
+   "name": "DosEntityShape.jurisdiction.maxCount",
+   "path": "dos:jurisdiction",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`jurisdiction` IS NULL THEN [] WHEN v0.`jurisdiction` IS :: LIST<ANY> THEN v0.`jurisdiction` ELSE [v0.`jurisdiction`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.jurisdiction.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:jurisdiction' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:jurisdiction' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`jurisdiction` IS NULL THEN [] WHEN v0.`jurisdiction` IS :: LIST<ANY> THEN v0.`jurisdiction` ELSE [v0.`jurisdiction`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.jurisdiction.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:jurisdiction/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 16
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "f63648f28c47208b",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_address_line1",
+   "name": "DosEntityShape.location_address_line1.datatype",
+   "path": "dos:location_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_address_line1` IS NULL THEN [] WHEN v0.`location_address_line1` IS :: LIST<ANY> THEN v0.`location_address_line1` ELSE [v0.`location_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_address_line1.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_address_line1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_address_line1` IS NULL THEN [] WHEN v0.`location_address_line1` IS :: LIST<ANY> THEN v0.`location_address_line1` ELSE [v0.`location_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_address_line1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_address_line1/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 36
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "642e0fc988381ab7",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_address_line1",
+   "name": "DosEntityShape.location_address_line1.maxCount",
+   "path": "dos:location_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_address_line1` IS NULL THEN [] WHEN v0.`location_address_line1` IS :: LIST<ANY> THEN v0.`location_address_line1` ELSE [v0.`location_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_address_line1.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_address_line1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_address_line1` IS NULL THEN [] WHEN v0.`location_address_line1` IS :: LIST<ANY> THEN v0.`location_address_line1` ELSE [v0.`location_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_address_line1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_address_line1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 36
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "b632e0028e442d93",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_address_line2",
+   "name": "DosEntityShape.location_address_line2.datatype",
+   "path": "dos:location_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_address_line2` IS NULL THEN [] WHEN v0.`location_address_line2` IS :: LIST<ANY> THEN v0.`location_address_line2` ELSE [v0.`location_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_address_line2.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_address_line2' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_address_line2` IS NULL THEN [] WHEN v0.`location_address_line2` IS :: LIST<ANY> THEN v0.`location_address_line2` ELSE [v0.`location_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_address_line2.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_address_line2/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "58b9dd516fa8399a",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_address_line2",
+   "name": "DosEntityShape.location_address_line2.maxCount",
+   "path": "dos:location_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_address_line2` IS NULL THEN [] WHEN v0.`location_address_line2` IS :: LIST<ANY> THEN v0.`location_address_line2` ELSE [v0.`location_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_address_line2.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_address_line2' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_address_line2` IS NULL THEN [] WHEN v0.`location_address_line2` IS :: LIST<ANY> THEN v0.`location_address_line2` ELSE [v0.`location_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_address_line2.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_address_line2/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "24c55f1e64c1a619",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_city",
+   "name": "DosEntityShape.location_city.datatype",
+   "path": "dos:location_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_city` IS NULL THEN [] WHEN v0.`location_city` IS :: LIST<ANY> THEN v0.`location_city` ELSE [v0.`location_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_city.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_city' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_city` IS NULL THEN [] WHEN v0.`location_city` IS :: LIST<ANY> THEN v0.`location_city` ELSE [v0.`location_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_city.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_city/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 38
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "92a2930c0d044ccb",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_city",
+   "name": "DosEntityShape.location_city.maxCount",
+   "path": "dos:location_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_city` IS NULL THEN [] WHEN v0.`location_city` IS :: LIST<ANY> THEN v0.`location_city` ELSE [v0.`location_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_city.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_city' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_city` IS NULL THEN [] WHEN v0.`location_city` IS :: LIST<ANY> THEN v0.`location_city` ELSE [v0.`location_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_city.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_city/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 38
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "12c2e29aa4caf6da",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_name",
+   "name": "DosEntityShape.location_name.datatype",
+   "path": "dos:location_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_name` IS NULL THEN [] WHEN v0.`location_name` IS :: LIST<ANY> THEN v0.`location_name` ELSE [v0.`location_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_name.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_name` IS NULL THEN [] WHEN v0.`location_name` IS :: LIST<ANY> THEN v0.`location_name` ELSE [v0.`location_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 20
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "ea7f6e8f518614d5",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_name",
+   "name": "DosEntityShape.location_name.maxCount",
+   "path": "dos:location_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_name` IS NULL THEN [] WHEN v0.`location_name` IS :: LIST<ANY> THEN v0.`location_name` ELSE [v0.`location_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_name.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_name` IS NULL THEN [] WHEN v0.`location_name` IS :: LIST<ANY> THEN v0.`location_name` ELSE [v0.`location_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 20
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "6ebe94e1310a3017",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_state",
+   "name": "DosEntityShape.location_state.datatype",
+   "path": "dos:location_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_state` IS NULL THEN [] WHEN v0.`location_state` IS :: LIST<ANY> THEN v0.`location_state` ELSE [v0.`location_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_state.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_state' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_state` IS NULL THEN [] WHEN v0.`location_state` IS :: LIST<ANY> THEN v0.`location_state` ELSE [v0.`location_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_state.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_state/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "e49514b0913a2f10",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_state",
+   "name": "DosEntityShape.location_state.maxCount",
+   "path": "dos:location_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_state` IS NULL THEN [] WHEN v0.`location_state` IS :: LIST<ANY> THEN v0.`location_state` ELSE [v0.`location_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_state.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_state' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_state` IS NULL THEN [] WHEN v0.`location_state` IS :: LIST<ANY> THEN v0.`location_state` ELSE [v0.`location_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_state.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_state/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 39
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "f9bc7ced735eae60",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:location_zip",
+   "name": "DosEntityShape.location_zip.datatype",
+   "path": "dos:location_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_zip` IS NULL THEN [] WHEN v0.`location_zip` IS :: LIST<ANY> THEN v0.`location_zip` ELSE [v0.`location_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.location_zip.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_zip' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:location_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`location_zip` IS NULL THEN [] WHEN v0.`location_zip` IS :: LIST<ANY> THEN v0.`location_zip` ELSE [v0.`location_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_zip.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_zip/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 40
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "8ae2111b482e340a",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:location_zip",
+   "name": "DosEntityShape.location_zip.maxCount",
+   "path": "dos:location_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_zip` IS NULL THEN [] WHEN v0.`location_zip` IS :: LIST<ANY> THEN v0.`location_zip` ELSE [v0.`location_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.location_zip.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:location_zip' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:location_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`location_zip` IS NULL THEN [] WHEN v0.`location_zip` IS :: LIST<ANY> THEN v0.`location_zip` ELSE [v0.`location_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.location_zip.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:location_zip/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 40
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "02d77163ffadd1d0",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_address_line1",
+   "name": "DosEntityShape.process_address_line1.datatype",
+   "path": "dos:process_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_address_line1` IS NULL THEN [] WHEN v0.`process_address_line1` IS :: LIST<ANY> THEN v0.`process_address_line1` ELSE [v0.`process_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_address_line1.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_address_line1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_address_line1` IS NULL THEN [] WHEN v0.`process_address_line1` IS :: LIST<ANY> THEN v0.`process_address_line1` ELSE [v0.`process_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_address_line1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_address_line1/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 21
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "c4f7fc0af0a1e719",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_address_line1",
+   "name": "DosEntityShape.process_address_line1.maxCount",
+   "path": "dos:process_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_address_line1` IS NULL THEN [] WHEN v0.`process_address_line1` IS :: LIST<ANY> THEN v0.`process_address_line1` ELSE [v0.`process_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_address_line1.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_address_line1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_address_line1` IS NULL THEN [] WHEN v0.`process_address_line1` IS :: LIST<ANY> THEN v0.`process_address_line1` ELSE [v0.`process_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_address_line1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_address_line1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 21
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "1da16e5a87865a15",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_address_line2",
+   "name": "DosEntityShape.process_address_line2.datatype",
+   "path": "dos:process_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_address_line2` IS NULL THEN [] WHEN v0.`process_address_line2` IS :: LIST<ANY> THEN v0.`process_address_line2` ELSE [v0.`process_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_address_line2.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_address_line2' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_address_line2` IS NULL THEN [] WHEN v0.`process_address_line2` IS :: LIST<ANY> THEN v0.`process_address_line2` ELSE [v0.`process_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_address_line2.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_address_line2/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 22
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "57014407ed9981c1",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_address_line2",
+   "name": "DosEntityShape.process_address_line2.maxCount",
+   "path": "dos:process_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_address_line2` IS NULL THEN [] WHEN v0.`process_address_line2` IS :: LIST<ANY> THEN v0.`process_address_line2` ELSE [v0.`process_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_address_line2.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_address_line2' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_address_line2` IS NULL THEN [] WHEN v0.`process_address_line2` IS :: LIST<ANY> THEN v0.`process_address_line2` ELSE [v0.`process_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_address_line2.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_address_line2/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 22
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "44272dee26f59bf6",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_city",
+   "name": "DosEntityShape.process_city.datatype",
+   "path": "dos:process_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_city` IS NULL THEN [] WHEN v0.`process_city` IS :: LIST<ANY> THEN v0.`process_city` ELSE [v0.`process_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_city.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_city' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_city` IS NULL THEN [] WHEN v0.`process_city` IS :: LIST<ANY> THEN v0.`process_city` ELSE [v0.`process_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_city.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_city/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 23
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "6a1acec6a409f488",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_city",
+   "name": "DosEntityShape.process_city.maxCount",
+   "path": "dos:process_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_city` IS NULL THEN [] WHEN v0.`process_city` IS :: LIST<ANY> THEN v0.`process_city` ELSE [v0.`process_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_city.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_city' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_city` IS NULL THEN [] WHEN v0.`process_city` IS :: LIST<ANY> THEN v0.`process_city` ELSE [v0.`process_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_city.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_city/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 23
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "d47ba54aece78820",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_name",
+   "name": "DosEntityShape.process_name.datatype",
+   "path": "dos:process_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_name` IS NULL THEN [] WHEN v0.`process_name` IS :: LIST<ANY> THEN v0.`process_name` ELSE [v0.`process_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_name.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_name` IS NULL THEN [] WHEN v0.`process_name` IS :: LIST<ANY> THEN v0.`process_name` ELSE [v0.`process_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 17
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "9e30134ab52608d6",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_name",
+   "name": "DosEntityShape.process_name.maxCount",
+   "path": "dos:process_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_name` IS NULL THEN [] WHEN v0.`process_name` IS :: LIST<ANY> THEN v0.`process_name` ELSE [v0.`process_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_name.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_name` IS NULL THEN [] WHEN v0.`process_name` IS :: LIST<ANY> THEN v0.`process_name` ELSE [v0.`process_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 17
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "a9efc6a72116cad7",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_state",
+   "name": "DosEntityShape.process_state.datatype",
+   "path": "dos:process_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_state` IS NULL THEN [] WHEN v0.`process_state` IS :: LIST<ANY> THEN v0.`process_state` ELSE [v0.`process_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_state.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_state' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_state` IS NULL THEN [] WHEN v0.`process_state` IS :: LIST<ANY> THEN v0.`process_state` ELSE [v0.`process_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_state.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_state/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 24
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "4fc45200bd8981a5",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_state",
+   "name": "DosEntityShape.process_state.maxCount",
+   "path": "dos:process_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_state` IS NULL THEN [] WHEN v0.`process_state` IS :: LIST<ANY> THEN v0.`process_state` ELSE [v0.`process_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_state.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_state' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_state` IS NULL THEN [] WHEN v0.`process_state` IS :: LIST<ANY> THEN v0.`process_state` ELSE [v0.`process_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_state.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_state/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 24
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "6c3635e41c8c458f",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:process_zip",
+   "name": "DosEntityShape.process_zip.datatype",
+   "path": "dos:process_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_zip` IS NULL THEN [] WHEN v0.`process_zip` IS :: LIST<ANY> THEN v0.`process_zip` ELSE [v0.`process_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.process_zip.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_zip' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:process_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`process_zip` IS NULL THEN [] WHEN v0.`process_zip` IS :: LIST<ANY> THEN v0.`process_zip` ELSE [v0.`process_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_zip.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_zip/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 25
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "b7991a7014375e63",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:process_zip",
+   "name": "DosEntityShape.process_zip.maxCount",
+   "path": "dos:process_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_zip` IS NULL THEN [] WHEN v0.`process_zip` IS :: LIST<ANY> THEN v0.`process_zip` ELSE [v0.`process_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.process_zip.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:process_zip' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:process_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`process_zip` IS NULL THEN [] WHEN v0.`process_zip` IS :: LIST<ANY> THEN v0.`process_zip` ELSE [v0.`process_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.process_zip.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:process_zip/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 25
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "0c97b46eb458b6b7",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_address_line1",
+   "name": "DosEntityShape.registered_agent_address_line1.datatype",
+   "path": "dos:registered_agent_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_address_line1` IS NULL THEN [] WHEN v0.`registered_agent_address_line1` IS :: LIST<ANY> THEN v0.`registered_agent_address_line1` ELSE [v0.`registered_agent_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_address_line1.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_address_line1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_address_line1` IS NULL THEN [] WHEN v0.`registered_agent_address_line1` IS :: LIST<ANY> THEN v0.`registered_agent_address_line1` ELSE [v0.`registered_agent_address_line1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_address_line1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_address_line1/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 26
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "e69e86b28667d29d",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_address_line1",
+   "name": "DosEntityShape.registered_agent_address_line1.maxCount",
+   "path": "dos:registered_agent_address_line1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_address_line1` IS NULL THEN [] WHEN v0.`registered_agent_address_line1` IS :: LIST<ANY> THEN v0.`registered_agent_address_line1` ELSE [v0.`registered_agent_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_address_line1.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_address_line1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_address_line1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_address_line1` IS NULL THEN [] WHEN v0.`registered_agent_address_line1` IS :: LIST<ANY> THEN v0.`registered_agent_address_line1` ELSE [v0.`registered_agent_address_line1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_address_line1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_address_line1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 26
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "644d64152fedc61b",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_address_line2",
+   "name": "DosEntityShape.registered_agent_address_line2.datatype",
+   "path": "dos:registered_agent_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_address_line2` IS NULL THEN [] WHEN v0.`registered_agent_address_line2` IS :: LIST<ANY> THEN v0.`registered_agent_address_line2` ELSE [v0.`registered_agent_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_address_line2.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_address_line2' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_address_line2` IS NULL THEN [] WHEN v0.`registered_agent_address_line2` IS :: LIST<ANY> THEN v0.`registered_agent_address_line2` ELSE [v0.`registered_agent_address_line2`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_address_line2.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_address_line2/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 27
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "7e72c1f9ec8233a2",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_address_line2",
+   "name": "DosEntityShape.registered_agent_address_line2.maxCount",
+   "path": "dos:registered_agent_address_line2",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_address_line2` IS NULL THEN [] WHEN v0.`registered_agent_address_line2` IS :: LIST<ANY> THEN v0.`registered_agent_address_line2` ELSE [v0.`registered_agent_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_address_line2.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_address_line2' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_address_line2' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_address_line2` IS NULL THEN [] WHEN v0.`registered_agent_address_line2` IS :: LIST<ANY> THEN v0.`registered_agent_address_line2` ELSE [v0.`registered_agent_address_line2`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_address_line2.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_address_line2/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 27
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "3792b4521b8ad033",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_city",
+   "name": "DosEntityShape.registered_agent_city.datatype",
+   "path": "dos:registered_agent_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_city` IS NULL THEN [] WHEN v0.`registered_agent_city` IS :: LIST<ANY> THEN v0.`registered_agent_city` ELSE [v0.`registered_agent_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_city.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_city' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_city` IS NULL THEN [] WHEN v0.`registered_agent_city` IS :: LIST<ANY> THEN v0.`registered_agent_city` ELSE [v0.`registered_agent_city`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_city.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_city/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 28
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "126279cc70711791",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_city",
+   "name": "DosEntityShape.registered_agent_city.maxCount",
+   "path": "dos:registered_agent_city",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_city` IS NULL THEN [] WHEN v0.`registered_agent_city` IS :: LIST<ANY> THEN v0.`registered_agent_city` ELSE [v0.`registered_agent_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_city.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_city' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_city' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_city` IS NULL THEN [] WHEN v0.`registered_agent_city` IS :: LIST<ANY> THEN v0.`registered_agent_city` ELSE [v0.`registered_agent_city`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_city.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_city/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 28
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "002f600b61eaca99",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_name",
+   "name": "DosEntityShape.registered_agent_name.datatype",
+   "path": "dos:registered_agent_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_name` IS NULL THEN [] WHEN v0.`registered_agent_name` IS :: LIST<ANY> THEN v0.`registered_agent_name` ELSE [v0.`registered_agent_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_name.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_name' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_name` IS NULL THEN [] WHEN v0.`registered_agent_name` IS :: LIST<ANY> THEN v0.`registered_agent_name` ELSE [v0.`registered_agent_name`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_name.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_name/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 18
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "ea12376d95847064",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_name",
+   "name": "DosEntityShape.registered_agent_name.maxCount",
+   "path": "dos:registered_agent_name",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_name` IS NULL THEN [] WHEN v0.`registered_agent_name` IS :: LIST<ANY> THEN v0.`registered_agent_name` ELSE [v0.`registered_agent_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_name.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_name' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_name' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_name` IS NULL THEN [] WHEN v0.`registered_agent_name` IS :: LIST<ANY> THEN v0.`registered_agent_name` ELSE [v0.`registered_agent_name`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_name/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 18
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "cdb37421c7e49afe",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_state",
+   "name": "DosEntityShape.registered_agent_state.datatype",
+   "path": "dos:registered_agent_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_state` IS NULL THEN [] WHEN v0.`registered_agent_state` IS :: LIST<ANY> THEN v0.`registered_agent_state` ELSE [v0.`registered_agent_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_state.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_state' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_state` IS NULL THEN [] WHEN v0.`registered_agent_state` IS :: LIST<ANY> THEN v0.`registered_agent_state` ELSE [v0.`registered_agent_state`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_state.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_state/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 29
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "8ebc54291361360b",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_state",
+   "name": "DosEntityShape.registered_agent_state.maxCount",
+   "path": "dos:registered_agent_state",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_state` IS NULL THEN [] WHEN v0.`registered_agent_state` IS :: LIST<ANY> THEN v0.`registered_agent_state` ELSE [v0.`registered_agent_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_state.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_state' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_state' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_state` IS NULL THEN [] WHEN v0.`registered_agent_state` IS :: LIST<ANY> THEN v0.`registered_agent_state` ELSE [v0.`registered_agent_state`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_state.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_state/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 29
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "c55ffaef3dfa5d71",
+   "message": "dos:DosEntityShape violates sh:datatype on dos:registered_agent_zip",
+   "name": "DosEntityShape.registered_agent_zip.datatype",
+   "path": "dos:registered_agent_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_zip` IS NULL THEN [] WHEN v0.`registered_agent_zip` IS :: LIST<ANY> THEN v0.`registered_agent_zip` ELSE [v0.`registered_agent_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.registered_agent_zip.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_zip' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on dos:registered_agent_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`registered_agent_zip` IS NULL THEN [] WHEN v0.`registered_agent_zip` IS :: LIST<ANY> THEN v0.`registered_agent_zip` ELSE [v0.`registered_agent_zip`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_zip.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_zip/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 30
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "a303823b575c459c",
+   "message": "dos:DosEntityShape violates sh:maxCount on dos:registered_agent_zip",
+   "name": "DosEntityShape.registered_agent_zip.maxCount",
+   "path": "dos:registered_agent_zip",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_zip` IS NULL THEN [] WHEN v0.`registered_agent_zip` IS :: LIST<ANY> THEN v0.`registered_agent_zip` ELSE [v0.`registered_agent_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.registered_agent_zip.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'dos:registered_agent_zip' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on dos:registered_agent_zip' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registered_agent_zip` IS NULL THEN [] WHEN v0.`registered_agent_zip` IS :: LIST<ANY> THEN v0.`registered_agent_zip` ELSE [v0.`registered_agent_zip`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.registered_agent_zip.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/dos:registered_agent_zip/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 30
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "b2cf1cb134e78275",
+   "message": "dos:DosEntityShape violates sh:datatype on wl:name_n1",
+   "name": "DosEntityShape.name_n1.datatype",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'DosEntityShape.name_n1.datatype' AS ruleId, 'dos:DosEntityShape' AS shape, 'wl:name_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:datatype on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.name_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/wl:name_n1/sh:datatype",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "1834d55524d4af56",
+   "message": "dos:DosEntityShape violates sh:maxCount on wl:name_n1",
+   "name": "DosEntityShape.name_n1.maxCount",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'DosEntityShape.name_n1.maxCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'wl:name_n1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:maxCount on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.name_n1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/wl:name_n1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:minCount",
+   "costClass": "scan",
+   "fingerprint": "228e3d4621068740",
+   "message": "dos:DosEntityShape violates sh:minCount on wl:name_n1",
+   "name": "DosEntityShape.name_n1.minCount",
+   "path": "wl:name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nRETURN 'DosEntityShape.name_n1.minCount' AS ruleId, 'dos:DosEntityShape' AS shape, 'wl:name_n1' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'dos:DosEntityShape violates sh:minCount on wl:name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`name_n1` IS NULL THEN [] WHEN v0.`name_n1` IS :: LIST<ANY> THEN v0.`name_n1` ELSE [v0.`name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.name_n1.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/wl:name_n1/sh:minCount",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 12
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:pattern",
+   "costClass": "scan",
+   "fingerprint": "bc7b1b98d4f13a30",
+   "message": "dos:DosEntityShape violates sh:pattern on wl:party_id",
+   "name": "DosEntityShape.party_id.pattern",
+   "path": "wl:party_id",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`party_id` IS NULL THEN [] WHEN v0.`party_id` IS :: LIST<ANY> THEN v0.`party_id` ELSE [v0.`party_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^dos:[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^dos:[0-9]+$)(?s:.*)' ELSE false END)\nRETURN 'DosEntityShape.party_id.pattern' AS ruleId, 'dos:DosEntityShape' AS shape, 'wl:party_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:pattern on wl:party_id' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`party_id` IS NULL THEN [] WHEN v0.`party_id` IS :: LIST<ANY> THEN v0.`party_id` ELSE [v0.`party_id`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^dos:[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^dos:[0-9]+$)(?s:.*)' ELSE false END)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.party_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/wl:party_id/sh:pattern",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 9
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:in",
+   "costClass": "scan",
+   "fingerprint": "40829721207d17c6",
+   "message": "dos:DosEntityShape violates sh:in on wl:source",
+   "name": "DosEntityShape.source.in",
+   "path": "wl:source",
+   "queries": {
+    "detail": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['dos_active_corporations'], false))\nRETURN 'DosEntityShape.source.in' AS ruleId, 'dos:DosEntityShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'dos:DosEntityShape violates sh:in on wl:source' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`DosEntity`)\nUNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['dos_active_corporations'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['DosEntity']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DosEntityShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "dos:DosEntityShape/wl:source/sh:in",
+   "severity": "Violation",
+   "shape": "dos:DosEntityShape",
+   "source": {
+    "file": "ontology/dos.shapes.ttl",
+    "line": 41
    },
    "status": "compiled"
   },

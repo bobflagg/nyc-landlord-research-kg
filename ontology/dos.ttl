@@ -1,0 +1,56 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix dos:     <https://bobflagg.github.io/Watchline/ontology/dos#> .
+
+# DOS module (design note 0016): the NY Department of State active-entity record.
+<https://bobflagg.github.io/Watchline/ontology/dos> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline DOS module"@en ;
+    dcterms:created "2026-10-27"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+dos:DosEntity a owl:Class ; rdfs:subClassOf wl:Party ;
+    rdfs:label "DOS entity"@en ;
+    rdfs:comment "One active entity in the NY Department of State dataset, keyed by DOS id. The people and addresses it names are properties of the record, shown with their source: they are not roles, and a name never asserts one (note 0009). Active entities only: no record here is not 'does not exist' (Q5)."@en .
+
+dos:dos_id a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "DOS id as a string."@en .
+dos:entity_name a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "Current entity name, as recorded. wl:name_n1 holds its rule N1 form."@en .
+dos:entity_type a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "Entity type as DOS writes it (DOMESTIC LIMITED LIABILITY COMPANY, ...). No vocabulary: no question filters on it (note 0016)."@en .
+dos:initial_filing_date a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:date .
+dos:county a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:jurisdiction a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+
+dos:process_name a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "Where the state forwards service of process. Often the entity's own name, a person, a commercial agent or a statutory default (THE COMPANY). It does not say who runs the entity."@en .
+dos:registered_agent_name a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:ceo_name a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "Carried for few entities and not for LLCs: absence does not mean the entity has no officers."@en .
+dos:location_name a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+
+dos:process_address_line1 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:process_address_line2 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:process_city a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:process_state a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:process_zip a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:registered_agent_address_line1 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:registered_agent_address_line2 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:registered_agent_city a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:registered_agent_state a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:registered_agent_zip a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:ceo_address_line1 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string ;
+    rdfs:comment "Often repeats the CEO's name in this source; loaded as written."@en .
+dos:ceo_address_line2 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:ceo_city a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:ceo_state a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:ceo_zip a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:location_address_line1 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:location_address_line2 a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:location_city a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:location_state a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .
+dos:location_zip a owl:DatatypeProperty ; rdfs:domain dos:DosEntity ; rdfs:range xsd:string .

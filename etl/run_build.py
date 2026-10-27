@@ -3,6 +3,7 @@
   uv run python -m etl.run_build --community-district 307     # one district first
   uv run python -m etl.run_build                              # citywide
   uv run python -m etl.run_build --modules acris              # ACRIS deeds on lots already in the graph (note 0015)
+  uv run python -m etl.run_build --modules dos                # every active DOS entity, statewide (note 0016)
 
 Re-runnable: a second run creates nothing new. The snapshot id is the one BOR's release names (note 0008).
 """
@@ -11,7 +12,7 @@ import sys
 from datetime import date
 
 from etl import source
-from etl.build import build, build_acris
+from etl.build import build, build_acris, build_dos
 from etl.config import connect
 from etl.schema import load_schema
 from etl.vocab import deed_family_codes
@@ -23,7 +24,7 @@ SNAPSHOT_ID, SNAPSHOT_DATE = "justfixwow-2026-05-29", date(2026, 5, 29)
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--community-district", type=int, help="load one PLUTO community district, such as 307")
-    ap.add_argument("--modules", default="hpd", help="comma list of hpd (PLUTO and HPD) and acris; acris needs hpd loaded first")
+    ap.add_argument("--modules", default="hpd", help="comma list of hpd (PLUTO and HPD), acris (needs hpd loaded first) and dos (statewide; ignores --community-district)")
     ap.add_argument("--snapshot-id", default=SNAPSHOT_ID)
     ap.add_argument("--snapshot-date", type=date.fromisoformat, default=SNAPSHOT_DATE)
     args = ap.parse_args()
@@ -32,7 +33,7 @@ def main() -> None:
     driver, database = connect()
     with src, driver, driver.session(database=database) as session:
         mods = set(args.modules.split(","))
-        if not mods <= {"hpd", "acris"}:
+        if not mods <= {"hpd", "acris", "dos"}:
             raise SystemExit(f"unknown module in {args.modules!r}")
         if "hpd" in mods:
             totals = build(session, schema, args.snapshot_id, args.snapshot_date,
@@ -44,6 +45,8 @@ def main() -> None:
                                  source.acris_documents(src, deed_family_codes(), cd), source.acris_children(src),
                                  source.graph_lots(src, cd))
             print("loaded (acris):", totals)
+        if "dos" in mods:
+            print("loaded (dos):", build_dos(session, schema, args.snapshot_id, args.snapshot_date, source.dos_entities(src)))
         violations = validate(session)
         print(f"violations: {len(violations)}")
         for v in violations[:50]:

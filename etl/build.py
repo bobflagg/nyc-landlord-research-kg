@@ -8,6 +8,7 @@ from datetime import date
 from itertools import islice
 
 from etl.acris import document_node, party_nodes
+from etl.dos import dos_entity_node
 from etl.hpd import contact_nodes, pick_contacts, registration_nodes
 from etl.load import apply_schema, load_edges, load_nodes, register_snapshot
 from etl.pluto import lot_node
@@ -154,3 +155,15 @@ def build_acris(session, schema: Schema, snapshot_id: str, snapshot_date: date, 
         for k, v in session.execute_write(load_acris, schema, batch, parties, legals, lots, snapshot_id, snapshot_date).items():
             totals[k] += v
     return dict(totals)
+
+
+def build_dos(session, schema: Schema, snapshot_id: str, snapshot_date: date, rows, chunk: int = 5000) -> dict:
+    """DOS active entities in write transactions of `chunk` rows. Every row is loaded: a name search can start
+    from any entity, and the dataset is statewide (note 0016)."""
+    apply_schema(session, schema)
+    session.execute_write(register_snapshot, snapshot_id, "justfixwow", snapshot_date)
+    n = 0
+    it = iter(rows)
+    while batch := list(islice(it, chunk)):
+        n += session.execute_write(lambda tx: load_nodes(tx, schema, "Party", (dos_entity_node(r, snapshot_id) for r in batch), also=("DosEntity",)))
+    return {"DosEntity": n}

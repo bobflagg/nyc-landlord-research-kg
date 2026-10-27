@@ -97,3 +97,17 @@ def acris_children(conn):
             cur.execute("select documentid, bbl from real_property_legals where documentid = any(%s)", (ids,))
             return parties, cur.fetchall()
     return fetch
+
+
+DOS = """select dosid, currententityname, initialdosfilingdate, county, jurisdiction, entitytype, dosprocessname,
+                dosprocessaddress1, dosprocessaddress2, dosprocesscity, dosprocessstate, dosprocesszip,
+                ceoname, ceoaddress1, ceoaddress2, ceocity, ceostate, ceozip,
+                registeredagentname, registeredagentaddress1, registeredagentaddress2, registeredagentcity,
+                registeredagentstate, registeredagentzip,
+                locationname, locationaddress1, locationaddress2, locationcity, locationstate, locationzip
+         from dos_active_corporations order by dosid"""
+
+
+def dos_entities(conn) -> Iterator[dict]:
+    """Every active DOS entity, statewide, in DOS id order."""
+    return _stream(conn, "dos_entities", DOS)
