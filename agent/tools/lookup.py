@@ -9,7 +9,8 @@ LOT = """
 MATCH (l:Lot {bbl: $bbl})
 OPTIONAL MATCH (b:Building)-[:ON_LOT]->(l)
 WITH l, b ORDER BY b.bin
-RETURN l {.bbl, .reliability, .source_category, .source, .snapshot_id} AS lot,
+RETURN l {.bbl, .address_text, .zip5, .building_class, .units_residential, .units_total, .buildings_count, .year_built, .year_built_raw,
+          .assessed_total, .reliability, .source_category, .source, .snapshot_id} AS lot,
        [x IN collect(b {.bin, .reliability, .source_category, .source, .snapshot_id}) WHERE x.bin IS NOT NULL] AS buildings
 """
 
@@ -41,16 +42,19 @@ def lookup(runner, house_number: str, street: str, zip5: str | None = None, boro
         return {**base, "status": "geocoded_but_absent", "bbl": result.bbl,
                 "note": "The city resolves this address to a lot the graph does not hold. This is not 'no such address'."}
     typed_as = tried[0]
+    lot = {k: v for k, v in rec["lot"].items() if v is not None}
     return {
         **base,
         "status": "found",
         "match": {"kind": "as_typed" if result.typed == typed_as else "variant", "typed": result.typed,
                   "canonical_street": result.street, "inferred": False},
         "address_building_bin": result.bin,
-        "lots": [rec["lot"]],
+        "lots": [{k: v for k, v in rec["lot"].items() if v is not None}],
         "buildings": rec["buildings"],
-        "counts": {"lots": 1, "buildings": len(rec["buildings"]), "units": None},
-        "note": "Units are not in the graph yet; lots, buildings and units are counted separately.",
+        "counts": {"lots": 1, "buildings": len(rec["buildings"]), "units_residential": lot.get("units_residential"), "units_total": lot.get("units_total")},
+        "note": "Lot characteristics (building class, units, year built, assessed value) are lot-level values from the lot's source (PLUTO), as of the snapshot; "
+                "a field that is absent is not in the source. Lots, buildings and units are counted separately: units are PLUTO's lot totals, and the buildings "
+                "listed are those HPD registered, which can differ from PLUTO's buildings_count. A year_built_raw is a year PLUTO gives that is not a plausible year, reported as written.",
     }
 
 

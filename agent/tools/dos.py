@@ -51,7 +51,9 @@ def dos_record(runner, name: str) -> dict:
     base = {"searched_name": name, "normalized_name": n, "rule": N1_RULE, **snapshot(runner),
             "mail_drop_list": MAIL_DROP_NOTE, "caveats": CAVEATS_Q5}
     if not rows:
-        return {**base, "status": "no_record", "reason": "no active DOS entity has this normalized name", "variants_tried": [n]}
+        return {**base, "status": "no_record", "reason": "no active DOS entity has this normalized name", "variants_tried": [n],
+                "next_step": "find_records_by_name lists this name's mentions in deed documents and HPD registrations (a different part of the record than DOS); "
+                             "a different spelling is a different name, so try each spelling the records give."}
     return {**base, "status": "found" if len(rows) == 1 else "several_entities", "records": [_record(e) for e in rows]}
 
 

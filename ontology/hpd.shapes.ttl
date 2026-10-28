@@ -34,6 +34,7 @@ hpd:HpdPartyShape a sh:NodeShape ; sh:targetClass hpd:HpdParty ;
   ] ;
   sh:property [ sh:path hpd:organization_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path hpd:person_name ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path hpd:person_name_n1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path hpd:business_address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path wl:source ; sh:in ( "hpd_contacts" ) ] .
 

@@ -81,6 +81,9 @@ def build_examples() -> list[dict]:
     out.append(_ex("Q24", "G", "What do the records show for KS Turnpike LLC?",
                    _ref([{"name": "find_records_by_name", "args": {}}], include=["305188"],      # trying the other spelling is allowed if it is labelled a variant; the judge checks it is not joined
                         caveats=[["spelling", "different name", "variant"]])))
+    out.append(_ex("Q24", "C", "Which lots does SAHIT HADZOVIC appear against in HPD registrations, and in which roles?",
+                   _ref([{"name": "find_records_by_name", "args": {}}], include=["3008070024"],
+                        any_of=[["managing agent", "agent"], ["head officer"]], caveats=[["lead", "same name", "not proof", "not a finding"]])))
     out.append(_ex("Q24", "none", "What do the records show for Zzyzx Holdings LLC?",
                    _ref([{"name": "find_records_by_name", "args": {}}], any_of=[NO_RECORD], caveats=[["variants", "normalized", "tried"]])))
     return out

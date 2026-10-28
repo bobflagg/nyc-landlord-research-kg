@@ -187,15 +187,18 @@ ORDER BY d.recorded DESC, d.document_id, r.source_role_code LIMIT $limit
 """
 ACRIS_N = "MATCH (:AcrisParty {name_n1: $n})<-[:HELD_BY]-(r:AcrisRole) RETURN count(r) AS c"
 HPD = f"""
-MATCH (p:HpdParty {{name_n1: $n}})<-[:HELD_BY]-(role:HpdRole)-[:IN_REGISTRATION]->(reg:Registration)
+MATCH (p:HpdParty) WHERE p.name_n1 = $n OR p.person_name_n1 = $n
+MATCH (p)<-[:HELD_BY]-(role:HpdRole)-[:IN_REGISTRATION]->(reg:Registration)
 OPTIONAL MATCH (reg)-[:ON_LOT]->(l:Lot) OPTIONAL MATCH (reg)-[:ON_BUILDING]->(b:Building)
 WITH p, role, reg, collect(DISTINCT l.bbl) AS bbls, collect(DISTINCT b.bin) AS bins
 RETURN reg.registration_id AS registration_id, role.source_record_id AS contact_id, role.source_role_code AS hpd_type,
-       role.role_type AS role_type, role.title AS title, coalesce(p.organization_name, p.person_name) AS name, bbls, bins,
+       role.role_type AS role_type, role.title AS title, CASE WHEN p.name_n1 = $n THEN coalesce(p.organization_name, p.person_name) ELSE p.person_name END AS name,
+       p.organization_name AS organization_name, p.person_name AS person_name,
+       CASE WHEN p.name_n1 = $n THEN 'name' ELSE 'person_name' END AS matched_on, bbls, bins,
        role {{{PROV}}} AS prov
 ORDER BY registration_id, contact_id LIMIT $limit
 """
-HPD_N = "MATCH (:HpdParty {name_n1: $n})<-[:HELD_BY]-(r:HpdRole) RETURN count(r) AS c"
+HPD_N = "MATCH (p:HpdParty) WHERE p.name_n1 = $n OR p.person_name_n1 = $n MATCH (p)<-[:HELD_BY]-(r:HpdRole) RETURN count(r) AS c"
 DOS = f"""
 MATCH (e:DosEntity {{name_n1: $n}})
 RETURN e {{.dos_id, .entity_name, .entity_type, .initial_filing_date, .county, .jurisdiction, .process_name, .process_address_line1,
@@ -211,7 +214,8 @@ def find_by_name(runner, name: str, limit: int = 50) -> dict:
     acris = [{**_clean(r["d"]), "party_type": r["party_type"], "role_type": r["role_type"], "name_as_recorded": r["name"], "bbls": sorted(r["bbls"])}
              for r in runner.run(ACRIS, n=n, limit=limit)]
     hpd = [{"registration_id": r["registration_id"], "contact_id": r["contact_id"], "hpd_type": r["hpd_type"], "role_type": r["role_type"],
-            "title": r["title"], "name_as_recorded": r["name"], "bbls": sorted(r["bbls"]), "bins": sorted(r["bins"]),
+            "title": r["title"], "name_as_recorded": r["name"], "organization_name": r["organization_name"], "person_name": r["person_name"],
+            "matched_on": r["matched_on"], "bbls": sorted(r["bbls"]), "bins": sorted(r["bins"]),
             "source": r["prov"]["source"], "snapshot_id": r["prov"]["snapshot_id"], "reliability": r["prov"]["reliability"]}
            for r in runner.run(HPD, n=n, limit=limit)]
     dos = [_clean(r["e"]) for r in runner.run(DOS, n=n)]

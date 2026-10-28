@@ -2156,6 +2156,42 @@ WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`person_name` IS NULL THEN []
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'HpdPartyShape.person_name.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
+// name: HpdPartyShape.person_name_n1.datatype
+// ruleId: hpd:HpdPartyShape/hpd:person_name_n1/sh:datatype
+MATCH (v0:`HpdParty`)
+UNWIND CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'HpdPartyShape.person_name_n1.datatype' AS ruleId, 'hpd:HpdPartyShape' AS shape, 'hpd:person_name_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'hpd:HpdPartyShape violates sh:datatype on hpd:person_name_n1' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: HpdPartyShape.person_name_n1.datatype#summary
+// ruleId: hpd:HpdPartyShape/hpd:person_name_n1/sh:datatype
+MATCH (v0:`HpdParty`)
+UNWIND CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'HpdPartyShape.person_name_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: HpdPartyShape.person_name_n1.maxCount
+// ruleId: hpd:HpdPartyShape/hpd:person_name_n1/sh:maxCount
+MATCH (v0:`HpdParty`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'HpdPartyShape.person_name_n1.maxCount' AS ruleId, 'hpd:HpdPartyShape' AS shape, 'hpd:person_name_n1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'hpd:HpdPartyShape violates sh:maxCount on hpd:person_name_n1' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: HpdPartyShape.person_name_n1.maxCount#summary
+// ruleId: hpd:HpdPartyShape/hpd:person_name_n1/sh:maxCount
+MATCH (v0:`HpdParty`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'HpdPartyShape.person_name_n1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
 // name: HpdPartyShape.party_id.pattern
 // ruleId: hpd:HpdPartyShape/wl:party_id/sh:pattern
 MATCH (v0:`HpdParty`)

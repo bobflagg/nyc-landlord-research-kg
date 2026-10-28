@@ -113,6 +113,7 @@ def test_q5_record_matches(graph, exp):
 def test_q5_a_spelling_with_no_match_says_no_record_and_what_was_tried(graph, name):
     r = dos_record(graph, name)
     assert r["status"] == "no_record" and r["variants_tried"] and "not 'does not exist'" in " ".join(r["caveats"])
+    assert "find_records_by_name" in r["next_step"]
 
 
 def test_q5_spelling_decides_the_match_for_anchor_c_and_g(graph):

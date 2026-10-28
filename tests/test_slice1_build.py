@@ -71,6 +71,14 @@ def test_owner_kind_keeps_the_raw_value_and_unknown_maps_to_nothing():
     assert "owner_kind" not in n and n["owner_kind_raw"] == "ESTATE"
 
 
+def test_a_person_beside_an_organization_has_a_person_name_key_and_the_org_keeps_name_n1():
+    agent = next(c for c in FIX["contacts"] if c["registrationcontactid"] == 30243704)     # anchor D: FAIRSTEAD MANAGEMENT LLC, DAVID FRIEDMAN
+    p = contact_nodes(agent, SNAP)["party"]
+    assert (p["name_n1"], p["person_name_n1"]) == ("FAIRSTEAD MANAGEMENT LLC", "DAVID FRIEDMAN")
+    alone = contact_nodes(next(c for c in FIX["contacts"] if c["registrationcontactid"] == 31610304), SNAP)["party"]    # JAY WONG, no organization
+    assert (alone["name_n1"], alone["person_name_n1"]) == ("JAY WONG", "JAY WONG")
+
+
 def test_unknown_hpd_contact_type_is_an_error_not_a_dropped_role():
     with pytest.raises(ValueError):
         contact_nodes({**FIX["contacts"][0], "type": "Landlord"}, SNAP)

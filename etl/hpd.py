@@ -88,6 +88,8 @@ def contact_nodes(c: dict, snapshot_id: str) -> dict:
     name = party["organization_name"] or party["person_name"]
     if name:
         party["name_n1"] = n1(name)
+    if party["person_name"]:
+        party["person_name_n1"] = n1(party["person_name"])   # a person beside an organization is found by this key (note 0019)
     if house and street and zip5 and house[0].isdigit():
         party["business_address_key"] = a2_key(house, street, zip5)
     cid = str(c["registrationcontactid"])

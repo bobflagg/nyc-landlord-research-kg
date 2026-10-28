@@ -20,7 +20,7 @@
   {
    "path": "ontology/hpd.shapes.ttl",
    "role": "shapes",
-   "sha256": "b4a521db5cbf3de682f6fa88506eb98477d1a4c2ef6972fd2b7e13265678dbb6"
+   "sha256": "fc745f696b640c21d68c25130322798b05baf6e87332d8bb7363e43fba60b2ab"
   },
   {
    "path": "ontology/pluto.shapes.ttl",
@@ -2312,7 +2312,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 37
+    "line": 38
    },
    "status": "compiled"
   },
@@ -2332,7 +2332,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 37
+    "line": 38
    },
    "status": "compiled"
   },
@@ -2477,6 +2477,46 @@
    "status": "compiled"
   },
   {
+   "constraint": "sh:datatype",
+   "costClass": "scan",
+   "fingerprint": "c840eff60ec4ab0c",
+   "message": "hpd:HpdPartyShape violates sh:datatype on hpd:person_name_n1",
+   "name": "HpdPartyShape.person_name_n1.datatype",
+   "path": "hpd:person_name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`HpdParty`)\nUNWIND CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'HpdPartyShape.person_name_n1.datatype' AS ruleId, 'hpd:HpdPartyShape' AS shape, 'hpd:person_name_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'hpd:HpdPartyShape violates sh:datatype on hpd:person_name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`HpdParty`)\nUNWIND CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'HpdPartyShape.person_name_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "hpd:HpdPartyShape/hpd:person_name_n1/sh:datatype",
+   "severity": "Violation",
+   "shape": "hpd:HpdPartyShape",
+   "source": {
+    "file": "ontology/hpd.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
+   "constraint": "sh:maxCount",
+   "costClass": "scan",
+   "fingerprint": "73e5429522dc5af9",
+   "message": "hpd:HpdPartyShape violates sh:maxCount on hpd:person_name_n1",
+   "name": "HpdPartyShape.person_name_n1.maxCount",
+   "path": "hpd:person_name_n1",
+   "queries": {
+    "detail": "MATCH (v0:`HpdParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'HpdPartyShape.person_name_n1.maxCount' AS ruleId, 'hpd:HpdPartyShape' AS shape, 'hpd:person_name_n1' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'hpd:HpdPartyShape violates sh:maxCount on hpd:person_name_n1' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`HpdParty`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`person_name_n1` IS NULL THEN [] WHEN v0.`person_name_n1` IS :: LIST<ANY> THEN v0.`person_name_n1` ELSE [v0.`person_name_n1`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['HpdParty']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'HpdPartyShape.person_name_n1.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "hpd:HpdPartyShape/hpd:person_name_n1/sh:maxCount",
+   "severity": "Violation",
+   "shape": "hpd:HpdPartyShape",
+   "source": {
+    "file": "ontology/hpd.shapes.ttl",
+    "line": 37
+   },
+   "status": "compiled"
+  },
+  {
    "constraint": "sh:pattern",
    "costClass": "scan",
    "fingerprint": "beb37c6c9e06316b",
@@ -2512,7 +2552,7 @@
    "shape": "hpd:HpdPartyShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 38
+    "line": 39
    },
    "status": "compiled"
   },
@@ -2532,7 +2572,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 51
+    "line": 52
    },
    "status": "compiled"
   },
@@ -2552,7 +2592,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 51
+    "line": 52
    },
    "status": "compiled"
   },
@@ -2572,7 +2612,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 51
+    "line": 52
    },
    "status": "compiled"
   },
@@ -2592,7 +2632,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -2612,7 +2652,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -2632,7 +2672,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 43
+    "line": 44
    },
    "status": "compiled"
   },
@@ -2652,7 +2692,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 41
+    "line": 42
    },
    "status": "compiled"
   },
@@ -2672,7 +2712,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 53
+    "line": 54
    },
    "status": "compiled"
   },
@@ -2692,7 +2732,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 48
+    "line": 49
    },
    "status": "compiled"
   },
@@ -2712,7 +2752,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 46
+    "line": 47
    },
    "status": "compiled"
   },
@@ -2732,7 +2772,7 @@
    "shape": "hpd:HpdRoleShape",
    "source": {
     "file": "ontology/hpd.shapes.ttl",
-    "line": 46
+    "line": 47
    },
    "status": "compiled"
   },

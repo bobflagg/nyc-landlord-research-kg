@@ -42,6 +42,8 @@ hpd:hpd_type a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:
 hpd:organization_name a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
 hpd:person_name a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string ;
     rdfs:comment "First name, middle initial and last name as recorded. Shown with its role and source (note 0009)."@en .
+hpd:person_name_n1 a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string ;
+    rdfs:comment "The person's name after rule N1 (note 0006), set whenever person_name is. Indexed. wl:name_n1 is the organization's name when there is one (so owners compare with deed grantees), so a person recorded beside an organization, such as a managing agent contact, is found through this key (note 0019). A key, not a stored match (note 0009)."@en .
 hpd:business_house a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
 hpd:business_street a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .
 hpd:business_apartment a owl:DatatypeProperty ; rdfs:domain hpd:HpdParty ; rdfs:range xsd:string .

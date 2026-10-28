@@ -140,3 +140,14 @@ def test_q24_a_person_appears_only_in_the_role_the_record_gives(graph):
 def test_q24_limit_truncates_and_says_so(graph):
     r = find_by_name(graph, "5413 PLAZA LLC", limit=1)
     assert r["truncated"] is True and len(r["acris_documents"]) == 1
+
+
+def test_q24_finds_a_person_recorded_beside_an_organization(graph):
+    """Note 0019: DAVID FRIEDMAN is the managing agent contact of FAIRSTEAD MANAGEMENT LLC on anchor D."""
+    r = find_by_name(graph, "David Friedman")
+    row = next(h for h in r["hpd"] if h["contact_id"] == "30243704")
+    assert (row["hpd_type"], row["role_type"], row["matched_on"]) == ("Agent", "managing_agent", "person_name")
+    assert (row["name_as_recorded"], row["organization_name"], row["person_name"]) == ("DAVID FRIEDMAN", "FAIRSTEAD MANAGEMENT LLC", "DAVID FRIEDMAN")
+    assert "3008210012" in row["bbls"]
+    org = find_by_name(graph, "Fairstead Management LLC")
+    assert next(h for h in org["hpd"] if h["contact_id"] == "30243704")["matched_on"] == "name"
