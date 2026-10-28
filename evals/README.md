@@ -5,12 +5,12 @@ Evaluation of the investigator (design notes 0012 and 0018).
 | Path | What |
 | --- | --- |
 | `expected/` | Expected answers for Slice 1 from the build snapshot (`slice1.json`), the SQL that derives them, and how to read them |
-| `dataset.py` | The evaluation dataset, derived from `expected/slice1.json`: 34 examples (Q2 to Q5 and Q24 on anchor lots A to G, plus absence and spelling cases). Each has the question and a reference: expected tool calls, required facts, caveat phrases, forbidden claims |
+| `dataset.py` | The evaluation dataset, derived from `expected/slice1.json`: 35 examples (Q2 to Q5 and Q24 on anchor lots A to G, plus absence and spelling cases). Each has the question and a reference: expected tool calls, required facts, caveat phrases, forbidden claims |
 | `evaluators.py` | Five deterministic evaluators (tool trajectory, facts present, caveats stated, no overreach, snapshot cited) and a model judge (`grounded`) |
 | `run.py` | Runs the agent on every example and scores it |
 
 ```
-uv run python -m evals.run                       # all 34, results kept on this machine
+uv run python -m evals.run                       # all 35, results kept on this machine
 uv run python -m evals.run --only Q3 --no-judge  # one question, deterministic evaluators only
 uv run python -m evals.run --upload              # also create the dataset in LangSmith and log the experiment
 ```

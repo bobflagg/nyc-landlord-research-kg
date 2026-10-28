@@ -2,15 +2,15 @@
 
 Date: 2026-10-28
 
-Status: **open; all three gaps are fixed (2026-10-28) and the exit judgment is next.** Roadmap rule: a slice is done when its questions pass (Type I questions return the correct answer; Type II and mixed ones with their caveats) and every earlier slice still passes.
+Status: **accepted: Slice 1 is done (2026-10-28).** Roadmap rule: a slice is done when its questions pass (Type I questions return the correct answer; Type II and mixed ones with their caveats) and every earlier slice still passes.
 
 ## What was checked
 
 Slice 1 delivers Q1, Q2, Q3, Q4, Q5 and Q24, all Type I. Evidence, on snapshot `justfixwow-2026-05-29`:
 
 - **Graph:** loaded citywide and validated with 0 violations by the last build run (the DOS load, which checks every rule on every node). Nothing has written to the graph since; every test runs in a rolled-back transaction. 859,636 lots, 200,172 buildings, 193,567 registrations, 733,038 HPD roles (782,024 contact rows; repeated contact ids keep one row, note 0014), 3,016,989 deed documents, 9,964,908 ACRIS roles, 4,242,054 DOS entities, 26.1M relationships, one real snapshot.
-- **Tests:** 238 pass in 54 seconds (transforms, schema and rule behavior, loads on the seven anchor lots against the expected answers, the five tools against the expected answers, the live Geosupport tests, and 8 tests that run the agent with the model).
-- **Evaluation:** 34 examples, local; the deterministic evaluators score 34 of 34 and the judge 0.94 to 1.00 over the last ten runs (note 0018).
+- **Tests:** 241 pass in 59 seconds (after the gap fixes) (transforms, schema and rule behavior, loads on the seven anchor lots against the expected answers, the five tools against the expected answers, the live Geosupport tests, and 8 tests that run the agent with the model).
+- **Evaluation:** 35 examples, local; the final run scored 35 of 35 on all five deterministic evaluators and 35 of 35 on the judge (note 0018).
 - **Live Q1 on the real graph:** the typed address of each anchor resolves through Geosupport to the expected BBL and exactly the expected BINs, 7 of 7.
 - **Earlier slice (0):** the invented sample validates and Q1 runs end to end with the model.
 
@@ -18,12 +18,12 @@ Slice 1 delivers Q1, Q2, Q3, Q4, Q5 and Q24, all Type I. Evidence, on snapshot `
 
 | Q | Contract | Result |
 | --- | --- | --- |
-| Q1 | Address to lot and buildings, whether the match is unambiguous, and the lot's characteristics (year built, class, residential units, assessed value) | **Gap.** Lot and BINs correct 7 of 7 and the match kind is reported, but the tool returns no lot characteristics, and it still says units are not in the graph, though PLUTO's are |
+| Q1 | Address to lot and buildings, whether the match is unambiguous, and the lot's characteristics (year built, class, residential units, assessed value) | Met after the fix: lot and BINs correct 7 of 7, match kind reported, and PLUTO's class, units, year built and assessed total returned with source and snapshot (live check: 438 52nd Street gives C1, 32 units, built 1931, assessed $1,371,600) |
 | Q2 | Registered owner and when the registration was last filed | Met: owner, registration id, buildings, last registration date, period end, snapshot date; no registration is not "exempt" |
 | Q3 | Latest deed's grantee against the HPD owner by exact normalized name | Met: ties reported, last deed for value, name and address agreement as separate fields, `not_comparable` with its reason, mail-drop flag, a name match called a lead |
 | Q4 | Managing agent, head officer, site manager | Met: every contact with role, title, name and address; a person only in the recorded role; roles HPD does not list are stated |
-| Q5 | DOS record: type, filing date, process name and address, registered agent; where absent, what is known and from what source | Met for the graph: the record, the process-name kind, no-record handled as "not the same as does not exist", spelling shown to decide the match. Partial on "what is known and from what source": a no-record answer does not point to the ACRIS and HPD mentions of the name; retrieved filings are Slice 6 |
-| Q24 | From an entity name, or a person in a recorded role: which lots and buildings, in which roles, with what variants | **Gap for persons.** Entity names work (deed documents, HPD roles, DOS entities, spellings listed as variants). A person is found only where HPD records the person alone: 44,853 HPD parties record an organization and a person (the managing agent contacts), and their name key is the organization's, so searching for the person misses them (anchor D's agent DAVID FRIEDMAN under FAIRSTEAD MANAGEMENT LLC is not found by his name) |
+| Q5 | DOS record: type, filing date, process name and address, registered agent; where absent, what is known and from what source | Met for the graph: the record, the process-name kind, no-record handled as "not the same as does not exist", spelling shown to decide the match. The no-record answer points to `find_records_by_name` for the ACRIS and HPD mentions; retrieved filings are Slice 6 |
+| Q24 | From an entity name, or a person in a recorded role: which lots and buildings, in which roles, with what variants | Met after the fix: entity names and persons (including a person recorded beside an organization) are found, with spellings listed as variants |
 
 ## Gaps and proposed fixes
 
@@ -42,6 +42,10 @@ Gap 1: `find_lot_by_address` returns the lot's PLUTO characteristics (address te
 ## Gaps 1 and 3 resolved (2026-10-28)
 
 Gap 1: `find_lot_by_address` returns the lot's PLUTO characteristics (address text, zip, building class, residential and total units, buildings count, year built or `year_built_raw`, assessed total) with the lot's source and snapshot, leaves out fields the source lacks, reports the unit totals in `counts`, and no longer says units are not in the graph. Gap 3: a DOS no-record result carries a `next_step` pointing to `find_records_by_name`, and the prompt tells the agent to offer it. No schema change.
+
+## Exit judgment (2026-10-28)
+
+Slice 1 is done. Q1, Q2, Q3, Q4, Q5 and Q24 return the correct answers from the graph on the seven anchor lots, each with source and snapshot, and the Type I questions need no Type II caveat beyond the name-match-is-a-lead rule, which the agent states. Slice 0 still passes (sample validation and the Q1 end-to-end tests). One evaluation run before the final one caught the agent adding a DOS remark to a Q3 answer (the judge flagged it, twice in three runs); the prompt now allows that remark only after a DOS call, and Q3 then scored 1.00 in three runs. Not blocking, carried forward: the items below.
 
 ## Open and not blocking
 
