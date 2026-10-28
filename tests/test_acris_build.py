@@ -11,6 +11,7 @@ from etl.build import load_acris, load_hpd, load_pluto
 from etl.config import ROOT
 from etl.load import apply_schema, register_snapshot
 from etl.validate import validate
+from tests.scope import SCOPE, tag_acris, tag_hpd
 from etl.vocab import acris_doc_type, acris_role_type, deed_family_codes
 
 SNAP, SNAP_DATE = "justfixwow-2026-05-29", date(2026, 5, 29)
@@ -69,6 +70,7 @@ def deeds(session, schema):
     load_pluto(tx, schema, ANCH["pluto"], SNAP)
     load_hpd(tx, schema, ANCH["registrations"], ANCH["contacts"], SNAP)
     load_acris(tx, schema, AC["documents"], AC["parties"], AC["legals"], LOTS, SNAP, SNAP_DATE)
+    tag_acris(tx, AC["documents"], AC["parties"])
     yield tx
     tx.rollback()
 
@@ -78,7 +80,7 @@ def test_acris_rules_exist_and_the_loaded_deeds_pass_them(deeds):
     names = [n for n, _ in compiled_rules()]
     for shape in ACRIS_RULES:
         assert any(n.startswith(shape) for n in names), shape
-    assert validate(deeds, only=ACRIS_RULES + ("role_attachment", "snapshot_reference")) == []
+    assert validate(deeds, only=ACRIS_RULES + ("role_attachment", "snapshot_reference"), scope=SCOPE) == []
 
 
 def test_loading_twice_changes_nothing(deeds, schema):

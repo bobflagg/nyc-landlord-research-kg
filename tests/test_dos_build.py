@@ -11,6 +11,7 @@ from etl.dos import dos_entity_node
 from etl.load import apply_schema, register_snapshot
 from etl.names import n1
 from etl.validate import validate
+from tests.scope import SCOPE, tag_dos
 
 SNAP, SNAP_DATE = "justfixwow-2026-05-29", date(2026, 5, 29)
 ROWS = json.loads((ROOT / "tests" / "fixtures" / "slice1_dos.json").read_text())
@@ -47,6 +48,7 @@ def dos(session, schema):
     tx = session.begin_transaction()
     register_snapshot(tx, SNAP, "justfixwow", SNAP_DATE)
     load_nodes(tx, schema, "Party", (dos_entity_node(r, SNAP) for r in ROWS), also=("DosEntity",))
+    tag_dos(tx, ROWS)
     yield tx
     tx.rollback()
 
@@ -54,7 +56,7 @@ def dos(session, schema):
 def test_loaded_entities_pass_the_dos_rules(dos):
     from etl.validate import compiled_rules
     assert any(n.startswith("DosEntityShape") for n, _ in compiled_rules())
-    assert validate(dos, only=DOS_RULES) == []
+    assert validate(dos, only=DOS_RULES, scope=SCOPE) == []
 
 
 def test_loading_twice_changes_nothing(dos, schema):

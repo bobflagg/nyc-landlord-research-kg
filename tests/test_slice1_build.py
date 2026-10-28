@@ -11,6 +11,7 @@ from etl.hpd import contact_nodes, party_id, pick_contacts, real_bin, registrati
 from etl.load import apply_schema, register_snapshot
 from etl.pluto import lot_node
 from etl.validate import validate
+from tests.scope import SCOPE, tag_hpd
 
 HPD_RULES = ("LotShape", "LotAttributesShape", "BuildingShape", "PartyShape", "RoleShape", "RegistrationShape", "HpdPartyShape",
              "HpdRoleShape", "role_attachment", "snapshot_reference")
@@ -91,12 +92,13 @@ def anchors(session, schema):
     register_snapshot(tx, SNAP, "justfixwow", date(2026, 5, 29))
     load_pluto(tx, schema, FIX["pluto"], SNAP)
     load_hpd(tx, schema, FIX["registrations"], FIX["contacts"], SNAP)
+    tag_hpd(tx, FIX["pluto"], FIX["registrations"], FIX["contacts"])
     yield tx
     tx.rollback()
 
 
 def test_anchors_validate_clean(anchors):
-    assert validate(anchors, only=HPD_RULES) == []
+    assert validate(anchors, only=HPD_RULES, scope=SCOPE) == []
 
 
 def test_loading_twice_changes_nothing(anchors, schema):
@@ -156,7 +158,8 @@ def test_roles_without_a_building_attach_to_the_lot(session, schema):
         cs = [{**c, "registrationid": reg["registrationid"], "registrationcontactid": c["registrationcontactid"] + shift}
               for c in FIX["contacts"] if c["registrationid"] == FIX["registrations"][0]["registrationid"]]
         load_hpd(tx, schema, [reg], cs, SNAP)
-        assert validate(tx, only=HPD_RULES) == []
+        tag_hpd(tx, registrations=[reg], contacts=cs)
+        assert validate(tx, only=HPD_RULES, scope=SCOPE) == []
         ids = [f"hpd:{c['registrationcontactid']}" for c in cs]
         on_lot = tx.run("MATCH (role:Role)-[:ON_LOT]->(:Lot {bbl: $b}) WHERE role.role_id IN $ids RETURN count(role) AS c", b=reg["bbl"], ids=ids).single()["c"]
         on_bld = tx.run("MATCH (role:Role)-[:ON_BUILDING]->(:Building) WHERE role.role_id IN $ids RETURN count(role) AS c", ids=ids).single()["c"]
@@ -186,7 +189,8 @@ def test_a_registration_over_several_buildings_puts_its_roles_on_each(session, s
         cs = [{**c, "registrationid": rid, "registrationcontactid": c["registrationcontactid"] + shift}
               for c in FIX["contacts"] if c["registrationid"] == base["registrationid"]]
         load_hpd(tx, schema, regs, cs, SNAP)
-        assert validate(tx, only=HPD_RULES) == []
+        tag_hpd(tx, registrations=regs, contacts=cs)
+        assert validate(tx, only=HPD_RULES, scope=SCOPE) == []
         ids = [f"hpd:{c['registrationcontactid']}" for c in cs]
         r = tx.run("MATCH (role:Role)-[:ON_BUILDING]->(b:Building) WHERE role.role_id IN $ids "
                    "RETURN count(DISTINCT b) AS buildings, count(DISTINCT role) AS roles", ids=ids).single()
@@ -194,3 +198,10 @@ def test_a_registration_over_several_buildings_puts_its_roles_on_each(session, s
         assert tx.run("MATCH (:Registration {registration_id: $r})-[:ON_BUILDING]->(b) RETURN count(b) AS c", r=str(rid)).single()["c"] == 2
     finally:
         tx.rollback()
+
+
+def test_scoped_validation_still_sees_a_broken_record_among_what_the_test_loaded(anchors):
+    """Scope must not make validation blind: remove a loaded registration's lot and the rule must fire."""
+    assert anchors.run(f"MATCH (n:`{SCOPE}`) RETURN count(n) AS c").single()["c"] > 50
+    anchors.run(f"MATCH (:Registration:`{SCOPE}` {{registration_id: '316103'}})-[x:ON_LOT]->() DELETE x").consume()
+    assert "RegistrationShape.on_lot.minCount" in {v.rule for v in validate(anchors, only=HPD_RULES, scope=SCOPE)}
