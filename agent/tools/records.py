@@ -23,10 +23,20 @@ CAVEATS_Q3 = [
 ]
 CAVEATS_Q24 = [
     "Records are matched on the exact normalized name (rule N1). Other spellings are not searched for, and a name match is a lead, not a finding.",
-    "ACRIS coverage is the deed family on lots in the graph; mortgages and other document types are not loaded yet. "
-    "DOS holds active entities only: no DOS record is not 'does not exist'.",
+    "ACRIS coverage is the deed family on lots in the graph; mortgages and other document types are not loaded yet. A deed recorded for $0 is not "
+    "necessarily a sale. DOS holds active entities only: no DOS record is not 'does not exist'. A DOS entity is not tied to any lot, and its CEO and "
+    "officer fields are not carried for LLCs, so their absence does not mean there are none.",
     "A person's name is returned only in the role the record gives it, with its source. This is what was found in the snapshot, not a claim of completeness.",
 ]
+
+
+SNAPSHOT = "MATCH (s:Snapshot {source: 'justfixwow'}) RETURN s.snapshot_id AS snapshot_id, s.snapshot_date AS snapshot_date ORDER BY s.snapshot_date DESC LIMIT 1"
+
+
+def snapshot(runner) -> dict:
+    """The snapshot the graph was built from, stated in every answer, absence included (mission: answers state their limits)."""
+    r = runner.run(SNAPSHOT).single()
+    return {"snapshot_id": r["snapshot_id"], "snapshot_date": _plain(r["snapshot_date"])} if r else {}
 
 
 def _plain(v):
@@ -36,6 +46,13 @@ def _plain(v):
 
 def _clean(d: dict) -> dict:
     return {k: _plain(v) for k, v in d.items() if v is not None}
+
+
+N1_RULE = ("N1: uppercase, punctuation deleted, whitespace collapsed; nothing fuzzy. So 'Acme L.L.C.' and 'ACME LLC' are the same name, "
+           "while 'Acme LLC' and 'Acme II LLC', or 'KS Acme' and 'K S Acme', are different names.")
+SAME_NAME_NOTE = ("Counts of records with the same normalized name. They include this party's own record, and dos_entities counts active DOS entities only. "
+                  "A shared name is a lead, not a finding.")
+MAIL_DROP_NOTE = "Addresses were checked against the project's mail-drop list (resolution/mail_drop_addresses.csv); a mail_drop of null means the address is not on it."
 
 
 @cache
@@ -110,11 +127,14 @@ def _deed(runner, d: dict, owners: list[dict]) -> dict:
                 "hpd_contact_id": o["role"]["source_record_id"], "hpd_type": o["role"]["source_role_code"],
                 "name_agreement": _name_agreement(g.get("name_n1"), o["p"]),
                 "address_agreement": _address_agreement(g, o["p"]),
+                **({"not_comparable_reason": "the HPD owner is a person (no organization name); a person's name is not compared with an entity's"}
+                   if not o["p"].get("organization_name") else {}),
                 "units": _clean({"acris_address_line2": g.get("address_line2"), "hpd_apartment": o["p"].get("business_apartment")}),
                 "mail_drop": _mail_drop(g.get("address_key")) or _mail_drop(o["p"].get("business_address_key")),
                 "source": o["role"]["source"], "snapshot_id": o["role"]["snapshot_id"]})
         grantees.append(_clean(g) | {"party_type": r["party_type"], "mail_drop": _mail_drop(g.get("address_key")),
-                                     "records_with_same_normalized_name": _name_counts(runner, g.get("name_n1")) if g.get("name_n1") else None,
+                                     "records_with_same_normalized_name_including_this_one": _name_counts(runner, g.get("name_n1")) if g.get("name_n1") else None,
+                                     "same_name_note": SAME_NAME_NOTE,
                                      "vs_hpd_owners": comparisons})
     return _clean(d) | {"grantors": grantors, "grantees": grantees}
 
@@ -123,10 +143,10 @@ def compare_deed_and_owner(runner, bbl: str) -> dict:
     """The latest deed or deeds on a lot with their grantees, each compared with the lot's HPD registered owners."""
     lot = runner.run("MATCH (l:Lot {bbl: $bbl}) RETURN l.bbl AS bbl", bbl=bbl).single()
     if lot is None:
-        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot."}
+        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot.", **snapshot(runner)}
     deeds = [r["d"] for r in runner.run(DEEDS, bbl=bbl)]
     owners = runner.run(OWNERS, bbl=bbl).data()
-    base = {"bbl": bbl, "deeds_on_lot": len(deeds), "caveats": CAVEATS_Q3, "ordering": "most recent by recording date, then document date; ties are all reported"}
+    base = {"bbl": bbl, **snapshot(runner), "mail_drop_list": MAIL_DROP_NOTE, "deeds_on_lot": len(deeds), "caveats": CAVEATS_Q3, "ordering": "most recent by recording date, then document date; ties are all reported"}
     if not deeds:
         return {**base, "status": "no_deed_in_graph", "hpd_registered_owners": len(owners),
                 "note": "No deed-family document on this lot is in the graph. That is not 'no deed exists': documents on condo unit lots and other types are not loaded."}
@@ -197,8 +217,8 @@ def find_by_name(runner, name: str, limit: int = 50) -> dict:
     dos = [_clean(r["e"]) for r in runner.run(DOS, n=n)]
     totals = {"acris_party_rows": runner.run(ACRIS_N, n=n).single()["c"], "hpd_contact_rows": runner.run(HPD_N, n=n).single()["c"], "dos_entities": len(dos)}
     spellings = sorted({r["name_as_recorded"] for r in acris} | {r["name_as_recorded"] for r in hpd} | {e["entity_name"] for e in dos})
-    base = {"searched_name": name, "normalized_name": n, "rule": "N1 (uppercase, punctuation deleted, whitespace collapsed); nothing fuzzy",
-            "caveats": CAVEATS_Q24}
+    base = {"searched_name": name, "normalized_name": n, "rule": N1_RULE,
+            **snapshot(runner), "caveats": CAVEATS_Q24}
     if not (acris or hpd or dos):
         return {**base, "status": "no_record", "reason": "no deed-family party, HPD contact or active DOS entity has this normalized name",
                 "variants_tried": [n]}

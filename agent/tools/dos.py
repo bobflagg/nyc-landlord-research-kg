@@ -4,7 +4,7 @@ Matches the exact normalized name (rule N1). Active entities only: no record is 
 from langchain.tools import tool
 
 from agent.db import read_session
-from agent.tools.records import PROV, _clean, _mail_drop
+from agent.tools.records import MAIL_DROP_NOTE, N1_RULE, PROV, _clean, _mail_drop, snapshot
 from etl.address import a2_key
 from etl.names import n1
 
@@ -14,6 +14,10 @@ CAVEATS_Q5 = [
     "carried for LLCs, so their absence does not mean there are none.",
     "A record found by name is a lead: the name matches after punctuation and case are removed (rule N1), and nothing fuzzy is tried.",
 ]
+PROCESS_KINDS = {"none": "no process name is recorded",
+                 "statutory_default": "the statutory default (THE COMPANY and similar): the state forwards papers to the entity at the address",
+                 "entitys_own_name": "the same name as the entity (so it is not the statutory default)",
+                 "other_name": "a name different from the entity's, so not the statutory default: a person or another company; this label does not say who that is or why"}
 STATUTORY_DEFAULT = {"THE COMPANY", "THE LIMITED LIABILITY COMPANY", "THE CORPORATION", "THE LLC"}
 ENTITY = f"""
 MATCH (e:DosEntity {{name_n1: $n}})
@@ -35,7 +39,7 @@ def _record(e: dict) -> dict:
     key = a2_key(*e["process_address_line1"].split(" ", 1), e["process_zip"]) if e.get("process_address_line1") and e.get("process_zip") and e["process_address_line1"][0].isdigit() and " " in e["process_address_line1"] else None
     return _clean({k: e.get(k) for k in ("dos_id", "entity_name", "entity_type", "initial_filing_date", "county", "jurisdiction", "process_name",
                                          "registered_agent_name", "ceo_name", "location_name", "source", "reliability", "source_category", "snapshot_id")}) | {
-        "process_address": addr, "process_name_kind": _process_kind(e), "process_address_mail_drop": _mail_drop(key),
+        "process_address": addr, "process_name_kind": _process_kind(e), "process_name_kind_meaning": PROCESS_KINDS[_process_kind(e)], "process_address_mail_drop": _mail_drop(key),
         "registered_agent": e.get("registered_agent_name"), "ceo_fields_present": bool(e.get("ceo_name"))}
 
 
@@ -44,7 +48,8 @@ def dos_record(runner, name: str) -> dict:
     if not n:
         return {"status": "no_name_given"}
     rows = [r["e"] for r in runner.run(ENTITY, n=n)]
-    base = {"searched_name": name, "normalized_name": n, "rule": "N1 (uppercase, punctuation deleted, whitespace collapsed); nothing fuzzy", "caveats": CAVEATS_Q5}
+    base = {"searched_name": name, "normalized_name": n, "rule": N1_RULE, **snapshot(runner),
+            "mail_drop_list": MAIL_DROP_NOTE, "caveats": CAVEATS_Q5}
     if not rows:
         return {**base, "status": "no_record", "reason": "no active DOS entity has this normalized name", "variants_tried": [n]}
     return {**base, "status": "found" if len(rows) == 1 else "several_entities", "records": [_record(e) for e in rows]}

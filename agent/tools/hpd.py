@@ -5,7 +5,7 @@ managing agent is a management relationship, not ownership."""
 from langchain.tools import tool
 
 from agent.db import read_session
-from agent.tools.records import PROV, _clean
+from agent.tools.records import PROV, _clean, snapshot
 
 CAVEATS_Q2 = [
     "An HPD registration says who registered with HPD, not who holds title (see the deed comparison).",
@@ -43,10 +43,10 @@ GROUPING = {"registered_owner": "registered principal", "head_officer": "registe
 def registrations(runner, bbl: str) -> dict:
     """Every HPD registration on a lot, with its buildings, registered owner(s) and registration period."""
     if runner.run("MATCH (l:Lot {bbl: $bbl}) RETURN l.bbl", bbl=bbl).single() is None:
-        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot."}
+        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot.", **snapshot(runner)}
     rows = runner.run(REGISTRATIONS, bbl=bbl).data()
     if not rows:
-        return {"status": "no_registration", "bbl": bbl, "caveats": CAVEATS_Q2,
+        return {"status": "no_registration", "bbl": bbl, **snapshot(runner), "caveats": CAVEATS_Q2,
                 "note": "No HPD registration on this lot in the snapshot. That is not 'the building is exempt': buildings with fewer than three units "
                         "and others need not register."}
     out = []
@@ -59,13 +59,13 @@ def registrations(runner, bbl: str) -> dict:
             item["registration_end_date_before_snapshot"] = end.to_native() < snap.to_native()
         item["snapshot_date"] = snap.iso_format() if snap else None
         out.append(item)
-    return {"status": "found", "bbl": bbl, "registrations": out, "caveats": CAVEATS_Q2}
+    return {"status": "found", "bbl": bbl, **snapshot(runner), "registrations": out, "caveats": CAVEATS_Q2}
 
 
 def contacts(runner, bbl: str) -> dict:
     """Every contact HPD records for the registrations on a lot, by registration, with role, title, name and business address."""
     if runner.run("MATCH (l:Lot {bbl: $bbl}) RETURN l.bbl", bbl=bbl).single() is None:
-        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot."}
+        return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot.", **snapshot(runner)}
     by_reg: dict[str, list] = {}
     for r in runner.run(CONTACTS, bbl=bbl):
         p, role = r["p"], r["role"]
@@ -78,8 +78,13 @@ def contacts(runner, bbl: str) -> dict:
             "organization_name": p.get("organization_name"), "person_name": p.get("person_name"), "business_address": addr,
             "source": role["source"], "reliability": role["reliability"], "snapshot_id": role["snapshot_id"]}))
     if not by_reg:
-        return {"status": "no_registration", "bbl": bbl, "caveats": CAVEATS_Q4, "note": "No HPD contacts on this lot in the snapshot."}
-    return {"status": "found", "bbl": bbl, "registrations": [{"registration_id": k, "contacts": v} for k, v in by_reg.items()], "caveats": CAVEATS_Q4}
+        return {"status": "no_registration", "bbl": bbl, **snapshot(runner), "caveats": CAVEATS_Q4, "note": "No HPD contacts on this lot in the snapshot."}
+    asked = {"managing_agent", "head_officer", "site_manager"}
+    regs = [{"registration_id": k, "contacts": v,
+             "roles_not_listed": sorted(asked - {c.get("role_type") for c in v}),
+             "roles_not_listed_note": "HPD lists no contact of these types on this registration; that is what the record shows, not a statement about who runs the building."}
+            for k, v in by_reg.items()]
+    return {"status": "found", "bbl": bbl, **snapshot(runner), "registrations": regs, "caveats": CAVEATS_Q4}
 
 
 @tool

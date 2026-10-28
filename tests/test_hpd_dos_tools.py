@@ -81,6 +81,12 @@ def test_q4_management_is_grouped_apart_from_registered_principals(graph):
     assert any("not ownership" in c for c in contacts(graph, BBL["A"])["caveats"])
 
 
+def test_q4_says_which_asked_for_roles_are_not_listed(graph):
+    regs = {r["registration_id"]: r for r in contacts(graph, BBL["E"])["registrations"]}
+    assert regs["306882"]["roles_not_listed"] == ["head_officer"]      # anchor E lists an owner, an agent, a site manager and a lessee
+    assert contacts(graph, BBL["A"])["registrations"][0]["roles_not_listed"] == []
+
+
 def test_q4_no_registration_says_so(graph):
     assert contacts(graph, BBL["F"])["status"] == "no_registration"
 
