@@ -771,6 +771,1904 @@ WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['acris_master'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'DocumentShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
+// name: ComplaintSummaryShape.complaint_count.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:complaint_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`complaint_count` IS NULL THEN [] WHEN v0.`complaint_count` IS :: LIST<ANY> THEN v0.`complaint_count` ELSE [v0.`complaint_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'ComplaintSummaryShape.complaint_count.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:complaint_count' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:complaint_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.complaint_count.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:complaint_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`complaint_count` IS NULL THEN [] WHEN v0.`complaint_count` IS :: LIST<ANY> THEN v0.`complaint_count` ELSE [v0.`complaint_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.complaint_count.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.complaint_count.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:complaint_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`complaint_count` IS NULL THEN [] WHEN v0.`complaint_count` IS :: LIST<ANY> THEN v0.`complaint_count` ELSE [v0.`complaint_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.complaint_count.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:complaint_count' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:complaint_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.complaint_count.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:complaint_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`complaint_count` IS NULL THEN [] WHEN v0.`complaint_count` IS :: LIST<ANY> THEN v0.`complaint_count` ELSE [v0.`complaint_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.complaint_count.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.duplicate_problem_count.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:duplicate_problem_count' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:duplicate_problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.duplicate_problem_count.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.duplicate_problem_count.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:duplicate_problem_count' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:duplicate_problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.duplicate_problem_count.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.duplicate_problem_count.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:duplicate_problem_count' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:duplicate_problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.duplicate_problem_count.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:duplicate_problem_count/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`duplicate_problem_count` IS NULL THEN [] WHEN v0.`duplicate_problem_count` IS :: LIST<ANY> THEN v0.`duplicate_problem_count` ELSE [v0.`duplicate_problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.duplicate_problem_count.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.group_value.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ComplaintSummaryShape.group_value.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:group_value' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:group_value' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.group_value.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.group_value.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.group_value.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.group_value.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:group_value' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:group_value' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.group_value.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.group_value.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.group_value.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.group_value.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:group_value' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:group_value' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.group_value.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:group_value/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value` IS NULL THEN [] WHEN v0.`group_value` IS :: LIST<ANY> THEN v0.`group_value` ELSE [v0.`group_value`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.group_value.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.group_value_raw.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:group_value_raw/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`group_value_raw` IS NULL THEN [] WHEN v0.`group_value_raw` IS :: LIST<ANY> THEN v0.`group_value_raw` ELSE [v0.`group_value_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ComplaintSummaryShape.group_value_raw.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:group_value_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:group_value_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.group_value_raw.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:group_value_raw/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`group_value_raw` IS NULL THEN [] WHEN v0.`group_value_raw` IS :: LIST<ANY> THEN v0.`group_value_raw` ELSE [v0.`group_value_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.group_value_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.group_value_raw.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:group_value_raw/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value_raw` IS NULL THEN [] WHEN v0.`group_value_raw` IS :: LIST<ANY> THEN v0.`group_value_raw` ELSE [v0.`group_value_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.group_value_raw.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:group_value_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:group_value_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.group_value_raw.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:group_value_raw/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`group_value_raw` IS NULL THEN [] WHEN v0.`group_value_raw` IS :: LIST<ANY> THEN v0.`group_value_raw` ELSE [v0.`group_value_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.group_value_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.grouping.in
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['type', 'category'], false))
+RETURN 'ComplaintSummaryShape.grouping.in' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:grouping' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:in on cond:grouping' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.grouping.in#summary
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['type', 'category'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.grouping.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.grouping.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.grouping.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:grouping' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:grouping' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.grouping.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.grouping.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.grouping.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.grouping.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:grouping' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:grouping' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.grouping.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:grouping/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`grouping` IS NULL THEN [] WHEN v0.`grouping` IS :: LIST<ANY> THEN v0.`grouping` ELSE [v0.`grouping`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.grouping.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.latest_received.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:latest_received/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`latest_received` IS NULL THEN [] WHEN v0.`latest_received` IS :: LIST<ANY> THEN v0.`latest_received` ELSE [v0.`latest_received`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'ComplaintSummaryShape.latest_received.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:latest_received' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:latest_received' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.latest_received.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:latest_received/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`latest_received` IS NULL THEN [] WHEN v0.`latest_received` IS :: LIST<ANY> THEN v0.`latest_received` ELSE [v0.`latest_received`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.latest_received.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.latest_received.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:latest_received/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`latest_received` IS NULL THEN [] WHEN v0.`latest_received` IS :: LIST<ANY> THEN v0.`latest_received` ELSE [v0.`latest_received`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.latest_received.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:latest_received' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:latest_received' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.latest_received.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:latest_received/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`latest_received` IS NULL THEN [] WHEN v0.`latest_received` IS :: LIST<ANY> THEN v0.`latest_received` ELSE [v0.`latest_received`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.latest_received.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_count.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'ComplaintSummaryShape.problem_count.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_count' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_count.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_count.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_count.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.problem_count.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_count' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_count.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_count.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_count.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.problem_count.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_count' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:problem_count' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_count.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_count/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_count` IS NULL THEN [] WHEN v0.`problem_count` IS :: LIST<ANY> THEN v0.`problem_count` ELSE [v0.`problem_count`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_count.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_status.in
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['OPEN', 'CLOSE'], false))
+RETURN 'ComplaintSummaryShape.problem_status.in' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_status' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:in on cond:problem_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_status.in#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['OPEN', 'CLOSE'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_status.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_status.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.problem_status.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:problem_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_status.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.problem_status.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.problem_status.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:problem_status' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:problem_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.problem_status.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:problem_status/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`problem_status` IS NULL THEN [] WHEN v0.`problem_status` IS :: LIST<ANY> THEN v0.`problem_status` ELSE [v0.`problem_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.problem_status.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.summary_id.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ComplaintSummaryShape.summary_id.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:summary_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:summary_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.summary_id.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.summary_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.summary_id.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.summary_id.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:summary_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:summary_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.summary_id.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.summary_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.summary_id.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.summary_id.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:summary_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:summary_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.summary_id.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:summary_id/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`summary_id` IS NULL THEN [] WHEN v0.`summary_id` IS :: LIST<ANY> THEN v0.`summary_id` ELSE [v0.`summary_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.summary_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.year.datatype
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'ComplaintSummaryShape.year.datatype' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:year' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:datatype on cond:year' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.year.datatype#summary
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:datatype
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.year.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.year.maxCount
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ComplaintSummaryShape.year.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:year' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on cond:year' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.year.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.year.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.year.minCount
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ComplaintSummaryShape.year.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'cond:year' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on cond:year' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.year.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/cond:year/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`year` IS NULL THEN [] WHEN v0.`year` IS :: LIST<ANY> THEN v0.`year` ELSE [v0.`year`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.year.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.node
+// ruleId: cond:ComplaintSummaryShape/sh:node
+MATCH (v0:`ComplaintSummary`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+RETURN 'ComplaintSummaryShape.node' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:ComplaintSummaryShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.node#summary
+// ruleId: cond:ComplaintSummaryShape/sh:node
+MATCH (v0:`ComplaintSummary`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.on_lot.class
+// ruleId: cond:ComplaintSummaryShape/wl:on_lot/sh:class
+MATCH (v0:`ComplaintSummary`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+RETURN 'ComplaintSummaryShape.on_lot.class' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:ComplaintSummaryShape violates sh:class on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.on_lot.class#summary
+// ruleId: cond:ComplaintSummaryShape/wl:on_lot/sh:class
+MATCH (v0:`ComplaintSummary`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.on_lot.minCount
+// ruleId: cond:ComplaintSummaryShape/wl:on_lot/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+RETURN 'ComplaintSummaryShape.on_lot.minCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'wl:on_lot' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:minCount on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.on_lot.minCount#summary
+// ruleId: cond:ComplaintSummaryShape/wl:on_lot/sh:minCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.on_lot.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.review_status.maxCount
+// ruleId: cond:ComplaintSummaryShape/wl:review_status/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+RETURN 'ComplaintSummaryShape.review_status.maxCount' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ComplaintSummaryShape violates sh:maxCount on wl:review_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.review_status.maxCount#summary
+// ruleId: cond:ComplaintSummaryShape/wl:review_status/sh:maxCount
+MATCH (v0:`ComplaintSummary`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ComplaintSummaryShape.source.in
+// ruleId: cond:ComplaintSummaryShape/wl:source/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_complaints'], false))
+RETURN 'ComplaintSummaryShape.source.in' AS ruleId, 'cond:ComplaintSummaryShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ComplaintSummaryShape violates sh:in on wl:source' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ComplaintSummaryShape.source.in#summary
+// ruleId: cond:ComplaintSummaryShape/wl:source/sh:in
+MATCH (v0:`ComplaintSummary`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_complaints'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['ComplaintSummary']] + labels(v0)), key: 'summary_id', keyValue: v0.`summary_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ComplaintSummaryShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_open_date.datatype
+// ruleId: cond:LitigationShape/cond:case_open_date/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_open_date` IS NULL THEN [] WHEN v0.`case_open_date` IS :: LIST<ANY> THEN v0.`case_open_date` ELSE [v0.`case_open_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'LitigationShape.case_open_date.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_open_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:case_open_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_open_date.datatype#summary
+// ruleId: cond:LitigationShape/cond:case_open_date/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_open_date` IS NULL THEN [] WHEN v0.`case_open_date` IS :: LIST<ANY> THEN v0.`case_open_date` ELSE [v0.`case_open_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_open_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_open_date.maxCount
+// ruleId: cond:LitigationShape/cond:case_open_date/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_open_date` IS NULL THEN [] WHEN v0.`case_open_date` IS :: LIST<ANY> THEN v0.`case_open_date` ELSE [v0.`case_open_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_open_date.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_open_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_open_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_open_date.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_open_date/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_open_date` IS NULL THEN [] WHEN v0.`case_open_date` IS :: LIST<ANY> THEN v0.`case_open_date` ELSE [v0.`case_open_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_open_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_open_date_raw.datatype
+// ruleId: cond:LitigationShape/cond:case_open_date_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_open_date_raw` IS NULL THEN [] WHEN v0.`case_open_date_raw` IS :: LIST<ANY> THEN v0.`case_open_date_raw` ELSE [v0.`case_open_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.case_open_date_raw.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_open_date_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:case_open_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_open_date_raw.datatype#summary
+// ruleId: cond:LitigationShape/cond:case_open_date_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_open_date_raw` IS NULL THEN [] WHEN v0.`case_open_date_raw` IS :: LIST<ANY> THEN v0.`case_open_date_raw` ELSE [v0.`case_open_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_open_date_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_open_date_raw.maxCount
+// ruleId: cond:LitigationShape/cond:case_open_date_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_open_date_raw` IS NULL THEN [] WHEN v0.`case_open_date_raw` IS :: LIST<ANY> THEN v0.`case_open_date_raw` ELSE [v0.`case_open_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_open_date_raw.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_open_date_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_open_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_open_date_raw.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_open_date_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_open_date_raw` IS NULL THEN [] WHEN v0.`case_open_date_raw` IS :: LIST<ANY> THEN v0.`case_open_date_raw` ELSE [v0.`case_open_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_open_date_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_status.datatype
+// ruleId: cond:LitigationShape/cond:case_status/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_status` IS NULL THEN [] WHEN v0.`case_status` IS :: LIST<ANY> THEN v0.`case_status` ELSE [v0.`case_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.case_status.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_status' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:case_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_status.datatype#summary
+// ruleId: cond:LitigationShape/cond:case_status/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_status` IS NULL THEN [] WHEN v0.`case_status` IS :: LIST<ANY> THEN v0.`case_status` ELSE [v0.`case_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_status.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_status.maxCount
+// ruleId: cond:LitigationShape/cond:case_status/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_status` IS NULL THEN [] WHEN v0.`case_status` IS :: LIST<ANY> THEN v0.`case_status` ELSE [v0.`case_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_status.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_status.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_status/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_status` IS NULL THEN [] WHEN v0.`case_status` IS :: LIST<ANY> THEN v0.`case_status` ELSE [v0.`case_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_status_raw.datatype
+// ruleId: cond:LitigationShape/cond:case_status_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_status_raw` IS NULL THEN [] WHEN v0.`case_status_raw` IS :: LIST<ANY> THEN v0.`case_status_raw` ELSE [v0.`case_status_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.case_status_raw.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_status_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:case_status_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_status_raw.datatype#summary
+// ruleId: cond:LitigationShape/cond:case_status_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_status_raw` IS NULL THEN [] WHEN v0.`case_status_raw` IS :: LIST<ANY> THEN v0.`case_status_raw` ELSE [v0.`case_status_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_status_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_status_raw.maxCount
+// ruleId: cond:LitigationShape/cond:case_status_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_status_raw` IS NULL THEN [] WHEN v0.`case_status_raw` IS :: LIST<ANY> THEN v0.`case_status_raw` ELSE [v0.`case_status_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_status_raw.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_status_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_status_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_status_raw.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_status_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_status_raw` IS NULL THEN [] WHEN v0.`case_status_raw` IS :: LIST<ANY> THEN v0.`case_status_raw` ELSE [v0.`case_status_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_status_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_type.in
+// ruleId: cond:LitigationShape/cond:case_type/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_type` IS NULL THEN [] WHEN v0.`case_type` IS :: LIST<ANY> THEN v0.`case_type` ELSE [v0.`case_type`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['tenant_action', 'heat_and_hot_water', 'tenant_action_harassment', 'access_warrant_non_lead', 'comprehensive', 'false_certification_non_lead', 'access_warrant_lead', 'conh', 'comp_supplemental', 'lead_false_certification', 'seven_a', 'heat_supplemental', 'failure_to_register_only', 'other'], false))
+RETURN 'LitigationShape.case_type.in' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:in on cond:case_type' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_type.in#summary
+// ruleId: cond:LitigationShape/cond:case_type/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_type` IS NULL THEN [] WHEN v0.`case_type` IS :: LIST<ANY> THEN v0.`case_type` ELSE [v0.`case_type`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['tenant_action', 'heat_and_hot_water', 'tenant_action_harassment', 'access_warrant_non_lead', 'comprehensive', 'false_certification_non_lead', 'access_warrant_lead', 'conh', 'comp_supplemental', 'lead_false_certification', 'seven_a', 'heat_supplemental', 'failure_to_register_only', 'other'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_type.maxCount
+// ruleId: cond:LitigationShape/cond:case_type/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type` IS NULL THEN [] WHEN v0.`case_type` IS :: LIST<ANY> THEN v0.`case_type` ELSE [v0.`case_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_type.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_type' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_type' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_type.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_type/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type` IS NULL THEN [] WHEN v0.`case_type` IS :: LIST<ANY> THEN v0.`case_type` ELSE [v0.`case_type`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_type.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_type_raw.in
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['Tenant Action', 'Heat and Hot Water', 'Tenant Action/Harrassment', 'Access Warrant - Non-Lead', 'Comprehensive', 'False Certification Non-Lead', 'Access Warrant - lead', 'CONH', 'Comp Supplemental Cases', 'Lead False Certification', '7A', 'Heat Supplemental Cases', 'Failure to Register Only', 'HLD - Other Case Type'], false))
+RETURN 'LitigationShape.case_type_raw.in' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_type_raw' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:in on cond:case_type_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_type_raw.in#summary
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['Tenant Action', 'Heat and Hot Water', 'Tenant Action/Harrassment', 'Access Warrant - Non-Lead', 'Comprehensive', 'False Certification Non-Lead', 'Access Warrant - lead', 'CONH', 'Comp Supplemental Cases', 'Lead False Certification', '7A', 'Heat Supplemental Cases', 'Failure to Register Only', 'HLD - Other Case Type'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_type_raw.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_type_raw.maxCount
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.case_type_raw.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_type_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:case_type_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_type_raw.maxCount#summary
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_type_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.case_type_raw.minCount
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'LitigationShape.case_type_raw.minCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:case_type_raw' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:minCount on cond:case_type_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.case_type_raw.minCount#summary
+// ruleId: cond:LitigationShape/cond:case_type_raw/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`case_type_raw` IS NULL THEN [] WHEN v0.`case_type_raw` IS :: LIST<ANY> THEN v0.`case_type_raw` ELSE [v0.`case_type_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.case_type_raw.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.finding_date.datatype
+// ruleId: cond:LitigationShape/cond:finding_date/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`finding_date` IS NULL THEN [] WHEN v0.`finding_date` IS :: LIST<ANY> THEN v0.`finding_date` ELSE [v0.`finding_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'LitigationShape.finding_date.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:finding_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:finding_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.finding_date.datatype#summary
+// ruleId: cond:LitigationShape/cond:finding_date/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`finding_date` IS NULL THEN [] WHEN v0.`finding_date` IS :: LIST<ANY> THEN v0.`finding_date` ELSE [v0.`finding_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.finding_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.finding_date.maxCount
+// ruleId: cond:LitigationShape/cond:finding_date/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`finding_date` IS NULL THEN [] WHEN v0.`finding_date` IS :: LIST<ANY> THEN v0.`finding_date` ELSE [v0.`finding_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.finding_date.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:finding_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:finding_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.finding_date.maxCount#summary
+// ruleId: cond:LitigationShape/cond:finding_date/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`finding_date` IS NULL THEN [] WHEN v0.`finding_date` IS :: LIST<ANY> THEN v0.`finding_date` ELSE [v0.`finding_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.finding_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.finding_of_harassment.datatype
+// ruleId: cond:LitigationShape/cond:finding_of_harassment/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`finding_of_harassment` IS NULL THEN [] WHEN v0.`finding_of_harassment` IS :: LIST<ANY> THEN v0.`finding_of_harassment` ELSE [v0.`finding_of_harassment`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.finding_of_harassment.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:finding_of_harassment' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:finding_of_harassment' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.finding_of_harassment.datatype#summary
+// ruleId: cond:LitigationShape/cond:finding_of_harassment/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`finding_of_harassment` IS NULL THEN [] WHEN v0.`finding_of_harassment` IS :: LIST<ANY> THEN v0.`finding_of_harassment` ELSE [v0.`finding_of_harassment`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.finding_of_harassment.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.finding_of_harassment.maxCount
+// ruleId: cond:LitigationShape/cond:finding_of_harassment/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`finding_of_harassment` IS NULL THEN [] WHEN v0.`finding_of_harassment` IS :: LIST<ANY> THEN v0.`finding_of_harassment` ELSE [v0.`finding_of_harassment`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.finding_of_harassment.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:finding_of_harassment' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:finding_of_harassment' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.finding_of_harassment.maxCount#summary
+// ruleId: cond:LitigationShape/cond:finding_of_harassment/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`finding_of_harassment` IS NULL THEN [] WHEN v0.`finding_of_harassment` IS :: LIST<ANY> THEN v0.`finding_of_harassment` ELSE [v0.`finding_of_harassment`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.finding_of_harassment.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.litigation_id.datatype
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.litigation_id.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:litigation_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:litigation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.litigation_id.datatype#summary
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.litigation_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.litigation_id.maxCount
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.litigation_id.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:litigation_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:litigation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.litigation_id.maxCount#summary
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.litigation_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.litigation_id.minCount
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'LitigationShape.litigation_id.minCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:litigation_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:minCount on cond:litigation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.litigation_id.minCount#summary
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.litigation_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.litigation_id.pattern
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:pattern
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+RETURN 'LitigationShape.litigation_id.pattern' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:litigation_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:pattern on cond:litigation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.litigation_id.pattern#summary
+// ruleId: cond:LitigationShape/cond:litigation_id/sh:pattern
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`litigation_id` IS NULL THEN [] WHEN v0.`litigation_id` IS :: LIST<ANY> THEN v0.`litigation_id` ELSE [v0.`litigation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.litigation_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.open_judgement.datatype
+// ruleId: cond:LitigationShape/cond:open_judgement/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`open_judgement` IS NULL THEN [] WHEN v0.`open_judgement` IS :: LIST<ANY> THEN v0.`open_judgement` ELSE [v0.`open_judgement`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.open_judgement.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:open_judgement' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:open_judgement' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.open_judgement.datatype#summary
+// ruleId: cond:LitigationShape/cond:open_judgement/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`open_judgement` IS NULL THEN [] WHEN v0.`open_judgement` IS :: LIST<ANY> THEN v0.`open_judgement` ELSE [v0.`open_judgement`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.open_judgement.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.open_judgement.maxCount
+// ruleId: cond:LitigationShape/cond:open_judgement/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`open_judgement` IS NULL THEN [] WHEN v0.`open_judgement` IS :: LIST<ANY> THEN v0.`open_judgement` ELSE [v0.`open_judgement`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.open_judgement.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:open_judgement' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:open_judgement' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.open_judgement.maxCount#summary
+// ruleId: cond:LitigationShape/cond:open_judgement/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`open_judgement` IS NULL THEN [] WHEN v0.`open_judgement` IS :: LIST<ANY> THEN v0.`open_judgement` ELSE [v0.`open_judgement`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.open_judgement.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.penalty.datatype
+// ruleId: cond:LitigationShape/cond:penalty/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`penalty` IS NULL THEN [] WHEN v0.`penalty` IS :: LIST<ANY> THEN v0.`penalty` ELSE [v0.`penalty`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.penalty.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:penalty' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:penalty' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.penalty.datatype#summary
+// ruleId: cond:LitigationShape/cond:penalty/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`penalty` IS NULL THEN [] WHEN v0.`penalty` IS :: LIST<ANY> THEN v0.`penalty` ELSE [v0.`penalty`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.penalty.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.penalty.maxCount
+// ruleId: cond:LitigationShape/cond:penalty/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`penalty` IS NULL THEN [] WHEN v0.`penalty` IS :: LIST<ANY> THEN v0.`penalty` ELSE [v0.`penalty`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.penalty.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:penalty' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:penalty' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.penalty.maxCount#summary
+// ruleId: cond:LitigationShape/cond:penalty/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`penalty` IS NULL THEN [] WHEN v0.`penalty` IS :: LIST<ANY> THEN v0.`penalty` ELSE [v0.`penalty`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.penalty.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.respondent_names.datatype
+// ruleId: cond:LitigationShape/cond:respondent_names/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_names` IS NULL THEN [] WHEN v0.`respondent_names` IS :: LIST<ANY> THEN v0.`respondent_names` ELSE [v0.`respondent_names`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.respondent_names.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:respondent_names' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:respondent_names' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.respondent_names.datatype#summary
+// ruleId: cond:LitigationShape/cond:respondent_names/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_names` IS NULL THEN [] WHEN v0.`respondent_names` IS :: LIST<ANY> THEN v0.`respondent_names` ELSE [v0.`respondent_names`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.respondent_names.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.respondent_names_n1.datatype
+// ruleId: cond:LitigationShape/cond:respondent_names_n1/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_names_n1` IS NULL THEN [] WHEN v0.`respondent_names_n1` IS :: LIST<ANY> THEN v0.`respondent_names_n1` ELSE [v0.`respondent_names_n1`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.respondent_names_n1.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:respondent_names_n1' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:respondent_names_n1' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.respondent_names_n1.datatype#summary
+// ruleId: cond:LitigationShape/cond:respondent_names_n1/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_names_n1` IS NULL THEN [] WHEN v0.`respondent_names_n1` IS :: LIST<ANY> THEN v0.`respondent_names_n1` ELSE [v0.`respondent_names_n1`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.respondent_names_n1.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.respondent_raw.datatype
+// ruleId: cond:LitigationShape/cond:respondent_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_raw` IS NULL THEN [] WHEN v0.`respondent_raw` IS :: LIST<ANY> THEN v0.`respondent_raw` ELSE [v0.`respondent_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'LitigationShape.respondent_raw.datatype' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:respondent_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:datatype on cond:respondent_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.respondent_raw.datatype#summary
+// ruleId: cond:LitigationShape/cond:respondent_raw/sh:datatype
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`respondent_raw` IS NULL THEN [] WHEN v0.`respondent_raw` IS :: LIST<ANY> THEN v0.`respondent_raw` ELSE [v0.`respondent_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.respondent_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.respondent_raw.maxCount
+// ruleId: cond:LitigationShape/cond:respondent_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`respondent_raw` IS NULL THEN [] WHEN v0.`respondent_raw` IS :: LIST<ANY> THEN v0.`respondent_raw` ELSE [v0.`respondent_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'LitigationShape.respondent_raw.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'cond:respondent_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on cond:respondent_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.respondent_raw.maxCount#summary
+// ruleId: cond:LitigationShape/cond:respondent_raw/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`respondent_raw` IS NULL THEN [] WHEN v0.`respondent_raw` IS :: LIST<ANY> THEN v0.`respondent_raw` ELSE [v0.`respondent_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.respondent_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.node
+// ruleId: cond:LitigationShape/sh:node
+MATCH (v0:`Litigation`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+RETURN 'LitigationShape.node' AS ruleId, 'cond:LitigationShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:LitigationShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.node#summary
+// ruleId: cond:LitigationShape/sh:node
+MATCH (v0:`Litigation`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.on_lot.class
+// ruleId: cond:LitigationShape/wl:on_lot/sh:class
+MATCH (v0:`Litigation`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+RETURN 'LitigationShape.on_lot.class' AS ruleId, 'cond:LitigationShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:LitigationShape violates sh:class on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.on_lot.class#summary
+// ruleId: cond:LitigationShape/wl:on_lot/sh:class
+MATCH (v0:`Litigation`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.on_lot.minCount
+// ruleId: cond:LitigationShape/wl:on_lot/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+RETURN 'LitigationShape.on_lot.minCount' AS ruleId, 'cond:LitigationShape' AS shape, 'wl:on_lot' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:minCount on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.on_lot.minCount#summary
+// ruleId: cond:LitigationShape/wl:on_lot/sh:minCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.on_lot.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.review_status.maxCount
+// ruleId: cond:LitigationShape/wl:review_status/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+RETURN 'LitigationShape.review_status.maxCount' AS ruleId, 'cond:LitigationShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:LitigationShape violates sh:maxCount on wl:review_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.review_status.maxCount#summary
+// ruleId: cond:LitigationShape/wl:review_status/sh:maxCount
+MATCH (v0:`Litigation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: LitigationShape.source.in
+// ruleId: cond:LitigationShape/wl:source/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_litigations'], false))
+RETURN 'LitigationShape.source.in' AS ruleId, 'cond:LitigationShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:LitigationShape violates sh:in on wl:source' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: LitigationShape.source.in#summary
+// ruleId: cond:LitigationShape/wl:source/sh:in
+MATCH (v0:`Litigation`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_litigations'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Litigation']] + labels(v0)), key: 'litigation_id', keyValue: v0.`litigation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'LitigationShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_complaints_as_of.datatype
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_complaints_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_complaints_as_of` IS NULL THEN [] WHEN v0.`hpd_complaints_as_of` IS :: LIST<ANY> THEN v0.`hpd_complaints_as_of` ELSE [v0.`hpd_complaints_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'SnapshotAsOfShape.hpd_complaints_as_of.datatype' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_complaints_as_of' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:SnapshotAsOfShape violates sh:datatype on cond:hpd_complaints_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_complaints_as_of.datatype#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_complaints_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_complaints_as_of` IS NULL THEN [] WHEN v0.`hpd_complaints_as_of` IS :: LIST<ANY> THEN v0.`hpd_complaints_as_of` ELSE [v0.`hpd_complaints_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_complaints_as_of.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_complaints_as_of.maxCount
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_complaints_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_complaints_as_of` IS NULL THEN [] WHEN v0.`hpd_complaints_as_of` IS :: LIST<ANY> THEN v0.`hpd_complaints_as_of` ELSE [v0.`hpd_complaints_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'SnapshotAsOfShape.hpd_complaints_as_of.maxCount' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_complaints_as_of' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'cond:SnapshotAsOfShape violates sh:maxCount on cond:hpd_complaints_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_complaints_as_of.maxCount#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_complaints_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_complaints_as_of` IS NULL THEN [] WHEN v0.`hpd_complaints_as_of` IS :: LIST<ANY> THEN v0.`hpd_complaints_as_of` ELSE [v0.`hpd_complaints_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_complaints_as_of.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_litigation_as_of.datatype
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_litigation_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_litigation_as_of` IS NULL THEN [] WHEN v0.`hpd_litigation_as_of` IS :: LIST<ANY> THEN v0.`hpd_litigation_as_of` ELSE [v0.`hpd_litigation_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'SnapshotAsOfShape.hpd_litigation_as_of.datatype' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_litigation_as_of' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:SnapshotAsOfShape violates sh:datatype on cond:hpd_litigation_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_litigation_as_of.datatype#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_litigation_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_litigation_as_of` IS NULL THEN [] WHEN v0.`hpd_litigation_as_of` IS :: LIST<ANY> THEN v0.`hpd_litigation_as_of` ELSE [v0.`hpd_litigation_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_litigation_as_of.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_litigation_as_of.maxCount
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_litigation_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_litigation_as_of` IS NULL THEN [] WHEN v0.`hpd_litigation_as_of` IS :: LIST<ANY> THEN v0.`hpd_litigation_as_of` ELSE [v0.`hpd_litigation_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'SnapshotAsOfShape.hpd_litigation_as_of.maxCount' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_litigation_as_of' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'cond:SnapshotAsOfShape violates sh:maxCount on cond:hpd_litigation_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_litigation_as_of.maxCount#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_litigation_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_litigation_as_of` IS NULL THEN [] WHEN v0.`hpd_litigation_as_of` IS :: LIST<ANY> THEN v0.`hpd_litigation_as_of` ELSE [v0.`hpd_litigation_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_litigation_as_of.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_violations_as_of.datatype
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_violations_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_violations_as_of` IS NULL THEN [] WHEN v0.`hpd_violations_as_of` IS :: LIST<ANY> THEN v0.`hpd_violations_as_of` ELSE [v0.`hpd_violations_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'SnapshotAsOfShape.hpd_violations_as_of.datatype' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_violations_as_of' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:SnapshotAsOfShape violates sh:datatype on cond:hpd_violations_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_violations_as_of.datatype#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_violations_as_of/sh:datatype
+MATCH (v0:`Snapshot`)
+UNWIND CASE WHEN v0.`hpd_violations_as_of` IS NULL THEN [] WHEN v0.`hpd_violations_as_of` IS :: LIST<ANY> THEN v0.`hpd_violations_as_of` ELSE [v0.`hpd_violations_as_of`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_violations_as_of.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: SnapshotAsOfShape.hpd_violations_as_of.maxCount
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_violations_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_violations_as_of` IS NULL THEN [] WHEN v0.`hpd_violations_as_of` IS :: LIST<ANY> THEN v0.`hpd_violations_as_of` ELSE [v0.`hpd_violations_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'SnapshotAsOfShape.hpd_violations_as_of.maxCount' AS ruleId, 'cond:SnapshotAsOfShape' AS shape, 'cond:hpd_violations_as_of' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, null AS value, 'cond:SnapshotAsOfShape violates sh:maxCount on cond:hpd_violations_as_of' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: SnapshotAsOfShape.hpd_violations_as_of.maxCount#summary
+// ruleId: cond:SnapshotAsOfShape/cond:hpd_violations_as_of/sh:maxCount
+MATCH (v0:`Snapshot`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_violations_as_of` IS NULL THEN [] WHEN v0.`hpd_violations_as_of` IS :: LIST<ANY> THEN v0.`hpd_violations_as_of` ELSE [v0.`hpd_violations_as_of`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Snapshot']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'SnapshotAsOfShape.hpd_violations_as_of.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status.datatype
+// ruleId: cond:ViolationShape/cond:current_status/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status` IS NULL THEN [] WHEN v0.`current_status` IS :: LIST<ANY> THEN v0.`current_status` ELSE [v0.`current_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.current_status.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:current_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status.datatype#summary
+// ruleId: cond:ViolationShape/cond:current_status/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status` IS NULL THEN [] WHEN v0.`current_status` IS :: LIST<ANY> THEN v0.`current_status` ELSE [v0.`current_status`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status.maxCount
+// ruleId: cond:ViolationShape/cond:current_status/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status` IS NULL THEN [] WHEN v0.`current_status` IS :: LIST<ANY> THEN v0.`current_status` ELSE [v0.`current_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.current_status.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:current_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status.maxCount#summary
+// ruleId: cond:ViolationShape/cond:current_status/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status` IS NULL THEN [] WHEN v0.`current_status` IS :: LIST<ANY> THEN v0.`current_status` ELSE [v0.`current_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status_date.datatype
+// ruleId: cond:ViolationShape/cond:current_status_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status_date` IS NULL THEN [] WHEN v0.`current_status_date` IS :: LIST<ANY> THEN v0.`current_status_date` ELSE [v0.`current_status_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'ViolationShape.current_status_date.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:current_status_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status_date.datatype#summary
+// ruleId: cond:ViolationShape/cond:current_status_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status_date` IS NULL THEN [] WHEN v0.`current_status_date` IS :: LIST<ANY> THEN v0.`current_status_date` ELSE [v0.`current_status_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status_date.maxCount
+// ruleId: cond:ViolationShape/cond:current_status_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status_date` IS NULL THEN [] WHEN v0.`current_status_date` IS :: LIST<ANY> THEN v0.`current_status_date` ELSE [v0.`current_status_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.current_status_date.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:current_status_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status_date.maxCount#summary
+// ruleId: cond:ViolationShape/cond:current_status_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status_date` IS NULL THEN [] WHEN v0.`current_status_date` IS :: LIST<ANY> THEN v0.`current_status_date` ELSE [v0.`current_status_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status_date_raw.datatype
+// ruleId: cond:ViolationShape/cond:current_status_date_raw/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status_date_raw` IS NULL THEN [] WHEN v0.`current_status_date_raw` IS :: LIST<ANY> THEN v0.`current_status_date_raw` ELSE [v0.`current_status_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.current_status_date_raw.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status_date_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:current_status_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status_date_raw.datatype#summary
+// ruleId: cond:ViolationShape/cond:current_status_date_raw/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`current_status_date_raw` IS NULL THEN [] WHEN v0.`current_status_date_raw` IS :: LIST<ANY> THEN v0.`current_status_date_raw` ELSE [v0.`current_status_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status_date_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.current_status_date_raw.maxCount
+// ruleId: cond:ViolationShape/cond:current_status_date_raw/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status_date_raw` IS NULL THEN [] WHEN v0.`current_status_date_raw` IS :: LIST<ANY> THEN v0.`current_status_date_raw` ELSE [v0.`current_status_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.current_status_date_raw.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:current_status_date_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:current_status_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.current_status_date_raw.maxCount#summary
+// ruleId: cond:ViolationShape/cond:current_status_date_raw/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`current_status_date_raw` IS NULL THEN [] WHEN v0.`current_status_date_raw` IS :: LIST<ANY> THEN v0.`current_status_date_raw` ELSE [v0.`current_status_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.current_status_date_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.inspection_date.datatype
+// ruleId: cond:ViolationShape/cond:inspection_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`inspection_date` IS NULL THEN [] WHEN v0.`inspection_date` IS :: LIST<ANY> THEN v0.`inspection_date` ELSE [v0.`inspection_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'ViolationShape.inspection_date.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:inspection_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:inspection_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.inspection_date.datatype#summary
+// ruleId: cond:ViolationShape/cond:inspection_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`inspection_date` IS NULL THEN [] WHEN v0.`inspection_date` IS :: LIST<ANY> THEN v0.`inspection_date` ELSE [v0.`inspection_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.inspection_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.inspection_date.maxCount
+// ruleId: cond:ViolationShape/cond:inspection_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`inspection_date` IS NULL THEN [] WHEN v0.`inspection_date` IS :: LIST<ANY> THEN v0.`inspection_date` ELSE [v0.`inspection_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.inspection_date.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:inspection_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:inspection_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.inspection_date.maxCount#summary
+// ruleId: cond:ViolationShape/cond:inspection_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`inspection_date` IS NULL THEN [] WHEN v0.`inspection_date` IS :: LIST<ANY> THEN v0.`inspection_date` ELSE [v0.`inspection_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.inspection_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.inspection_date_raw.datatype
+// ruleId: cond:ViolationShape/cond:inspection_date_raw/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`inspection_date_raw` IS NULL THEN [] WHEN v0.`inspection_date_raw` IS :: LIST<ANY> THEN v0.`inspection_date_raw` ELSE [v0.`inspection_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.inspection_date_raw.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:inspection_date_raw' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:inspection_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.inspection_date_raw.datatype#summary
+// ruleId: cond:ViolationShape/cond:inspection_date_raw/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`inspection_date_raw` IS NULL THEN [] WHEN v0.`inspection_date_raw` IS :: LIST<ANY> THEN v0.`inspection_date_raw` ELSE [v0.`inspection_date_raw`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.inspection_date_raw.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.inspection_date_raw.maxCount
+// ruleId: cond:ViolationShape/cond:inspection_date_raw/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`inspection_date_raw` IS NULL THEN [] WHEN v0.`inspection_date_raw` IS :: LIST<ANY> THEN v0.`inspection_date_raw` ELSE [v0.`inspection_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.inspection_date_raw.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:inspection_date_raw' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:inspection_date_raw' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.inspection_date_raw.maxCount#summary
+// ruleId: cond:ViolationShape/cond:inspection_date_raw/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`inspection_date_raw` IS NULL THEN [] WHEN v0.`inspection_date_raw` IS :: LIST<ANY> THEN v0.`inspection_date_raw` ELSE [v0.`inspection_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.inspection_date_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.nov_description.datatype
+// ruleId: cond:ViolationShape/cond:nov_description/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:nov_description' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.nov_description.datatype#summary
+// ruleId: cond:ViolationShape/cond:nov_description/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.nov_description.maxCount
+// ruleId: cond:ViolationShape/cond:nov_description/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:nov_description' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.nov_description.maxCount#summary
+// ruleId: cond:ViolationShape/cond:nov_description/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.nov_issued_date.datatype
+// ruleId: cond:ViolationShape/cond:nov_issued_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`nov_issued_date` IS NULL THEN [] WHEN v0.`nov_issued_date` IS :: LIST<ANY> THEN v0.`nov_issued_date` ELSE [v0.`nov_issued_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+RETURN 'ViolationShape.nov_issued_date.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_issued_date' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:nov_issued_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.nov_issued_date.datatype#summary
+// ruleId: cond:ViolationShape/cond:nov_issued_date/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`nov_issued_date` IS NULL THEN [] WHEN v0.`nov_issued_date` IS :: LIST<ANY> THEN v0.`nov_issued_date` ELSE [v0.`nov_issued_date`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: DATE NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.nov_issued_date.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.nov_issued_date.maxCount
+// ruleId: cond:ViolationShape/cond:nov_issued_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_issued_date` IS NULL THEN [] WHEN v0.`nov_issued_date` IS :: LIST<ANY> THEN v0.`nov_issued_date` ELSE [v0.`nov_issued_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.nov_issued_date.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_issued_date' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:nov_issued_date' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.nov_issued_date.maxCount#summary
+// ruleId: cond:ViolationShape/cond:nov_issued_date/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_issued_date` IS NULL THEN [] WHEN v0.`nov_issued_date` IS :: LIST<ANY> THEN v0.`nov_issued_date` ELSE [v0.`nov_issued_date`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.nov_issued_date.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.registration_id.datatype
+// ruleId: cond:ViolationShape/cond:registration_id/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.registration_id.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:registration_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:registration_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.registration_id.datatype#summary
+// ruleId: cond:ViolationShape/cond:registration_id/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.registration_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.registration_id.maxCount
+// ruleId: cond:ViolationShape/cond:registration_id/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.registration_id.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:registration_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:registration_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.registration_id.maxCount#summary
+// ruleId: cond:ViolationShape/cond:registration_id/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.registration_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.registration_id.pattern
+// ruleId: cond:ViolationShape/cond:registration_id/sh:pattern
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+RETURN 'ViolationShape.registration_id.pattern' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:registration_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:pattern on cond:registration_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.registration_id.pattern#summary
+// ruleId: cond:ViolationShape/cond:registration_id/sh:pattern
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`registration_id` IS NULL THEN [] WHEN v0.`registration_id` IS :: LIST<ANY> THEN v0.`registration_id` ELSE [v0.`registration_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.registration_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.rent_impairing.datatype
+// ruleId: cond:ViolationShape/cond:rent_impairing/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`rent_impairing` IS NULL THEN [] WHEN v0.`rent_impairing` IS :: LIST<ANY> THEN v0.`rent_impairing` ELSE [v0.`rent_impairing`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: BOOLEAN NOT NULL))
+RETURN 'ViolationShape.rent_impairing.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:rent_impairing' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:rent_impairing' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.rent_impairing.datatype#summary
+// ruleId: cond:ViolationShape/cond:rent_impairing/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`rent_impairing` IS NULL THEN [] WHEN v0.`rent_impairing` IS :: LIST<ANY> THEN v0.`rent_impairing` ELSE [v0.`rent_impairing`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: BOOLEAN NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.rent_impairing.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.rent_impairing.maxCount
+// ruleId: cond:ViolationShape/cond:rent_impairing/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`rent_impairing` IS NULL THEN [] WHEN v0.`rent_impairing` IS :: LIST<ANY> THEN v0.`rent_impairing` ELSE [v0.`rent_impairing`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.rent_impairing.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:rent_impairing' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:rent_impairing' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.rent_impairing.maxCount#summary
+// ruleId: cond:ViolationShape/cond:rent_impairing/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`rent_impairing` IS NULL THEN [] WHEN v0.`rent_impairing` IS :: LIST<ANY> THEN v0.`rent_impairing` ELSE [v0.`rent_impairing`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.rent_impairing.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.status_group.in
+// ruleId: cond:ViolationShape/cond:status_group/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['open', 'closed'], false))
+RETURN 'ViolationShape.status_group.in' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:status_group' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:in on cond:status_group' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.status_group.in#summary
+// ruleId: cond:ViolationShape/cond:status_group/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['open', 'closed'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.status_group.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.status_group.maxCount
+// ruleId: cond:ViolationShape/cond:status_group/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.status_group.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:status_group' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:status_group' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.status_group.maxCount#summary
+// ruleId: cond:ViolationShape/cond:status_group/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.status_group.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.status_group.minCount
+// ruleId: cond:ViolationShape/cond:status_group/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ViolationShape.status_group.minCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:status_group' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:minCount on cond:status_group' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.status_group.minCount#summary
+// ruleId: cond:ViolationShape/cond:status_group/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`status_group` IS NULL THEN [] WHEN v0.`status_group` IS :: LIST<ANY> THEN v0.`status_group` ELSE [v0.`status_group`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.status_group.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_class.in
+// ruleId: cond:ViolationShape/cond:violation_class/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['A', 'B', 'C', 'I'], false))
+RETURN 'ViolationShape.violation_class.in' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_class' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:in on cond:violation_class' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_class.in#summary
+// ruleId: cond:ViolationShape/cond:violation_class/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['A', 'B', 'C', 'I'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_class.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_class.maxCount
+// ruleId: cond:ViolationShape/cond:violation_class/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.violation_class.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_class' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:violation_class' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_class.maxCount#summary
+// ruleId: cond:ViolationShape/cond:violation_class/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_class.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_class.minCount
+// ruleId: cond:ViolationShape/cond:violation_class/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ViolationShape.violation_class.minCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_class' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:minCount on cond:violation_class' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_class.minCount#summary
+// ruleId: cond:ViolationShape/cond:violation_class/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_class` IS NULL THEN [] WHEN v0.`violation_class` IS :: LIST<ANY> THEN v0.`violation_class` ELSE [v0.`violation_class`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_class.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_id.datatype
+// ruleId: cond:ViolationShape/cond:violation_id/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'ViolationShape.violation_id.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_id' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:violation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_id.datatype#summary
+// ruleId: cond:ViolationShape/cond:violation_id/sh:datatype
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_id.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_id.maxCount
+// ruleId: cond:ViolationShape/cond:violation_id/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'ViolationShape.violation_id.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_id' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:violation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_id.maxCount#summary
+// ruleId: cond:ViolationShape/cond:violation_id/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_id.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_id.minCount
+// ruleId: cond:ViolationShape/cond:violation_id/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'ViolationShape.violation_id.minCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_id' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:minCount on cond:violation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_id.minCount#summary
+// ruleId: cond:ViolationShape/cond:violation_id/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_id.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.violation_id.pattern
+// ruleId: cond:ViolationShape/cond:violation_id/sh:pattern
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+RETURN 'ViolationShape.violation_id.pattern' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:violation_id' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:pattern on cond:violation_id' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.violation_id.pattern#summary
+// ruleId: cond:ViolationShape/cond:violation_id/sh:pattern
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`violation_id` IS NULL THEN [] WHEN v0.`violation_id` IS :: LIST<ANY> THEN v0.`violation_id` ELSE [v0.`violation_id`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]+$)(?s:.*)' ELSE false END)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.violation_id.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.node
+// ruleId: cond:ViolationShape/sh:node
+MATCH (v0:`Violation`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+RETURN 'ViolationShape.node' AS ruleId, 'cond:ViolationShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:ViolationShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.node#summary
+// ruleId: cond:ViolationShape/sh:node
+MATCH (v0:`Violation`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.on_lot.class
+// ruleId: cond:ViolationShape/wl:on_lot/sh:class
+MATCH (v0:`Violation`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+RETURN 'ViolationShape.on_lot.class' AS ruleId, 'cond:ViolationShape' AS shape, 'wl:on_lot' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'cond:ViolationShape violates sh:class on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.on_lot.class#summary
+// ruleId: cond:ViolationShape/wl:on_lot/sh:class
+MATCH (v0:`Violation`)
+MATCH (v0)-[:`ON_LOT`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Lot`)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.on_lot.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.on_lot.minCount
+// ruleId: cond:ViolationShape/wl:on_lot/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+RETURN 'ViolationShape.on_lot.minCount' AS ruleId, 'cond:ViolationShape' AS shape, 'wl:on_lot' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:minCount on wl:on_lot' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.on_lot.minCount#summary
+// ruleId: cond:ViolationShape/wl:on_lot/sh:minCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (COUNT { MATCH (v0)-[:`ON_LOT`]->(x1) RETURN DISTINCT x1 } >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.on_lot.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.review_status.maxCount
+// ruleId: cond:ViolationShape/wl:review_status/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+RETURN 'ViolationShape.review_status.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'wl:review_status' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on wl:review_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.review_status.maxCount#summary
+// ruleId: cond:ViolationShape/wl:review_status/sh:maxCount
+MATCH (v0:`Violation`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 0)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.review_status.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: ViolationShape.source.in
+// ruleId: cond:ViolationShape/wl:source/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_violations'], false))
+RETURN 'ViolationShape.source.in' AS ruleId, 'cond:ViolationShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:in on wl:source' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: ViolationShape.source.in#summary
+// ruleId: cond:ViolationShape/wl:source/sh:in
+MATCH (v0:`Violation`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_violations'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'ViolationShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
 // name: DosEntityShape.ceo_address_line1.datatype
 // ruleId: dos:DosEntityShape/dos:ceo_address_line1/sh:datatype
 MATCH (v0:`DosEntity`)

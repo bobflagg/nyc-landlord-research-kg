@@ -51,3 +51,22 @@ def acris_role_type(doc_type: str | None, party_type) -> str | None:
     if role == "life_estate_retained" and doc_type != "deed_life_estate":
         return None
     return role
+
+
+def violation_class(code: str | None) -> str | None:
+    """HPD violation class letter to violation_class, or None for a letter with no concept."""
+    return _codes("violation-class", "x-hpd").get((code or "").strip().casefold())
+
+
+def violation_status_group(status: str | None) -> str | None:
+    """HPD violationstatus (Open, Close) to status_group, or None when the value has no concept."""
+    return _codes("violation-status-group", "x-hpd").get((status or "").strip().casefold())
+
+
+def complaint_type(raw: str | None) -> str | None:
+    return _codes("complaint-type", "x-hpd").get((raw or "").strip().casefold())
+
+
+def litigation_case_type(raw: str | None) -> str | None:
+    """HPD case type to case_type, or None for a type with no concept (the raw value is kept)."""
+    return _codes("litigation-case-type", "x-hpd").get((raw or "").strip().casefold())

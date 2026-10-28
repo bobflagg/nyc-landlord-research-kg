@@ -10,6 +10,10 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `role-type.ttl` | Role type | `role_type` on roles (HPD and ACRIS deed parties now; DOS with its module) |
 | `document-type.ttl` | Document type | `doc_type` on ACRIS documents (deed family only) |
 | `entity-kind.ttl` | Entity kind | `owner_kind` on registrations |
+| `violation-class.ttl` | Violation class (A, B, C, I) | `violation_class` on violations |
+| `violation-status-group.ttl` | Violation status group | `status_group` (open, closed) |
+| `complaint-type.ttl` | Complaint type | `group_value` on type summaries |
+| `litigation-case-type.ttl` | Litigation case type | `case_type` on litigation |
 
 `skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
 

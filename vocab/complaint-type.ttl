@@ -1,0 +1,53 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ctype: <https://bobflagg.github.io/Watchline/vocab/complaint-type/> .
+
+ctype: a skos:ConceptScheme ;
+    dcterms:title "Complaint type"@en ;
+    dcterms:description "The urgency type HPD gives a complaint problem (design note 0020, C5)."@en ;
+    dcterms:created "2026-10-28"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in group_value on a type summary; the recorded value is kept in group_value_raw. Counts of problems, not of complaints, unless the summary says complaint_count."@en ;
+    skos:hasTopConcept ctype:emergency, ctype:non_emergency, ctype:immediate_emergency, ctype:hazardous, ctype:referral .
+
+ctype:emergency a skos:Concept ;
+    skos:inScheme ctype: ;
+    skos:topConceptOf ctype: ;
+    skos:notation "emergency" ;
+    skos:prefLabel "Emergency"@en ;
+    skos:hiddenLabel "EMERGENCY"@x-hpd ;
+    skos:definition "HPD type EMERGENCY."@en .
+
+ctype:non_emergency a skos:Concept ;
+    skos:inScheme ctype: ;
+    skos:topConceptOf ctype: ;
+    skos:notation "non_emergency" ;
+    skos:prefLabel "Non-emergency"@en ;
+    skos:hiddenLabel "NON EMERGENCY"@x-hpd ;
+    skos:definition "HPD type NON EMERGENCY."@en .
+
+ctype:immediate_emergency a skos:Concept ;
+    skos:inScheme ctype: ;
+    skos:topConceptOf ctype: ;
+    skos:notation "immediate_emergency" ;
+    skos:prefLabel "Immediate emergency"@en ;
+    skos:hiddenLabel "IMMEDIATE EMERGENCY"@x-hpd ;
+    skos:definition "HPD type IMMEDIATE EMERGENCY."@en .
+
+ctype:hazardous a skos:Concept ;
+    skos:inScheme ctype: ;
+    skos:topConceptOf ctype: ;
+    skos:notation "hazardous" ;
+    skos:prefLabel "Hazardous"@en ;
+    skos:hiddenLabel "HAZARDOUS"@x-hpd ;
+    skos:definition "HPD type HAZARDOUS."@en .
+
+ctype:referral a skos:Concept ;
+    skos:inScheme ctype: ;
+    skos:topConceptOf ctype: ;
+    skos:notation "referral" ;
+    skos:prefLabel "Referral"@en ;
+    skos:hiddenLabel "REFERRAL"@x-hpd ;
+    skos:definition "HPD type REFERRAL."@en .

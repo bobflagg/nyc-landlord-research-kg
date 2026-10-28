@@ -31,3 +31,7 @@ def tag_acris(tx, documents, parties) -> None:
 
 def tag_dos(tx, rows) -> None:
     tag(tx, "Party", "party_id", [f"dos:{r['dosid']}" for r in rows])
+
+
+def tag_litigation(tx, rows) -> None:
+    tag(tx, "Litigation", "litigation_id", [r["litigationid"] for r in rows])

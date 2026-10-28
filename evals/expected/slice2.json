@@ -1,0 +1,729 @@
+{
+ "snapshot_id": "justfixwow-2026-05-29",
+ "derived": "2026-10-28",
+ "as_of": {
+  "hpd_violations": "2026-07-02",
+  "hpd_complaints": "2026-07-07",
+  "hpd_litigation": "2026-07-09"
+ },
+ "source": "justfixwow PostgreSQL (read-only); queries in slice2.sql",
+ "how_to_read": "Expected answers for the Slice 2 questions (Q15, Q17, Q27, Q28) on the anchors A-G, taken from the snapshot the graph is built from. The violation, complaint and litigation tables are newer than the snapshot date 2026-05-29, so each answer is as of its source's as-of date (note 0020). Complaint figures count problem rows without the duplicate flag. The detail document's Q15 and Q27 examples are from the older snapshot 2026-10-17.",
+ "anchors": {
+  "A": {
+   "bbl": "3008260002"
+  },
+  "B": {
+   "bbl": "3008260005"
+  },
+  "C": {
+   "bbl": "3008070024"
+  },
+  "D": {
+   "bbl": "3008210012"
+  },
+  "E": {
+   "bbl": "3008210019"
+  },
+  "F": {
+   "bbl": "3008970014"
+  },
+  "G": {
+   "bbl": "3008080025"
+  }
+ },
+ "questions": {
+  "Q15": {
+   "A": {
+    "by_class": {
+     "A": {
+      "open": 3,
+      "closed": 0
+     },
+     "B": {
+      "open": 12,
+      "closed": 1
+     },
+     "C": {
+      "open": 3,
+      "closed": 0
+     },
+     "I": {
+      "open": 0,
+      "closed": 1
+     }
+    },
+    "open_total": 18,
+    "open_classes_a_b_c": 18,
+    "open_class_i": 0,
+    "oldest_open_inspection_date": "2022-10-20",
+    "oldest_open_ids": [
+     "15736491",
+     "16700924",
+     "16757754",
+     "17334990",
+     "19027250"
+    ],
+    "latest_inspection_date": "2026-06-24",
+    "inspected_after_snapshot_date": 14,
+    "residential_units": 32,
+    "open_a_b_c_per_residential_unit": 0.56
+   },
+   "B": {
+    "by_class": {
+     "B": {
+      "open": 1,
+      "closed": 0
+     },
+     "C": {
+      "open": 1,
+      "closed": 0
+     },
+     "I": {
+      "open": 0,
+      "closed": 1
+     }
+    },
+    "open_total": 2,
+    "open_classes_a_b_c": 2,
+    "open_class_i": 0,
+    "oldest_open_inspection_date": "2022-05-03",
+    "oldest_open_ids": [
+     "15147814",
+     "15582867"
+    ],
+    "latest_inspection_date": "2024-11-27",
+    "inspected_after_snapshot_date": 0,
+    "residential_units": 39,
+    "open_a_b_c_per_residential_unit": 0.05
+   },
+   "C": {
+    "by_class": {
+     "A": {
+      "open": 0,
+      "closed": 1
+     },
+     "B": {
+      "open": 2,
+      "closed": 3
+     },
+     "C": {
+      "open": 2,
+      "closed": 2
+     }
+    },
+    "open_total": 4,
+    "open_classes_a_b_c": 4,
+    "open_class_i": 0,
+    "oldest_open_inspection_date": "2023-03-25",
+    "oldest_open_ids": [
+     "15820947",
+     "15820948",
+     "15820949",
+     "15820950"
+    ],
+    "latest_inspection_date": "2024-04-08",
+    "inspected_after_snapshot_date": 0,
+    "residential_units": 32,
+    "open_a_b_c_per_residential_unit": 0.12
+   },
+   "D": {
+    "by_class": {
+     "A": {
+      "open": 0,
+      "closed": 1
+     },
+     "B": {
+      "open": 0,
+      "closed": 1
+     },
+     "C": {
+      "open": 0,
+      "closed": 1
+     }
+    },
+    "open_total": 0,
+    "open_classes_a_b_c": 0,
+    "open_class_i": 0,
+    "oldest_open_inspection_date": null,
+    "oldest_open_ids": [],
+    "latest_inspection_date": "2025-11-21",
+    "inspected_after_snapshot_date": 0,
+    "residential_units": 18,
+    "open_a_b_c_per_residential_unit": 0.0
+   },
+   "E": {
+    "by_class": {
+     "A": {
+      "open": 8,
+      "closed": 0
+     },
+     "B": {
+      "open": 19,
+      "closed": 0
+     },
+     "C": {
+      "open": 5,
+      "closed": 3
+     },
+     "I": {
+      "open": 2,
+      "closed": 0
+     }
+    },
+    "open_total": 34,
+    "open_classes_a_b_c": 32,
+    "open_class_i": 2,
+    "oldest_open_inspection_date": "2023-11-21",
+    "oldest_open_ids": [
+     "16429880",
+     "16837898",
+     "16917645",
+     "16917646",
+     "16917647"
+    ],
+    "latest_inspection_date": "2024-11-27",
+    "inspected_after_snapshot_date": 0,
+    "residential_units": 6,
+    "open_a_b_c_per_residential_unit": 5.33
+   },
+   "F": "no violation in the data",
+   "G": {
+    "by_class": {
+     "A": {
+      "open": 0,
+      "closed": 15
+     },
+     "B": {
+      "open": 4,
+      "closed": 32
+     },
+     "C": {
+      "open": 3,
+      "closed": 5
+     }
+    },
+    "open_total": 7,
+    "open_classes_a_b_c": 7,
+    "open_class_i": 0,
+    "oldest_open_inspection_date": "2024-06-18",
+    "oldest_open_ids": [
+     "17057063",
+     "18516948",
+     "18516949",
+     "18698848",
+     "18711103"
+    ],
+    "latest_inspection_date": "2026-03-25",
+    "inspected_after_snapshot_date": 0,
+    "residential_units": 23,
+    "open_a_b_c_per_residential_unit": 0.3
+   }
+  },
+  "Q17": {
+   "A": {
+    "registered": true,
+    "registration_ids": [
+     "316103"
+    ],
+    "latest_registration_date": "2025-09-30",
+    "latest_registration_end_date": "2026-09-01",
+    "lapsed": false,
+    "older_than_latest_deed": false,
+    "latest_deed": {
+     "document_id": "2025032100031001",
+     "recorded": "2025-04-02",
+     "amount": 0
+    },
+    "residential_units": 32,
+    "year_built": 1911
+   },
+   "B": {
+    "registered": true,
+    "registration_ids": [
+     "300258"
+    ],
+    "latest_registration_date": "2025-10-24",
+    "latest_registration_end_date": "2026-09-01",
+    "lapsed": false,
+    "older_than_latest_deed": false,
+    "latest_deed": {
+     "document_id": "2021022201130001",
+     "recorded": "2021-02-26",
+     "amount": 0
+    },
+    "residential_units": 39,
+    "year_built": 1911
+   },
+   "C": {
+    "registered": true,
+    "registration_ids": [
+     "350423"
+    ],
+    "latest_registration_date": "2025-10-23",
+    "latest_registration_end_date": "2026-09-01",
+    "lapsed": false,
+    "older_than_latest_deed": false,
+    "latest_deed": {
+     "document_id": "FT_3620008345262",
+     "recorded": "2002-04-01",
+     "amount": 0
+    },
+    "residential_units": 32,
+    "year_built": 1931
+   },
+   "D": {
+    "registered": true,
+    "registration_ids": [
+     "302437",
+     "331116",
+     "344220"
+    ],
+    "latest_registration_date": "2025-07-16",
+    "latest_registration_end_date": "2026-09-01",
+    "lapsed": false,
+    "older_than_latest_deed": false,
+    "latest_deed": {
+     "document_id": "2017061600025001",
+     "recorded": "2017-06-28",
+     "amount": 0
+    },
+    "residential_units": 18,
+    "year_built": 1911
+   },
+   "E": {
+    "registered": true,
+    "registration_ids": [
+     "306882"
+    ],
+    "latest_registration_date": "2020-08-31",
+    "latest_registration_end_date": "2021-09-01",
+    "lapsed": true,
+    "older_than_latest_deed": true,
+    "latest_deed": {
+     "document_id": "2026042100334001",
+     "recorded": "2026-04-21",
+     "amount": 800000
+    },
+    "residential_units": 6,
+    "year_built": 1911
+   },
+   "F": {
+    "registered": false,
+    "registration_ids": [],
+    "latest_registration_date": null,
+    "latest_registration_end_date": null,
+    "lapsed": null,
+    "older_than_latest_deed": null,
+    "latest_deed": {
+     "document_id": "2024091700040001",
+     "recorded": "2024-10-01",
+     "amount": 12000000
+    },
+    "residential_units": 40,
+    "year_built": 2025
+   },
+   "G": {
+    "registered": true,
+    "registration_ids": [
+     "305188"
+    ],
+    "latest_registration_date": "2025-12-03",
+    "latest_registration_end_date": "2026-09-01",
+    "lapsed": false,
+    "older_than_latest_deed": false,
+    "latest_deed": {
+     "document_id": "2018092900072001",
+     "recorded": "2018-10-18",
+     "amount": 4000000
+    },
+    "residential_units": 23,
+    "year_built": 1925
+   }
+  },
+  "Q27": {
+   "A": {
+    "since_2022": {
+     "problems": 47,
+     "duplicates_left_out": 1,
+     "open": 1,
+     "by_type": {
+      "EMERGENCY": 28,
+      "IMMEDIATE EMERGENCY": 1,
+      "NON EMERGENCY": 18
+     },
+     "by_major_category": {
+      "APPLIANCE": 1,
+      "DOOR/WINDOW": 4,
+      "ELECTRIC": 2,
+      "FLOORING/STAIRS": 1,
+      "GENERAL": 5,
+      "HEAT/HOT WATER": 7,
+      "PAINT/PLASTER": 3,
+      "PLUMBING": 6,
+      "SAFETY": 4,
+      "UNSANITARY CONDITION": 12,
+      "WATER LEAK": 2
+     },
+     "latest_received": "2026-06-24",
+     "problems_per_residential_unit": 1.47
+    },
+    "all_years": {
+     "problems": 198,
+     "duplicates_left_out": 17,
+     "open": 1,
+     "by_type": {
+      "EMERGENCY": 106,
+      "HAZARDOUS": 8,
+      "IMMEDIATE EMERGENCY": 6,
+      "NON EMERGENCY": 78
+     },
+     "by_major_category": {
+      "APPLIANCE": 6,
+      "DOOR/WINDOW": 5,
+      "ELECTRIC": 8,
+      "FLOORING/STAIRS": 1,
+      "GENERAL": 31,
+      "HEAT/HOT WATER": 14,
+      "HEATING": 24,
+      "NONCONST": 22,
+      "PAINT/PLASTER": 33,
+      "PLUMBING": 36,
+      "SAFETY": 4,
+      "UNSANITARY CONDITION": 12,
+      "WATER LEAK": 2
+     },
+     "latest_received": "2026-06-24",
+     "problems_per_residential_unit": 6.19
+    }
+   },
+   "B": {
+    "since_2022": "no complaint in the data",
+    "all_years": {
+     "problems": 52,
+     "duplicates_left_out": 8,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 35,
+      "HAZARDOUS": 1,
+      "IMMEDIATE EMERGENCY": 7,
+      "NON EMERGENCY": 9
+     },
+     "by_major_category": {
+      "CONSTRUCTION": 2,
+      "ELECTRIC": 7,
+      "GENERAL": 7,
+      "HEAT/HOT WATER": 2,
+      "HEATING": 15,
+      "NONCONST": 7,
+      "PAINT/PLASTER": 2,
+      "PLUMBING": 10
+     },
+     "latest_received": "2021-10-19",
+     "problems_per_residential_unit": 1.33
+    }
+   },
+   "C": {
+    "since_2022": {
+     "problems": 39,
+     "duplicates_left_out": 6,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 17,
+      "IMMEDIATE EMERGENCY": 2,
+      "NON EMERGENCY": 20
+     },
+     "by_major_category": {
+      "DOOR/WINDOW": 2,
+      "ELECTRIC": 4,
+      "FLOORING/STAIRS": 1,
+      "GENERAL": 2,
+      "HEAT/HOT WATER": 5,
+      "PAINT/PLASTER": 9,
+      "PLUMBING": 8,
+      "UNSANITARY CONDITION": 8
+     },
+     "latest_received": "2026-04-20",
+     "problems_per_residential_unit": 1.22
+    },
+    "all_years": {
+     "problems": 218,
+     "duplicates_left_out": 12,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 120,
+      "IMMEDIATE EMERGENCY": 2,
+      "NON EMERGENCY": 96
+     },
+     "by_major_category": {
+      "APPLIANCE": 2,
+      "DOOR/WINDOW": 2,
+      "ELECTRIC": 21,
+      "FLOORING/STAIRS": 1,
+      "GENERAL": 47,
+      "HEAT/HOT WATER": 20,
+      "HEATING": 7,
+      "NONCONST": 32,
+      "PAINT/PLASTER": 35,
+      "PLUMBING": 43,
+      "UNSANITARY CONDITION": 8
+     },
+     "latest_received": "2026-04-20",
+     "problems_per_residential_unit": 6.81
+    }
+   },
+   "D": {
+    "since_2022": {
+     "problems": 15,
+     "duplicates_left_out": 1,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 13,
+      "IMMEDIATE EMERGENCY": 1,
+      "NON EMERGENCY": 1
+     },
+     "by_major_category": {
+      "DOOR/WINDOW": 4,
+      "FLOORING/STAIRS": 1,
+      "HEAT/HOT WATER": 9,
+      "PLUMBING": 1
+     },
+     "latest_received": "2026-02-09",
+     "problems_per_residential_unit": 0.83
+    },
+    "all_years": {
+     "problems": 149,
+     "duplicates_left_out": 6,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 94,
+      "HAZARDOUS": 4,
+      "IMMEDIATE EMERGENCY": 5,
+      "NON EMERGENCY": 46
+     },
+     "by_major_category": {
+      "APPLIANCE": 9,
+      "DOOR/WINDOW": 7,
+      "ELECTRIC": 10,
+      "FLOORING/STAIRS": 12,
+      "GENERAL": 28,
+      "HEAT/HOT WATER": 21,
+      "HEATING": 9,
+      "NONCONST": 8,
+      "PAINT/PLASTER": 19,
+      "PLUMBING": 22,
+      "UNSANITARY CONDITION": 1,
+      "WATER LEAK": 3
+     },
+     "latest_received": "2026-02-09",
+     "problems_per_residential_unit": 8.28
+    }
+   },
+   "E": {
+    "since_2022": {
+     "problems": 25,
+     "duplicates_left_out": 2,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 12,
+      "NON EMERGENCY": 13
+     },
+     "by_major_category": {
+      "DOOR/WINDOW": 3,
+      "ELECTRIC": 2,
+      "GENERAL": 1,
+      "HEAT/HOT WATER": 3,
+      "PLUMBING": 5,
+      "SAFETY": 3,
+      "UNSANITARY CONDITION": 8
+     },
+     "latest_received": "2024-10-16",
+     "problems_per_residential_unit": 4.17
+    },
+    "all_years": {
+     "problems": 69,
+     "duplicates_left_out": 4,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 32,
+      "IMMEDIATE EMERGENCY": 1,
+      "NON EMERGENCY": 36
+     },
+     "by_major_category": {
+      "APPLIANCE": 1,
+      "DOOR/WINDOW": 6,
+      "ELECTRIC": 3,
+      "FLOORING/STAIRS": 3,
+      "GENERAL": 4,
+      "HEAT/HOT WATER": 12,
+      "HEATING": 3,
+      "PAINT/PLASTER": 7,
+      "PLUMBING": 11,
+      "SAFETY": 6,
+      "UNSANITARY CONDITION": 11,
+      "WATER LEAK": 2
+     },
+     "latest_received": "2024-10-16",
+     "problems_per_residential_unit": 11.5
+    }
+   },
+   "F": {
+    "since_2022": "no complaint in the data",
+    "all_years": "no complaint in the data"
+   },
+   "G": {
+    "since_2022": {
+     "problems": 82,
+     "duplicates_left_out": 19,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 40,
+      "IMMEDIATE EMERGENCY": 3,
+      "NON EMERGENCY": 39
+     },
+     "by_major_category": {
+      "APPLIANCE": 6,
+      "DOOR/WINDOW": 1,
+      "ELECTRIC": 5,
+      "FLOORING/STAIRS": 5,
+      "GENERAL": 4,
+      "HEAT/HOT WATER": 21,
+      "PAINT/PLASTER": 8,
+      "PLUMBING": 9,
+      "UNSANITARY CONDITION": 17,
+      "WATER LEAK": 6
+     },
+     "latest_received": "2026-05-08",
+     "problems_per_residential_unit": 3.57
+    },
+    "all_years": {
+     "problems": 179,
+     "duplicates_left_out": 43,
+     "open": 0,
+     "by_type": {
+      "EMERGENCY": 120,
+      "HAZARDOUS": 1,
+      "IMMEDIATE EMERGENCY": 7,
+      "NON EMERGENCY": 51
+     },
+     "by_major_category": {
+      "APPLIANCE": 7,
+      "DOOR/WINDOW": 4,
+      "ELECTRIC": 10,
+      "FLOORING/STAIRS": 5,
+      "GENERAL": 9,
+      "HEAT/HOT WATER": 51,
+      "HEATING": 34,
+      "PAINT/PLASTER": 13,
+      "PLUMBING": 16,
+      "SAFETY": 2,
+      "UNSANITARY CONDITION": 22,
+      "WATER LEAK": 6
+     },
+     "latest_received": "2026-05-08",
+     "problems_per_residential_unit": 7.78
+    }
+   }
+  },
+  "Q28": {
+   "A": [
+    {
+     "litigation_id": "17201",
+     "case_type": "Tenant Action",
+     "case_open_date": "2005-08-11",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "CAROL KORNBLUM,DANIEL KORNBLUM"
+    },
+    {
+     "litigation_id": "36698",
+     "case_type": "Access Warrant - lead",
+     "case_open_date": "2006-07-26",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "5413 7TH AVE LLC,DANIEL KORNBLUM"
+    },
+    {
+     "litigation_id": "465953",
+     "case_type": "Tenant Action",
+     "case_open_date": "2024-10-25",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "5413 PLAZA LLC,E-HOUSE REALTY & MANAGEMENT INC"
+    },
+    {
+     "litigation_id": "508048",
+     "case_type": "Comprehensive",
+     "case_open_date": "2026-03-24",
+     "case_status": "PENDING",
+     "finding_of_harassment": null,
+     "respondent_raw": "5413 PLAZA LLC,BAOZHEN CHEN,JAY WONG"
+    }
+   ],
+   "B": [
+    {
+     "litigation_id": "405072",
+     "case_type": "Comprehensive",
+     "case_open_date": "2022-06-30",
+     "case_status": "PENDING",
+     "finding_of_harassment": null,
+     "respondent_raw": "702 PLAZA LLC,BAOZHEN LIN,MOSHE KRAUS"
+    },
+    {
+     "litigation_id": "407103",
+     "case_type": "Tenant Action",
+     "case_open_date": "2022-08-04",
+     "case_status": "PENDING",
+     "finding_of_harassment": null,
+     "respondent_raw": "BAOZHEN LIN,MOSHE KRAUS  ET AL"
+    },
+    {
+     "litigation_id": "464587",
+     "case_type": "Comp Supplemental Cases",
+     "case_open_date": null,
+     "case_status": "PENDING",
+     "finding_of_harassment": null,
+     "respondent_raw": "702 PLAZA LLC,BAOZHEN LIN,MOSHE KRAUS"
+    }
+   ],
+   "C": [
+    {
+     "litigation_id": "424938",
+     "case_type": "Tenant Action",
+     "case_open_date": "2023-05-15",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "438 52 STREET OWNERS CORPORATION,SAHIT HADZOVIC"
+    }
+   ],
+   "D": "no case in the data",
+   "E": "no case in the data",
+   "F": "no case in the data",
+   "G": [
+    {
+     "litigation_id": "49799",
+     "case_type": "Heat and Hot Water",
+     "case_open_date": "2007-03-21",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "548 52 ST LLC,DANIEL KORNBLUM"
+    },
+    {
+     "litigation_id": "84678",
+     "case_type": "Heat and Hot Water",
+     "case_open_date": "2008-12-02",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "548 52 ST LLC,DANIEL KORNBLUM"
+    },
+    {
+     "litigation_id": "369519",
+     "case_type": "Heat and Hot Water",
+     "case_open_date": "2020-02-27",
+     "case_status": "CLOSED",
+     "finding_of_harassment": null,
+     "respondent_raw": "AADEL SOLEYMANI,KS TURNPIKE LLC,SHAHAB SOLEYMANI"
+    }
+   ]
+  }
+ }
+}

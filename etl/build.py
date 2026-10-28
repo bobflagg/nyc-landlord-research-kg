@@ -8,6 +8,7 @@ from datetime import date
 from itertools import islice
 
 from etl.acris import document_node, party_nodes
+from etl.conditions import complaint_summary_node, litigation_node, violation_node
 from etl.dos import dos_entity_node
 from etl.hpd import contact_nodes, pick_contacts, registration_nodes
 from etl.load import apply_schema, load_edges, load_nodes, register_snapshot
@@ -167,3 +168,105 @@ def build_dos(session, schema: Schema, snapshot_id: str, snapshot_date: date, ro
     while batch := list(islice(it, chunk)):
         n += session.execute_write(lambda tx: load_nodes(tx, schema, "Party", (dos_entity_node(r, snapshot_id) for r in batch), also=("DosEntity",)))
     return {"DosEntity": n}
+
+
+def set_as_of(tx, snapshot_id: str, prop: str, value: date) -> None:
+    """The latest date a source table holds, on the snapshot (note 0020, C4). `prop` comes from this module, never from data."""
+    if prop not in {"hpd_violations_as_of", "hpd_complaints_as_of", "hpd_litigation_as_of"}:
+        raise ValueError(prop)
+    tx.run(f"MATCH (s:Snapshot {{snapshot_id: $id}}) SET s.`{prop}` = $d", id=snapshot_id, d=value).consume()
+
+
+def load_litigation(tx, schema: Schema, rows: list[dict], lots: frozenset, snapshot_id: str, as_of: date) -> dict[str, int]:
+    """A case is loaded only when its lot is in the graph; it is on its building too when that building is."""
+    nodes, on_lot, on_bld, skipped = [], [], [], 0
+    for r in rows:
+        bbl = (r.get("bbl") or "").strip()
+        if bbl not in lots:
+            skipped += 1
+            continue
+        n = litigation_node(r, snapshot_id, as_of)
+        nodes.append(n)
+        on_lot.append((n["litigation_id"], bbl))
+        if (r.get("bin") or "").strip():
+            on_bld.append((n["litigation_id"], r["bin"].strip()))
+    return {"Litigation": load_nodes(tx, schema, "Litigation", nodes), "ON_LOT (Litigation)": load_edges(tx, schema, "ON_LOT", "Litigation", "Lot", on_lot),
+            "ON_BUILDING (Litigation)": load_edges(tx, schema, "ON_BUILDING", "Litigation", "Building", on_bld), "skipped (lot not in graph)": skipped}
+
+
+def build_litigation(session, schema: Schema, snapshot_id: str, snapshot_date: date, rows, lots: frozenset, as_of: date, chunk: int = 5000) -> dict:
+    apply_schema(session, schema)
+    session.execute_write(register_snapshot, snapshot_id, "justfixwow", snapshot_date)
+    session.execute_write(set_as_of, snapshot_id, "hpd_litigation_as_of", as_of)
+    totals: dict[str, int] = defaultdict(int)
+    it = iter(rows)
+    while batch := list(islice(it, chunk)):
+        for k, v in session.execute_write(load_litigation, schema, batch, lots, snapshot_id, as_of).items():
+            totals[k] += v
+    return dict(totals)
+
+
+def load_violations(tx, schema: Schema, rows: list[dict], lots: frozenset, snapshot_id: str, as_of: date) -> dict[str, int]:
+    """A violation is loaded when its class and status are HPD's and its lot is in the graph; it is on its building too when that is."""
+    nodes, on_lot, on_bld = [], [], []
+    skipped = {"no class or status": 0, "lot not in graph": 0}
+    for r in rows:
+        n = violation_node(r, snapshot_id, as_of)
+        if n is None:
+            skipped["no class or status"] += 1
+            continue
+        bbl = (r.get("bbl") or "").strip()
+        if bbl not in lots:
+            skipped["lot not in graph"] += 1
+            continue
+        nodes.append(n)
+        on_lot.append((n["violation_id"], bbl))
+        if (r.get("bin") or "").strip():
+            on_bld.append((n["violation_id"], r["bin"].strip()))
+    return {"Violation": load_nodes(tx, schema, "Violation", nodes), "ON_LOT (Violation)": load_edges(tx, schema, "ON_LOT", "Violation", "Lot", on_lot),
+            "ON_BUILDING (Violation)": load_edges(tx, schema, "ON_BUILDING", "Violation", "Building", on_bld),
+            "skipped (no class or status)": skipped["no class or status"], "skipped (lot not in graph)": skipped["lot not in graph"],
+            "with a bin (building edge tried)": len(on_bld)}
+
+
+def build_violations(session, schema: Schema, snapshot_id: str, snapshot_date: date, rows, lots: frozenset, as_of: date, chunk: int = 5000) -> dict:
+    apply_schema(session, schema)
+    session.execute_write(register_snapshot, snapshot_id, "justfixwow", snapshot_date)
+    session.execute_write(set_as_of, snapshot_id, "hpd_violations_as_of", as_of)
+    totals: dict[str, int] = defaultdict(int)
+    it = iter(rows)
+    while batch := list(islice(it, chunk)):
+        for k, v in session.execute_write(load_violations, schema, batch, lots, snapshot_id, as_of).items():
+            totals[k] += v
+    return dict(totals)
+
+
+def load_complaints(tx, schema: Schema, rows: list[dict], grouping: str, lots: frozenset, snapshot_id: str) -> dict[str, int]:
+    """Complaint summaries on their lot (when it is in the graph) and on their building (when that is)."""
+    nodes, on_lot, on_bld, skipped = [], [], [], 0
+    for r in rows:
+        bbl = (r.get("bbl") or "").strip()
+        if bbl not in lots:
+            skipped += 1
+            continue
+        n = complaint_summary_node(r, grouping, snapshot_id)
+        nodes.append(n)
+        on_lot.append((n["summary_id"], bbl))
+        if (r.get("bin") or "").strip():
+            on_bld.append((n["summary_id"], r["bin"].strip()))
+    return {"ComplaintSummary": load_nodes(tx, schema, "ComplaintSummary", nodes), "ON_LOT (ComplaintSummary)": load_edges(tx, schema, "ON_LOT", "ComplaintSummary", "Lot", on_lot),
+            "ON_BUILDING (ComplaintSummary)": load_edges(tx, schema, "ON_BUILDING", "ComplaintSummary", "Building", on_bld), "skipped (lot not in graph)": skipped}
+
+
+def build_complaints(session, schema: Schema, snapshot_id: str, snapshot_date: date, groups: dict, lots: frozenset, as_of: date, chunk: int = 5000) -> dict:
+    """`groups` maps a grouping ("type", "category") to an iterable of aggregated rows."""
+    apply_schema(session, schema)
+    session.execute_write(register_snapshot, snapshot_id, "justfixwow", snapshot_date)
+    session.execute_write(set_as_of, snapshot_id, "hpd_complaints_as_of", as_of)
+    totals: dict[str, int] = defaultdict(int)
+    for grouping, rows in groups.items():
+        it = iter(rows)
+        while batch := list(islice(it, chunk)):
+            for k, v in session.execute_write(load_complaints, schema, batch, grouping, lots, snapshot_id).items():
+                totals[k] += v
+    return dict(totals)

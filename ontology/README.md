@@ -10,9 +10,10 @@ OWL modules and SHACL shapes (design note 0010).
 | `hpd.ttl`, `hpd.shapes.ttl` | Registration, HPD party and role (design notes 0006, 0014) |
 | `acris.ttl`, `acris.shapes.ttl` | Document, ACRIS party and role: deed family only (design note 0015) |
 | `dos.ttl`, `dos.shapes.ttl` | NY DOS entity (design note 0016) |
+| `conditions.ttl`, `conditions.shapes.ttl` | HPD violations, complaint summaries and litigation (design note 0020) |
 | `generated/` | Cypher compiled from the shapes by `scripts/compile_shapes.py` (shacl2cypher). Committed; do not edit |
 
-Domain modules are separate pairs of files that import core: PLUTO, HPD, ACRIS and DOS now, conditions in Slice 2, ownership layers in Slice 4.
+Domain modules are separate pairs of files that import core: PLUTO, HPD, ACRIS, DOS and conditions now, ownership layers in Slice 4.
 
 Checks that SHACL cannot express are hand-written in `etl/checks/` (snapshot references, role attachment). A violation from any of them fails the build.
 

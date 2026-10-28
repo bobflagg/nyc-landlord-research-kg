@@ -1,0 +1,84 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix s2c:  <https://w3id.org/shacl2cypher#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:   <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix cond: <https://bobflagg.github.io/Watchline/ontology/conditions#> .
+
+# Conditions shapes (design note 0020). Values between "generated" markers are written from vocab/ by
+# scripts/sync_shape_values.py ("name:x-hpd" takes the HPD codes on skos:hiddenLabel).
+
+cond:ViolationShape a sh:NodeShape ; sh:targetClass cond:Violation ; s2c:key "violation_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path cond:violation_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]+$" ] ;
+  sh:property [ sh:path cond:registration_id ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]+$" ] ;
+  sh:property [ sh:path cond:violation_class ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:violation-class begin
+    ( "A" "B" "C" "I" )
+    # generated:violation-class end
+  ] ;
+  sh:property [ sh:path cond:status_group ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:violation-status-group begin
+    ( "open" "closed" )
+    # generated:violation-status-group end
+  ] ;
+  sh:property [ sh:path cond:current_status ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:current_status_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:current_status_date_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:inspection_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:inspection_date_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:nov_issued_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:rent_impairing ; sh:maxCount 1 ; sh:datatype xsd:boolean ] ;
+  # Every violation is on a lot in the graph; on a building only when the building is.
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_violations" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+cond:ComplaintSummaryShape a sh:NodeShape ; sh:targetClass cond:ComplaintSummary ; s2c:key "summary_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path cond:summary_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:grouping ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "type" "category" ) ] ;
+  sh:property [ sh:path cond:group_value ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:group_value_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:year ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path cond:problem_status ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "OPEN" "CLOSE" ) ] ;
+  sh:property [ sh:path cond:problem_count ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path cond:duplicate_problem_count ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path cond:complaint_count ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path cond:latest_received ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_complaints" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+cond:LitigationShape a sh:NodeShape ; sh:targetClass cond:Litigation ; s2c:key "litigation_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path cond:litigation_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]+$" ] ;
+  sh:property [ sh:path cond:case_type ; sh:maxCount 1 ; sh:in
+    # generated:litigation-case-type begin
+    ( "tenant_action" "heat_and_hot_water" "tenant_action_harassment" "access_warrant_non_lead" "comprehensive" "false_certification_non_lead" "access_warrant_lead" "conh" "comp_supplemental" "lead_false_certification" "seven_a" "heat_supplemental" "failure_to_register_only" "other" )
+    # generated:litigation-case-type end
+  ] ;
+  sh:property [ sh:path cond:case_type_raw ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:litigation-case-type:x-hpd begin
+    ( "Tenant Action" "Heat and Hot Water" "Tenant Action/Harrassment" "Access Warrant - Non-Lead" "Comprehensive" "False Certification Non-Lead" "Access Warrant - lead" "CONH" "Comp Supplemental Cases" "Lead False Certification" "7A" "Heat Supplemental Cases" "Failure to Register Only" "HLD - Other Case Type" )
+    # generated:litigation-case-type:x-hpd end
+  ] ;
+  sh:property [ sh:path cond:case_open_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:case_open_date_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:case_status ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:case_status_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:open_judgement ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:finding_of_harassment ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:finding_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:penalty ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:respondent_raw ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:respondent_names ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path cond:respondent_names_n1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "hpd_litigations" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
+
+# The source as-of dates sit on the snapshot (C4).
+cond:SnapshotAsOfShape a sh:NodeShape ; sh:targetClass wl:Snapshot ;
+  sh:property [ sh:path cond:hpd_violations_as_of ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:hpd_complaints_as_of ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+  sh:property [ sh:path cond:hpd_litigation_as_of ; sh:maxCount 1 ; sh:datatype xsd:date ] .

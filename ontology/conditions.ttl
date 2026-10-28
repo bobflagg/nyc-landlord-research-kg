@@ -1,0 +1,76 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix cond:    <https://bobflagg.github.io/Watchline/ontology/conditions#> .
+
+# Conditions module (design note 0020): HPD violations, complaint summaries and Housing Court actions.
+<https://bobflagg.github.io/Watchline/ontology/conditions> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline conditions module"@en ;
+    dcterms:created "2026-10-28"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+# ---- Violations (Q15) -----------------------------------------------------------
+
+cond:Violation a owl:Class ;
+    rdfs:label "HPD violation"@en ;
+    rdfs:comment "One violation HPD cited, keyed by HPD's violation id. It is what an inspector cited, not a finding of fact by a court. On its lot (always) and on its building (when the building is in the graph). Apartment, story and the notice text are not loaded: they can name a unit (mission, out of scope)."@en .
+
+cond:violation_id a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "HPD violation id as a string."@en .
+cond:registration_id a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "HPD registration id the violation names, as written. A property, not a link: the registration may not be in the graph."@en .
+cond:violation_class a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "A, B, C or I. Values: vocab/violation-class.ttl."@en .
+cond:status_group a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "open or closed, from HPD's violationstatus. Values: vocab/violation-status-group.ttl."@en .
+cond:current_status a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "HPD's current status text, as written."@en .
+cond:current_status_date a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:date .
+cond:current_status_date_raw a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "A status date outside 1900 to the source's as-of date (the sentinel 9999-12-11 occurs), as written. Never repaired."@en .
+cond:inspection_date a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:date .
+cond:inspection_date_raw a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:string ; rdfs:comment "An inspection date before 1900 or after the as-of date, as written."@en .
+cond:nov_issued_date a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:date .
+cond:rent_impairing a owl:DatatypeProperty ; rdfs:domain cond:Violation ; rdfs:range xsd:boolean .
+
+# ---- Complaint summaries (Q27) --------------------------------------------------
+
+cond:ComplaintSummary a owl:Class ;
+    rdfs:label "Complaint summary"@en ;
+    rdfs:comment "A building-level count of HPD complaint problems for one year and one problem status, grouped by type (with distinct complaint counts) or by major category (problem counts only). Built from the source rows without apartment, unit, complainant or anonymity fields, which are never loaded (mission, out of scope). A complaint is a report, not a finding."@en .
+
+cond:summary_id a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:string ; rdfs:comment "bbl|bin|grouping|group value|year|problem status."@en .
+cond:grouping a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:string ; rdfs:comment "type or category."@en .
+cond:group_value a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:string ; rdfs:comment "For type: a complaint-type notation. For category: HPD's major category as written."@en .
+cond:group_value_raw a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:string ; rdfs:comment "The recorded type, kept when grouping is type."@en .
+cond:year a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:integer ; rdfs:comment "Year the problems were received."@en .
+cond:problem_status a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:string ; rdfs:comment "OPEN or CLOSE, as HPD writes it."@en .
+cond:problem_count a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:integer ; rdfs:comment "Problem rows not flagged duplicate."@en .
+cond:duplicate_problem_count a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:integer ; rdfs:comment "Problem rows flagged duplicate by HPD, left out of problem_count."@en .
+cond:complaint_count a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:integer ; rdfs:comment "Distinct complaint ids among the non-duplicate problems. Only on a type summary: a complaint can span categories."@en .
+cond:latest_received a owl:DatatypeProperty ; rdfs:domain cond:ComplaintSummary ; rdfs:range xsd:date .
+
+# ---- Housing Court actions (Q28) ------------------------------------------------
+
+cond:Litigation a owl:Class ;
+    rdfs:label "HPD litigation"@en ;
+    rdfs:comment "One HPD-initiated Housing Court case, keyed by HPD's litigation id. Not an eviction and not a finding of liability. Respondent names are a recorded list, not roles; a name never asserts ownership (note 0009)."@en .
+
+cond:litigation_id a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string .
+cond:case_type a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "Values: vocab/litigation-case-type.ttl."@en .
+cond:case_type_raw a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string .
+cond:case_open_date a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:date .
+cond:case_open_date_raw a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "An open date before 1900 or after the as-of date (years 0204 and 2030 occur), as written."@en .
+cond:case_status a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "The status part of HPD's casestatus, with any trailing date removed."@en .
+cond:case_status_raw a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "HPD's casestatus as written (it can include a date)."@en .
+cond:open_judgement a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string .
+cond:finding_of_harassment a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string .
+cond:finding_date a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:date .
+cond:penalty a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string .
+cond:respondent_raw a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "HPD's respondent text, as written."@en .
+cond:respondent_names a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "The respondent text split at commas, each name as written. A name inside a company name that contains a comma can be split; the raw text is the check."@en .
+cond:respondent_names_n1 a owl:DatatypeProperty ; rdfs:domain cond:Litigation ; rdfs:range xsd:string ; rdfs:comment "Rule N1 of each respondent name, in the same order."@en .
+
+# ---- Source as-of dates ---------------------------------------------------------
+
+cond:hpd_violations_as_of a owl:DatatypeProperty ; rdfs:domain wl:Snapshot ; rdfs:range xsd:date ;
+    rdfs:comment "Latest date the violations table holds (the snapshot date is the registration date; this table is newer, design note 0020 C4)."@en .
+cond:hpd_complaints_as_of a owl:DatatypeProperty ; rdfs:domain wl:Snapshot ; rdfs:range xsd:date .
+cond:hpd_litigation_as_of a owl:DatatypeProperty ; rdfs:domain wl:Snapshot ; rdfs:range xsd:date .

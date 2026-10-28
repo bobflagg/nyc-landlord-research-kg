@@ -1,0 +1,125 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ltype: <https://bobflagg.github.io/Watchline/vocab/litigation-case-type/> .
+
+ltype: a skos:ConceptScheme ;
+    dcterms:title "Litigation case type"@en ;
+    dcterms:description "The case type of an HPD-initiated Housing Court action (design note 0020, C5)."@en ;
+    dcterms:created "2026-10-28"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in case_type; the recorded value is always kept in case_type_raw. An HPD action is not an eviction and not a finding of liability."@en ;
+    skos:hasTopConcept ltype:tenant_action, ltype:heat_and_hot_water, ltype:tenant_action_harassment, ltype:access_warrant_non_lead, ltype:comprehensive, ltype:false_certification_non_lead, ltype:access_warrant_lead, ltype:conh, ltype:comp_supplemental, ltype:lead_false_certification, ltype:seven_a, ltype:heat_supplemental, ltype:failure_to_register_only, ltype:other .
+
+ltype:tenant_action a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "tenant_action" ;
+    skos:prefLabel "Tenant action"@en ;
+    skos:hiddenLabel "Tenant Action"@x-hpd ;
+    skos:definition "HPD Tenant Action."@en .
+
+ltype:heat_and_hot_water a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "heat_and_hot_water" ;
+    skos:prefLabel "Heat and hot water"@en ;
+    skos:hiddenLabel "Heat and Hot Water"@x-hpd ;
+    skos:definition "HPD Heat and Hot Water case."@en .
+
+ltype:tenant_action_harassment a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "tenant_action_harassment" ;
+    skos:prefLabel "Tenant action, harassment"@en ;
+    skos:hiddenLabel "Tenant Action/Harrassment"@x-hpd ;
+    skos:definition "HPD Tenant Action/Harrassment (the source's spelling)."@en .
+
+ltype:access_warrant_non_lead a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "access_warrant_non_lead" ;
+    skos:prefLabel "Access warrant, non-lead"@en ;
+    skos:hiddenLabel "Access Warrant - Non-Lead"@x-hpd ;
+    skos:definition "HPD Access Warrant - Non-Lead."@en .
+
+ltype:comprehensive a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "comprehensive" ;
+    skos:prefLabel "Comprehensive"@en ;
+    skos:hiddenLabel "Comprehensive"@x-hpd ;
+    skos:definition "HPD Comprehensive case."@en .
+
+ltype:false_certification_non_lead a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "false_certification_non_lead" ;
+    skos:prefLabel "False certification, non-lead"@en ;
+    skos:hiddenLabel "False Certification Non-Lead"@x-hpd ;
+    skos:definition "HPD False Certification Non-Lead."@en .
+
+ltype:access_warrant_lead a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "access_warrant_lead" ;
+    skos:prefLabel "Access warrant, lead"@en ;
+    skos:hiddenLabel "Access Warrant - lead"@x-hpd ;
+    skos:definition "HPD Access Warrant - lead."@en .
+
+ltype:conh a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "conh" ;
+    skos:prefLabel "CONH"@en ;
+    skos:hiddenLabel "CONH"@x-hpd ;
+    skos:definition "HPD CONH, as the source labels it."@en .
+
+ltype:comp_supplemental a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "comp_supplemental" ;
+    skos:prefLabel "Comprehensive supplemental"@en ;
+    skos:hiddenLabel "Comp Supplemental Cases"@x-hpd ;
+    skos:definition "HPD Comp Supplemental Cases."@en .
+
+ltype:lead_false_certification a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "lead_false_certification" ;
+    skos:prefLabel "Lead false certification"@en ;
+    skos:hiddenLabel "Lead False Certification"@x-hpd ;
+    skos:definition "HPD Lead False Certification."@en .
+
+ltype:seven_a a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "seven_a" ;
+    skos:prefLabel "7A"@en ;
+    skos:hiddenLabel "7A"@x-hpd ;
+    skos:definition "HPD 7A case."@en .
+
+ltype:heat_supplemental a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "heat_supplemental" ;
+    skos:prefLabel "Heat supplemental"@en ;
+    skos:hiddenLabel "Heat Supplemental Cases"@x-hpd ;
+    skos:definition "HPD Heat Supplemental Cases."@en .
+
+ltype:failure_to_register_only a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "failure_to_register_only" ;
+    skos:prefLabel "Failure to register only"@en ;
+    skos:hiddenLabel "Failure to Register Only"@x-hpd ;
+    skos:definition "HPD Failure to Register Only."@en .
+
+ltype:other a skos:Concept ;
+    skos:inScheme ltype: ;
+    skos:topConceptOf ltype: ;
+    skos:notation "other" ;
+    skos:prefLabel "Other case type"@en ;
+    skos:hiddenLabel "HLD - Other Case Type"@x-hpd ;
+    skos:definition "HPD HLD - Other Case Type."@en .

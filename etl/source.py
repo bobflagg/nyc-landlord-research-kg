@@ -4,6 +4,7 @@ Needs JUSTFIX_DATABASE_URL in .env (the database behind the postgres-justfix MCP
 Each reader yields dicts and streams through a server-side cursor, so the citywide tables never sit in memory.
 """
 import os
+from datetime import date
 from typing import Iterator
 
 import psycopg
@@ -111,3 +112,55 @@ DOS = """select dosid, currententityname, initialdosfilingdate, county, jurisdic
 def dos_entities(conn) -> Iterator[dict]:
     """Every active DOS entity, statewide, in DOS id order."""
     return _stream(conn, "dos_entities", DOS)
+
+
+LITIGATION = """select litigationid, casetype, caseopendate, casestatus, openjudgement, findingofharassment, findingdate, penalty,
+                       respondent, bbl, bin from hpd_litigations order by litigationid"""
+
+
+def litigation(conn) -> Iterator[dict]:
+    return _stream(conn, "litigation", LITIGATION)
+
+
+def as_of(conn, table: str, column: str, not_after: date) -> date:
+    """The latest value of `column` that is not after `not_after` (the build date): a date later than the build is a typing
+    error or a sentinel, not data (note 0020, C4)."""
+    with conn.cursor() as cur:
+        cur.execute(f"select max({column}) as d from {table} where {column} <= %s", (not_after,))
+        return cur.fetchone()["d"]
+
+
+VIOLATIONS = """select violationid, registrationid, class, inspectiondate, novissueddate, currentstatus, currentstatusdate, violationstatus,
+                       rentimpairing, bbl, bin from hpd_violations {where} order by violationid"""
+
+
+def violations(conn, bbls: list[str] | None = None) -> Iterator[dict]:
+    """HPD violations in violation id order. Apartment, story and the notice text are not selected (note 0020)."""
+    if bbls is None:
+        return _stream(conn, "violations", VIOLATIONS.format(where=""))
+    with conn.cursor() as cur:
+        cur.execute(VIOLATIONS.format(where="where bbl = any(%s)"), (bbls,))
+        return iter(cur.fetchall())
+
+
+COMPLAINT_GROUPS = """select bbl, bin, extract(year from receiveddate)::int as year, {col} as group_value, problemstatus,
+                             count(*) filter (where not problemduplicateflag) as problems,
+                             count(*) filter (where problemduplicateflag) as duplicates,
+                             {complaints} as complaints,
+                             max(receiveddate) filter (where not problemduplicateflag) as latest_received
+                      from hpd_complaints_and_problems where receiveddate <= %s {more}
+                      group by bbl, bin, year, group_value, problemstatus"""
+
+
+def complaint_groups(conn, grouping: str, not_after: date, bbls: list[str] | None = None) -> Iterator[dict]:
+    """HPD complaint problems aggregated in the database by building, year, type (or major category) and problem status, so the
+    16M rows never reach Python and no apartment, unit, complainant or anonymity column is read (note 0020, C2). Problems received
+    after `not_after` (the build date) are typing errors and are left out."""
+    col, complaints = (("type", "count(distinct complaintid) filter (where not problemduplicateflag)") if grouping == "type"
+                       else ("majorcategory", "null::int"))
+    sql = COMPLAINT_GROUPS.format(col=col, complaints=complaints, more="and bbl = any(%s)" if bbls else "")
+    if bbls:
+        with conn.cursor() as cur:
+            cur.execute(sql, (not_after, bbls))
+            return iter(cur.fetchall())
+    return _stream(conn, f"complaints_{grouping}", sql, (not_after,))

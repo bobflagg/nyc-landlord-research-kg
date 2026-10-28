@@ -6,6 +6,7 @@ Expected answers, taken from the snapshot the graph is built from (`specs/roadma
 | --- | --- |
 | `slice1.json` | Q1–Q5 and Q24 on the anchor properties A–G of `docs/competency-questions-detail.md`, snapshot `justfixwow-2026-05-29` |
 | `slice1.sql` | The read-only queries behind it |
+| `slice2.json`, `slice2.sql`, `derive_slice2.py` | Q15, Q17, Q27 and Q28 on the anchors, derived from the source database without the graph; `tests/test_expected_slice2.py` checks the citywide graph against it. The violation, complaint and litigation tables are newer than the snapshot date, so the file records each source's as-of date |
 
 Names appear with their role, source and HPD contact id (design note 0009); a name asserts nothing beyond the role the record gives it. Comparison fields (name and address agreement) follow rules N1 and A2 and are rechecked by `tests/test_expected_slice1.py`.
 

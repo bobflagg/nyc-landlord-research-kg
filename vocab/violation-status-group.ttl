@@ -1,0 +1,29 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vgroup: <https://bobflagg.github.io/Watchline/vocab/violation-status-group/> .
+
+vgroup: a skos:ConceptScheme ;
+    dcterms:title "Violation status group"@en ;
+    dcterms:description "Whether a violation is open or closed at the source's as-of date, from the source's violationstatus (design note 0020, C5)."@en ;
+    dcterms:created "2026-10-28"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in status_group. The source's own current-status text (21 values) is always kept in current_status as written; this group is only the source's Open or Close, not a judgment by the project."@en ;
+    skos:hasTopConcept vgroup:open, vgroup:closed .
+
+vgroup:open a skos:Concept ;
+    skos:inScheme vgroup: ;
+    skos:topConceptOf vgroup: ;
+    skos:notation "open" ;
+    skos:prefLabel "Open"@en ;
+    skos:hiddenLabel "Open"@x-hpd ;
+    skos:definition "HPD's violationstatus is Open."@en .
+
+vgroup:closed a skos:Concept ;
+    skos:inScheme vgroup: ;
+    skos:topConceptOf vgroup: ;
+    skos:notation "closed" ;
+    skos:prefLabel "Closed"@en ;
+    skos:hiddenLabel "Close"@x-hpd ;
+    skos:definition "HPD's violationstatus is Close."@en .

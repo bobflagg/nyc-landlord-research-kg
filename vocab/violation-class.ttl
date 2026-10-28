@@ -1,0 +1,45 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vclass: <https://bobflagg.github.io/Watchline/vocab/violation-class/> .
+
+vclass: a skos:ConceptScheme ;
+    dcterms:title "Violation class"@en ;
+    dcterms:description "The hazard class HPD assigns to a violation (design note 0020, C5)."@en ;
+    dcterms:created "2026-10-28"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Each concept's skos:notation is the string stored in violation_class; skos:hiddenLabel x-hpd is the HPD class letter the loader maps from. Class I is reported separately from A, B and C in every count (Q15)."@en ;
+    skos:hasTopConcept vclass:a, vclass:b, vclass:c, vclass:i .
+
+vclass:a a skos:Concept ;
+    skos:inScheme vclass: ;
+    skos:topConceptOf vclass: ;
+    skos:notation "A" ;
+    skos:prefLabel "Class A"@en ;
+    skos:hiddenLabel "A"@x-hpd ;
+    skos:definition "Non-hazardous, as HPD classifies it."@en .
+
+vclass:b a skos:Concept ;
+    skos:inScheme vclass: ;
+    skos:topConceptOf vclass: ;
+    skos:notation "B" ;
+    skos:prefLabel "Class B"@en ;
+    skos:hiddenLabel "B"@x-hpd ;
+    skos:definition "Hazardous, as HPD classifies it."@en .
+
+vclass:c a skos:Concept ;
+    skos:inScheme vclass: ;
+    skos:topConceptOf vclass: ;
+    skos:notation "C" ;
+    skos:prefLabel "Class C"@en ;
+    skos:hiddenLabel "C"@x-hpd ;
+    skos:definition "Immediately hazardous, as HPD classifies it."@en .
+
+vclass:i a skos:Concept ;
+    skos:inScheme vclass: ;
+    skos:topConceptOf vclass: ;
+    skos:notation "I" ;
+    skos:prefLabel "Class I"@en ;
+    skos:hiddenLabel "I"@x-hpd ;
+    skos:definition "HPD's class I (an order). Its meaning is not interpreted here; counts keep it apart from A, B and C."@en .
