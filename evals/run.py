@@ -41,8 +41,15 @@ def main() -> None:
     ap.add_argument("--upload", action="store_true", help="send the dataset and results to LangSmith")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--concurrency", type=int, default=2)
+    ap.add_argument("--web-live", action="store_true", help="use the live search provider and registries for Q16 and Q25 instead of the recorded fixtures")
     args = ap.parse_args()
     load_dotenv(ROOT / ".env")
+    if not args.web_live:                       # deterministic: Q16 and Q25 replay recorded responses and never touch the network (design note 0028, W6)
+        import os, tempfile
+        from agent.web.cache import Cache
+        path = os.path.join(tempfile.mkdtemp(), "web.sqlite")
+        Cache(path).load_fixtures(ROOT / "tests" / "fixtures" / "web" / "replay.json")
+        os.environ["WEB_MODE"], os.environ["WEB_CACHE_PATH"] = "replay", path
     examples = [e for e in build_examples() if not args.only or e["metadata"]["question_id"] in args.only.split(",")][: args.limit]
     evaluators = [*DETERMINISTIC, *([] if args.no_judge else [make_judge()])]
     data = as_examples(examples)

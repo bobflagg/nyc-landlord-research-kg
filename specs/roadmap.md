@@ -24,7 +24,7 @@ Goal: from an address, a cited dossier on who controls a building and how it is 
 | **3. Transactions and history** | Deed transfers, mortgages and satisfactions; title holder and registrant on a past date | Q12, Q13, Q14 | Slice 1. Q14 needs the violation-history gap reported or backfilled |
 | **4. Ownership layers** | Owner Portfolio and Operational Network memberships with evidence paths; why buildings are grouped or not; conditions across a layer; what each absence means | Q8, Q9, Q10, Q19, Q21, Q26 | BOR/NLR edge-level evidence export |
 | **5. Links and identity** | Aggregator and mail-drop addresses; shared evidence between entities; affiliations; restructuring deeds; same entity or not; a managing agent's footprint | Q6, Q7, Q11, Q18, Q22, Q23 | Slice 4 |
-| **6. Beyond the graph** | Reports and filing documents; out-of-state registries, held as session evidence | Q16, Q25 | Web search tool, retrieval cache |
+| **6. Beyond the graph** | Reports and filing documents; out-of-state registries, held as session evidence | Q16, Q25 | Web search tool, retrieval cache (decided: design note 0028) |
 | **7. The investigator** | The Deep Agents investigator: from an address to a dossier with an inference → source table, unresolved leads and a stop reason | Q20 (integration scenario, scored as a whole) | Slices 1–6 |
 
 **Stage 1 is complete** when slice 7 passes and every earlier slice still passes.

@@ -233,3 +233,6 @@ neo4j/
 
 # Reference books and personal notes (not for the repo)
 ignore-this-directory/
+
+# Retrieval cache for web and registry lookups (design note 0028)
+data/cache/

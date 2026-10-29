@@ -1,0 +1,56 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lreason: <https://bobflagg.github.io/Watchline/vocab/lead-reason/> .
+
+lreason: a skos:ConceptScheme ;
+    dcterms:title "Lead reason"@en ;
+    dcterms:description "Why a step is an unresolved lead rather than a finding (design note 0028, W2)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "A lead lists what was tried and why it stopped. It is never a finding and never a link."@en ;
+    skos:hasTopConcept lreason:needs_payment, lreason:inaccessible, lreason:unreadable, lreason:partial, lreason:not_found, lreason:budget_exhausted .
+
+lreason:needs_payment a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "needs_payment" ;
+    skos:prefLabel "Needs payment"@en ;
+    skos:definition "The next step is behind a fee; the free fields are reported and the rest is a lead."@en .
+
+lreason:inaccessible a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "inaccessible" ;
+    skos:prefLabel "Inaccessible"@en ;
+    skos:definition "The registry or page could not be reached by a plain request: it needs a login, a CAPTCHA or a browser challenge, or it was unavailable. We do not bypass these."@en .
+
+lreason:unreadable a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "unreadable" ;
+    skos:prefLabel "Unreadable"@en ;
+    skos:definition "The document could not be read."@en .
+
+lreason:partial a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "partial" ;
+    skos:prefLabel "Partial"@en ;
+    skos:definition "Only part of the document or record was readable."@en .
+
+lreason:not_found a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "not_found" ;
+    skos:prefLabel "Not found"@en ;
+    skos:definition "The source was searched and holds nothing under the name or address tried; not that the entity does not exist."@en .
+
+lreason:budget_exhausted a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "budget_exhausted" ;
+    skos:prefLabel "Budget exhausted"@en ;
+    skos:definition "The step or time budget ended before this step."@en .
+

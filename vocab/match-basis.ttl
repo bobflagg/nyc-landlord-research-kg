@@ -1,0 +1,35 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mbasis: <https://bobflagg.github.io/Watchline/vocab/match-basis/> .
+
+mbasis: a skos:ConceptScheme ;
+    dcterms:title "Match basis"@en ;
+    dcterms:description "Why an item is treated as being about the entity searched for (design note 0028, W5)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Only an exact match is treated as about the entity. A similar name is a lead about a different entity and is never attached."@en ;
+    skos:hasTopConcept mbasis:exact_name, mbasis:exact_address, mbasis:lead_only .
+
+mbasis:exact_name a skos:Concept ;
+    skos:inScheme mbasis: ;
+    skos:topConceptOf mbasis: ;
+    skos:notation "exact_name" ;
+    skos:prefLabel "Exact name"@en ;
+    skos:definition "The entity's exact normalized name (rule N1) appears in the text, with the quote shown."@en .
+
+mbasis:exact_address a skos:Concept ;
+    skos:inScheme mbasis: ;
+    skos:topConceptOf mbasis: ;
+    skos:notation "exact_address" ;
+    skos:prefLabel "Exact address"@en ;
+    skos:definition "The recorded address appears in the text as written, with the quote shown."@en .
+
+mbasis:lead_only a skos:Concept ;
+    skos:inScheme mbasis: ;
+    skos:topConceptOf mbasis: ;
+    skos:notation "lead_only" ;
+    skos:prefLabel "Lead only"@en ;
+    skos:definition "A similar name or address appears; the item may be about a different entity."@en .
+

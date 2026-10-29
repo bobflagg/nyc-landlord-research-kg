@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix erel: <https://bobflagg.github.io/Watchline/vocab/evidence-relation/> .
+
+erel: a skos:ConceptScheme ;
+    dcterms:title "Evidence relation"@en ;
+    dcterms:description "How a retrieved item relates to the recorded facts of the graph (design note 0028, W2)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in relation_to_records on a session evidence item. It describes agreement with a record, never the truth of the claim."@en ;
+    skos:hasTopConcept erel:agrees, erel:adds, erel:conflicts, erel:unrelated .
+
+erel:agrees a skos:Concept ;
+    skos:inScheme erel: ;
+    skos:topConceptOf erel: ;
+    skos:notation "agrees" ;
+    skos:prefLabel "Agrees"@en ;
+    skos:definition "A person or entity appears in the item in the role the records give it, or the item restates a recorded fact."@en .
+
+erel:adds a skos:Concept ;
+    skos:inScheme erel: ;
+    skos:topConceptOf erel: ;
+    skos:notation "adds" ;
+    skos:prefLabel "Adds"@en ;
+    skos:definition "The item names a person, entity, relationship or fact the records do not hold. A claim, not a recorded fact."@en .
+
+erel:conflicts a skos:Concept ;
+    skos:inScheme erel: ;
+    skos:topConceptOf erel: ;
+    skos:notation "conflicts" ;
+    skos:prefLabel "Conflicts"@en ;
+    skos:definition "The item differs from a recorded fact or role. Neither is chosen silently."@en .
+
+erel:unrelated a skos:Concept ;
+    skos:inScheme erel: ;
+    skos:topConceptOf erel: ;
+    skos:notation "unrelated" ;
+    skos:prefLabel "Unrelated"@en ;
+    skos:definition "The item names the entity but says nothing the records speak to."@en .
+

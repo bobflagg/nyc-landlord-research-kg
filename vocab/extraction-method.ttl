@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xmethod: <https://bobflagg.github.io/Watchline/vocab/extraction-method/> .
+
+xmethod: a skos:ConceptScheme ;
+    dcterms:title "Extraction method"@en ;
+    dcterms:description "How a value in a session evidence item was obtained (design note 0028, W2)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The quote is always verbatim text from the retrieved source; the method says how the other fields were read from it."@en ;
+    skos:hasTopConcept xmethod:verbatim_text, xmethod:registry_field, xmethod:model_reading, xmethod:ocr .
+
+xmethod:verbatim_text a skos:Concept ;
+    skos:inScheme xmethod: ;
+    skos:topConceptOf xmethod: ;
+    skos:notation "verbatim_text" ;
+    skos:prefLabel "Verbatim text"@en ;
+    skos:definition "The quote was found in the retrieved text by string matching."@en .
+
+xmethod:registry_field a skos:Concept ;
+    skos:inScheme xmethod: ;
+    skos:topConceptOf xmethod: ;
+    skos:notation "registry_field" ;
+    skos:prefLabel "Registry field"@en ;
+    skos:definition "The value is a field of a registry record as the registry publishes it."@en .
+
+xmethod:model_reading a skos:Concept ;
+    skos:inScheme xmethod: ;
+    skos:topConceptOf xmethod: ;
+    skos:notation "model_reading" ;
+    skos:prefLabel "Model reading"@en ;
+    skos:definition "A model without tools read the quote and the recorded facts and classified the item; the quote itself is verbatim."@en .
+
+xmethod:ocr a skos:Concept ;
+    skos:inScheme xmethod: ;
+    skos:topConceptOf xmethod: ;
+    skos:notation "ocr" ;
+    skos:prefLabel "OCR"@en ;
+    skos:definition "The text was recognized from an image or scan; names in it carry a low-confidence flag."@en .
+

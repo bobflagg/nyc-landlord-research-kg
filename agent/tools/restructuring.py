@@ -40,7 +40,9 @@ def classify(runner, bbl: str, max_deeds: int = 12) -> dict:
     base = {"bbl": bbl, **snapshot(runner)}
     if runner.run("MATCH (l:Lot {bbl: $bbl}) RETURN l.bbl", bbl=bbl).single() is None:
         return {**base, "status": "lot_absent", "note": "The graph holds no such lot."}
-    base |= {"caveats": CAVEATS, "windows": {"paired_with_sale_days": PAIR_DAYS, "to_new_entity_days": NEW_ENTITY_DAYS, "nominal_consideration_limit": NOMINAL}}
+    base |= {"caveats": CAVEATS, "independent_support_searched": ["a shared HPD business address", "the same person in a principal role", "a person name differing by spacing", "a shared managing agent",
+                                                                  "a document other than a deed naming both parties", "the same DOS process address", "the same BOR group", "BOR's own deed evidence for this deed"],
+            "windows": {"paired_with_sale_days": PAIR_DAYS, "to_new_entity_days": NEW_ENTITY_DAYS, "nominal_consideration_limit": NOMINAL}}
     rows = runner.run(DEEDS, bbl=bbl, deed_types=deed_family_types()).data()
     if not rows:
         return {**base, "status": "no_deed_in_graph", "note": "No deed-family document is in the graph for this lot; that is not 'no transfer happened'."}

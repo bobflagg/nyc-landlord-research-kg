@@ -61,7 +61,7 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 | **A typed address resolves through NYC DCP Geosupport** (release 25b, pinned), served by a sidecar container (`geosupport/`, design note 0013). The city's BBL and BIN are confirmed in the graph before they are reported; an outage is never reported as "not found". Rule A2 (note 0006) still compares stored address strings | HPD and PLUTO spell the same street differently (about half of sampled HPD buildings do not reach their PLUTO lot under A2); the city's own standardizer is the authority both derive from |
 | **Tools and skills are grouped by question family** | A stage adds a family without changing the others |
 | **Model: Anthropic Claude, through LangChain's `init_chat_model`/`create_agent` model strings**, set in `.env` (`AGENT_MODEL`, and `JUDGE_MODEL` for evaluations). **Tests: pytest** for deterministic checks, run in rolled-back transactions on `nyclr`; **LangSmith** datasets and evaluators for agent behavior (design note 0012) | A provider swap is a config change; deterministic tests need no model or network |
-| Web search tool and retrieval cache: **not yet decided** | Needed before the slices that use them (roadmap) |
+| **Web search is our own interface over Tavily** (search and extract); every query and fetch is logged, budgeted, time-stamped and cached in a local SQLite store under `data/cache/` (gitignored; a day for searches, a week for documents and registry records). Tests and evaluations replay recorded responses (`WEB_MODE=replay`). Out-of-state registries are read only through a plain request: no login, CAPTCHA, payment or bypass (design note 0028) | Every finding carries its own retrieval time and can be replayed, and a blocked registry is a lead, not a gap we hide |
 
 ## Extension pattern and evaluation
 
@@ -75,4 +75,4 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 
 ## Open decisions
 
-Web search tool · retrieval cache design · production hosting. (The form of BOR/NLR's edge-level evidence export is settled: a frozen release, loaded as in design note 0024.)
+Production hosting. (The form of BOR/NLR's edge-level evidence export is settled: a frozen release, loaded as in design note 0024.)

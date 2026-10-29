@@ -1,0 +1,313 @@
+[
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"KS Turnpike LLC\"",
+   "search_depth": "basic",
+   "topic": "news"
+  },
+  "response": {
+   "query": "\"KS Turnpike LLC\"",
+   "results": [
+    {
+     "content": "KS Turnpike LLC is listed as the owner of a 22-unit building on 52nd Street, according to this profile.",
+     "published_date": "2025-09-01",
+     "score": 0.9,
+     "title": "Building profile",
+     "url": "https://local.example/turnpike-one"
+    },
+    {
+     "content": "KS Turnpike LLC is listed as the owner of a 24-unit building on 52nd Street, the newsletter says.",
+     "published_date": "2026-01-15",
+     "score": 0.9,
+     "title": "Block association newsletter",
+     "url": "https://block.example/turnpike-two"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"KS Turnpike LLC\"",
+   "search_depth": "basic",
+   "topic": "general"
+  },
+  "response": {
+   "query": "\"KS Turnpike LLC\"",
+   "results": [
+    {
+     "content": "KS Turnpike LLC is listed as the owner of a 22-unit building on 52nd Street, according to this profile.",
+     "published_date": "2025-09-01",
+     "score": 0.9,
+     "title": "Building profile",
+     "url": "https://local.example/turnpike-one"
+    },
+    {
+     "content": "KS Turnpike LLC is listed as the owner of a 24-unit building on 52nd Street, the newsletter says.",
+     "published_date": "2026-01-15",
+     "score": 0.9,
+     "title": "Block association newsletter",
+     "url": "https://block.example/turnpike-two"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"259 22 STREET\" Brooklyn",
+   "search_depth": "basic",
+   "topic": "general"
+  },
+  "response": {
+   "query": "\"259 22 STREET\" Brooklyn",
+   "results": []
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"702 PLAZA LLC\"",
+   "search_depth": "basic",
+   "topic": "news"
+  },
+  "response": {
+   "query": "\"702 PLAZA LLC\"",
+   "results": [
+    {
+     "content": "Officials listed 702 Plaza II LLC on a scaffolding notice. The company is not otherwise described in the notice.",
+     "published_date": "2026-02-02",
+     "score": 0.9,
+     "title": "A scaffolding notice",
+     "url": "https://citywatch.example/702-plaza-ii"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "registry",
+  "params": {
+   "mode": "exact",
+   "name": "POINTS NORTH REALTY INC",
+   "registry": "CT"
+  },
+  "response": {
+   "body": "[{\"id\": \"0018y000008lkmcAAA\", \"name\": \"POINTS NORTH REALTY INC\", \"business_type\": \"Stock\", \"status\": \"Forfeited\", \"sub_status\": \"Administrative\", \"accountnumber\": \"2757063\", \"citizenship\": \"Domestic\", \"formation_place\": \"Connecticut\", \"date_registration\": \"2023-03-28T00:00:00.000\"}]",
+   "status": 200
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"5413 PLAZA LLC\"",
+   "search_depth": "basic",
+   "topic": "general"
+  },
+  "response": {
+   "query": "\"5413 PLAZA LLC\"",
+   "results": [
+    {
+     "content": "Tenants of the Sunset Park building met on Saturday. 5413 Plaza LLC, the registered owner named in city records, did not send a representative to the tenant meeting. Organizers said they would write to the owner.",
+     "published_date": "2026-04-12",
+     "score": 0.9,
+     "title": "Tenants meet at Seventh Avenue building",
+     "url": "https://tenantnews.example/plaza-meeting"
+    },
+    {
+     "content": "A notice about scaffolding was posted at a different address. 5413 Plaza II LLC was named on the notice. The notice gave no other detail.",
+     "published_date": "2026-03-02",
+     "score": 0.9,
+     "title": "Notice posted",
+     "url": "https://tenantnews.example/plaza-ii"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "registry",
+  "params": {
+   "probe": "https://search.sunbiz.org/Inquiry/CorporationSearch/ByName",
+   "registry": "Florida"
+  },
+  "response": {
+   "body": "<title>Just a moment...</title>",
+   "status": 403
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "extract",
+  "params": {
+   "chunks_per_source": 3,
+   "endpoint": "extract",
+   "extract_depth": "basic",
+   "format": "text",
+   "provider": "tavily",
+   "query": "KS Turnpike LLC",
+   "urls": [
+    "https://block.example/turnpike-two"
+   ]
+  },
+  "response": {
+   "failed_results": [],
+   "results": [
+    {
+     "raw_content": "KS Turnpike LLC is listed as the owner of a 24-unit building on 52nd Street, the newsletter says.",
+     "url": "https://block.example/turnpike-two"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "registry",
+  "params": {
+   "probe": "https://icis.corp.delaware.gov/Ecorp/EntitySearch/NameSearch.aspx",
+   "registry": "Delaware"
+  },
+  "response": {
+   "body": "<html>Please complete the CAPTCHA to continue</html>",
+   "status": 200
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"702 PLAZA LLC\"",
+   "search_depth": "basic",
+   "topic": "general"
+  },
+  "response": {
+   "query": "\"702 PLAZA LLC\"",
+   "results": [
+    {
+     "content": "Officials listed 702 Plaza II LLC on a scaffolding notice. The company is not otherwise described in the notice.",
+     "published_date": "2026-02-02",
+     "score": 0.9,
+     "title": "A scaffolding notice",
+     "url": "https://citywatch.example/702-plaza-ii"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "extract",
+  "params": {
+   "chunks_per_source": 3,
+   "endpoint": "extract",
+   "extract_depth": "basic",
+   "format": "text",
+   "provider": "tavily",
+   "query": "5413 PLAZA LLC",
+   "urls": [
+    "https://tenantnews.example/plaza-meeting"
+   ]
+  },
+  "response": {
+   "failed_results": [],
+   "results": [
+    {
+     "raw_content": "Tenants of the Sunset Park building met on Saturday. 5413 Plaza LLC, the registered owner named in city records, did not send a representative to the tenant meeting. Organizers said they would write to the owner.",
+     "url": "https://tenantnews.example/plaza-meeting"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "search",
+  "params": {
+   "endpoint": "search",
+   "exact_match": true,
+   "include_published_date": true,
+   "max_results": 8,
+   "provider": "tavily",
+   "query": "\"5413 PLAZA LLC\"",
+   "search_depth": "basic",
+   "topic": "news"
+  },
+  "response": {
+   "query": "\"5413 PLAZA LLC\"",
+   "results": [
+    {
+     "content": "Tenants of the Sunset Park building met on Saturday. 5413 Plaza LLC, the registered owner named in city records, did not send a representative to the tenant meeting. Organizers said they would write to the owner.",
+     "published_date": "2026-04-12",
+     "score": 0.9,
+     "title": "Tenants meet at Seventh Avenue building",
+     "url": "https://tenantnews.example/plaza-meeting"
+    },
+    {
+     "content": "A notice about scaffolding was posted at a different address. 5413 Plaza II LLC was named on the notice. The notice gave no other detail.",
+     "published_date": "2026-03-02",
+     "score": 0.9,
+     "title": "Notice posted",
+     "url": "https://tenantnews.example/plaza-ii"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ },
+ {
+  "kind": "extract",
+  "params": {
+   "chunks_per_source": 3,
+   "endpoint": "extract",
+   "extract_depth": "basic",
+   "format": "text",
+   "provider": "tavily",
+   "query": "KS Turnpike LLC",
+   "urls": [
+    "https://local.example/turnpike-one"
+   ]
+  },
+  "response": {
+   "failed_results": [],
+   "results": [
+    {
+     "raw_content": "KS Turnpike LLC is listed as the owner of a 22-unit building on 52nd Street, according to this profile.",
+     "url": "https://local.example/turnpike-one"
+    }
+   ]
+  },
+  "retrieved_at": "2026-10-29T13:01:22+00:00"
+ }
+]

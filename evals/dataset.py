@@ -90,7 +90,7 @@ def build_examples() -> list[dict]:
                         any_of=[["managing agent", "agent"], ["head officer"]], caveats=[["lead", "same name", "not proof", "not a finding"]])))
     out.append(_ex("Q24", "none", "What do the records show for Zzyzx Holdings LLC?",
                    _ref([{"name": "find_records_by_name", "args": {}}], any_of=[NO_RECORD], caveats=[["variants", "normalized", "tried"]])))
-    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples() + slice4_examples() + slice5_examples()
+    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples() + slice4_examples() + slice5_examples() + slice6_examples()
 
 
 NO_VIOLATION = ["no violation", "no hpd violation", "none in the data", "no open", "does not hold any"]
@@ -315,6 +315,34 @@ def slice5_examples() -> list[dict]:
         out.append(_ex("Q23", agent, f"Which lots does the managing agent {agent} cover, and how do they compare with the ownership layers?",
                        _ref([{"name": "get_agent_footprint", "args": {"name_or_bbl": agent}}], include=[str(e["lots"]), str(e["residential_units"])],
                             caveats=[["not ownership", "management relationship", "not an ownership"], ["lot", "lots"]], forbid=LINK_OVERREACH)))
+    return out
+
+
+CLAIM = ["claim that was published", "published claim", "not a fact", "a claim", "claims"]
+REPORT_OVERREACH = LINK_OVERREACH + ["no news", "nothing has happened", "owns the", "confirmed that"]
+
+
+def slice6_examples() -> list[dict]:
+    """Q16 and Q25 against recorded (replayed) responses; the pages are synthetic (scripts/make_web_fixtures.py, design note 0028)."""
+    out = []
+    def q16(anchor, question, subject, include=(), any_of=(), caveats=()):
+        out.append(_ex("Q16", anchor, question, _ref([{"name": "search_reports", "args": {"subject": subject}}], include=include, any_of=any_of, caveats=caveats, forbid=REPORT_OVERREACH)))
+    q16("A-found", "Have there been any news reports or documents about 5413 PLAZA LLC? Say how each relates to the recorded facts.", "5413 PLAZA LLC",
+        include=["tenantnews.example", "tenant meeting"], any_of=[["agrees", "adds"], ["different entity", "similar name", "lead only", "lead about"]], caveats=[CLAIM, ["unreviewed"]])
+    q16("702-similar-name", "Have there been any reports about 702 PLAZA LLC?", "702 PLAZA LLC", any_of=[["no reports or documents found", "no reports found", "no reports or documents were found", "were found", "no reports", "found no reports", "nothing was found"], ["different entity", "similar name", "lead only", "a lead about"]],
+        caveats=[["not mean", "does not mean", "doesn't mean", "never", "not complete", "isn't complete", "not the same as", "only"]])
+    q16("F-nothing", "Have there been any reports about lot 3008970014 or its building?", "3008970014", include=["259 22 STREET"], any_of=[["no reports or documents found", "no reports found", "no reports or documents were found", "were found", "no reports", "found no reports", "nothing was found"]],
+        caveats=[["not mean", "does not mean", "doesn't mean", "not complete", "isn't complete", "never", "not the same as"]])
+    q16("G-contradiction", "What do reports say about KS Turnpike LLC?", "KS Turnpike LLC", include=["local.example", "block.example"], any_of=[["contested", "contradict", "conflict", "disagree"]], caveats=[CLAIM])
+    q16("unrecorded", "Have there been any news reports about Totally Unrecorded Holdings LLC?", "Totally Unrecorded Holdings LLC", any_of=[["not searched", "not a party recorded", "not recorded", "isn't recorded", "not search", "no search was run", "not a recorded party", "not_searched", "was not run", "never run", "can't say whether", "cannot say whether", "no search was"]], caveats=[["not", "no"]])
+    q16("unavailable", "Have there been any reports about 702 54 STREET LLC?", "702 54 STREET LLC", any_of=[["no search could be run", "could not be run", "unavailable", "could not search", "no search was"]],
+        caveats=[["not the same as", "not 'no reports", "cannot say", "nothing can be said", "not mean", "does not mean"]])
+    def q25(anchor, name, state, include=(), any_of=(), caveats=()):
+        out.append(_ex("Q25", anchor, f"Is {name} registered in {state}? What does the {state} business registry show?", _ref([{"name": "lookup_registry", "args": {"name": name, "jurisdiction": state}}],
+                                                                                                                              include=include, any_of=any_of, caveats=caveats, forbid=REPORT_OVERREACH)))
+    q25("CT", "Points North Realty Inc", "Connecticut", include=["2757063", "Forfeited"], any_of=[["registry"]], caveats=[["who owns", "owners", "assertion", "does not say"]])
+    q25("DE", "Acme Realty LLC", "Delaware", any_of=[["captcha", "inaccessible", "could not", "cannot"]], caveats=[["not bypass", "never bypass", "did not", "not attempt", "plain request", "not bypassed", "without bypass", "no attempt"]])
+    q25("FL", "Acme Realty LLC", "Florida", any_of=[["inaccessible", "challenge", "could not", "cannot", "blocked"]], caveats=[["not bypass", "never bypass", "did not", "not attempt", "plain request", "not bypassed", "without bypass", "no attempt"]])
     return out
 
 

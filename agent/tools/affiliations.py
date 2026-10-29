@@ -6,6 +6,7 @@ documents one. A commercial managing agent, or one at a mail-drop-list address, 
 from langchain.tools import tool
 
 from agent.db import read_session
+from agent.tools.layers import WHAT_IT_IS
 from agent.tools.linkrules import COMMERCIAL_AGENT_LOTS, dos_process_key, mail_drop
 from agent.tools.records import PROV, _clean, _plain, snapshot
 from etl.names import n1
@@ -146,7 +147,7 @@ def agent_footprint(runner, name_or_bbl: str, max_lots: int = 40) -> dict:
         for layer in ("owner_portfolio", "operational_network"):
             g = runner.run(LAYERS, lots=bl, layer=layer).data()
             in_none = sum(x["lots"] for x in g if x["group_id"] is None)
-            layers[layer] = {"lots_in_a_group": len(bl) - in_none, "lots_in_no_group": in_none, "distinct_groups": sum(1 for x in g if x["group_id"]),
+            layers[layer] = {"what_this_layer_is": WHAT_IT_IS[layer], "lots_in_a_group": len(bl) - in_none, "lots_in_no_group": in_none, "distinct_groups": sum(1 for x in g if x["group_id"]),
                              "largest_shares": [{"group_id": x["group_id"], "lots_of_the_footprint": x["lots"], "group_lots": x["size"]} for x in g if x["group_id"]][:5]}
         results.append({"agent": name, "normalized_name": key, "status": "found", "parties": [_clean({"name": v["name"], "business_address_key": v["business_address_key"], "lots": len(v["lots"]),
                                                                                                     "mail_drop_list": (md[k] or {}).get("kind")}) for k, v in sorted(parties.items(), key=lambda kv: -len(kv[1]["lots"]))],
