@@ -9,21 +9,39 @@
   uv run python -m etl.run_build --modules mortgages          # the mortgage family on HPD-registered lots (note 0022)
   uv run python -m etl.run_build --modules references         # recorded references between mortgage-family documents in the graph (note 0022)
   uv run python -m etl.run_build --modules complaints         # HPD complaint counts by building, year, type and category (note 0020)
+  uv run python -m etl.run_build --modules bor --verify-only  # check the BOR release against the source tables; load nothing (note 0024)
+  uv run python -m etl.run_build --modules bor                # verify, then load the BOR Owner Portfolio and Operational Network layers
 
 Re-runnable: a second run creates nothing new. The snapshot id is the one BOR's release names (note 0008).
 """
 import argparse
+import os
 import sys
 from datetime import date
 
-from etl import source
+from etl import bor, source
+from etl.bor_build import build_bor
 from etl.build import build, build_acris, build_dos, build_complaints, build_litigation, build_references, build_violations
-from etl.config import connect
+from etl.config import ROOT, connect
 from etl.schema import load_schema
 from etl.vocab import deed_family_codes, mortgage_family_codes, mortgage_family_types
 from etl.validate import validate
 
 SNAPSHOT_ID, SNAPSHOT_DATE = "justfixwow-2026-05-29", date(2026, 5, 29)
+BOR_RELEASE = "../beneficial-ownership-resolution/release/v0.2.1"   # the frozen release (note 0024); override with --release or BOR_RELEASE_DIR
+
+
+def bor_release(args, src) -> tuple[bor.Release, bool]:
+    """Open the release and verify it (O4). A failed check stops the run; the source fingerprints take minutes on the large ACRIS tables."""
+    rel = bor.Release(ROOT / (args.release or os.environ.get("BOR_RELEASE_DIR") or BOR_RELEASE))
+    checks = bor.verify_release(rel, args.snapshot_id, args.snapshot_date,
+                                None if args.skip_fingerprints else (lambda t: source.fingerprint(src, t)),
+                                None if args.skip_fingerprints else (lambda: source.snapshot_basis(src)))
+    for c in checks:
+        print(("ok     " if c.ok else ("REFUSE " if c.refuses else "warn   ")) + c.name + ("" if c.ok else f": {c.detail}"))
+    if bor.refusals(checks):
+        raise SystemExit("the release failed verification; nothing was loaded")
+    return rel, not args.skip_fingerprints
 
 
 def source_doc_ids(session):
@@ -42,6 +60,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--community-district", type=int, help="load one PLUTO community district, such as 307")
     ap.add_argument("--modules", default="hpd", help="comma list of hpd (PLUTO and HPD), acris litigation, violations, complaints, mortgages and references (all need hpd loaded first) and dos (statewide; ignores --community-district)")
+    ap.add_argument("--release", help="BOR release directory (module bor), relative to the repository; default the sibling BOR release v0.2.1")
+    ap.add_argument("--verify-only", action="store_true", help="module bor: run the release checks and load nothing")
+    ap.add_argument("--skip-fingerprints", action="store_true", help="module bor: skip the source-table fingerprints (the run is recorded source_verified false)")
     ap.add_argument("--snapshot-id", default=SNAPSHOT_ID)
     ap.add_argument("--snapshot-date", type=date.fromisoformat, default=SNAPSHOT_DATE)
     args = ap.parse_args()
@@ -50,7 +71,7 @@ def main() -> None:
     driver, database = connect()
     with src, driver, driver.session(database=database) as session:
         mods = set(args.modules.split(","))
-        if not mods <= {"hpd", "acris", "dos", "litigation", "violations", "complaints", "mortgages", "references"}:
+        if not mods <= {"hpd", "acris", "dos", "litigation", "violations", "complaints", "mortgages", "references", "bor"}:
             raise SystemExit(f"unknown module in {args.modules!r}")
         if "hpd" in mods:
             totals = build(session, schema, args.snapshot_id, args.snapshot_date,
@@ -83,6 +104,11 @@ def main() -> None:
             as_of = source.as_of(src, "hpd_complaints_and_problems", "receiveddate", date.today())
             groups = {g: source.complaint_groups(src, g, date.today()) for g in ("type", "category")}
             print("loaded (complaints):", build_complaints(session, schema, args.snapshot_id, args.snapshot_date, groups, source.graph_lots(src), as_of), "as of", as_of)
+        if "bor" in mods:
+            rel, verified = bor_release(args, src)
+            if args.verify_only:
+                return
+            print("loaded (bor):", build_bor(session, schema, rel, args.snapshot_id, args.snapshot_date, verified))
         violations = validate(session)
         print(f"violations: {len(violations)}")
         for v in violations[:50]:

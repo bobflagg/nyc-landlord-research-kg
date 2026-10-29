@@ -1,0 +1,3 @@
+set_id,stage,rule,rule_version,size
+CG0000001,identity.curated,curated_owner_list,bor-0.2.1,2
+LG0000450,identity.registered_llc,registered_llc_owner_match,bor-0.2.1,2

@@ -13,6 +13,7 @@ from etl.config import ROOT
 EXPECTED = json.loads((ROOT / "evals" / "expected" / "slice1.json").read_text())
 EXPECTED2 = json.loads((ROOT / "evals" / "expected" / "slice2.json").read_text())
 EXPECTED3 = json.loads((ROOT / "evals" / "expected" / "slice3.json").read_text())
+EXPECTED4 = json.loads((ROOT / "evals" / "expected" / "slice4.json").read_text())
 Q, ANCHORS, SNAPSHOT = EXPECTED["questions"], EXPECTED["anchors"], EXPECTED["snapshot_id"]
 SNAPSHOT_DATE = SNAPSHOT.split("-", 1)[1]            # 2026-05-29
 OVERREACH = [" owns the ", " owns this ", " owned by", "is the owner of", "proves ownership", "confirmed owner", "controls the building"]
@@ -88,7 +89,7 @@ def build_examples() -> list[dict]:
                         any_of=[["managing agent", "agent"], ["head officer"]], caveats=[["lead", "same name", "not proof", "not a finding"]])))
     out.append(_ex("Q24", "none", "What do the records show for Zzyzx Holdings LLC?",
                    _ref([{"name": "find_records_by_name", "args": {}}], any_of=[NO_RECORD], caveats=[["variants", "normalized", "tried"]])))
-    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples()
+    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples() + slice4_examples()
 
 
 NO_VIOLATION = ["no violation", "no hpd violation", "none in the data", "no open", "does not hold any"]
@@ -196,6 +197,79 @@ def slice3_loan_and_history_examples() -> list[dict]:
         if not owners:
             any_of.append(["no registered owner", "no registration", "none in force", "not in force", "no registrant", "cannot attribute"])
         out.append(_ex("Q14", a, q, _ref(tools, include=[x for x in include if x], any_of=any_of, caveats=caveats, forbid=forbid)))
+    return out
+
+
+LEAD = ["lead", "not legal ownership", "not a determination", "not proof of ownership", "not ownership", "not a finding"]
+LAYER_OVERREACH = ["this landlord owns", "the landlord owns", "owner of this portfolio", "owns all", "owned by one", "are owned by", "is owned by", "controls these", "hazardous"]
+NOT_EVIDENCE = ["not evidence", "does not mean", "not proof", "not the same as", "does not show", "no evidence", "says nothing", "not a finding", "doesn't mean"]
+
+
+def slice4_examples() -> list[dict]:
+    """Q8, Q9, Q10, Q19, Q21 and Q26 on the anchors and on groups found in the BOR release, from evals/expected/slice4.json."""
+    E, Q4 = EXPECTED4, EXPECTED4["questions"]
+    bbl = {**{k: v["bbl"] for k, v in E["anchors"].items()}, **{k: v["bbl"] for k, v in E["cases"].items()}}
+    run = E["run_id"]
+    out = []
+    for k in ("C", "D", "H2", "H5"):
+        e = Q4["Q9"][k]
+        out.append(_ex("Q9", k, f"How many lots, buildings and residential units are in the Owner Portfolio that includes lot {bbl[k]}, and is that the same as its Operational Network?",
+                       _ref([{"name": "get_owner_portfolio", "args": {"bbl": bbl[k]}}], include=[e["group_id"], run, str(e["residential_units"])],
+                            caveats=[LEAD, ["tax lot", "lots"], ["provisional", "gold"]], forbid=LAYER_OVERREACH)))
+    for k in ("A", "F"):
+        e = Q4["Q9"][k]
+        words = ["no registration", "not registered", "no hpd registration"] if e["reason_code"] == "no_registration" else ["no linkage", "no accepted", "no qualifying", "no_linkage"]
+        out.append(_ex("Q9", k, f"Which Owner Portfolio is lot {bbl[k]} in, and how many buildings does it hold?",
+                       _ref([{"name": "get_owner_portfolio", "args": {"bbl": bbl[k]}}], any_of=[words], caveats=[NOT_EVIDENCE], forbid=LAYER_OVERREACH)))
+    for k in ("C", "D", "H1", "H3"):
+        e = Q4["Q8"][k]
+        kind = ["louvain", "community"] if e["split"] == "louvain" else ["whole", "connected component", "component"]
+        out.append(_ex("Q8", k, f"Which buildings are in the Operational Network of lot {bbl[k]}, what links connect them, and is it a whole connected component or a split community?",
+                       _ref([{"name": "get_operational_network", "args": {"bbl": bbl[k]}}], include=[e["group_id"], run], any_of=[kind], caveats=[LEAD], forbid=LAYER_OVERREACH)))
+    d = Q4["Q10"]["D"]["differences"]["only_in_operational_network"]["lots"]
+    out.append(_ex("Q10", "D", f"The Owner Portfolio and the Operational Network of lot {bbl['D']} list different lots. Which lots differ and why?",
+                   _ref([{"name": "compare_ownership_layers", "args": {"bbl": bbl["D"]}}], include=[x["bbl"] for x in d], any_of=[["address"]],
+                        caveats=[["derived", "lead", "neither", "not the true"], NOT_EVIDENCE], forbid=LAYER_OVERREACH)))
+    h1 = Q4["Q10"]["H1"]
+    out.append(_ex("Q10", "H1", f"Does the Operational Network of lot {bbl['H1']} hold more than one Owner Portfolio? Name them.",
+                   _ref([{"name": "compare_ownership_layers", "args": {"bbl": bbl["H1"]}}], include=[h1["operational_network"], *[p for p in h1["portfolios_in_the_network"] if p != "(none)"]],
+                        caveats=[["derived", "lead", "neither", "not the true"]], forbid=LAYER_OVERREACH)))
+    h2 = Q4["Q10"]["H2"]
+    out.append(_ex("Q10", "H2", f"Does the Owner Portfolio of lot {bbl['H2']} span more than one Operational Network? Name them.",
+                   _ref([{"name": "compare_ownership_layers", "args": {"bbl": bbl["H2"]}}], include=[h2["owner_portfolio"], *[n for n in h2["networks_in_the_portfolio"] if n != "(none)"]],
+                        caveats=[["derived", "lead", "neither", "not the true"]], forbid=LAYER_OVERREACH)))
+    for e in Q4["Q19"]:
+        a, b = e["bbl_a"], e["bbl_b"]
+        q = f"Why are lots {a} and {b} grouped together, or why not? Answer for both layers."
+        tools = [{"name": "explain_why_grouped", "args": {"bbl_a": a, "bbl_b": b}}]
+        include, any_of, caveats = [], [], [NOT_EVIDENCE if all(e[l]["verdict"] != "same_group" for l in ("owner_portfolio", "operational_network")) else LEAD]
+        for lay in ("owner_portfolio", "operational_network"):
+            v = e[lay]
+            if v["verdict"] == "same_group":
+                include.append(v["groups"][0])
+            elif v["verdict"] == "different_groups":
+                include += [g for g in v["groups"] if g]
+        if e["a"] == "A":
+            any_of.append(["no linkage", "no accepted", "no qualifying", "no_linkage"])
+        out.append(_ex("Q19", f"{e['a']}-{e['b']}", q, _ref(tools, include=include, any_of=any_of, caveats=caveats, forbid=LAYER_OVERREACH)))
+    for k, lay in (("C", "owner_portfolio"), ("D", "operational_network")):
+        e = Q4["Q21"][k][lay]
+        out.append(_ex("Q21", k, f"Within the {lay.replace('_', ' ').title()} of lot {bbl[k]}, which lots have the most open violations per residential unit, and how concentrated are they?",
+                       _ref([{"name": "rank_violations_in_group", "args": {"bbl": bbl[k], "layer": lay}}], include=[e["top_lots_by_open_per_unit"][0]],
+                            caveats=[["class a", "by class", "class b"], ["part of all", "partial", "about a fifth", "does not show", "not shown"]], forbid=LAYER_OVERREACH)))
+    for k in ("D", "F", "M", "V"):
+        e = Q4["Q26"][k]
+        any_of = []
+        if k == "D":
+            any_of.append(["department of state", "dos"])
+        if k == "F":
+            any_of.append(["no registration", "no hpd registration", "not registered"])
+        if k == "M":
+            any_of.append(["masked", "aggregator", "shared by"])
+        if k == "V":
+            any_of.append(["veto", "first-name", "first name"])
+        out.append(_ex("Q26", k, f"For lot {bbl[k]}, which sources have no record and what does each absence mean?",
+                       _ref([{"name": "explain_what_is_missing", "args": {"bbl": bbl[k]}}], any_of=any_of, caveats=[NOT_EVIDENCE], forbid=LAYER_OVERREACH + ["is exempt", "does not exist"])))
     return out
 
 

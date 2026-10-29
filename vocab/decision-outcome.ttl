@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix outcome: <https://bobflagg.github.io/Watchline/vocab/decision-outcome/> .
+
+outcome: a skos:ConceptScheme ;
+    dcterms:title "Decision outcome"@en ;
+    dcterms:description "What a rule of BOR's method decided at the grain where it ran (design note 0024, O3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is BOR's own outcome code. An absence of a decision means the rule did not run."@en ;
+    skos:hasTopConcept outcome:accepted, outcome:rejected, outcome:masked, outcome:excluded, outcome:dropped .
+
+outcome:accepted a skos:Concept ;
+    skos:inScheme outcome: ;
+    skos:topConceptOf outcome: ;
+    skos:notation "accepted" ;
+    skos:prefLabel "Accepted"@en ;
+    skos:hiddenLabel "accepted"@x-bor ;
+    skos:definition "A candidate link the rule accepted."@en .
+outcome:rejected a skos:Concept ;
+    skos:inScheme outcome: ;
+    skos:topConceptOf outcome: ;
+    skos:notation "rejected" ;
+    skos:prefLabel "Rejected"@en ;
+    skos:hiddenLabel "rejected"@x-bor ;
+    skos:definition "A candidate link the rule refused."@en .
+outcome:masked a skos:Concept ;
+    skos:inScheme outcome: ;
+    skos:topConceptOf outcome: ;
+    skos:notation "masked" ;
+    skos:prefLabel "Masked"@en ;
+    skos:hiddenLabel "masked"@x-bor ;
+    skos:definition "A link or address the rule masked from the evidence."@en .
+outcome:excluded a skos:Concept ;
+    skos:inScheme outcome: ;
+    skos:topConceptOf outcome: ;
+    skos:notation "excluded" ;
+    skos:prefLabel "Excluded"@en ;
+    skos:hiddenLabel "excluded"@x-bor ;
+    skos:definition "A subject the rule left out."@en .
+outcome:dropped a skos:Concept ;
+    skos:inScheme outcome: ;
+    skos:topConceptOf outcome: ;
+    skos:notation "dropped" ;
+    skos:prefLabel "Dropped"@en ;
+    skos:hiddenLabel "dropped"@x-bor ;
+    skos:definition "A whole group the rule dropped."@en .

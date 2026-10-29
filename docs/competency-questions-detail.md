@@ -83,21 +83,21 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `hpd_contacts`, `nys_corporations`, `acris_parties`, `bor_layers`.
 
 ### Q8: Operational Network of a building
-- **Example:** **pending BOR export.** A and B are the candidate pair.
+- **Example (BOR run 2026-05-29-149e871f, release v0.2.1):** C is in a 5-lot network (a whole connected component) and D in a 35-lot network, both linked by accepted edges. A and B, the candidate pair, are in no network: the method found no accepted link for either lot (`no_linkage`), so the answer says so and gives no list.
 - **Shape:** list of buildings with the connecting links.
 - **Audience:** shows how many buildings share the same operation.
 - **Caveat:** name the run, say whether it is a whole component or a Louvain community, and that it is a lead and not legal ownership.
 - **Sources:** `bor_layers`, `hpd_registrations`, `hpd_contacts`.
 
 ### Q9: Owner Portfolio footprint
-- **Example:** **pending BOR export.** Test cases: D (a lot with several BINs), C (a co-op, expected to be excluded by policy; to confirm).
+- **Example (BOR run 2026-05-29-149e871f):** D, a lot with three buildings, is in a 33-lot Owner Portfolio (the Operational Network has 35). C is in a 5-lot portfolio with 116 residential units; the earlier expectation that BOR would exclude it as a co-op does not hold in this release, so the answer reports the group as it is and does not call it a co-op.
 - **Shape:** counts (lots, buildings, units) with a comparison list.
 - **Audience:** the number tenants ask for first: how many buildings does this owner have.
 - **Caveat:** see the contract in the main file; never present it as legal ownership.
 - **Sources:** `bor_layers`, `acris_master`, `pluto`.
 
 ### Q10: Where the layers disagree
-- **Example:** **pending BOR export.**
+- **Example (BOR run 2026-05-29-149e871f):** D: the network holds two lots the portfolio does not, linked in the network only by a shared business address. Release-wide, 476 networks hold more than one portfolio and 14 portfolios span more than one network.
 - **Shape:** two lists and a difference with explanations.
 - **Audience:** explains why two honest lists of "the landlord's buildings" differ.
 - **Caveat:** both layers are derived; neither is the true list.
@@ -165,7 +165,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `acris_master`, `acris_parties`, `bor_layers`.
 
 ### Q19: Why two buildings are grouped
-- **Example:** **pending BOR export.** A and B are the candidate pair.
+- **Example (BOR run 2026-05-29-149e871f):** C and the lot at 1704 East 15 Street (3067970008) are in one portfolio and one network, joined through one resolved identity cluster (an identity match of two HPD owner contacts). A and B are in no group in either layer (`no_linkage`), so there is no path and no finding about their owners.
 - **Shape:** chain.
 - **Audience:** lets an organizer check a claim before repeating it.
 - **Caveat:** see the contract in the main file.
@@ -179,7 +179,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** all.
 
 ### Q21: Violations across a layer
-- **Example:** **pending BOR export.**
+- **Example (BOR run 2026-05-29-149e871f, violations as of 2026-07-02):** D's network has 18 open class A, B and C violations over 35 lots; the three lots with the most hold 72% of them.
 - **Shape:** ranked list with a concentration figure.
 - **Audience:** shows which of a landlord's buildings are the worst, for a coordinated campaign.
 - **Caveat:** report each class separately and no word "hazardous"; the list changes with the layer used.
@@ -215,7 +215,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `web_research`.
 
 ### Q26: What each absence means
-- **Example (D):** no DOS record under either spelling of the owner `HP SUNSET PARK I HDFC INC`. **(F):** no HPD registration for a 40-unit building from 2025. **(C):** expected "excluded by policy (co-op)" in the Owner Portfolio, to confirm after the BOR export.
+- **Example (D):** no DOS record under either spelling of the owner `HP SUNSET PARK I HDFC INC`. **(F):** no HPD registration for a 40-unit building from 2025, so it is in neither layer (`no_registration`, outside source coverage). **(C):** in both layers: the expectation of "excluded by policy (co-op)" did not hold in BOR run 2026-05-29-149e871f.
 - **Shape:** list of absences, each with a reason code.
 - **Audience:** stops "not found" being read as "nothing there".
 - **Caveat:** absence of a link is not evidence of different owners.
@@ -239,7 +239,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 
 | Needs | Questions |
 | --- | --- |
-| BOR/NLR export (week 5) | Q6 to Q10, Q19, Q21, Q23 (and the layer parts of Q9, Q20, Q26) |
+| BOR/NLR export (week 5) | Q6, Q7, Q23 (the layers are loaded: Q8 to Q10, Q19, Q21 and Q26 are answered, design note 0024) |
 | Web research (week 6) | Q16, Q25 |
 | A better-fitting building | Q14 |
 | An alternate-address case | Q1 (scenario) |

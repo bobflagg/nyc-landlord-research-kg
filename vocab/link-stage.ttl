@@ -1,0 +1,121 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix stage: <https://bobflagg.github.io/Watchline/vocab/link-stage/> .
+
+stage: a skos:ConceptScheme ;
+    dcterms:title "Link stage"@en ;
+    dcterms:description "The stages of BOR's method that create a link, apply a group-level rule, or name a sampled population for method precision (design note 0024, O3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is BOR's own stage code (stage_vocabulary_version 0.2.1). Stages that create a link carry a path step; the policy stages do not. A stage names a signal, not an owner."@en ;
+    skos:hasTopConcept stage:link_creating, stage:group_policy, stage:method_scope .
+
+stage:link_creating a skos:Concept ; skos:inScheme stage: ; skos:topConceptOf stage: ; skos:notation "link_creating" ;
+    skos:prefLabel "Link-creating stage"@en ; skos:definition "A stage that can put a link, and so a path step, between two records."@en .
+
+stage:group_policy a skos:Concept ; skos:inScheme stage: ; skos:topConceptOf stage: ; skos:notation "group_policy" ;
+    skos:prefLabel "Group-level policy stage"@en ; skos:definition "A stage that applies a rule to a whole group and creates no link of its own."@en .
+
+stage:method_scope a skos:Concept ; skos:inScheme stage: ; skos:topConceptOf stage: ; skos:notation "method_scope" ;
+    skos:prefLabel "Sampled population"@en ; skos:definition "A population the evaluation sampled, which no single stage owns."@en .
+
+stage:identity_splink_base a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "identity.splink_base" ;
+    skos:prefLabel "Identity: model match"@en ;
+    skos:hiddenLabel "identity.splink_base"@x-bor ;
+    skos:definition "Two HPD owner contacts judged the same person by the Splink model at the run's threshold."@en .
+stage:identity_splink_feedback a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "identity.splink_feedback" ;
+    skos:prefLabel "Identity: shared-company feedback"@en ;
+    skos:hiddenLabel "identity.splink_feedback"@x-bor ;
+    skos:definition "A pass that merges identities sharing a company, after the model."@en .
+stage:identity_curated a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "identity.curated" ;
+    skos:prefLabel "Identity: curated list"@en ;
+    skos:hiddenLabel "identity.curated"@x-bor ;
+    skos:definition "Nodes tied by a curated owner list."@en .
+stage:identity_registered_llc a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "identity.registered_llc" ;
+    skos:prefLabel "Identity: registered LLC"@en ;
+    skos:hiddenLabel "identity.registered_llc"@x-bor ;
+    skos:definition "Nodes tied by one owner-of-record entity in the tax records."@en .
+stage:deed_held_since a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "deed.held_since" ;
+    skos:prefLabel "Deed: held since a joint deed"@en ;
+    skos:hiddenLabel "deed.held_since"@x-bor ;
+    skos:definition "Lots held under one multi-parcel deed that is still each lot's latest deed."@en .
+stage:deed_linked_successor a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "deed.linked_successor" ;
+    skos:prefLabel "Deed: linked successor"@en ;
+    skos:hiddenLabel "deed.linked_successor"@x-bor ;
+    skos:definition "Lots moved onward from a shell holder under a nominal transfer."@en .
+stage:network_identity a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "network.identity" ;
+    skos:prefLabel "Network: identity"@en ;
+    skos:hiddenLabel "network.identity"@x-bor ;
+    skos:definition "An Operational Network edge carried by an accepted identity link."@en .
+stage:network_name a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "network.name" ;
+    skos:prefLabel "Network: shared name"@en ;
+    skos:hiddenLabel "network.name"@x-bor ;
+    skos:definition "An Operational Network edge between landlord records that share a name."@en .
+stage:network_address a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:link_creating ;
+    skos:notation "network.address" ;
+    skos:prefLabel "Network: shared address"@en ;
+    skos:hiddenLabel "network.address"@x-bor ;
+    skos:definition "An Operational Network edge between landlord records that share a business address."@en .
+stage:deed_group a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:group_policy ;
+    skos:notation "deed.group" ;
+    skos:prefLabel "Deed: group rule"@en ;
+    skos:hiddenLabel "deed.group"@x-bor ;
+    skos:definition "Group-level rule on a deed bundle."@en .
+stage:owner_portfolio_group_size a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:group_policy ;
+    skos:notation "owner_portfolio.group_size" ;
+    skos:prefLabel "Portfolio: minimum size"@en ;
+    skos:hiddenLabel "owner_portfolio.group_size"@x-bor ;
+    skos:definition "Group-level rule: the minimum group size."@en .
+stage:owner_portfolio_footprint a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:group_policy ;
+    skos:notation "owner_portfolio.footprint" ;
+    skos:prefLabel "Portfolio: rental footprint"@en ;
+    skos:hiddenLabel "owner_portfolio.footprint"@x-bor ;
+    skos:definition "Group-level rule: co-op and condo lots are left out of the rental footprint, or a dominated group is dropped."@en .
+stage:method_aggregator_splits a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:method_scope ;
+    skos:notation "method.aggregator_splits" ;
+    skos:prefLabel "Pairs at a masked aggregator address"@en ;
+    skos:hiddenLabel "method.aggregator_splits"@x-bor ;
+    skos:definition "A sampled population for split precision."@en .
+stage:method_hard_negatives a skos:Concept ;
+    skos:inScheme stage: ;
+    skos:broader stage:method_scope ;
+    skos:notation "method.hard_negatives" ;
+    skos:prefLabel "Surname-sharing pairs no signal links"@en ;
+    skos:hiddenLabel "method.hard_negatives"@x-bor ;
+    skos:definition "A sampled population for split precision."@en .

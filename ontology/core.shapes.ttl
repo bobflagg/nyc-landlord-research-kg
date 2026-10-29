@@ -77,8 +77,8 @@ wl:SnapshotShape a sh:NodeShape ; sh:targetClass wl:Snapshot ; s2c:key "snapshot
                 sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] .
 
 # ---- Assertion edges (Type II) -----------------------------------------------
-# Reusable, not targeted here: a domain module (Slice 4) targets each relationship type with
-# s2c:targetRelationship and adds sh:node wl:AssertionEdgeShape.
+# The agreed property set of an assertion edge. shacl2cypher does not allow sh:node on a relationship focus, so a domain
+# module (bor.shapes.ttl) targets each relationship type with s2c:targetRelationship and spells these properties out.
 
 wl:AssertionEdgeShape a sh:NodeShape ;
   sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;

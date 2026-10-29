@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gold: <https://bobflagg.github.io/Watchline/vocab/gold-status/> .
+
+gold: a skos:ConceptScheme ;
+    dcterms:title "Gold status"@en ;
+    dcterms:description "Who produced the gold standard behind a published method precision (design note 0024, O3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is BOR's adjudication_status. Every row is provisional unless it is blind_human. A precision is the share of sampled pairs judged correct in one stratum on one snapshot; it is not the chance a link is right."@en ;
+    skos:hasTopConcept gold:none, gold:synthetic, gold:human_llm_provisional, gold:blind_human .
+
+gold:none a skos:Concept ;
+    skos:inScheme gold: ;
+    skos:topConceptOf gold: ;
+    skos:notation "none" ;
+    skos:prefLabel "None"@en ;
+    skos:hiddenLabel "none"@x-bor ;
+    skos:definition "No gold: the metric has no estimate."@en .
+gold:synthetic a skos:Concept ;
+    skos:inScheme gold: ;
+    skos:topConceptOf gold: ;
+    skos:notation "synthetic" ;
+    skos:prefLabel "Synthetic"@en ;
+    skos:hiddenLabel "synthetic"@x-bor ;
+    skos:definition "A synthetic gold, for tests."@en .
+gold:human_llm_provisional a skos:Concept ;
+    skos:inScheme gold: ;
+    skos:topConceptOf gold: ;
+    skos:notation "human_llm_provisional" ;
+    skos:prefLabel "Human llm provisional"@en ;
+    skos:hiddenLabel "human_llm_provisional"@x-bor ;
+    skos:definition "One human annotator, an LLM second reader and an LLM-run resolution of their disagreements. Provisional."@en .
+gold:blind_human a skos:Concept ;
+    skos:inScheme gold: ;
+    skos:topConceptOf gold: ;
+    skos:notation "blind_human" ;
+    skos:prefLabel "Blind human"@en ;
+    skos:hiddenLabel "blind_human"@x-bor ;
+    skos:definition "A second blind human and human arbitration."@en .

@@ -99,3 +99,28 @@ def complaint_type(raw: str | None) -> str | None:
 def litigation_case_type(raw: str | None) -> str | None:
     """HPD case type to case_type, or None for a type with no concept (the raw value is kept)."""
     return _codes("litigation-case-type", "x-hpd").get((raw or "").strip().casefold())
+
+
+@cache
+def _notations(scheme: str) -> frozenset[str]:
+    return frozenset(str(n) for n in Graph().parse(ROOT / "vocab" / f"{scheme}.ttl").objects(None, SKOS.notation))
+
+
+def bor_term(scheme: str, code: str) -> str:
+    """A BOR code that is a concept of the scheme, as the release writes it (the notation is BOR's own code). An unknown code is an
+    error: the release is newer than the vocabulary, or the vocabulary is wrong (note 0024, O3). Never dropped quietly."""
+    if code not in _notations(scheme):
+        raise ValueError(f"BOR code {code!r} is not in vocab/{scheme}.ttl")
+    return code
+
+
+@cache
+def _concepts(scheme: str) -> dict[str, tuple[str, str]]:
+    g = Graph().parse(ROOT / "vocab" / f"{scheme}.ttl")
+    return {str(g.value(c, SKOS.notation)): (str(g.value(c, SKOS.prefLabel) or ""), str(g.value(c, SKOS.definition) or "")) for c in g.subjects(SKOS.notation, None)}
+
+
+def bor_meaning(scheme: str, code: str) -> dict:
+    """The label and definition of a BOR term, for an answer that names a reason or a stage."""
+    label, definition = _concepts(scheme)[bor_term(scheme, code)]
+    return {"code": code, "label": label, "meaning": definition}

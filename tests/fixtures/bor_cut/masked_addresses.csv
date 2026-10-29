@@ -1,0 +1,6 @@
+address_id,method,normalizer_version,degree,degree_unit,threshold,decision,address
+A0000017,network_address_edge_mask,c92693351768,56,landlords (lwc nodes),25,masked,225 WEST 35 STREET 14 FL
+A0000028,network_address_edge_mask,c92693351768,74,landlords (lwc nodes),25,masked,1036 LAFAYETTE AVENUE
+A0000041,network_address_edge_mask,c92693351768,43,landlords (lwc nodes),25,masked,872 MADISON AVENUE 2A
+A0000055,network_address_edge_mask,c92693351768,91,landlords (lwc nodes),25,masked,271 MADISON AVENUE 1200
+A0000059,network_address_edge_mask,c92693351768,38,landlords (lwc nodes),25,masked,1430 BROADWAY 505

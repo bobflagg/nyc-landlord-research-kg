@@ -1,0 +1,277 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix s2c:  <https://w3id.org/shacl2cypher#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:   <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix acris: <https://bobflagg.github.io/Watchline/ontology/acris#> .
+@prefix bor:  <https://bobflagg.github.io/Watchline/ontology/bor#> .
+
+# BOR shapes (design note 0024). Every BOR node is Type II: reliability II, project_derived, review_status unreviewed or contested.
+# Values between "generated" markers are written from vocab/ by scripts/sync_shape_values.py.
+
+bor:BorRunShape a sh:NodeShape ; sh:targetClass bor:BorRun ; s2c:key "run_id" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:source_verified ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean ] ;
+  sh:property [ sh:path bor:release_name ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:schema_version ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:snapshot_date ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date  ] ;
+  sh:property [ sh:path bor:built_at ; sh:maxCount 1 ; sh:datatype xsd:dateTime  ] ;
+  sh:property [ sh:path bor:bor_revision ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:nlr_revision ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:manifest_sha256 ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:threshold ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:stage_vocabulary_version ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:reason_vocabulary_version ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:gold_status ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:gold-status begin
+    ( "none" "synthetic" "human_llm_provisional" "blind_human" )
+    # generated:gold-status end
+  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorGroupShape a sh:NodeShape ; sh:targetClass bor:BorGroup ; s2c:key "assertion_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:assertion_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9a-f]+/(owner_portfolio|operational_network)/(OP|ON)-[0-9]+$" ] ;
+  sh:property [ sh:path bor:layer ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "owner_portfolio" "operational_network" ) ] ;
+  sh:property [ sh:path bor:group_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:composition ; sh:maxCount 1 ; sh:in ( "identity" "deed_only" "deed_bridged" ) ] ;
+  sh:property [ sh:path bor:split ; sh:maxCount 1 ; sh:in ( "wcc" "louvain" ) ] ;
+  sh:property [ sh:path bor:lot_count ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:total_lot_count ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:witness_pieces ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:anchor_node_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorNodeShape a sh:NodeShape ; sh:targetClass bor:BorNode ; s2c:key "assertion_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:assertion_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "/n[0-9]+$" ] ;
+  sh:property [ sh:path bor:layer ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "owner_portfolio" "operational_network" ) ] ;
+  sh:property [ sh:path bor:group_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:node_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:node_name ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:component_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:community_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:cluster_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:n_clusters ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:cluster_tied ; sh:maxCount 1 ; sh:datatype xsd:boolean  ] ;
+  sh:property [ sh:path bor:cluster_alternatives ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path bor:in_group ; sh:class bor:BorGroup ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorDecisionShape a sh:NodeShape ; sh:targetClass bor:BorDecision ; s2c:key "decision_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:decision_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:decision_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:layer ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "identity" "owner_portfolio" "operational_network" ) ] ;
+  sh:property [ sh:path bor:stage ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:link-stage begin
+    ( "link_creating" "group_policy" "method_scope" "identity.splink_base" "identity.splink_feedback" "identity.curated" "identity.registered_llc" "deed.held_since" "deed.linked_successor" "network.identity" "network.name" "network.address" "deed.group" "owner_portfolio.group_size" "owner_portfolio.footprint" "method.aggregator_splits" "method.hard_negatives" )
+    # generated:link-stage end
+  ] ;
+  sh:property [ sh:path bor:subject_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:subject_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:counterpart_type ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:counterpart_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:outcome ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:decision-outcome begin
+    ( "accepted" "rejected" "masked" "excluded" "dropped" )
+    # generated:decision-outcome end
+  ] ;
+  sh:property [ sh:path bor:reason_code ; sh:maxCount 1 ; sh:in
+    # generated:absence-reason begin
+    ( "outside_source_coverage" "outside_method_input" "excluded_by_policy" "below_eligibility_rule" "no_qualifying_linkage" "no_registration" "no_owner_contact" "not_latest_registration" "unmatched_node" "coop_condo_excluded" "coop_condo_dominated" "institutional_screen" "deed_hub_capped" "aggregator_address_masked" "address_evidence_masked" "curated_exclusion" "deed_parcels_out_of_range" "deed_not_latest" "successor_not_shell" "successor_transfer_not_nominal" "first_name_veto" "common_name_veto" "shared_company_name_not_rare" "shared_company_first_name_conflict" "shared_company_degree_cap" "shared_company_degree_unknown" "group_below_min_size" "no_linkage" "pair_below_threshold" )
+    # generated:absence-reason end
+  ] ;
+  sh:property [ sh:path bor:rule ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:rule_version ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:score ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:decision_threshold ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:cluster_id ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:detail ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorEvidenceShape a sh:NodeShape ; sh:targetClass bor:BorEvidence ; s2c:key "evidence_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:evidence_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:evidence_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:stage ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:link-stage begin only=deed.held_since,deed.linked_successor
+    ( "deed.held_since" "deed.linked_successor" )
+    # generated:link-stage end
+  ] ;
+  sh:property [ sh:path bor:document_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:parcel_count ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:rule_version ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorLinkSetShape a sh:NodeShape ; sh:targetClass bor:BorLinkSet ; s2c:key "set_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:set_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:set_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:stage ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:link-stage begin only=identity.curated,identity.registered_llc
+    ( "identity.curated" "identity.registered_llc" )
+    # generated:link-stage end
+  ] ;
+  sh:property [ sh:path bor:rule ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:rule_version ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:size ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorMaskedAddressShape a sh:NodeShape ; sh:targetClass bor:BorMaskedAddress ; s2c:key "masked_address_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:masked_address_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:address_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:method ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:normalizer_version ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:degree ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:degree_unit ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:mask_threshold ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:address_text ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:BorMetricShape a sh:NodeShape ; sh:targetClass bor:BorMetric ; s2c:key "metric_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path bor:metric_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:stage ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:link-stage begin
+    ( "link_creating" "group_policy" "method_scope" "identity.splink_base" "identity.splink_feedback" "identity.curated" "identity.registered_llc" "deed.held_since" "deed.linked_successor" "network.identity" "network.name" "network.address" "deed.group" "owner_portfolio.group_size" "owner_portfolio.footprint" "method.aggregator_splits" "method.hard_negatives" )
+    # generated:link-stage end
+  ] ;
+  sh:property [ sh:path bor:metric ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "precision_strict" "precision_inclusive" "split_precision" ) ] ;
+  sh:property [ sh:path bor:unit ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:population ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:sample_n ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:numerator ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:denominator ; sh:maxCount 1 ; sh:datatype xsd:integer  ] ;
+  sh:property [ sh:path bor:precision ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:ci_lower ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:ci_upper ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:confidence_level ; sh:maxCount 1 ; sh:datatype xsd:double  ] ;
+  sh:property [ sh:path bor:interval_method ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:estimator ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:strata_ref ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:eval_artifact ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:eval_version ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path bor:adjudication_status ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:gold-status begin
+    ( "none" "synthetic" "human_llm_provisional" "blind_human" )
+    # generated:gold-status end
+  ] ;
+  sh:property [ sh:path bor:provisional ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean  ] ;
+  sh:property [ sh:path bor:metric_note ; sh:maxCount 1 ; sh:datatype xsd:string  ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "bor" ) ] ;
+  sh:property [ sh:path bor:run_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+# ---- Assertion edges (Type II) ------------------------------------------------------
+
+bor:MemberOfShape a sh:NodeShape ; s2c:targetRelationship "MEMBER_OF" ;
+  # The properties of wl:AssertionEdgeShape, spelled out: shacl2cypher does not allow sh:node on a relationship focus.
+  sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] ;
+  sh:property [ sh:path bor:rental ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean ] ;
+  sh:property [ sh:path bor:reason_code ; sh:maxCount 1 ; sh:in ( "coop_condo_excluded" ) ] .
+
+bor:NotInGroupShape a sh:NodeShape ; s2c:targetRelationship "NOT_IN_GROUP" ;
+  # The properties of wl:AssertionEdgeShape, spelled out: shacl2cypher does not allow sh:node on a relationship focus.
+  sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] ;
+  sh:property [ sh:path bor:layer ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "owner_portfolio" "operational_network" ) ] ;
+  sh:property [ sh:path bor:reason_code ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:absence-reason begin
+    ( "outside_source_coverage" "outside_method_input" "excluded_by_policy" "below_eligibility_rule" "no_qualifying_linkage" "no_registration" "no_owner_contact" "not_latest_registration" "unmatched_node" "coop_condo_excluded" "coop_condo_dominated" "institutional_screen" "deed_hub_capped" "aggregator_address_masked" "address_evidence_masked" "curated_exclusion" "deed_parcels_out_of_range" "deed_not_latest" "successor_not_shell" "successor_transfer_not_nominal" "first_name_veto" "common_name_veto" "shared_company_name_not_rare" "shared_company_first_name_conflict" "shared_company_degree_cap" "shared_company_degree_unknown" "group_below_min_size" "no_linkage" "pair_below_threshold" )
+    # generated:absence-reason end
+  ] ;
+  sh:property [ sh:path bor:top_level_reason ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:absence-reason begin only=outside_source_coverage,outside_method_input,excluded_by_policy,below_eligibility_rule,no_qualifying_linkage
+    ( "outside_source_coverage" "outside_method_input" "excluded_by_policy" "below_eligibility_rule" "no_qualifying_linkage" )
+    # generated:absence-reason end
+  ] ;
+  sh:property [ sh:path bor:masked_address_key ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:WitnessStepShape a sh:NodeShape ; s2c:targetRelationship "WITNESS_STEP" ;
+  # The properties of wl:AssertionEdgeShape, spelled out: shacl2cypher does not allow sh:node on a relationship focus.
+  sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] ;
+  sh:property [ sh:path bor:step ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path bor:stage ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:link-stage begin only=identity.splink_base,identity.splink_feedback,identity.curated,identity.registered_llc,deed.held_since,deed.linked_successor,network.identity,network.name,network.address
+    ( "identity.splink_base" "identity.splink_feedback" "identity.curated" "identity.registered_llc" "deed.held_since" "deed.linked_successor" "network.identity" "network.name" "network.address" )
+    # generated:link-stage end
+  ] ;
+  sh:property [ sh:path bor:basis_type ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "identity_cluster" "link_set" "evidence_item" "network_edge" ) ] ;
+  sh:property [ sh:path bor:basis_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+bor:NetworkEdgeShape a sh:NodeShape ; s2c:targetRelationship "NETWORK_EDGE" ;
+  # The properties of wl:AssertionEdgeShape, spelled out: shacl2cypher does not allow sh:node on a relationship focus.
+  sh:property [ sh:path wl:link_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:minCount 1 ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:minCount 1 ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ; sh:in
+    # generated:review-status begin only=unreviewed,contested
+    ( "unreviewed" "contested" )
+    # generated:review-status end
+  ] ;
+  sh:property [ sh:path wl:snapshot_id ; sh:minCount 1 ; sh:datatype xsd:string ;
+                sh:pattern "^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$" ] ;
+  sh:property [ sh:path bor:edge_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path bor:component_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path bor:name_weight ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:double ] ;
+  sh:property [ sh:path bor:address_weight ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:double ] ;
+  sh:property [ sh:path bor:identity_weight ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:double ] ;
+  sh:property [ sh:path bor:weight ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:double ] ;
+  sh:property [ sh:path bor:crosses_networks ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean ] .

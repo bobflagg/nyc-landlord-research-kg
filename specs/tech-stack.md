@@ -75,4 +75,4 @@ ontology + vocabulary ──────────┘   (re-runnable)      (sy
 
 ## Open decisions
 
-Web search tool · retrieval cache design · production hosting · the form of BOR/NLR's edge-level evidence export (design notes 0001 and 0007).
+Web search tool · retrieval cache design · production hosting. (The form of BOR/NLR's edge-level evidence export is settled: a frozen release, loaded as in design note 0024.)

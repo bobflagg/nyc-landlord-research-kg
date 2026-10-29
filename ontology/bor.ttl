@@ -1,0 +1,211 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix acris:   <https://bobflagg.github.io/Watchline/ontology/acris#> .
+@prefix bor:     <https://bobflagg.github.io/Watchline/ontology/bor#> .
+
+# BOR module (design note 0024): the Owner Portfolio and Operational Network layers of a frozen BOR release.
+# Everything here is Type II (reliability II, project_derived, unreviewed). A group is a lead, not legal ownership.
+# Ids of groups, nodes, decisions, evidence, link sets and masked addresses are run-local (note 0007): each key begins with the run id.
+<https://bobflagg.github.io/Watchline/ontology/bor> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline BOR module"@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+# ---- Run ----------------------------------------------------------------------------
+
+bor:BorRun a owl:Class ; rdfs:label "BOR run"@en ;
+    rdfs:comment "One frozen BOR release, keyed by its run id, with the facts of its manifest. The release is verified against the justfixwow snapshot before it is loaded (note 0024, O4)."@en .
+bor:run_id a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "BOR run id, such as 2026-05-29-149e871f. The key of a BorRun and a property of every other BOR node; every key of a BOR node begins with it."@en .
+bor:release_name a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string ;
+    rdfs:comment "The release directory name, such as v0.2.1."@en .
+bor:schema_version a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string .
+bor:snapshot_date a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:date .
+bor:built_at a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:dateTime .
+bor:bor_revision a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string .
+bor:nlr_revision a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string .
+bor:manifest_sha256 a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string ;
+    rdfs:comment "Checksum of manifest.json, which holds the checksum of every other file."@en .
+bor:threshold a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:double ;
+    rdfs:comment "The Splink match threshold of the run."@en .
+bor:stage_vocabulary_version a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string .
+bor:reason_vocabulary_version a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string .
+bor:source_verified a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:boolean ;
+    rdfs:comment "True when the release was checked against the source tables' row counts and fingerprints before it was loaded (note 0024, O4)."@en .
+bor:gold_status a owl:DatatypeProperty ; rdfs:domain bor:BorRun ; rdfs:range xsd:string ;
+    rdfs:comment "Adjudication status of the gold behind the published precisions. Values: vocab/gold-status.ttl."@en .
+
+# ---- Groups and nodes ---------------------------------------------------------------
+
+bor:BorGroup a owl:Class ; rdfs:label "BOR group"@en ;
+    rdfs:comment "An Owner Portfolio (owner_portfolio) or an Operational Network (operational_network) of one run. A lead, not a determination of ownership. Counting unit is the tax lot."@en .
+bor:assertion_key a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "<run id>/<layer>/<group id>; also the key of a BorNode, which adds /n<node id>."@en .
+bor:layer a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "owner_portfolio or operational_network."@en .
+bor:group_id a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "OP-<n> or ON-<n>, n the group's smallest node id. Run-local."@en .
+bor:composition a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "Owner Portfolio only: identity, deed_only or deed_bridged."@en .
+bor:split a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "Operational Network only: wcc (a whole weakly connected component) or louvain (a community split from a larger component)."@en .
+bor:lot_count a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:integer ;
+    rdfs:comment "Lots in the published rental footprint."@en .
+bor:total_lot_count a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:integer ;
+    rdfs:comment "All lots, including co-op and condo lots outside the footprint."@en .
+bor:witness_pieces a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:integer .
+bor:anchor_node_id a owl:DatatypeProperty ; rdfs:domain bor:BorGroup ; rdfs:range xsd:string ;
+    rdfs:comment "The member node with the most lots, ties to the smallest node id. A display label, never an owner and never evidence of ownership; shown only for its run."@en .
+
+bor:BorNode a owl:Class ; rdfs:label "BOR node"@en ;
+    rdfs:comment "A BOR landlord node (a landlords_with_connections row), in the one group it belongs to in one layer. It is the grain at which BOR groups, joins and explains. Its name is display text, as filed; a name never asserts a role (note 0009)."@en .
+bor:node_id a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "BOR's node id. Run-local."@en .
+bor:node_name a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "The landlord name of the node, as filed. Display only: never a key and never a role."@en .
+bor:component_id a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "Operational Network only: the weakly connected component (NC-n) the node was in before any split."@en .
+bor:community_id a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "Operational Network only: the Louvain community, when the component was split."@en .
+bor:cluster_id a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "Owner Portfolio only: the resolved identity cluster the node was assigned to."@en .
+bor:n_clusters a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:integer ;
+    rdfs:comment "Clusters the node matched. More than one is a straddling node."@en .
+bor:cluster_tied a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:boolean ;
+    rdfs:comment "The node's clusters were tied on votes."@en .
+bor:cluster_alternatives a owl:DatatypeProperty ; rdfs:domain bor:BorNode ; rdfs:range xsd:string ;
+    rdfs:comment "Every cluster a straddling node matched, as cluster:votes:selected, so the choice BOR made is visible."@en .
+
+# ---- Decisions, evidence, link sets, masked addresses, metrics ----------------------
+
+bor:BorDecision a owl:Class ; rdfs:label "BOR decision"@en ;
+    rdfs:comment "One decision at the grain where a rule ran: an accepted link or a policy outcome. The absence of a decision means the rule did not run."@en .
+bor:decision_key a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:decision_id a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:stage a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string ;
+    rdfs:comment "Link stage. Values: vocab/link-stage.ttl."@en .
+bor:subject_type a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:subject_id a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:counterpart_type a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:counterpart_id a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:outcome a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string ;
+    rdfs:comment "Values: vocab/decision-outcome.ttl."@en .
+bor:reason_code a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string ;
+    rdfs:comment "Values: vocab/absence-reason.ttl."@en .
+bor:rule a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:rule_version a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string .
+bor:score a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:double .
+bor:decision_threshold a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:double .
+bor:detail a owl:DatatypeProperty ; rdfs:domain bor:BorDecision ; rdfs:range xsd:string ;
+    rdfs:comment "BOR's detail object, as written (small JSON)."@en .
+
+bor:BorEvidence a owl:Class ; rdfs:label "BOR deed evidence"@en ;
+    rdfs:comment "A multi-parcel deed bundle that ties lots together: one ACRIS deed and the lots it covers, held under it or transferred onward."@en .
+bor:evidence_key a owl:DatatypeProperty ; rdfs:domain bor:BorEvidence ; rdfs:range xsd:string .
+bor:evidence_id a owl:DatatypeProperty ; rdfs:domain bor:BorEvidence ; rdfs:range xsd:string .
+bor:document_id a owl:DatatypeProperty ; rdfs:domain bor:BorEvidence ; rdfs:range xsd:string ;
+    rdfs:comment "ACRIS document id of the joint deed, as a string."@en .
+bor:parcel_count a owl:DatatypeProperty ; rdfs:domain bor:BorEvidence ; rdfs:range xsd:integer .
+
+bor:BorLinkSet a owl:Class ; rdfs:label "BOR link set"@en ;
+    rdfs:comment "A set of nodes tied by a curated owner list or by one owner-of-record entity in the tax records."@en .
+bor:set_key a owl:DatatypeProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range xsd:string .
+bor:set_id a owl:DatatypeProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range xsd:string .
+bor:rule a owl:DatatypeProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range xsd:string .
+bor:rule_version a owl:DatatypeProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range xsd:string .
+bor:size a owl:DatatypeProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range xsd:integer .
+
+bor:BorMaskedAddress a owl:Class ; rdfs:label "BOR masked address"@en ;
+    rdfs:comment "A business address shared by more landlord records than the threshold, so the Operational Network layer does not link on it. A business address of a landlord record, shown as filed after the mask's normalisation."@en .
+bor:masked_address_key a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string .
+bor:address_id a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string .
+bor:method a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string .
+bor:normalizer_version a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string .
+bor:degree a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:integer ;
+    rdfs:comment "How many landlord records use the address."@en .
+bor:degree_unit a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string .
+bor:mask_threshold a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:integer .
+bor:address_text a owl:DatatypeProperty ; rdfs:domain bor:BorMaskedAddress ; rdfs:range xsd:string ;
+    rdfs:comment "The normalised address, display only."@en .
+
+bor:BorMetric a owl:Class ; rdfs:label "BOR method metric"@en ;
+    rdfs:comment "The published precision of one stage or sampled population, with its interval and the status of the gold. A property of the method, not a probability that a link is right."@en .
+bor:metric_key a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:metric a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string ;
+    rdfs:comment "precision_strict, precision_inclusive or split_precision."@en .
+bor:unit a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:population a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:sample_n a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:integer .
+bor:numerator a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:integer .
+bor:denominator a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:integer .
+bor:precision a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:double .
+bor:ci_lower a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:double .
+bor:ci_upper a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:double .
+bor:confidence_level a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:double .
+bor:interval_method a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:estimator a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:strata_ref a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:eval_artifact a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:eval_version a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+bor:adjudication_status a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string ;
+    rdfs:comment "Values: vocab/gold-status.ttl."@en .
+bor:provisional a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:boolean .
+bor:metric_note a owl:DatatypeProperty ; rdfs:domain bor:BorMetric ; rdfs:range xsd:string .
+
+# ---- Properties of relationships ----------------------------------------------------
+
+bor:rental a owl:DatatypeProperty ; rdfs:range xsd:boolean ; rdfs:comment "On MEMBER_OF: false for a co-op or condo lot outside the published rental footprint."@en .
+bor:top_level_reason a owl:DatatypeProperty ; rdfs:comment "On NOT_IN_GROUP: one of the five reasons of note 0007. Values: vocab/absence-reason.ttl."@en .
+bor:masked_address_key a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "On NOT_IN_GROUP in the Operational Network layer: the masked address the lot's landlord record uses, when it uses one."@en .
+bor:step a owl:DatatypeProperty ; rdfs:range xsd:integer ; rdfs:comment "On WITNESS_STEP: the step number within the group's spanning tree."@en .
+bor:basis_type a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "On WITNESS_STEP: identity_cluster, link_set, evidence_item or network_edge."@en .
+bor:basis_id a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "On WITNESS_STEP: the id of the evidence the step cites. Run-local."@en .
+bor:edge_id a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "On NETWORK_EDGE: BOR's edge id (NE...). Run-local."@en .
+bor:name_weight a owl:DatatypeProperty ; rdfs:range xsd:double .
+bor:address_weight a owl:DatatypeProperty ; rdfs:range xsd:double .
+bor:identity_weight a owl:DatatypeProperty ; rdfs:range xsd:double .
+bor:weight a owl:DatatypeProperty ; rdfs:range xsd:double .
+bor:crosses_networks a owl:DatatypeProperty ; rdfs:range xsd:boolean ; rdfs:comment "On NETWORK_EDGE: the edge joins nodes that ended up in different Operational Networks after the split."@en .
+
+# ---- Relationships ------------------------------------------------------------------
+# Assertion edges (Type II, with link_id and provenance): MEMBER_OF, NOT_IN_GROUP, WITNESS_STEP, NETWORK_EDGE.
+# Structural edges tie BOR objects to each other or to the recorded rows they cite.
+
+bor:member_of a owl:ObjectProperty ; rdfs:domain wl:Lot ; rdfs:range bor:BorGroup ;
+    rdfs:comment "A lot is a member of a group. link_id is <assertion_key>#<bbl>. Carries rental (false for a co-op or condo lot outside the published footprint) and, for those lots, the reason."@en .
+bor:not_in_group a owl:ObjectProperty ; rdfs:domain wl:Lot ; rdfs:range bor:BorRun ;
+    rdfs:comment "A lot is in no group of a layer, with BOR's detailed reason and the top-level reason. Absent rows mean nothing. A lot HPD does not register (no_registration, 1.36M rows) is not loaded: the graph's own HPD data answers it."@en .
+bor:witness_step a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range bor:BorNode ;
+    rdfs:comment "One step of the representative spanning tree that connects a group: the stage and the evidence it cites. The path is representative, not the only or the strongest."@en .
+bor:network_edge a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range bor:BorNode ;
+    rdfs:comment "An accepted Operational Network edge before any split, with its name, address and identity weights."@en .
+bor:in_group a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range bor:BorGroup ;
+    rdfs:comment "A node belongs to a group in a layer (structural)."@en .
+bor:covers a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range wl:Lot ;
+    rdfs:comment "The lot of a node's (node, lot) row, with the registration and whether the contact choice was ambiguous (structural)."@en .
+bor:selected_role a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range wl:Role ;
+    rdfs:comment "The HPD contact BOR used for a node and lot (structural). Absent when the row is ambiguous (BOR selects none and lists the tied candidates). Join is on the contact id, never on a name."@en .
+bor:candidate_role a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range wl:Role ;
+    rdfs:comment "A tied candidate contact for an ambiguous node and lot: BOR could not choose among them (structural)."@en .
+bor:supported_by a owl:ObjectProperty ; rdfs:domain bor:BorDecision ; rdfs:range wl:Role ;
+    rdfs:comment "An HPD contact a decision rests on (structural)."@en .
+bor:about_lot a owl:ObjectProperty ; rdfs:domain bor:BorDecision ; rdfs:range wl:Lot ;
+    rdfs:comment "The lot a decision is about, or a parcel it cites (structural)."@en .
+bor:about_document a owl:ObjectProperty ; rdfs:domain bor:BorDecision ; rdfs:range acris:Document ;
+    rdfs:comment "The ACRIS deed a decision is about or cites (structural)."@en .
+bor:about_group a owl:ObjectProperty ; rdfs:domain bor:BorDecision ; rdfs:range bor:BorGroup ;
+    rdfs:comment "The group a decision is about (structural)."@en .
+bor:about_address a owl:ObjectProperty ; rdfs:domain bor:BorDecision ; rdfs:range bor:BorMaskedAddress ;
+    rdfs:comment "The masked address a decision is about (structural)."@en .
+bor:evidence_for a owl:ObjectProperty ; rdfs:domain bor:BorEvidence ; rdfs:range wl:Lot ;
+    rdfs:comment "A lot a deed bundle covers, held under the joint deed or transferred onward (structural)."@en .
+bor:cites_document a owl:ObjectProperty ; rdfs:domain bor:BorEvidence ; rdfs:range acris:Document ;
+    rdfs:comment "The joint deed (structural)."@en .
+bor:has_member a owl:ObjectProperty ; rdfs:domain bor:BorLinkSet ; rdfs:range bor:BorNode ;
+    rdfs:comment "A node of a link set (structural)."@en .
+bor:uses_address a owl:ObjectProperty ; rdfs:domain bor:BorNode ; rdfs:range bor:BorMaskedAddress ;
+    rdfs:comment "The landlord record uses a masked address (structural)."@en .

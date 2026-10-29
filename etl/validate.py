@@ -34,11 +34,13 @@ def handwritten_checks() -> list[tuple[str, str]]:
             for p in sorted((ROOT / "etl" / "checks").glob("*.cypher"))]
 
 
-def _scoped(query: str, scope: str) -> str:
+def _scoped(query: str, scope: str) -> str | None:
     """The same rule, run only on nodes that carry the label `scope`. Every rule starts at its focus node, so the label
     is added to that first MATCH and a hint makes the planner start from the small label. A check that scans
     relationships cannot be scoped and is dropped in scope mode (its node half stays)."""
     query = query.split("UNION ALL")[0]
+    if re.match(r"\s*MATCH \(\w+\)\s*-\[", query):   # a rule on a relationship (the Bor edge shapes) starts at no node: dropped in scope mode
+        return None
     def add(m: re.Match) -> str:
         var, label = m.group(1), m.group(2) or ""
         return f"MATCH ({var}{label}:`{scope}`) USING SCAN {var}:`{scope}`"
@@ -54,6 +56,8 @@ def validate(runner, only: tuple[str, ...] | None = None, scope: str | None = No
     fit = (lambda q: q) if scope is None else (lambda q: _scoped(q, scope))
     found = []
     for name, query in filter(lambda r: keep(r[0]), compiled_rules()):
+        if fit(query) is None:
+            continue
         for rec in runner.run(fit(query), limit=LIMIT):
             found.append(Violation(name, rec.get("message") or str(dict(rec))))
     for name, query in filter(lambda r: keep(r[0]), handwritten_checks()):

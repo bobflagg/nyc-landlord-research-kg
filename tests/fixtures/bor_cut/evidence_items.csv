@@ -1,0 +1,7 @@
+evidence_id,stage,document_id,parcel_count,rule_version
+DV0000180,deed.held_since,2011071100133001,2,bor-0.2.1
+DV0000318,deed.held_since,2015080700435001,4,bor-0.2.1
+DV0000348,deed.linked_successor,2016072201107001,2,bor-0.2.1
+DV0000379,deed.held_since,2017061600025002,17,bor-0.2.1
+DV0000380,deed.held_since,2017062000029002,10,bor-0.2.1
+DV0000819,deed.held_since,FT_4140002746714,2,bor-0.2.1

@@ -14,7 +14,11 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `violation-status-group.ttl` | Violation status group | `status_group` (open, closed) |
 | `complaint-type.ttl` | Complaint type | `group_value` on type summaries |
 | `litigation-case-type.ttl` | Litigation case type | `case_type` on litigation |
+| `absence-reason.ttl` | Absence reason (five top-level reasons and BOR's detailed codes) | `reason_code`, `top_level_reason` on `NOT_IN_GROUP`, decisions (note 0024) |
+| `link-stage.ttl` | Link stage | `stage` on witness steps, decisions, evidence and metrics (note 0024) |
+| `decision-outcome.ttl` | Decision outcome | `outcome` on BOR decisions (note 0024) |
+| `gold-status.ttl` | Gold status | `adjudication_status` on method metrics (note 0024) |
 
-`skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
+`skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from; `x-bor` carries BOR's own code for the four BOR schemes, whose notation is that code as the release writes it. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
 
 Coded values are added only when a competency question uses them (design note 0004, D5); the recorded raw value is always kept.

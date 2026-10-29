@@ -1,0 +1,2462 @@
+{
+ "snapshot_id": "justfixwow-2026-05-29",
+ "run_id": "2026-05-29-149e871f",
+ "release": "v0.2.1",
+ "derived": "2026-10-29",
+ "source": "the BOR release files and the justfixwow PostgreSQL (read-only); queries in slice4.sql",
+ "how_to_read": "Expected answers for the Slice 4 questions (Q8, Q9, Q10, Q19, Q21, Q26). Group facts are the release's own; lot facts are from the source tables. Units are PLUTO residential units of lots in the rental footprint; buildings are distinct real, non-conflicted BINs on the lots' HPD registrations. The cases other than the anchors were chosen from the release for the evidence they show (cases).",
+ "anchors": {
+  "A": {
+   "bbl": "3008260002"
+  },
+  "B": {
+   "bbl": "3008260005"
+  },
+  "C": {
+   "bbl": "3008070024"
+  },
+  "D": {
+   "bbl": "3008210012"
+  },
+  "E": {
+   "bbl": "3008210019"
+  },
+  "F": {
+   "bbl": "3008970014"
+  },
+  "G": {
+   "bbl": "3008080025"
+  }
+ },
+ "cases": {
+  "H1": {
+   "bbl": "2037660051",
+   "why": "network ON-107620 holds two portfolios"
+  },
+  "H2": {
+   "bbl": "4100220010",
+   "why": "portfolio OP-5346 (deed-bridged) spans two networks"
+  },
+  "H3": {
+   "bbl": "1008890019",
+   "why": "Louvain community ON-2902"
+  },
+  "H4": {
+   "bbl": "3050747501",
+   "why": "registered-LLC link set (OP-25108)"
+  },
+  "H5": {
+   "bbl": "2034980021",
+   "why": "curated owner list (OP-5292)"
+  },
+  "M": {
+   "bbl": "1000167501",
+   "why": "masked aggregator address"
+  },
+  "V": {
+   "bbl": "1000150022",
+   "why": "first-name veto"
+  }
+ },
+ "questions": {
+  "Q9": {
+   "A": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "B": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "C": {
+    "in_group": true,
+    "group_id": "OP-98617",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 5,
+    "total_lot_count": 5,
+    "lots": [
+     "3008070024",
+     "3008870067",
+     "3053340026",
+     "3067510012",
+     "3067970008"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 5,
+    "residential_units": 116,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "98618",
+    "anchor_name": "SAHIT HADZOVIC",
+    "path_steps_by_stage": {
+     "identity.splink_base": 2
+    }
+   },
+   "D": {
+    "in_group": true,
+    "group_id": "OP-53559",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 33,
+    "total_lot_count": 33,
+    "lots": [
+     "3007230067",
+     "3007640036",
+     "3007740059",
+     "3007750065",
+     "3007750080",
+     "3007830021",
+     "3007840038",
+     "3007840039",
+     "3007840045",
+     "3007840047",
+     "3007920024",
+     "3007920056",
+     "3007990025",
+     "3008090002",
+     "3008090003",
+     "3008090004",
+     "3008090005",
+     "3008090006",
+     "3008090007",
+     "3008140020",
+     "3008160037",
+     "3008160042",
+     "3008170001",
+     "3008170005",
+     "3008210012",
+     "3008210071",
+     "3008210072",
+     "3008300033",
+     "3008300035",
+     "3008320051",
+     "3008390006",
+     "3011720027",
+     "3012960008"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 42,
+    "residential_units": 454,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "53559",
+    "anchor_name": "JENNIFER LAU",
+    "path_steps_by_stage": {
+     "identity.splink_base": 2
+    }
+   },
+   "E": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "F": {
+    "in_group": false,
+    "reason_code": "no_registration",
+    "top_level_reason": "outside_source_coverage"
+   },
+   "G": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "H1": {
+    "in_group": true,
+    "group_id": "OP-115414",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 2,
+    "total_lot_count": 2,
+    "lots": [
+     "2037660051",
+     "2048340014"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 2,
+    "residential_units": 19,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 2,
+    "anchor_node_id": "115414",
+    "anchor_name": "YASEEN SHAIBI",
+    "path_steps_by_stage": {
+     "identity.splink_base": 1
+    }
+   },
+   "H2": {
+    "in_group": true,
+    "group_id": "OP-5346",
+    "composition": "deed_bridged",
+    "split": null,
+    "lot_count": 4,
+    "total_lot_count": 4,
+    "lots": [
+     "4100220010",
+     "4100220011",
+     "4100220012",
+     "4100220013"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 4,
+    "residential_units": 12,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 4,
+    "anchor_node_id": "5346",
+    "anchor_name": "AMRIT DABIE",
+    "path_steps_by_stage": {
+     "deed.held_since": 1,
+     "identity.splink_base": 2
+    }
+   },
+   "H3": {
+    "in_group": true,
+    "group_id": "OP-2902",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 3,
+    "total_lot_count": 3,
+    "lots": [
+     "1008890019",
+     "3001830030",
+     "4004230025"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 3,
+    "residential_units": 153,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 2,
+    "anchor_node_id": "2903",
+    "anchor_name": "ALBERT SHIRIAN",
+    "path_steps_by_stage": {
+     "identity.splink_feedback": 1
+    }
+   },
+   "H4": {
+    "in_group": true,
+    "group_id": "OP-25108",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 1,
+    "total_lot_count": 2,
+    "lots": [
+     "3050747501"
+    ],
+    "lots_outside_rental_footprint": [
+     "3050747502"
+    ],
+    "buildings": 1,
+    "residential_units": 16,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 2,
+    "anchor_node_id": "25108",
+    "anchor_name": "DARIO GUARTAN",
+    "path_steps_by_stage": {
+     "identity.registered_llc": 1
+    }
+   },
+   "H5": {
+    "in_group": true,
+    "group_id": "OP-5292",
+    "composition": "identity",
+    "split": null,
+    "lot_count": 6,
+    "total_lot_count": 6,
+    "lots": [
+     "1016880052",
+     "2034980021",
+     "2034980023",
+     "2034980024",
+     "2034980025",
+     "2034980026"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 6,
+    "residential_units": 21,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "87870",
+    "anchor_name": "OSMAN ALI",
+    "path_steps_by_stage": {
+     "identity.curated": 1,
+     "identity.splink_base": 1
+    }
+   },
+   "M": {
+    "in_group": false,
+    "reason_code": "address_evidence_masked",
+    "top_level_reason": "excluded_by_policy"
+   },
+   "V": {
+    "in_group": false,
+    "reason_code": "first_name_veto",
+    "top_level_reason": "below_eligibility_rule"
+   }
+  },
+  "Q8": {
+   "A": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "B": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "C": {
+    "in_group": true,
+    "group_id": "ON-98617",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 5,
+    "total_lot_count": 5,
+    "lots": [
+     "3008070024",
+     "3008870067",
+     "3053340026",
+     "3067510012",
+     "3067970008"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 5,
+    "residential_units": 116,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "98618",
+    "anchor_name": "SAHIT HADZOVIC",
+    "path_steps_by_stage": {
+     "network.identity": 2
+    },
+    "accepted_edges_within": 3,
+    "edges_by_kind": {
+     "address": 1,
+     "name": 1,
+     "identity": 3
+    },
+    "edges_to_other_networks": 0
+   },
+   "D": {
+    "in_group": true,
+    "group_id": "ON-18742",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 35,
+    "total_lot_count": 35,
+    "lots": [
+     "3007230067",
+     "3007640036",
+     "3007740059",
+     "3007750065",
+     "3007750080",
+     "3007830021",
+     "3007840038",
+     "3007840039",
+     "3007840045",
+     "3007840047",
+     "3007920024",
+     "3007920056",
+     "3007990025",
+     "3008090002",
+     "3008090003",
+     "3008090004",
+     "3008090005",
+     "3008090006",
+     "3008090007",
+     "3008140020",
+     "3008160037",
+     "3008160042",
+     "3008170001",
+     "3008170005",
+     "3008210012",
+     "3008210071",
+     "3008210072",
+     "3008300033",
+     "3008300035",
+     "3008320051",
+     "3008390006",
+     "3011720027",
+     "3012960008",
+     "3031990043",
+     "3033190036"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 44,
+    "residential_units": 466,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 4,
+    "anchor_node_id": "53559",
+    "anchor_name": "JENNIFER LAU",
+    "path_steps_by_stage": {
+     "network.address": 1,
+     "network.identity": 2
+    },
+    "accepted_edges_within": 6,
+    "edges_by_kind": {
+     "address": 6,
+     "name": 3,
+     "identity": 3
+    },
+    "edges_to_other_networks": 0
+   },
+   "E": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "F": {
+    "in_group": false,
+    "reason_code": "no_registration",
+    "top_level_reason": "outside_source_coverage"
+   },
+   "G": {
+    "in_group": false,
+    "reason_code": "no_linkage",
+    "top_level_reason": "no_qualifying_linkage"
+   },
+   "H1": {
+    "in_group": true,
+    "group_id": "ON-107620",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 4,
+    "total_lot_count": 4,
+    "lots": [
+     "2037660051",
+     "2040290010",
+     "2042630042",
+     "2048340014"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 4,
+    "residential_units": 29,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 4,
+    "anchor_node_id": "107620",
+    "anchor_name": "TAWFIQ SHUAIBI",
+    "path_steps_by_stage": {
+     "network.address": 1,
+     "network.identity": 2
+    },
+    "accepted_edges_within": 3,
+    "edges_by_kind": {
+     "address": 1,
+     "name": 0,
+     "identity": 2
+    },
+    "edges_to_other_networks": 0
+   },
+   "H2": {
+    "in_group": true,
+    "group_id": "ON-5348",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 2,
+    "total_lot_count": 2,
+    "lots": [
+     "4100220010",
+     "4100220013"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 2,
+    "residential_units": 6,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 2,
+    "anchor_node_id": "5348",
+    "anchor_name": "AMRIT DABIE",
+    "path_steps_by_stage": {
+     "network.identity": 1
+    },
+    "accepted_edges_within": 1,
+    "edges_by_kind": {
+     "address": 0,
+     "name": 0,
+     "identity": 1
+    },
+    "edges_to_other_networks": 0
+   },
+   "H3": {
+    "in_group": true,
+    "group_id": "ON-2902",
+    "composition": null,
+    "split": "louvain",
+    "lot_count": 4,
+    "total_lot_count": 4,
+    "lots": [
+     "1008890019",
+     "3001830030",
+     "3011120003",
+     "4004230025"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 4,
+    "residential_units": 160,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "2903",
+    "anchor_name": "ALBERT SHIRIAN",
+    "path_steps_by_stage": {
+     "network.address": 1,
+     "network.identity": 1
+    },
+    "accepted_edges_within": 2,
+    "edges_by_kind": {
+     "address": 1,
+     "name": 0,
+     "identity": 1
+    },
+    "edges_to_other_networks": 9
+   },
+   "H4": {
+    "in_group": true,
+    "group_id": "ON-16325",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 47,
+    "total_lot_count": 47,
+    "lots": [
+     "1004490018",
+     "1004500020",
+     "1004520047",
+     "1017267503",
+     "1017700159",
+     "1019490001",
+     "1020090029",
+     "1020110026",
+     "1021310023",
+     "1021450036",
+     "1021450038",
+     "1021610103",
+     "1021610114",
+     "1021650007",
+     "1021650009",
+     "2022820005",
+     "3011780067",
+     "3011780069",
+     "3011780072",
+     "3011780075",
+     "3011780079",
+     "3011780083",
+     "3011780087",
+     "3011810068",
+     "3012060064",
+     "3012060066",
+     "3012110039",
+     "3013790001",
+     "3013960001",
+     "3014010039",
+     "3014330040",
+     "3015930028",
+     "3015930128",
+     "3015930130",
+     "3017800024",
+     "3017800026",
+     "3032200005",
+     "3032360005",
+     "3032800031",
+     "3034940028",
+     "3050530051",
+     "3050747501",
+     "3050747502",
+     "3050790001",
+     "3053730046",
+     "3063260019",
+     "3078460013"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 50,
+    "residential_units": 1139,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 19,
+    "anchor_node_id": "83531",
+    "anchor_name": "MOSHE SAURIMPTER",
+    "path_steps_by_stage": {
+     "network.address": 13,
+     "network.identity": 5
+    },
+    "accepted_edges_within": 106,
+    "edges_by_kind": {
+     "address": 105,
+     "name": 2,
+     "identity": 5
+    },
+    "edges_to_other_networks": 0
+   },
+   "H5": {
+    "in_group": true,
+    "group_id": "ON-5292",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 6,
+    "total_lot_count": 6,
+    "lots": [
+     "1016880052",
+     "2034980021",
+     "2034980023",
+     "2034980024",
+     "2034980025",
+     "2034980026"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 6,
+    "residential_units": 21,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 3,
+    "anchor_node_id": "87870",
+    "anchor_name": "OSMAN ALI",
+    "path_steps_by_stage": {
+     "network.identity": 2
+    },
+    "accepted_edges_within": 3,
+    "edges_by_kind": {
+     "address": 3,
+     "name": 0,
+     "identity": 2
+    },
+    "edges_to_other_networks": 0
+   },
+   "M": {
+    "in_group": false,
+    "reason_code": "aggregator_address_masked",
+    "top_level_reason": "excluded_by_policy",
+    "masked_address": {
+     "address": "1430 BROADWAY 505",
+     "shared_by": 38,
+     "threshold": 25
+    }
+   },
+   "V": {
+    "in_group": true,
+    "group_id": "ON-1308",
+    "composition": null,
+    "split": "wcc",
+    "lot_count": 8,
+    "total_lot_count": 8,
+    "lots": [
+     "1000150022",
+     "1000417504",
+     "1006397501",
+     "1008270001",
+     "1010230061",
+     "1012980041",
+     "3001657504",
+     "4000280021"
+    ],
+    "lots_outside_rental_footprint": [],
+    "buildings": 8,
+    "residential_units": 2826,
+    "lots_missing_a_unit_count": 0,
+    "landlord_records": 5,
+    "anchor_node_id": "5446",
+    "anchor_name": "AMY ROSE",
+    "path_steps_by_stage": {
+     "network.address": 4
+    },
+    "accepted_edges_within": 10,
+    "edges_by_kind": {
+     "address": 10,
+     "name": 0,
+     "identity": 0
+    },
+    "edges_to_other_networks": 0
+   }
+  },
+  "Q10": {
+   "D": {
+    "bbl": "3008210012",
+    "owner_portfolio": "OP-53559",
+    "operational_network": "ON-18742",
+    "lots_in_both": 33,
+    "differences": {
+     "only_in_owner_portfolio": {
+      "count": 0,
+      "lots": []
+     },
+     "only_in_operational_network": {
+      "count": 2,
+      "lots": [
+       {
+        "bbl": "3031990043",
+        "other_layer": {
+         "reason_code": "no_linkage"
+        }
+       },
+       {
+        "bbl": "3033190036",
+        "other_layer": {
+         "reason_code": "no_linkage"
+        }
+       }
+      ]
+     }
+    },
+    "portfolios_in_the_network": {
+     "(none)": 2,
+     "OP-53559": 33
+    },
+    "networks_in_the_portfolio": {
+     "ON-18742": 33
+    }
+   },
+   "H1": {
+    "bbl": "2037660051",
+    "owner_portfolio": "OP-115414",
+    "operational_network": "ON-107620",
+    "lots_in_both": 2,
+    "differences": {
+     "only_in_owner_portfolio": {
+      "count": 0,
+      "lots": []
+     },
+     "only_in_operational_network": {
+      "count": 2,
+      "lots": [
+       {
+        "bbl": "2040290010",
+        "other_layer": {
+         "group_id": "OP-107620"
+        }
+       },
+       {
+        "bbl": "2042630042",
+        "other_layer": {
+         "group_id": "OP-107620"
+        }
+       }
+      ]
+     }
+    },
+    "portfolios_in_the_network": {
+     "OP-107620": 2,
+     "OP-115414": 2
+    },
+    "networks_in_the_portfolio": {
+     "ON-107620": 2
+    }
+   },
+   "H2": {
+    "bbl": "4100220010",
+    "owner_portfolio": "OP-5346",
+    "operational_network": "ON-5348",
+    "lots_in_both": 2,
+    "differences": {
+     "only_in_owner_portfolio": {
+      "count": 2,
+      "lots": [
+       {
+        "bbl": "4100220011",
+        "other_layer": {
+         "group_id": "ON-5346"
+        }
+       },
+       {
+        "bbl": "4100220012",
+        "other_layer": {
+         "group_id": "ON-5346"
+        }
+       }
+      ]
+     },
+     "only_in_operational_network": {
+      "count": 0,
+      "lots": []
+     }
+    },
+    "portfolios_in_the_network": {
+     "OP-5346": 2
+    },
+    "networks_in_the_portfolio": {
+     "ON-5346": 2,
+     "ON-5348": 2
+    }
+   },
+   "C": {
+    "bbl": "3008070024",
+    "owner_portfolio": "OP-98617",
+    "operational_network": "ON-98617",
+    "lots_in_both": 5,
+    "differences": {
+     "only_in_owner_portfolio": {
+      "count": 0,
+      "lots": []
+     },
+     "only_in_operational_network": {
+      "count": 0,
+      "lots": []
+     }
+    },
+    "portfolios_in_the_network": {
+     "OP-98617": 5
+    },
+    "networks_in_the_portfolio": {
+     "ON-98617": 5
+    }
+   }
+  },
+  "Q19": [
+   {
+    "a": "C",
+    "b": "C2",
+    "bbl_a": "3008070024",
+    "bbl_b": "3067970008",
+    "owner_portfolio": {
+     "verdict": "same_group",
+     "groups": [
+      "OP-98617",
+      "OP-98617"
+     ],
+     "absences": {}
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-98617",
+      "ON-98617"
+     ],
+     "absences": {}
+    }
+   },
+   {
+    "a": "A",
+    "b": "B",
+    "bbl_a": "3008260002",
+    "bbl_b": "3008260005",
+    "owner_portfolio": {
+     "verdict": "neither_in_a_group",
+     "groups": [
+      null,
+      null
+     ],
+     "absences": {
+      "3008260002": {
+       "in_group": false,
+       "reason_code": "no_linkage",
+       "top_level_reason": "no_qualifying_linkage"
+      },
+      "3008260005": {
+       "in_group": false,
+       "reason_code": "no_linkage",
+       "top_level_reason": "no_qualifying_linkage"
+      }
+     }
+    },
+    "operational_network": {
+     "verdict": "neither_in_a_group",
+     "groups": [
+      null,
+      null
+     ],
+     "absences": {
+      "3008260002": {
+       "in_group": false,
+       "reason_code": "no_linkage",
+       "top_level_reason": "no_qualifying_linkage"
+      },
+      "3008260005": {
+       "in_group": false,
+       "reason_code": "no_linkage",
+       "top_level_reason": "no_qualifying_linkage"
+      }
+     }
+    }
+   },
+   {
+    "a": "D",
+    "b": "D2",
+    "bbl_a": "3008210012",
+    "bbl_b": "3031990043",
+    "owner_portfolio": {
+     "verdict": "only_one_in_a_group",
+     "groups": [
+      "OP-53559",
+      null
+     ],
+     "absences": {
+      "3031990043": {
+       "in_group": false,
+       "reason_code": "no_linkage",
+       "top_level_reason": "no_qualifying_linkage"
+      }
+     }
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-18742",
+      "ON-18742"
+     ],
+     "absences": {}
+    }
+   },
+   {
+    "a": "H2",
+    "b": "H2b",
+    "bbl_a": "4100220010",
+    "bbl_b": "4100220013",
+    "owner_portfolio": {
+     "verdict": "same_group",
+     "groups": [
+      "OP-5346",
+      "OP-5346"
+     ],
+     "absences": {}
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-5348",
+      "ON-5348"
+     ],
+     "absences": {}
+    }
+   },
+   {
+    "a": "H3",
+    "b": "H3b",
+    "bbl_a": "1008890019",
+    "bbl_b": "3001830030",
+    "owner_portfolio": {
+     "verdict": "same_group",
+     "groups": [
+      "OP-2902",
+      "OP-2902"
+     ],
+     "absences": {}
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-2902",
+      "ON-2902"
+     ],
+     "absences": {}
+    }
+   },
+   {
+    "a": "H4",
+    "b": "H4b",
+    "bbl_a": "3050747501",
+    "bbl_b": "3050747502",
+    "owner_portfolio": {
+     "verdict": "same_group",
+     "groups": [
+      "OP-25108",
+      "OP-25108"
+     ],
+     "absences": {}
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-16325",
+      "ON-16325"
+     ],
+     "absences": {}
+    }
+   },
+   {
+    "a": "H5",
+    "b": "H5b",
+    "bbl_a": "2034980021",
+    "bbl_b": "2034980026",
+    "owner_portfolio": {
+     "verdict": "same_group",
+     "groups": [
+      "OP-5292",
+      "OP-5292"
+     ],
+     "absences": {}
+    },
+    "operational_network": {
+     "verdict": "same_group",
+     "groups": [
+      "ON-5292",
+      "ON-5292"
+     ],
+     "absences": {}
+    }
+   }
+  ],
+  "Q21": {
+   "C": {
+    "bbl": "3008070024",
+    "owner_portfolio": {
+     "group_id": "OP-98617",
+     "lots": 5,
+     "total_open_abc": 5,
+     "by_class": {
+      "A": 0,
+      "B": 2,
+      "C": 3,
+      "I": 0
+     },
+     "lots_with_any_open": 2,
+     "top_lots_by_open_per_unit": [
+      "3008070024",
+      "3053340026",
+      "3008870067",
+      "3067510012",
+      "3067970008"
+     ],
+     "top3_by_count": [
+      "3008070024",
+      "3053340026",
+      "3008870067"
+     ],
+     "share_held_by_top_3": 1.0,
+     "residential_units": 116,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "3008070024",
+       "open_by_class": {
+        "A": 0,
+        "B": 2,
+        "C": 2,
+        "I": 0
+       },
+       "abc": 4,
+       "units": 32,
+       "per_unit": 0.125
+      },
+      {
+       "bbl": "3008870067",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3053340026",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 12,
+       "per_unit": 0.083
+      },
+      {
+       "bbl": "3067510012",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 36,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3067970008",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 28,
+       "per_unit": 0.0
+      }
+     ]
+    },
+    "operational_network": {
+     "group_id": "ON-98617",
+     "lots": 5,
+     "total_open_abc": 5,
+     "by_class": {
+      "A": 0,
+      "B": 2,
+      "C": 3,
+      "I": 0
+     },
+     "lots_with_any_open": 2,
+     "top_lots_by_open_per_unit": [
+      "3008070024",
+      "3053340026",
+      "3008870067",
+      "3067510012",
+      "3067970008"
+     ],
+     "top3_by_count": [
+      "3008070024",
+      "3053340026",
+      "3008870067"
+     ],
+     "share_held_by_top_3": 1.0,
+     "residential_units": 116,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "3008070024",
+       "open_by_class": {
+        "A": 0,
+        "B": 2,
+        "C": 2,
+        "I": 0
+       },
+       "abc": 4,
+       "units": 32,
+       "per_unit": 0.125
+      },
+      {
+       "bbl": "3008870067",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3053340026",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 12,
+       "per_unit": 0.083
+      },
+      {
+       "bbl": "3067510012",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 36,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3067970008",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 28,
+       "per_unit": 0.0
+      }
+     ]
+    }
+   },
+   "D": {
+    "bbl": "3008210012",
+    "owner_portfolio": {
+     "group_id": "OP-53559",
+     "lots": 33,
+     "total_open_abc": 15,
+     "by_class": {
+      "A": 3,
+      "B": 6,
+      "C": 6,
+      "I": 0
+     },
+     "lots_with_any_open": 7,
+     "top_lots_by_open_per_unit": [
+      "3007640036",
+      "3008090005",
+      "3008210071",
+      "3008300035",
+      "3007830021"
+     ],
+     "top3_by_count": [
+      "3007640036",
+      "3008090005",
+      "3007830021"
+     ],
+     "share_held_by_top_3": 0.733,
+     "residential_units": 454,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "3007230067",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 24,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007640036",
+       "open_by_class": {
+        "A": 2,
+        "B": 4,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 7,
+       "units": 8,
+       "per_unit": 0.875
+      },
+      {
+       "bbl": "3007740059",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007750065",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007750080",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007830021",
+       "open_by_class": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 32,
+       "per_unit": 0.031
+      },
+      {
+       "bbl": "3007840038",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840039",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 12,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840045",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840047",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007920024",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007920056",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007990025",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090002",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090003",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090004",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090005",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 3,
+        "I": 0
+       },
+       "abc": 3,
+       "units": 6,
+       "per_unit": 0.5
+      },
+      {
+       "bbl": "3008090006",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090007",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008140020",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 12,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008160037",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 25,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008160042",
+       "open_by_class": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 45,
+       "per_unit": 0.022
+      },
+      {
+       "bbl": "3008170001",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008170005",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 38,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008210012",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 18,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008210071",
+       "open_by_class": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 6,
+       "per_unit": 0.167
+      },
+      {
+       "bbl": "3008210072",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008300033",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 9,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008300035",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 9,
+       "per_unit": 0.111
+      },
+      {
+       "bbl": "3008320051",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008390006",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3011720027",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 15,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3012960008",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 35,
+       "per_unit": 0.029
+      }
+     ]
+    },
+    "operational_network": {
+     "group_id": "ON-18742",
+     "lots": 35,
+     "total_open_abc": 18,
+     "by_class": {
+      "A": 4,
+      "B": 8,
+      "C": 6,
+      "I": 0
+     },
+     "lots_with_any_open": 8,
+     "top_lots_by_open_per_unit": [
+      "3007640036",
+      "3008090005",
+      "3033190036",
+      "3008210071",
+      "3008300035"
+     ],
+     "top3_by_count": [
+      "3007640036",
+      "3008090005",
+      "3033190036"
+     ],
+     "share_held_by_top_3": 0.722,
+     "residential_units": 466,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "3007230067",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 24,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007640036",
+       "open_by_class": {
+        "A": 2,
+        "B": 4,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 7,
+       "units": 8,
+       "per_unit": 0.875
+      },
+      {
+       "bbl": "3007740059",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007750065",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007750080",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007830021",
+       "open_by_class": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 32,
+       "per_unit": 0.031
+      },
+      {
+       "bbl": "3007840038",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840039",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 12,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840045",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007840047",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007920024",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007920056",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3007990025",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 8,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090002",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090003",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090004",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090005",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 3,
+        "I": 0
+       },
+       "abc": 3,
+       "units": 6,
+       "per_unit": 0.5
+      },
+      {
+       "bbl": "3008090006",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008090007",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008140020",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 12,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008160037",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 25,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008160042",
+       "open_by_class": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 45,
+       "per_unit": 0.022
+      },
+      {
+       "bbl": "3008170001",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 16,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008170005",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 38,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008210012",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 18,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008210071",
+       "open_by_class": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 6,
+       "per_unit": 0.167
+      },
+      {
+       "bbl": "3008210072",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008300033",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 9,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008300035",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 9,
+       "per_unit": 0.111
+      },
+      {
+       "bbl": "3008320051",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3008390006",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3011720027",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 15,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3012960008",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 35,
+       "per_unit": 0.029
+      },
+      {
+       "bbl": "3031990043",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 6,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "3033190036",
+       "open_by_class": {
+        "A": 1,
+        "B": 2,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 3,
+       "units": 6,
+       "per_unit": 0.5
+      }
+     ]
+    }
+   },
+   "H2": {
+    "bbl": "4100220010",
+    "owner_portfolio": {
+     "group_id": "OP-5346",
+     "lots": 4,
+     "total_open_abc": 1,
+     "by_class": {
+      "A": 1,
+      "B": 0,
+      "C": 0,
+      "I": 0
+     },
+     "lots_with_any_open": 1,
+     "top_lots_by_open_per_unit": [
+      "4100220013",
+      "4100220010",
+      "4100220011",
+      "4100220012"
+     ],
+     "top3_by_count": [
+      "4100220013",
+      "4100220010",
+      "4100220011"
+     ],
+     "share_held_by_top_3": 1.0,
+     "residential_units": 12,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "4100220010",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 3,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "4100220011",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 3,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "4100220012",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 3,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "4100220013",
+       "open_by_class": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 3,
+       "per_unit": 0.333
+      }
+     ]
+    },
+    "operational_network": {
+     "group_id": "ON-5348",
+     "lots": 2,
+     "total_open_abc": 1,
+     "by_class": {
+      "A": 1,
+      "B": 0,
+      "C": 0,
+      "I": 0
+     },
+     "lots_with_any_open": 1,
+     "top_lots_by_open_per_unit": [
+      "4100220013",
+      "4100220010"
+     ],
+     "top3_by_count": [
+      "4100220013",
+      "4100220010"
+     ],
+     "share_held_by_top_3": 1.0,
+     "residential_units": 6,
+     "lots_missing_a_unit_count": 0,
+     "per_lot": [
+      {
+       "bbl": "4100220010",
+       "open_by_class": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 0,
+       "units": 3,
+       "per_unit": 0.0
+      },
+      {
+       "bbl": "4100220013",
+       "open_by_class": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "I": 0
+       },
+       "abc": 1,
+       "units": 3,
+       "per_unit": 0.333
+      }
+     ]
+    }
+   }
+  },
+  "Q26": {
+   "D": {
+    "bbl": "3008210012",
+    "hpd_registrations": 3,
+    "violation_rows": 3,
+    "litigation_cases": 0,
+    "complaint_problem_rows": 155,
+    "owner_portfolio": {
+     "in_group": true,
+     "group_id": "OP-53559",
+     "composition": "identity",
+     "split": null,
+     "lot_count": 33,
+     "total_lot_count": 33,
+     "lots": [
+      "3007230067",
+      "3007640036",
+      "3007740059",
+      "3007750065",
+      "3007750080",
+      "3007830021",
+      "3007840038",
+      "3007840039",
+      "3007840045",
+      "3007840047",
+      "3007920024",
+      "3007920056",
+      "3007990025",
+      "3008090002",
+      "3008090003",
+      "3008090004",
+      "3008090005",
+      "3008090006",
+      "3008090007",
+      "3008140020",
+      "3008160037",
+      "3008160042",
+      "3008170001",
+      "3008170005",
+      "3008210012",
+      "3008210071",
+      "3008210072",
+      "3008300033",
+      "3008300035",
+      "3008320051",
+      "3008390006",
+      "3011720027",
+      "3012960008"
+     ],
+     "lots_outside_rental_footprint": [],
+     "buildings": 42,
+     "residential_units": 454,
+     "lots_missing_a_unit_count": 0,
+     "landlord_records": 3,
+     "anchor_node_id": "53559",
+     "anchor_name": "JENNIFER LAU",
+     "path_steps_by_stage": {
+      "identity.splink_base": 2
+     }
+    },
+    "operational_network": {
+     "in_group": true,
+     "group_id": "ON-18742",
+     "composition": null,
+     "split": "wcc",
+     "lot_count": 35,
+     "total_lot_count": 35,
+     "lots": [
+      "3007230067",
+      "3007640036",
+      "3007740059",
+      "3007750065",
+      "3007750080",
+      "3007830021",
+      "3007840038",
+      "3007840039",
+      "3007840045",
+      "3007840047",
+      "3007920024",
+      "3007920056",
+      "3007990025",
+      "3008090002",
+      "3008090003",
+      "3008090004",
+      "3008090005",
+      "3008090006",
+      "3008090007",
+      "3008140020",
+      "3008160037",
+      "3008160042",
+      "3008170001",
+      "3008170005",
+      "3008210012",
+      "3008210071",
+      "3008210072",
+      "3008300033",
+      "3008300035",
+      "3008320051",
+      "3008390006",
+      "3011720027",
+      "3012960008",
+      "3031990043",
+      "3033190036"
+     ],
+     "lots_outside_rental_footprint": [],
+     "buildings": 44,
+     "residential_units": 466,
+     "lots_missing_a_unit_count": 0,
+     "landlord_records": 4,
+     "anchor_node_id": "53559",
+     "anchor_name": "JENNIFER LAU",
+     "path_steps_by_stage": {
+      "network.address": 1,
+      "network.identity": 2
+     },
+     "accepted_edges_within": 6,
+     "edges_by_kind": {
+      "address": 6,
+      "name": 3,
+      "identity": 3
+     },
+     "edges_to_other_networks": 0
+    }
+   },
+   "F": {
+    "bbl": "3008970014",
+    "hpd_registrations": 0,
+    "violation_rows": 0,
+    "litigation_cases": 0,
+    "complaint_problem_rows": 0,
+    "owner_portfolio": {
+     "in_group": false,
+     "reason_code": "no_registration",
+     "top_level_reason": "outside_source_coverage"
+    },
+    "operational_network": {
+     "in_group": false,
+     "reason_code": "no_registration",
+     "top_level_reason": "outside_source_coverage"
+    }
+   },
+   "M": {
+    "bbl": "1000167501",
+    "hpd_registrations": 1,
+    "violation_rows": 8,
+    "litigation_cases": 0,
+    "complaint_problem_rows": 32,
+    "owner_portfolio": {
+     "in_group": false,
+     "reason_code": "address_evidence_masked",
+     "top_level_reason": "excluded_by_policy"
+    },
+    "operational_network": {
+     "in_group": false,
+     "reason_code": "aggregator_address_masked",
+     "top_level_reason": "excluded_by_policy",
+     "masked_address": {
+      "address": "1430 BROADWAY 505",
+      "shared_by": 38,
+      "threshold": 25
+     }
+    }
+   },
+   "V": {
+    "bbl": "1000150022",
+    "hpd_registrations": 1,
+    "violation_rows": 4,
+    "litigation_cases": 0,
+    "complaint_problem_rows": 25,
+    "owner_portfolio": {
+     "in_group": false,
+     "reason_code": "first_name_veto",
+     "top_level_reason": "below_eligibility_rule"
+    },
+    "operational_network": {
+     "in_group": true,
+     "group_id": "ON-1308",
+     "composition": null,
+     "split": "wcc",
+     "lot_count": 8,
+     "total_lot_count": 8,
+     "lots": [
+      "1000150022",
+      "1000417504",
+      "1006397501",
+      "1008270001",
+      "1010230061",
+      "1012980041",
+      "3001657504",
+      "4000280021"
+     ],
+     "lots_outside_rental_footprint": [],
+     "buildings": 8,
+     "residential_units": 2826,
+     "lots_missing_a_unit_count": 0,
+     "landlord_records": 5,
+     "anchor_node_id": "5446",
+     "anchor_name": "AMY ROSE",
+     "path_steps_by_stage": {
+      "network.address": 4
+     },
+     "accepted_edges_within": 10,
+     "edges_by_kind": {
+      "address": 10,
+      "name": 0,
+      "identity": 0
+     },
+     "edges_to_other_networks": 0
+    }
+   },
+   "A": {
+    "bbl": "3008260002",
+    "hpd_registrations": 1,
+    "violation_rows": 20,
+    "litigation_cases": 4,
+    "complaint_problem_rows": 215,
+    "owner_portfolio": {
+     "in_group": false,
+     "reason_code": "no_linkage",
+     "top_level_reason": "no_qualifying_linkage"
+    },
+    "operational_network": {
+     "in_group": false,
+     "reason_code": "no_linkage",
+     "top_level_reason": "no_qualifying_linkage"
+    }
+   },
+   "C": {
+    "bbl": "3008070024",
+    "hpd_registrations": 1,
+    "violation_rows": 10,
+    "litigation_cases": 1,
+    "complaint_problem_rows": 230,
+    "owner_portfolio": {
+     "in_group": true,
+     "group_id": "OP-98617",
+     "composition": "identity",
+     "split": null,
+     "lot_count": 5,
+     "total_lot_count": 5,
+     "lots": [
+      "3008070024",
+      "3008870067",
+      "3053340026",
+      "3067510012",
+      "3067970008"
+     ],
+     "lots_outside_rental_footprint": [],
+     "buildings": 5,
+     "residential_units": 116,
+     "lots_missing_a_unit_count": 0,
+     "landlord_records": 3,
+     "anchor_node_id": "98618",
+     "anchor_name": "SAHIT HADZOVIC",
+     "path_steps_by_stage": {
+      "identity.splink_base": 2
+     }
+    },
+    "operational_network": {
+     "in_group": true,
+     "group_id": "ON-98617",
+     "composition": null,
+     "split": "wcc",
+     "lot_count": 5,
+     "total_lot_count": 5,
+     "lots": [
+      "3008070024",
+      "3008870067",
+      "3053340026",
+      "3067510012",
+      "3067970008"
+     ],
+     "lots_outside_rental_footprint": [],
+     "buildings": 5,
+     "residential_units": 116,
+     "lots_missing_a_unit_count": 0,
+     "landlord_records": 3,
+     "anchor_node_id": "98618",
+     "anchor_name": "SAHIT HADZOVIC",
+     "path_steps_by_stage": {
+      "network.identity": 2
+     },
+     "accepted_edges_within": 3,
+     "edges_by_kind": {
+      "address": 1,
+      "name": 1,
+      "identity": 3
+     },
+     "edges_to_other_networks": 0
+    }
+   }
+  }
+ }
+}

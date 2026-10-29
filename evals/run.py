@@ -36,14 +36,14 @@ def upload_dataset(client: Client, examples: list[dict]):
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--only", help="a question id such as Q3")
+    ap.add_argument("--only", help="a question id such as Q3, or several separated by commas")
     ap.add_argument("--no-judge", action="store_true")
     ap.add_argument("--upload", action="store_true", help="send the dataset and results to LangSmith")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--concurrency", type=int, default=2)
     args = ap.parse_args()
     load_dotenv(ROOT / ".env")
-    examples = [e for e in build_examples() if not args.only or e["metadata"]["question_id"] == args.only][: args.limit]
+    examples = [e for e in build_examples() if not args.only or e["metadata"]["question_id"] in args.only.split(",")][: args.limit]
     evaluators = [*DETERMINISTIC, *([] if args.no_judge else [make_judge()])]
     data = as_examples(examples)
     if args.upload:

@@ -1,0 +1,212 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix absence: <https://bobflagg.github.io/Watchline/vocab/absence-reason/> .
+
+absence: a skos:ConceptScheme ;
+    dcterms:title "Absence reason"@en ;
+    dcterms:description "Why a lot is not in an Owner Portfolio or Operational Network: the five top-level reasons of design note 0007, in precedence order, and BOR's detailed reason codes narrower than them (design note 0024, O3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in reason_code (detailed) and top_level_reason, exactly as BOR's release writes it (reason_vocabulary_version 0.2.1). When several reasons apply the primary one is the earliest level that removed the lot. An absence describes what the method did or did not use; it is never evidence that no relationship exists or that the owners differ."@en ;
+    skos:hasTopConcept absence:outside_source_coverage, absence:outside_method_input, absence:excluded_by_policy, absence:below_eligibility_rule, absence:no_qualifying_linkage .
+
+absence:outside_source_coverage a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:topConceptOf absence: ;
+    skos:notation "outside_source_coverage" ;
+    skos:prefLabel "Outside source coverage"@en ;
+    skos:definition "The source holds no record for the lot (no HPD registration). The method could not see it."@en .
+absence:outside_method_input a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:topConceptOf absence: ;
+    skos:notation "outside_method_input" ;
+    skos:prefLabel "Outside method input"@en ;
+    skos:definition "The source holds the record but the method did not use it (no qualifying person owner contact, or the landlord record matched no resolved identity). Not a source-coverage gap."@en .
+absence:excluded_by_policy a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:topConceptOf absence: ;
+    skos:notation "excluded_by_policy" ;
+    skos:prefLabel "Excluded by policy"@en ;
+    skos:definition "A rule of the method removed the lot on purpose (a masked address, a co-op or condo screen, an institutional screen, a curated exclusion)."@en .
+absence:below_eligibility_rule a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:topConceptOf absence: ;
+    skos:notation "below_eligibility_rule" ;
+    skos:prefLabel "Below an eligibility rule"@en ;
+    skos:definition "A candidate link was evaluated and blocked by a guard or veto (a name veto, a shared-company guard, a deed range or staleness guard)."@en .
+absence:no_qualifying_linkage a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:topConceptOf absence: ;
+    skos:notation "no_qualifying_linkage" ;
+    skos:prefLabel "No qualifying linkage"@en ;
+    skos:definition "The method found no accepted link to another record. It does not show that no relationship exists."@en .
+absence:no_registration a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:outside_source_coverage ;
+    skos:notation "no_registration" ;
+    skos:prefLabel "No registration"@en ;
+    skos:hiddenLabel "no_registration"@x-bor ;
+    skos:definition "No HPD registration for the lot."@en .
+absence:no_owner_contact a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:outside_method_input ;
+    skos:notation "no_owner_contact" ;
+    skos:prefLabel "No owner contact"@en ;
+    skos:hiddenLabel "no_owner_contact"@x-bor ;
+    skos:definition "Registered, but no qualifying person owner contact (no wow_landlords row)."@en .
+absence:not_latest_registration a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:outside_method_input ;
+    skos:notation "not_latest_registration" ;
+    skos:prefLabel "Not latest registration"@en ;
+    skos:hiddenLabel "not_latest_registration"@x-bor ;
+    skos:definition "The contact is on a registration the method did not use."@en .
+absence:unmatched_node a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:outside_method_input ;
+    skos:notation "unmatched_node" ;
+    skos:prefLabel "Unmatched node"@en ;
+    skos:hiddenLabel "unmatched_node"@x-bor ;
+    skos:definition "Landlord node matched no resolved identity."@en .
+absence:coop_condo_excluded a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "coop_condo_excluded" ;
+    skos:prefLabel "Coop condo excluded"@en ;
+    skos:hiddenLabel "coop_condo_excluded"@x-bor ;
+    skos:definition "Building is a co-op or condo, left out of a surviving group's rental footprint."@en .
+absence:coop_condo_dominated a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "coop_condo_dominated" ;
+    skos:prefLabel "Coop condo dominated"@en ;
+    skos:hiddenLabel "coop_condo_dominated"@x-bor ;
+    skos:definition "Dropped: co-op and condo lots are the majority of a group's footprint, or of a deed's parcels."@en .
+absence:institutional_screen a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "institutional_screen" ;
+    skos:prefLabel "Institutional screen"@en ;
+    skos:hiddenLabel "institutional_screen"@x-bor ;
+    skos:definition "Deed parties screened as institutional or public."@en .
+absence:deed_hub_capped a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "deed_hub_capped" ;
+    skos:prefLabel "Deed hub capped"@en ;
+    skos:hiddenLabel "deed_hub_capped"@x-bor ;
+    skos:definition "Node on more multi-parcel deeds than the hub cap."@en .
+absence:aggregator_address_masked a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "aggregator_address_masked" ;
+    skos:prefLabel "Aggregator address masked"@en ;
+    skos:hiddenLabel "aggregator_address_masked"@x-bor ;
+    skos:definition "Address-edge mask: the address is shared by more landlords than the threshold."@en .
+absence:address_evidence_masked a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "address_evidence_masked" ;
+    skos:prefLabel "Address evidence masked"@en ;
+    skos:hiddenLabel "address_evidence_masked"@x-bor ;
+    skos:definition "Address-evidence mask: the address is shared by more landlords than the threshold."@en .
+absence:curated_exclusion a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:excluded_by_policy ;
+    skos:notation "curated_exclusion" ;
+    skos:prefLabel "Curated exclusion"@en ;
+    skos:hiddenLabel "curated_exclusion"@x-bor ;
+    skos:definition "Curated exclusion (for example a servicer officer)."@en .
+absence:deed_parcels_out_of_range a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "deed_parcels_out_of_range" ;
+    skos:prefLabel "Deed parcels out of range"@en ;
+    skos:hiddenLabel "deed_parcels_out_of_range"@x-bor ;
+    skos:definition "Deed outside the 2 to 25 parcel range."@en .
+absence:deed_not_latest a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "deed_not_latest" ;
+    skos:prefLabel "Deed not latest"@en ;
+    skos:hiddenLabel "deed_not_latest"@x-bor ;
+    skos:definition "Staleness guard: the joint deed is no longer the parcel's latest deed."@en .
+absence:successor_not_shell a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "successor_not_shell" ;
+    skos:prefLabel "Successor not shell"@en ;
+    skos:hiddenLabel "successor_not_shell"@x-bor ;
+    skos:definition "Linked-successor guard: the successor holds more buildings than the shell cap."@en .
+absence:successor_transfer_not_nominal a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "successor_transfer_not_nominal" ;
+    skos:prefLabel "Successor transfer not nominal"@en ;
+    skos:hiddenLabel "successor_transfer_not_nominal"@x-bor ;
+    skos:definition "Linked-successor guard: the onward transfer is not at nominal consideration."@en .
+absence:first_name_veto a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "first_name_veto" ;
+    skos:prefLabel "First name veto"@en ;
+    skos:hiddenLabel "first_name_veto"@x-bor ;
+    skos:definition "Pair blocked by the first-name veto."@en .
+absence:common_name_veto a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "common_name_veto" ;
+    skos:prefLabel "Common name veto"@en ;
+    skos:hiddenLabel "common_name_veto"@x-bor ;
+    skos:definition "Pair blocked by the common-name veto."@en .
+absence:shared_company_name_not_rare a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "shared_company_name_not_rare" ;
+    skos:prefLabel "Shared company name not rare"@en ;
+    skos:hiddenLabel "shared_company_name_not_rare"@x-bor ;
+    skos:definition "Shared-company pass: the name is not rare enough."@en .
+absence:shared_company_first_name_conflict a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "shared_company_first_name_conflict" ;
+    skos:prefLabel "Shared company first name conflict"@en ;
+    skos:hiddenLabel "shared_company_first_name_conflict"@x-bor ;
+    skos:definition "Shared-company pass: first names are not compatible."@en .
+absence:shared_company_degree_cap a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "shared_company_degree_cap" ;
+    skos:prefLabel "Shared company degree cap"@en ;
+    skos:hiddenLabel "shared_company_degree_cap"@x-bor ;
+    skos:definition "Shared-company pass: too many contacts under the company."@en .
+absence:shared_company_degree_unknown a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "shared_company_degree_unknown" ;
+    skos:prefLabel "Shared company degree unknown"@en ;
+    skos:hiddenLabel "shared_company_degree_unknown"@x-bor ;
+    skos:definition "Shared-company pass: the company has no degree record, so the pass leaves it out."@en .
+absence:group_below_min_size a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:below_eligibility_rule ;
+    skos:notation "group_below_min_size" ;
+    skos:prefLabel "Group below min size"@en ;
+    skos:hiddenLabel "group_below_min_size"@x-bor ;
+    skos:definition "Component smaller than the minimum group size."@en .
+absence:no_linkage a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:no_qualifying_linkage ;
+    skos:notation "no_linkage" ;
+    skos:prefLabel "No linkage"@en ;
+    skos:hiddenLabel "no_linkage"@x-bor ;
+    skos:definition "No accepted edge connected the node to another."@en .
+absence:pair_below_threshold a skos:Concept ;
+    skos:inScheme absence: ;
+    skos:broader absence:no_qualifying_linkage ;
+    skos:notation "pair_below_threshold" ;
+    skos:prefLabel "Pair below threshold"@en ;
+    skos:hiddenLabel "pair_below_threshold"@x-bor ;
+    skos:definition "A scored pair fell below the threshold (recorded only if a release opts in)."@en .

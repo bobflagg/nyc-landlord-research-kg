@@ -181,3 +181,24 @@ def acris_references(conn):
             cur.execute("select documentid, referencebycrfn, referencebydocid, referencebyreelnbr from real_property_references where documentid = any(%s)", (ids,))
             return cur.fetchall()
     return fetch
+
+
+def fingerprint(conn, table: str) -> tuple[int, str]:
+    """Row count and an order-independent fingerprint of a source table, in the form BOR's release records (its documented
+    fingerprint_sql, copied here, not imported): count plus the sum of the first 60 bits of md5 of each row's text."""
+    if not table.isidentifier():
+        raise ValueError(table)
+    with conn.cursor() as cur:
+        cur.execute(f"SELECT count(*) AS n, coalesce(sum(('x' || substr(md5(t::text), 1, 15))::bit(60)::bigint), 0) AS f FROM {table} t")
+        row = cur.fetchone()
+        return int(row["n"]), str(row["f"])
+
+
+def snapshot_basis(conn) -> dict[str, str]:
+    """The newest value of each column a snapshot date rests on (BOR snapshot_date_basis), as ISO dates."""
+    out = {}
+    with conn.cursor() as cur:
+        for table, col in (("real_property_master", "recordedfiled"), ("hpd_registrations", "lastregistrationdate")):
+            cur.execute(f"select max({col})::date::text as d from {table} where {col}::date <= current_date")
+            out[f"{table}.{col}"] = cur.fetchone()["d"]
+    return out

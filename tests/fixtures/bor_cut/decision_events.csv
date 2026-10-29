@@ -1,0 +1,51 @@
+decision_id,layer,stage,subject_type,subject_id,counterpart_type,counterpart_id,outcome,reason_code,rule,rule_version,score,threshold,cluster_id,detail
+D0000359,identity,identity.splink_base,identity,I0001403,identity,I0031164,accepted,,splink_model,nlr-0.2.0,0.9999998841858003,0.999,C0001400,
+D0000360,identity,identity.splink_base,identity,I0001403,identity,I0121991,accepted,,splink_model,nlr-0.2.0,0.9999998841858003,0.999,C0001400,
+D0002263,identity,identity.splink_base,identity,I0008627,identity,I0119732,accepted,,splink_model,nlr-0.2.0,0.9999999050539391,0.999,C0008542,
+D0007415,identity,identity.splink_base,identity,I0031164,identity,I0121991,accepted,,splink_model,nlr-0.2.0,0.9999998841858003,0.999,C0001400,
+D0009626,identity,identity.splink_base,identity,I0041731,identity,I0061118,accepted,,splink_model,nlr-0.2.0,0.9999999987180536,0.999,C0040147,
+D0010527,identity,identity.splink_base,identity,I0046423,identity,I0093041,accepted,,splink_model,nlr-0.2.0,0.9999999999710166,0.999,C0044503,
+D0010528,identity,identity.splink_base,identity,I0046423,identity,I0117627,accepted,,splink_model,nlr-0.2.0,0.9999999980381047,0.999,C0044503,
+D0012219,identity,identity.splink_base,identity,I0055734,identity,I0096917,accepted,,splink_model,nlr-0.2.0,0.99951267297673,0.999,C0053090,
+D0012221,identity,identity.splink_base,identity,I0055749,identity,I0062625,accepted,,splink_model,nlr-0.2.0,0.9990678022584342,0.999,C0053102,
+D0017174,identity,identity.splink_base,identity,I0092141,identity,I0126331,accepted,,splink_model,nlr-0.2.0,0.9999999998013925,0.999,C0085428,
+D0017281,identity,identity.splink_base,identity,I0093041,identity,I0117627,accepted,,splink_model,nlr-0.2.0,0.9999999980381047,0.999,C0044503,
+D0018213,identity,identity.splink_base,identity,I0102979,identity,I0139807,accepted,,splink_model,nlr-0.2.0,0.9999999970442957,0.999,C0094796,
+D0028357,identity,identity.splink_feedback,base_cluster,BC0034892,base_cluster,BC0114695,accepted,,shared_company_feedback,nlr-0.2.0,,,C0034786,"{""n_shared_corporations"": 1}"
+E0000954,owner_portfolio,deed.linked_successor,parcel,1008770044,deed_document,2011071100133001,rejected,deed_not_latest,deed_latest_rule,bor-0.2.1,,,,"{""latest_amount"": 5300000.0}"
+E0001595,owner_portfolio,deed.linked_successor,parcel,2034980024,deed_document,2013120600683001,rejected,successor_transfer_not_nominal,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 1150000.0}"
+E0001867,owner_portfolio,deed.linked_successor,parcel,3007230067,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001869,owner_portfolio,deed.linked_successor,parcel,3007640036,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001870,owner_portfolio,deed.linked_successor,parcel,3007740059,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001871,owner_portfolio,deed.linked_successor,parcel,3007750065,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001872,owner_portfolio,deed.linked_successor,parcel,3007750080,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001873,owner_portfolio,deed.linked_successor,parcel,3007830021,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001874,owner_portfolio,deed.linked_successor,parcel,3007840038,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001875,owner_portfolio,deed.linked_successor,parcel,3007840039,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001876,owner_portfolio,deed.linked_successor,parcel,3007840045,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001877,owner_portfolio,deed.linked_successor,parcel,3007840047,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001878,owner_portfolio,deed.linked_successor,parcel,3007920056,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001879,owner_portfolio,deed.linked_successor,parcel,3007990025,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001880,owner_portfolio,deed.linked_successor,parcel,3008090002,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001881,owner_portfolio,deed.linked_successor,parcel,3008090003,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001882,owner_portfolio,deed.linked_successor,parcel,3008090004,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001883,owner_portfolio,deed.linked_successor,parcel,3008090005,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001884,owner_portfolio,deed.linked_successor,parcel,3008090006,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001885,owner_portfolio,deed.linked_successor,parcel,3008090007,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001886,owner_portfolio,deed.linked_successor,parcel,3008140020,deed_document,2017062000029001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 36279474.0}"
+E0001887,owner_portfolio,deed.linked_successor,parcel,3008160037,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001888,owner_portfolio,deed.linked_successor,parcel,3008170001,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001889,owner_portfolio,deed.linked_successor,parcel,3008170005,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001890,owner_portfolio,deed.linked_successor,parcel,3008210012,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001891,owner_portfolio,deed.linked_successor,parcel,3008300033,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001892,owner_portfolio,deed.linked_successor,parcel,3008300035,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001893,owner_portfolio,deed.linked_successor,parcel,3008320051,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+E0001894,owner_portfolio,deed.linked_successor,parcel,3008390006,deed_document,2017061600025001,rejected,successor_not_shell,deed_successor_guard,bor-0.2.1,,,,"{""latest_amount"": 45839605.0}"
+G0002728,owner_portfolio,owner_portfolio.footprint,bbl,1021760150,group,OP-101271,excluded,coop_condo_excluded,coop_condo_contact_rule,bor-0.2.1,,,,
+G0002827,owner_portfolio,owner_portfolio.footprint,bbl,3050747502,group,OP-25108,excluded,coop_condo_excluded,coop_condo_contact_rule,bor-0.2.1,,,,
+G0002859,owner_portfolio,owner_portfolio.footprint,bbl,1008770052,group,OP-31855,excluded,coop_condo_excluded,coop_condo_contact_rule,bor-0.2.1,,,,
+N0000017,operational_network,network.address,address,A0000017,,,masked,aggregator_address_masked,aggregator_address_mask,c92693351768,,,,"{""degree"": 56, ""threshold"": 25}"
+N0000028,operational_network,network.address,address,A0000028,,,masked,aggregator_address_masked,aggregator_address_mask,c92693351768,,,,"{""degree"": 74, ""threshold"": 25}"
+N0000041,operational_network,network.address,address,A0000041,,,masked,aggregator_address_masked,aggregator_address_mask,c92693351768,,,,"{""degree"": 43, ""threshold"": 25}"
+N0000055,operational_network,network.address,address,A0000055,,,masked,aggregator_address_masked,aggregator_address_mask,c92693351768,,,,"{""degree"": 91, ""threshold"": 25}"
+N0000059,operational_network,network.address,address,A0000059,,,masked,aggregator_address_masked,aggregator_address_mask,c92693351768,,,,"{""degree"": 38, ""threshold"": 25}"

@@ -35,3 +35,9 @@ def tag_dos(tx, rows) -> None:
 
 def tag_litigation(tx, rows) -> None:
     tag(tx, "Litigation", "litigation_id", [r["litigationid"] for r in rows])
+
+
+def tag_bor(tx, run_id: str) -> None:
+    """Label the nodes of one BOR run. Each BOR label is small, so a label scan is cheap (never scan unlabelled nodes)."""
+    for label in ("BorRun", "BorGroup", "BorNode", "BorDecision", "BorEvidence", "BorLinkSet", "BorMaskedAddress", "BorMetric"):
+        tx.run(f"MATCH (n:`{label}`) WHERE n.run_id = $run SET n:`{SCOPE}`", run=run_id).consume()

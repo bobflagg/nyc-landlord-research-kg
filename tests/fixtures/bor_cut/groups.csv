@@ -1,0 +1,16 @@
+layer,group_id,assertion_key,composition,split,lot_count,total_lot_count,witness_pieces,anchor_node_id
+owner_portfolio,OP-101271,2000-01-01-0cafe000/owner_portfolio/OP-101271,identity,,1,2,1,101271
+owner_portfolio,OP-103727,2000-01-01-0cafe000/owner_portfolio/OP-103727,deed_only,,2,2,1,103727
+owner_portfolio,OP-25108,2000-01-01-0cafe000/owner_portfolio/OP-25108,identity,,1,2,1,25108
+owner_portfolio,OP-31855,2000-01-01-0cafe000/owner_portfolio/OP-31855,deed_only,,1,2,1,31855
+owner_portfolio,OP-5292,2000-01-01-0cafe000/owner_portfolio/OP-5292,identity,,6,6,1,87870
+owner_portfolio,OP-5346,2000-01-01-0cafe000/owner_portfolio/OP-5346,deed_bridged,,4,4,1,5346
+owner_portfolio,OP-53559,2000-01-01-0cafe000/owner_portfolio/OP-53559,identity,,33,33,1,53559
+owner_portfolio,OP-98617,2000-01-01-0cafe000/owner_portfolio/OP-98617,identity,,5,5,1,98618
+operational_network,ON-101079,2000-01-01-0cafe000/operational_network/ON-101079,,wcc,2,2,1,101079
+operational_network,ON-102796,2000-01-01-0cafe000/operational_network/ON-102796,,wcc,2,2,1,102796
+operational_network,ON-103175,2000-01-01-0cafe000/operational_network/ON-103175,,wcc,2,2,1,103175
+operational_network,ON-105266,2000-01-01-0cafe000/operational_network/ON-105266,,wcc,2,2,1,105266
+operational_network,ON-18742,2000-01-01-0cafe000/operational_network/ON-18742,,wcc,35,35,1,53559
+operational_network,ON-60782,2000-01-01-0cafe000/operational_network/ON-60782,,louvain,2,2,1,60782
+operational_network,ON-98617,2000-01-01-0cafe000/operational_network/ON-98617,,wcc,5,5,1,98618
