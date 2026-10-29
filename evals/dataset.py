@@ -14,6 +14,7 @@ EXPECTED = json.loads((ROOT / "evals" / "expected" / "slice1.json").read_text())
 EXPECTED2 = json.loads((ROOT / "evals" / "expected" / "slice2.json").read_text())
 EXPECTED3 = json.loads((ROOT / "evals" / "expected" / "slice3.json").read_text())
 EXPECTED4 = json.loads((ROOT / "evals" / "expected" / "slice4.json").read_text())
+EXPECTED5 = json.loads((ROOT / "evals" / "expected" / "slice5.json").read_text())
 Q, ANCHORS, SNAPSHOT = EXPECTED["questions"], EXPECTED["anchors"], EXPECTED["snapshot_id"]
 SNAPSHOT_DATE = SNAPSHOT.split("-", 1)[1]            # 2026-05-29
 OVERREACH = [" owns the ", " owns this ", " owned by", "is the owner of", "proves ownership", "confirmed owner", "controls the building"]
@@ -89,7 +90,7 @@ def build_examples() -> list[dict]:
                         any_of=[["managing agent", "agent"], ["head officer"]], caveats=[["lead", "same name", "not proof", "not a finding"]])))
     out.append(_ex("Q24", "none", "What do the records show for Zzyzx Holdings LLC?",
                    _ref([{"name": "find_records_by_name", "args": {}}], any_of=[NO_RECORD], caveats=[["variants", "normalized", "tried"]])))
-    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples() + slice4_examples()
+    return out + slice2_examples() + slice3_examples() + slice3_loan_and_history_examples() + slice4_examples() + slice5_examples()
 
 
 NO_VIOLATION = ["no violation", "no hpd violation", "none in the data", "no open", "does not hold any"]
@@ -270,6 +271,50 @@ def slice4_examples() -> list[dict]:
             any_of.append(["veto", "first-name", "first name"])
         out.append(_ex("Q26", k, f"For lot {bbl[k]}, which sources have no record and what does each absence mean?",
                        _ref([{"name": "explain_what_is_missing", "args": {"bbl": bbl[k]}}], any_of=any_of, caveats=[NOT_EVIDENCE], forbid=LAYER_OVERREACH + ["is exempt", "does not exist"])))
+    return out
+
+
+LINK_OVERREACH = ["same owner", "under common control", "are related", "same company", "same entity because", "is a restructuring", "was a restructuring", "sham", "is the parent", "parent company of"]
+
+
+def slice5_examples() -> list[dict]:
+    """Q6, Q7, Q11, Q18, Q22 and Q23 on the anchors and on lists found in the source, from evals/expected/slice5.json."""
+    Q5, A = EXPECTED5["questions"], EXPECTED5["anchors"]
+    out = []
+    for key, e in Q5["Q6"].items():
+        any_of, include = [], [key]
+        if e["bor_masked_on_list"]:
+            any_of.append(["masked", "bor"])
+        elif e["on_mail_drop_list"]:
+            any_of.append(["registered agent", "registered_agent"])
+        else:
+            any_of.append(["not flag", "did not flag", "no method", "not on the list", "does not flag", "not flagged", "not on the project", "no"])
+        out.append(_ex("Q6", key, f"Is the business address with the address key '{key}' an aggregator or mail drop? Answer for each method.",
+                       _ref([{"name": "check_address_aggregator", "args": {"address_key": key}}], include=include, any_of=any_of, caveats=[["unreviewed"], ["links nothing", "does not show", "not proof", "not mean"]], forbid=LINK_OVERREACH)))
+    e = Q5["Q7"]["A|B"]
+    out.append(_ex("Q7", "A-B", f"What evidence is shared between lots {A['A']['bbl']} and {A['B']['bbl']}, and which of it is used or set aside?",
+                   _ref([{"name": "get_shared_evidence", "args": {"a": A["A"]["bbl"], "b": A["B"]["bbl"]}}], include=[e["shared_hpd_addresses"][0], "2021031601183001", "JAY WONG"], any_of=[["set aside", "set-aside", "used"]],
+                        caveats=[["lead"], ["not control", "not a finding", "does not show", "not common control", "not proof"]], forbid=LINK_OVERREACH)))
+    for letter in ("A", "C"):
+        e = Q5["Q11"][letter]
+        lender = next((n for n in e["lenders_named"] if "BANK" in n or "SAVINGS" in n), e["lenders_named"][0])
+        out.append(_ex("Q11", letter, f"What affiliations are recorded for lot {A[letter]['bbl']}: lenders, joint borrowers, managing agents and principals, and what type of relationship is each?",
+                       _ref([{"name": "get_affiliations", "args": {"bbl": A[letter]["bbl"]}}], include=[lender], any_of=[["financing"]],
+                            caveats=[["no parent", "not a parent", "no loaded source", "no documented parent"], ["management", "managing agent"]], forbid=LINK_OVERREACH)))
+    d = Q5["Q18"]["B"]["deeds"]
+    out.append(_ex("Q18", "B", f"Do the deeds on lot {A['B']['bbl']} look like a restructuring? Classify them and say whether the buyer is related to the seller.",
+                   _ref([{"name": "classify_deeds", "args": {"bbl": A["B"]["bbl"]}}], include=[d[-1]["document_id"], "702 PLAZA LLC"], any_of=[["no relationship established"]],
+                        caveats=[["hint", "not a finding", "does not show", "not proof"]], forbid=LINK_OVERREACH)))
+    names = {"KS Turnpike LLC | K S TURNPIKE LLC": (["3574572"], [["spacing", "n2"]]), "702 54 STREET LLC | 702 PLAZA LLC": (["2833799", "5857608"], [["different"]]),
+             "Example Holdings LLC | Example Holdings II LLC": ([], [["numeral", "one token", "different name"]]), "Acme L.L.C. | ACME LLC": ([], [["normalization", "n1"]])}
+    for pair, (ids, any_of) in names.items():
+        a, b = pair.split(" | ")
+        out.append(_ex("Q22", pair, f"Are '{a}' and '{b}' the same entity? Give the rule and the evidence for and against.",
+                       _ref([{"name": "compare_entities", "args": {"name_a": a, "name_b": b}}], include=ids, any_of=any_of, caveats=[["lead", "not a link", "not a finding", "not proof", "not the same entity", "different name", "nothing here supports"]], forbid=LINK_OVERREACH)))
+    for agent, e in Q5["Q23"].items():
+        out.append(_ex("Q23", agent, f"Which lots does the managing agent {agent} cover, and how do they compare with the ownership layers?",
+                       _ref([{"name": "get_agent_footprint", "args": {"name_or_bbl": agent}}], include=[str(e["lots"]), str(e["residential_units"])],
+                            caveats=[["not ownership", "management relationship", "not an ownership"], ["lot", "lots"]], forbid=LINK_OVERREACH)))
     return out
 
 

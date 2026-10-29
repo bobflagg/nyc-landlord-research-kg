@@ -18,6 +18,9 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `link-stage.ttl` | Link stage | `stage` on witness steps, decisions, evidence and metrics (note 0024) |
 | `decision-outcome.ttl` | Decision outcome | `outcome` on BOR decisions (note 0024) |
 | `gold-status.ttl` | Gold status | `adjudication_status` on method metrics (note 0024) |
+| `address-kind.ttl` | Address kind | `kind` on mail-drop-list addresses (note 0026) |
+| `deed-pattern.ttl` | Deed pattern | the patterns `classify_deeds` reports (note 0026) |
+| `affiliation-type.ttl` | Affiliation type | the relationship types `get_affiliations` reports (note 0026) |
 
 `skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from; `x-bor` carries BOR's own code for the four BOR schemes, whose notation is that code as the release writes it. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
 

@@ -11643,6 +11643,546 @@ WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['hpd_registrations'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Registration']] + labels(v0)), key: 'registration_id', keyValue: v0.`registration_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'RegistrationShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
+// name: MailDropAddressShape.basis.datatype
+// ruleId: links:MailDropAddressShape/links:basis/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`basis` IS NULL THEN [] WHEN v0.`basis` IS :: LIST<ANY> THEN v0.`basis` ELSE [v0.`basis`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.basis.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:basis' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:basis' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.basis.datatype#summary
+// ruleId: links:MailDropAddressShape/links:basis/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`basis` IS NULL THEN [] WHEN v0.`basis` IS :: LIST<ANY> THEN v0.`basis` ELSE [v0.`basis`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.basis.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.basis.maxCount
+// ruleId: links:MailDropAddressShape/links:basis/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`basis` IS NULL THEN [] WHEN v0.`basis` IS :: LIST<ANY> THEN v0.`basis` ELSE [v0.`basis`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.basis.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:basis' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:basis' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.basis.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:basis/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`basis` IS NULL THEN [] WHEN v0.`basis` IS :: LIST<ANY> THEN v0.`basis` ELSE [v0.`basis`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.basis.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.bor_address_ids.datatype
+// ruleId: links:MailDropAddressShape/links:bor_address_ids/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`bor_address_ids` IS NULL THEN [] WHEN v0.`bor_address_ids` IS :: LIST<ANY> THEN v0.`bor_address_ids` ELSE [v0.`bor_address_ids`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.bor_address_ids.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:bor_address_ids' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:bor_address_ids' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.bor_address_ids.datatype#summary
+// ruleId: links:MailDropAddressShape/links:bor_address_ids/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`bor_address_ids` IS NULL THEN [] WHEN v0.`bor_address_ids` IS :: LIST<ANY> THEN v0.`bor_address_ids` ELSE [v0.`bor_address_ids`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.bor_address_ids.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.bor_address_ids.maxCount
+// ruleId: links:MailDropAddressShape/links:bor_address_ids/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bor_address_ids` IS NULL THEN [] WHEN v0.`bor_address_ids` IS :: LIST<ANY> THEN v0.`bor_address_ids` ELSE [v0.`bor_address_ids`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.bor_address_ids.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:bor_address_ids' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:bor_address_ids' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.bor_address_ids.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:bor_address_ids/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bor_address_ids` IS NULL THEN [] WHEN v0.`bor_address_ids` IS :: LIST<ANY> THEN v0.`bor_address_ids` ELSE [v0.`bor_address_ids`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.bor_address_ids.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.bor_degree.datatype
+// ruleId: links:MailDropAddressShape/links:bor_degree/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`bor_degree` IS NULL THEN [] WHEN v0.`bor_degree` IS :: LIST<ANY> THEN v0.`bor_degree` ELSE [v0.`bor_degree`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'MailDropAddressShape.bor_degree.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:bor_degree' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:bor_degree' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.bor_degree.datatype#summary
+// ruleId: links:MailDropAddressShape/links:bor_degree/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`bor_degree` IS NULL THEN [] WHEN v0.`bor_degree` IS :: LIST<ANY> THEN v0.`bor_degree` ELSE [v0.`bor_degree`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.bor_degree.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.bor_degree.maxCount
+// ruleId: links:MailDropAddressShape/links:bor_degree/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bor_degree` IS NULL THEN [] WHEN v0.`bor_degree` IS :: LIST<ANY> THEN v0.`bor_degree` ELSE [v0.`bor_degree`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.bor_degree.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:bor_degree' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:bor_degree' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.bor_degree.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:bor_degree/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`bor_degree` IS NULL THEN [] WHEN v0.`bor_degree` IS :: LIST<ANY> THEN v0.`bor_degree` ELSE [v0.`bor_degree`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.bor_degree.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.dos_process_entities.datatype
+// ruleId: links:MailDropAddressShape/links:dos_process_entities/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`dos_process_entities` IS NULL THEN [] WHEN v0.`dos_process_entities` IS :: LIST<ANY> THEN v0.`dos_process_entities` ELSE [v0.`dos_process_entities`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'MailDropAddressShape.dos_process_entities.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:dos_process_entities' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:dos_process_entities' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.dos_process_entities.datatype#summary
+// ruleId: links:MailDropAddressShape/links:dos_process_entities/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`dos_process_entities` IS NULL THEN [] WHEN v0.`dos_process_entities` IS :: LIST<ANY> THEN v0.`dos_process_entities` ELSE [v0.`dos_process_entities`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.dos_process_entities.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.dos_process_entities.maxCount
+// ruleId: links:MailDropAddressShape/links:dos_process_entities/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_process_entities` IS NULL THEN [] WHEN v0.`dos_process_entities` IS :: LIST<ANY> THEN v0.`dos_process_entities` ELSE [v0.`dos_process_entities`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.dos_process_entities.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:dos_process_entities' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:dos_process_entities' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.dos_process_entities.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:dos_process_entities/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`dos_process_entities` IS NULL THEN [] WHEN v0.`dos_process_entities` IS :: LIST<ANY> THEN v0.`dos_process_entities` ELSE [v0.`dos_process_entities`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.dos_process_entities.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.hpd_agent_registrations.datatype
+// ruleId: links:MailDropAddressShape/links:hpd_agent_registrations/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`hpd_agent_registrations` IS NULL THEN [] WHEN v0.`hpd_agent_registrations` IS :: LIST<ANY> THEN v0.`hpd_agent_registrations` ELSE [v0.`hpd_agent_registrations`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+RETURN 'MailDropAddressShape.hpd_agent_registrations.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:hpd_agent_registrations' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:hpd_agent_registrations' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.hpd_agent_registrations.datatype#summary
+// ruleId: links:MailDropAddressShape/links:hpd_agent_registrations/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`hpd_agent_registrations` IS NULL THEN [] WHEN v0.`hpd_agent_registrations` IS :: LIST<ANY> THEN v0.`hpd_agent_registrations` ELSE [v0.`hpd_agent_registrations`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: INTEGER NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.hpd_agent_registrations.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.hpd_agent_registrations.maxCount
+// ruleId: links:MailDropAddressShape/links:hpd_agent_registrations/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_agent_registrations` IS NULL THEN [] WHEN v0.`hpd_agent_registrations` IS :: LIST<ANY> THEN v0.`hpd_agent_registrations` ELSE [v0.`hpd_agent_registrations`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.hpd_agent_registrations.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:hpd_agent_registrations' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:hpd_agent_registrations' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.hpd_agent_registrations.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:hpd_agent_registrations/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`hpd_agent_registrations` IS NULL THEN [] WHEN v0.`hpd_agent_registrations` IS :: LIST<ANY> THEN v0.`hpd_agent_registrations` ELSE [v0.`hpd_agent_registrations`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.hpd_agent_registrations.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.kind.in
+// ruleId: links:MailDropAddressShape/links:kind/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['registered_agent', 'law_firm', 'management_office', 'unknown'], false))
+RETURN 'MailDropAddressShape.kind.in' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:kind' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:in on links:kind' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.kind.in#summary
+// ruleId: links:MailDropAddressShape/links:kind/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['registered_agent', 'law_firm', 'management_office', 'unknown'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.kind.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.kind.maxCount
+// ruleId: links:MailDropAddressShape/links:kind/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.kind.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:kind' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:kind' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.kind.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:kind/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.kind.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.kind.minCount
+// ruleId: links:MailDropAddressShape/links:kind/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'MailDropAddressShape.kind.minCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:kind' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:minCount on links:kind' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.kind.minCount#summary
+// ruleId: links:MailDropAddressShape/links:kind/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`kind` IS NULL THEN [] WHEN v0.`kind` IS :: LIST<ANY> THEN v0.`kind` ELSE [v0.`kind`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.kind.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.list_note.datatype
+// ruleId: links:MailDropAddressShape/links:list_note/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`list_note` IS NULL THEN [] WHEN v0.`list_note` IS :: LIST<ANY> THEN v0.`list_note` ELSE [v0.`list_note`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.list_note.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:list_note' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:list_note' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.list_note.datatype#summary
+// ruleId: links:MailDropAddressShape/links:list_note/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`list_note` IS NULL THEN [] WHEN v0.`list_note` IS :: LIST<ANY> THEN v0.`list_note` ELSE [v0.`list_note`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.list_note.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.list_note.maxCount
+// ruleId: links:MailDropAddressShape/links:list_note/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`list_note` IS NULL THEN [] WHEN v0.`list_note` IS :: LIST<ANY> THEN v0.`list_note` ELSE [v0.`list_note`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.list_note.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:list_note' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:list_note' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.list_note.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:list_note/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`list_note` IS NULL THEN [] WHEN v0.`list_note` IS :: LIST<ANY> THEN v0.`list_note` ELSE [v0.`list_note`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.list_note.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.list_sources.datatype
+// ruleId: links:MailDropAddressShape/links:list_sources/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`list_sources` IS NULL THEN [] WHEN v0.`list_sources` IS :: LIST<ANY> THEN v0.`list_sources` ELSE [v0.`list_sources`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.list_sources.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:list_sources' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:list_sources' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.list_sources.datatype#summary
+// ruleId: links:MailDropAddressShape/links:list_sources/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`list_sources` IS NULL THEN [] WHEN v0.`list_sources` IS :: LIST<ANY> THEN v0.`list_sources` ELSE [v0.`list_sources`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.list_sources.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.list_sources.maxCount
+// ruleId: links:MailDropAddressShape/links:list_sources/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`list_sources` IS NULL THEN [] WHEN v0.`list_sources` IS :: LIST<ANY> THEN v0.`list_sources` ELSE [v0.`list_sources`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.list_sources.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:list_sources' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:list_sources' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.list_sources.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:list_sources/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`list_sources` IS NULL THEN [] WHEN v0.`list_sources` IS :: LIST<ANY> THEN v0.`list_sources` ELSE [v0.`list_sources`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.list_sources.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.maildrop_key.datatype
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.maildrop_key.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:maildrop_key' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:maildrop_key' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.maildrop_key.datatype#summary
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.maildrop_key.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.maildrop_key.maxCount
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.maildrop_key.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:maildrop_key' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:maildrop_key' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.maildrop_key.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.maildrop_key.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.maildrop_key.minCount
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'MailDropAddressShape.maildrop_key.minCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:maildrop_key' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:minCount on links:maildrop_key' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.maildrop_key.minCount#summary
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.maildrop_key.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.maildrop_key.pattern
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:pattern
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?: [0-9]{5}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?: [0-9]{5}$)(?s:.*)' ELSE false END)
+RETURN 'MailDropAddressShape.maildrop_key.pattern' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:maildrop_key' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:pattern on links:maildrop_key' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.maildrop_key.pattern#summary
+// ruleId: links:MailDropAddressShape/links:maildrop_key/sh:pattern
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`maildrop_key` IS NULL THEN [] WHEN v0.`maildrop_key` IS :: LIST<ANY> THEN v0.`maildrop_key` ELSE [v0.`maildrop_key`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?: [0-9]{5}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?: [0-9]{5}$)(?s:.*)' ELSE false END)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.maildrop_key.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.zip5.datatype
+// ruleId: links:MailDropAddressShape/links:zip5/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+RETURN 'MailDropAddressShape.zip5.datatype' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:zip5' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:datatype on links:zip5' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.zip5.datatype#summary
+// ruleId: links:MailDropAddressShape/links:zip5/sh:datatype
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.zip5.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.zip5.maxCount
+// ruleId: links:MailDropAddressShape/links:zip5/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+RETURN 'MailDropAddressShape.zip5.maxCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:zip5' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:maxCount on links:zip5' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.zip5.maxCount#summary
+// ruleId: links:MailDropAddressShape/links:zip5/sh:maxCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.zip5.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.zip5.minCount
+// ruleId: links:MailDropAddressShape/links:zip5/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'MailDropAddressShape.zip5.minCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:zip5' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:minCount on links:zip5' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.zip5.minCount#summary
+// ruleId: links:MailDropAddressShape/links:zip5/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.zip5.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.zip5.pattern
+// ruleId: links:MailDropAddressShape/links:zip5/sh:pattern
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{5}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{5}$)(?s:.*)' ELSE false END)
+RETURN 'MailDropAddressShape.zip5.pattern' AS ruleId, 'links:MailDropAddressShape' AS shape, 'links:zip5' AS path, 'sh:pattern' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:pattern on links:zip5' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.zip5.pattern#summary
+// ruleId: links:MailDropAddressShape/links:zip5/sh:pattern
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`zip5` IS NULL THEN [] WHEN v0.`zip5` IS :: LIST<ANY> THEN v0.`zip5` ELSE [v0.`zip5`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (CASE WHEN v1 IS :: STRING NOT NULL THEN v1 =~ '(?s:.*)(?:^[0-9]{5}$)(?s:.*)' WHEN v1 IS :: INTEGER NOT NULL THEN toString(v1) =~ '(?s:.*)(?:^[0-9]{5}$)(?s:.*)' ELSE false END)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.zip5.pattern' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.node
+// ruleId: links:MailDropAddressShape/sh:node
+MATCH (v0:`MailDropAddress`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+RETURN 'MailDropAddressShape.node' AS ruleId, 'links:MailDropAddressShape' AS shape, null AS path, 'sh:node' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'links:MailDropAddressShape violates sh:node' AS message, [x49 IN [CASE WHEN NOT (all(x25 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x25 IS NULL OR (coalesce(x25 IN ['I', 'II'], false)))) THEN 'wl:ProvenanceShape/wl:reliability/sh:in' END, CASE WHEN NOT (size(reduce(x27 = [], x26 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x26 IS NULL OR x26 IN x27 THEN x27 ELSE x27 + [x26] END)) <= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:maxCount' END, CASE WHEN NOT (size(reduce(x29 = [], x28 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x28 IS NULL OR x28 IN x29 THEN x29 ELSE x29 + [x28] END)) >= 1) THEN 'wl:ProvenanceShape/wl:reliability/sh:minCount' END, CASE WHEN NOT (all(x30 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x30 IS NULL OR (coalesce(x30 IN ['unreviewed', 'contested'], false)))) THEN 'wl:ProvenanceShape/wl:review_status/sh:in' END, CASE WHEN NOT (size(reduce(x32 = [], x31 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x31 IS NULL OR x31 IN x32 THEN x32 ELSE x32 + [x31] END)) <= 1) THEN 'wl:ProvenanceShape/wl:review_status/sh:maxCount' END, CASE WHEN NOT (all(x33 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x33 IS NULL OR ((x33 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:datatype' END, CASE WHEN NOT (size(reduce(x35 = [], x34 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x34 IS NULL OR x34 IN x35 THEN x35 ELSE x35 + [x34] END)) <= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:maxCount' END, CASE WHEN NOT (size(reduce(x37 = [], x36 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x36 IS NULL OR x36 IN x37 THEN x37 ELSE x37 + [x36] END)) >= 1) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:minCount' END, CASE WHEN NOT (all(x38 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x38 IS NULL OR (CASE WHEN x38 IS :: STRING NOT NULL THEN x38 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x38 IS :: INTEGER NOT NULL THEN toString(x38) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END))) THEN 'wl:ProvenanceShape/wl:snapshot_id/sh:pattern' END, CASE WHEN NOT (all(x39 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x39 IS NULL OR ((x39 IS :: STRING NOT NULL)))) THEN 'wl:ProvenanceShape/wl:source/sh:datatype' END, CASE WHEN NOT (size(reduce(x41 = [], x40 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x40 IS NULL OR x40 IN x41 THEN x41 ELSE x41 + [x40] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source/sh:maxCount' END, CASE WHEN NOT (size(reduce(x43 = [], x42 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x42 IS NULL OR x42 IN x43 THEN x43 ELSE x43 + [x42] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source/sh:minCount' END, CASE WHEN NOT (all(x44 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x44 IS NULL OR (coalesce(x44 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false)))) THEN 'wl:ProvenanceShape/wl:source_category/sh:in' END, CASE WHEN NOT (size(reduce(x46 = [], x45 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x45 IS NULL OR x45 IN x46 THEN x46 ELSE x46 + [x45] END)) <= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:maxCount' END, CASE WHEN NOT (size(reduce(x48 = [], x47 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x47 IS NULL OR x47 IN x48 THEN x48 ELSE x48 + [x47] END)) >= 1) THEN 'wl:ProvenanceShape/wl:source_category/sh:minCount' END] WHERE x49 IS NOT NULL] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.node#summary
+// ruleId: links:MailDropAddressShape/sh:node
+MATCH (v0:`MailDropAddress`)
+WITH v0, v0 AS v1
+WHERE NOT ((all(x1 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END WHERE x1 IS NULL OR (coalesce(x1 IN ['I', 'II'], false))) AND size(reduce(x3 = [], x2 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x2 IS NULL OR x2 IN x3 THEN x3 ELSE x3 + [x2] END)) <= 1 AND size(reduce(x5 = [], x4 IN CASE WHEN v1.`reliability` IS NULL THEN [] WHEN v1.`reliability` IS :: LIST<ANY> THEN v1.`reliability` ELSE [v1.`reliability`] END | CASE WHEN x4 IS NULL OR x4 IN x5 THEN x5 ELSE x5 + [x4] END)) >= 1 AND all(x6 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END WHERE x6 IS NULL OR (coalesce(x6 IN ['unreviewed', 'contested'], false))) AND size(reduce(x8 = [], x7 IN CASE WHEN v1.`review_status` IS NULL THEN [] WHEN v1.`review_status` IS :: LIST<ANY> THEN v1.`review_status` ELSE [v1.`review_status`] END | CASE WHEN x7 IS NULL OR x7 IN x8 THEN x8 ELSE x8 + [x7] END)) <= 1 AND all(x9 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x9 IS NULL OR ((x9 IS :: STRING NOT NULL))) AND size(reduce(x11 = [], x10 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x10 IS NULL OR x10 IN x11 THEN x11 ELSE x11 + [x10] END)) <= 1 AND size(reduce(x13 = [], x12 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END | CASE WHEN x12 IS NULL OR x12 IN x13 THEN x13 ELSE x13 + [x12] END)) >= 1 AND all(x14 IN CASE WHEN v1.`snapshot_id` IS NULL THEN [] WHEN v1.`snapshot_id` IS :: LIST<ANY> THEN v1.`snapshot_id` ELSE [v1.`snapshot_id`] END WHERE x14 IS NULL OR (CASE WHEN x14 IS :: STRING NOT NULL THEN x14 =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' WHEN x14 IS :: INTEGER NOT NULL THEN toString(x14) =~ '(?s:.*)(?:^[a-z][a-z0-9]*-[0-9]{4}-[0-9]{2}-[0-9]{2}(-r[0-9]+)?$)(?s:.*)' ELSE false END)) AND all(x15 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END WHERE x15 IS NULL OR ((x15 IS :: STRING NOT NULL))) AND size(reduce(x17 = [], x16 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x16 IS NULL OR x16 IN x17 THEN x17 ELSE x17 + [x16] END)) <= 1 AND size(reduce(x19 = [], x18 IN CASE WHEN v1.`source` IS NULL THEN [] WHEN v1.`source` IS :: LIST<ANY> THEN v1.`source` ELSE [v1.`source`] END | CASE WHEN x18 IS NULL OR x18 IN x19 THEN x19 ELSE x19 + [x18] END)) >= 1 AND all(x20 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END WHERE x20 IS NULL OR (coalesce(x20 IN ['public_record', 'published_reporting', 'web_content', 'project_derived'], false))) AND size(reduce(x22 = [], x21 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x21 IS NULL OR x21 IN x22 THEN x22 ELSE x22 + [x21] END)) <= 1 AND size(reduce(x24 = [], x23 IN CASE WHEN v1.`source_category` IS NULL THEN [] WHEN v1.`source_category` IS :: LIST<ANY> THEN v1.`source_category` ELSE [v1.`source_category`] END | CASE WHEN x23 IS NULL OR x23 IN x24 THEN x24 ELSE x24 + [x23] END)) >= 1))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.node' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.reliability.in
+// ruleId: links:MailDropAddressShape/wl:reliability/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`reliability` IS NULL THEN [] WHEN v0.`reliability` IS :: LIST<ANY> THEN v0.`reliability` ELSE [v0.`reliability`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['II'], false))
+RETURN 'MailDropAddressShape.reliability.in' AS ruleId, 'links:MailDropAddressShape' AS shape, 'wl:reliability' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:in on wl:reliability' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.reliability.in#summary
+// ruleId: links:MailDropAddressShape/wl:reliability/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`reliability` IS NULL THEN [] WHEN v0.`reliability` IS :: LIST<ANY> THEN v0.`reliability` ELSE [v0.`reliability`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['II'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.reliability.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.review_status.minCount
+// ruleId: links:MailDropAddressShape/wl:review_status/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+RETURN 'MailDropAddressShape.review_status.minCount' AS ruleId, 'links:MailDropAddressShape' AS shape, 'wl:review_status' AS path, 'sh:minCount' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, null AS value, 'links:MailDropAddressShape violates sh:minCount on wl:review_status' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.review_status.minCount#summary
+// ruleId: links:MailDropAddressShape/wl:review_status/sh:minCount
+MATCH (v0:`MailDropAddress`)
+WITH v0
+WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`review_status` IS NULL THEN [] WHEN v0.`review_status` IS :: LIST<ANY> THEN v0.`review_status` ELSE [v0.`review_status`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) >= 1)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.review_status.minCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.source.in
+// ruleId: links:MailDropAddressShape/wl:source/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['mail_drop_list'], false))
+RETURN 'MailDropAddressShape.source.in' AS ruleId, 'links:MailDropAddressShape' AS shape, 'wl:source' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:in on wl:source' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.source.in#summary
+// ruleId: links:MailDropAddressShape/wl:source/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`source` IS NULL THEN [] WHEN v0.`source` IS :: LIST<ANY> THEN v0.`source` ELSE [v0.`source`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['mail_drop_list'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.source.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: MailDropAddressShape.source_category.in
+// ruleId: links:MailDropAddressShape/wl:source_category/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`source_category` IS NULL THEN [] WHEN v0.`source_category` IS :: LIST<ANY> THEN v0.`source_category` ELSE [v0.`source_category`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['project_derived'], false))
+RETURN 'MailDropAddressShape.source_category.in' AS ruleId, 'links:MailDropAddressShape' AS shape, 'wl:source_category' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)} AS focus, v1 AS value, 'links:MailDropAddressShape violates sh:in on wl:source_category' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: MailDropAddressShape.source_category.in#summary
+// ruleId: links:MailDropAddressShape/wl:source_category/sh:in
+MATCH (v0:`MailDropAddress`)
+UNWIND CASE WHEN v0.`source_category` IS NULL THEN [] WHEN v0.`source_category` IS :: LIST<ANY> THEN v0.`source_category` ELSE [v0.`source_category`] END AS v1
+WITH DISTINCT v0, v1
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['project_derived'], false))
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['MailDropAddress']] + labels(v0)), key: 'maildrop_key', keyValue: v0.`maildrop_key`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'MailDropAddressShape.source_category.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
 // name: LotAttributesShape.assessed_total.datatype
 // ruleId: pluto:LotAttributesShape/pluto:assessed_total/sh:datatype
 MATCH (v0:`Lot`)

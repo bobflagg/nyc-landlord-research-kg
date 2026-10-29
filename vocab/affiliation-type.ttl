@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix afftype: <https://bobflagg.github.io/Watchline/vocab/affiliation-type/> .
+
+afftype: a skos:ConceptScheme ;
+    dcterms:title "Affiliation type"@en ;
+    dcterms:description "The kinds of relationship Q11 reports between a party and another party or a lot (design note 0026)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Each is a recorded relationship of the kind named. None is a parent relationship: no loaded source documents one, and only a documented parent may be called one."@en ;
+    skos:hasTopConcept afftype:lender, afftype:joint_borrower, afftype:managing_agent, afftype:registered_principal, afftype:process_agent .
+
+afftype:lender a skos:Concept ;
+    skos:inScheme afftype: ;
+    skos:topConceptOf afftype: ;
+    skos:notation "lender" ;
+    skos:prefLabel "Lender"@en ;
+    skos:definition "A party named as lender on a recorded mortgage-family document (a financing relationship)."@en .
+
+afftype:joint_borrower a skos:Concept ;
+    skos:inScheme afftype: ;
+    skos:topConceptOf afftype: ;
+    skos:notation "joint_borrower" ;
+    skos:prefLabel "Joint borrower"@en ;
+    skos:definition "Two parties named as borrowers on one recorded document (a shared borrower record, not common control)."@en .
+
+afftype:managing_agent a skos:Concept ;
+    skos:inScheme afftype: ;
+    skos:topConceptOf afftype: ;
+    skos:notation "managing_agent" ;
+    skos:prefLabel "Managing agent"@en ;
+    skos:definition "An HPD managing-agent contact on a registration (a management relationship, not ownership)."@en .
+
+afftype:registered_principal a skos:Concept ;
+    skos:inScheme afftype: ;
+    skos:topConceptOf afftype: ;
+    skos:notation "registered_principal" ;
+    skos:prefLabel "Registered principal"@en ;
+    skos:definition "A person or company in an HPD registered-owner, head-officer, officer or shareholder role."@en .
+
+afftype:process_agent a skos:Concept ;
+    skos:inScheme afftype: ;
+    skos:topConceptOf afftype: ;
+    skos:notation "process_agent" ;
+    skos:prefLabel "Process agent"@en ;
+    skos:definition "The DOS process name or registered agent of an entity (where the state forwards papers)."@en .
+

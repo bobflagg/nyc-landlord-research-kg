@@ -1,0 +1,27 @@
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix links:   <https://bobflagg.github.io/Watchline/ontology/links#> .
+
+# Links module (design note 0026): the project's mail-drop list as nodes.
+<https://bobflagg.github.io/Watchline/ontology/links> a owl:Ontology ;
+    owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
+    dcterms:title "Watchline links module"@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" .
+
+links:MailDropAddress a owl:Class ; rdfs:label "Mail-drop-list address"@en ;
+    rdfs:comment "An address on the project's mail-drop list (resolution/mail_drop_addresses.csv): a registered-agent service, law firm or management office whose address must not, on its own, link unrelated entities. Type II, unreviewed until a person changes it. Keyed by the A2 address key with the ZIP, the form HPD and ACRIS parties carry."@en .
+
+links:maildrop_key a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string ; rdfs:comment "Rule A2 key: house, street, then the five-digit ZIP, as on parties (for example 418 BROADWAY 12207)."@en .
+links:zip5 a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string .
+links:kind a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string ; rdfs:comment "Values: vocab/address-kind.ttl."@en .
+links:basis a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string ; rdfs:comment "The evidence behind the kind, as the list writes it."@en .
+links:dos_process_entities a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:integer ; rdfs:comment "DOS entities whose process address this is."@en .
+links:hpd_agent_registrations a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:integer ; rdfs:comment "HPD registrations that list an Agent contact at this address."@en .
+links:bor_degree a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:integer ; rdfs:comment "Landlord records sharing the address, when BOR masked it."@en .
+links:bor_address_ids a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string ; rdfs:comment "BOR's masked-address ids, run-local."@en .
+links:list_sources a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string ; rdfs:comment "Which of dos_process, hpd_agent and bor_masked put the address on the list."@en .
+links:list_note a owl:DatatypeProperty ; rdfs:domain links:MailDropAddress ; rdfs:range xsd:string .

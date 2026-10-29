@@ -69,14 +69,14 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `nys_corporations`, plus `web_research` for filings.
 
 ### Q6: Aggregator or mail-drop address
-- **Example:** **pending.** The business address shared by A and B is a candidate; whether it is masked by BOR or on the mail-drop list is checked in week 5.
+- **Example (A and B):** the business address they share, `746 61ST ST 11220`, is on neither the project's mail-drop list nor BOR's masked addresses, and six HPD parties carry it in all, so no method flags it. `418 BROADWAY 12207` is on the list as a registered-agent address.
 - **Shape:** yes/no per method, with reasons.
 - **Audience:** tells an organizer that a shared address is a service address, so it is not a lead.
 - **Caveat:** masking is a method's decision. Name the method and run.
 - **Sources:** `bor_layers`, `mail_drop_list`, `hpd_contacts`.
 
 ### Q7: Shared evidence between two entities or buildings
-- **Example (A and B):** the same HPD business address, one joint mortgage naming both entities as borrowers (`2021031601183001`), DOS filings on 2020-10-14 and 2020-10-15, and similar names. Whether the address is a hub is not yet checked.
+- **Example (A and B):** the same HPD business address, one joint mortgage naming both entities as borrowers (`2021031601183001`), DOS filings on 2020-10-14 and 2020-10-15, and similar names. The address is not a hub (six parties) and is set aside by no method; the DOS process address they share (5 Cromwell Circle, Staten Island) is the process address of five DOS entities in all. BOR placed A and B in no group (`no_linkage`).
 - **Shape:** list of evidence items, each marked used or set aside.
 - **Audience:** the question behind "is it the same landlord?"
 - **Caveat:** a name match is a lead, shown with its evidence. A masked or mail-drop address is set aside and said so.
@@ -194,7 +194,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 - **Sources:** `acris_parties`, `hpd_contacts`, `nys_corporations`.
 
 ### Q23: A managing agent's footprint
-- **Example:** **pending.** The agents in A and B are people; an example needs a corporate managing agent. Pick one in week 5 from the HPD contacts.
+- **Example:** `BRIGHTON MANAGEMENT`: 39 lots, 40 registrations, 750 residential units, 36 different registered owners, treated as a commercial agent (it links nothing); `BIG BROOKLYN REHAB INC`: 4 lots, 9 units. The agents in A and B are a person (`JAY WONG`) registered on two lots.
 - **Shape:** list and a comparison.
 - **Audience:** a management company is who tenants often deal with.
 - **Caveat:** a shared agent is not ownership; a commercial agent links nothing.
@@ -239,7 +239,7 @@ A and B are linked by records: the same business address in HPD (a street addres
 
 | Needs | Questions |
 | --- | --- |
-| BOR/NLR export (week 5) | Q6, Q7, Q23 (the layers are loaded: Q8 to Q10, Q19, Q21 and Q26 are answered, design note 0024) |
+| BOR/NLR export (week 5) | none: the layers are loaded and the questions of Slices 4 and 5 are answered (design notes 0024 and 0026) |
 | Web research (week 6) | Q16, Q25 |
 | A better-fitting building | Q14 |
 | An alternate-address case | Q1 (scenario) |

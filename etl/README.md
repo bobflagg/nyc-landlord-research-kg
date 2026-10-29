@@ -12,6 +12,7 @@ Build pipeline: justfixwow snapshot → Neo4j (database `nyclr`, design note 001
 | `run_build.py` | The build: `--modules hpd,acris,dos,litigation,violations,complaints,mortgages,references,bor` (see its docstring) |
 | `bor.py` | A frozen BOR release: reading, the checks before a load (checksums, snapshot, source-table fingerprints), and the nodes and edges it becomes (design note 0024) |
 | `bor_build.py` | Loads a verified BOR release in batches |
+| `maildrop.py` | The mail-drop list as nodes (design note 0026) |
 
 ```
 uv run python -m etl.sample              # load the sample, validate

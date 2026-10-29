@@ -1,0 +1,290 @@
+{
+ "snapshot_id": "justfixwow-2026-05-29",
+ "derived": "2026-10-29",
+ "source": "justfixwow PostgreSQL (read-only), resolution/mail_drop_addresses.csv and slice1.json, slice3.json; queries in slice5.sql",
+ "how_to_read": "Expected answers for Slice 5 (Q6, Q22, Q7, Q11, Q18, Q23) taken from the snapshot the graph is built from, without the graph. Agents are matched by the start of the registered name; the test compares counts of the exact-name footprint.",
+ "anchors": {
+  "A": {
+   "bbl": "3008260002"
+  },
+  "B": {
+   "bbl": "3008260005"
+  },
+  "C": {
+   "bbl": "3008070024"
+  },
+  "D": {
+   "bbl": "3008210012"
+  },
+  "E": {
+   "bbl": "3008210019"
+  },
+  "F": {
+   "bbl": "3008970014"
+  },
+  "G": {
+   "bbl": "3008080025"
+  }
+ },
+ "questions": {
+  "Q6": {
+   "746 61ST ST 11220": {
+    "on_mail_drop_list": false,
+    "list_kind": null,
+    "bor_masked_on_list": false,
+    "hpd_contact_rows": 8,
+    "hpd_parties": 6
+   },
+   "418 BROADWAY 12207": {
+    "on_mail_drop_list": true,
+    "list_kind": "registered_agent",
+    "bor_masked_on_list": false,
+    "hpd_contact_rows": 66,
+    "hpd_parties": 64
+   },
+   "575 FIFTH AVE 10017": {
+    "on_mail_drop_list": true,
+    "list_kind": "management_office",
+    "bor_masked_on_list": true,
+    "hpd_contact_rows": 1874,
+    "hpd_parties": 334
+   }
+  },
+  "Q22": {
+   "KS Turnpike LLC | K S TURNPIKE LLC": {
+    "n1_equal": false,
+    "n2_equal": true,
+    "relation": "spacing_match",
+    "dos_ids_a": [],
+    "dos_ids_b": [
+     "3574572"
+    ]
+   },
+   "702 54 STREET LLC | 702 PLAZA LLC": {
+    "n1_equal": false,
+    "n2_equal": false,
+    "relation": null,
+    "dos_ids_a": [
+     "2833799"
+    ],
+    "dos_ids_b": [
+     "5857608"
+    ]
+   },
+   "5413 PLAZA LLC | 702 Plaza LLC": {
+    "n1_equal": false,
+    "n2_equal": false,
+    "relation": null,
+    "dos_ids_a": [
+     "5857246"
+    ],
+    "dos_ids_b": [
+     "5857608"
+    ]
+   },
+   "Example Holdings LLC | Example Holdings II LLC": {
+    "n1_equal": false,
+    "n2_equal": false,
+    "relation": null,
+    "dos_ids_a": [],
+    "dos_ids_b": []
+   },
+   "Acme L.L.C. | ACME LLC": {
+    "n1_equal": true,
+    "n2_equal": true,
+    "relation": "normalization_match",
+    "dos_ids_a": [],
+    "dos_ids_b": []
+   }
+  },
+  "Q7": {
+   "A|B": {
+    "shared_hpd_addresses": [
+     "746 61ST ST 11220"
+    ],
+    "same_person_names": [
+     "BAOZHEN CHEN"
+    ],
+    "spacing_only_person_names": [
+     [
+      "BAOZHENCHEN",
+      "BAO ZHEN CHEN",
+      "BAOZHEN CHEN"
+     ]
+    ],
+    "shared_managing_agents": [
+     "JAY WONG"
+    ],
+    "documents_on_both_lots": [
+     "2021031601183001",
+     "2021031601183002",
+     "2023061200959001",
+     "2023061400729001"
+    ],
+    "dos_process_addresses": {
+     "A": "5 CROMWELL CIRCLE, STATEN ISLAND 10304",
+     "B": "5 CROMWELL CIRCLE, STATEN ISLAND 10304"
+    }
+   }
+  },
+  "Q11": {
+   "A": {
+    "lenders_named": [
+     "CITY OF NEW YORK",
+     "CONNECTONE BANK",
+     "CROSSLAND FEDERAL SAVINGS BANK",
+     "CROSSLAND SAVINGS FSB",
+     "CROSSLAND SAVINGS, FSB",
+     "CROSSLAND SAVS FSB",
+     "HSBC BANK (USA)",
+     "HSBC BANK USA, NATIONAL ASSOCIATION",
+     "METROPOLITAN SAVINGS BANK",
+     "REPUBIC NATIONAL BANK OF NEW YORK"
+    ],
+    "documents_with_several_borrowers": [
+     "2021031601183001"
+    ],
+    "documented_parent": null
+   },
+   "C": {
+    "lenders_named": [
+     "ASTORIA FEDERAL SAVINGS & LOAN ASSOCIATION",
+     "MEDICAL MALPRACTICE INSURANCE ASSOCIATION",
+     "MEDICAL MALPRACTICEINS",
+     "NEW YORK COMMUNITY BANK",
+     "RIDGEWOOD SAVINGS BANK",
+     "ZARA REALTY HOLDINGCORP"
+    ],
+    "documents_with_several_borrowers": [],
+    "documented_parent": null
+   }
+  },
+  "Q18": {
+   "B": {
+    "deeds": [
+     {
+      "document_id": "BK_7230058700739",
+      "recorded": "1972-10-10",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7230058700741",
+      "recorded": "1972-10-10",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7730091600649",
+      "recorded": "1977-04-26",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7830098300841",
+      "recorded": "1978-03-23",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7830098300843",
+      "recorded": "1978-03-23",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7930107100841",
+      "recorded": "1979-05-09",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7930107901553",
+      "recorded": "1979-06-18",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_7930107901555",
+      "recorded": "1979-06-18",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "BK_8130121200259",
+      "recorded": "1981-01-21",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "FT_3240007675524",
+      "recorded": "2001-05-31",
+      "amount": 0,
+      "patterns": [
+       "same_name_transfer",
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "2003012200923001",
+      "recorded": "2003-01-28",
+      "amount": 0,
+      "patterns": [
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "2021022201130001",
+      "recorded": "2021-02-26",
+      "amount": 0,
+      "patterns": [
+       "paired_with_sale",
+       "zero_consideration"
+      ]
+     },
+     {
+      "document_id": "2021022201130002",
+      "recorded": "2021-02-26",
+      "amount": 6800000,
+      "patterns": [
+       "paired_with_sale",
+       "to_new_entity"
+      ]
+     }
+    ]
+   }
+  },
+  "Q23": {
+   "BRIGHTON MANAGEMENT": {
+    "lots": 39,
+    "registrations": 40,
+    "residential_units": 750,
+    "lots_missing_a_unit_count": 0
+   },
+   "BIG BROOKLYN REHAB INC": {
+    "lots": 4,
+    "registrations": 4,
+    "residential_units": 9,
+    "lots_missing_a_unit_count": 0
+   }
+  }
+ }
+}

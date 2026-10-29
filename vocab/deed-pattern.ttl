@@ -1,0 +1,56 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dpat: <https://bobflagg.github.io/Watchline/vocab/deed-pattern/> .
+
+dpat: a skos:ConceptScheme ;
+    dcterms:title "Deed pattern"@en ;
+    dcterms:description "Patterns in recorded deeds that may point to a restructuring (design note 0026, P4)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "A pattern is a hint, not a finding: it names what the recorded deed shows and nothing about intent. Whether the buyer is related to the seller is answered apart, by independent support."@en ;
+    skos:hasTopConcept dpat:zero_consideration, dpat:nominal_consideration, dpat:same_name_transfer, dpat:paired_with_sale, dpat:to_new_entity, dpat:multi_lot_deed .
+
+dpat:zero_consideration a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "zero_consideration" ;
+    skos:prefLabel "Zero consideration"@en ;
+    skos:definition "The deed records $0."@en .
+
+dpat:nominal_consideration a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "nominal_consideration" ;
+    skos:prefLabel "Nominal consideration"@en ;
+    skos:definition "The deed records more than $0 and up to the nominal limit BOR uses ($100)."@en .
+
+dpat:same_name_transfer a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "same_name_transfer" ;
+    skos:prefLabel "Same-name transfer"@en ;
+    skos:definition "Grantor and grantee share a normalized name (rule N1)."@en .
+
+dpat:paired_with_sale a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "paired_with_sale" ;
+    skos:prefLabel "Paired with a sale"@en ;
+    skos:definition "A $0 deed and a deed for value are recorded on the lot within the stated window of each other."@en .
+
+dpat:to_new_entity a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "to_new_entity" ;
+    skos:prefLabel "To a new entity"@en ;
+    skos:definition "The grantee has a DOS filing dated within the stated period before the deed."@en .
+
+dpat:multi_lot_deed a skos:Concept ;
+    skos:inScheme dpat: ;
+    skos:topConceptOf dpat: ;
+    skos:notation "multi_lot_deed" ;
+    skos:prefLabel "Multi-lot deed"@en ;
+    skos:definition "The deed names more than one lot."@en .
+

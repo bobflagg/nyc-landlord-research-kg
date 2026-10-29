@@ -1,0 +1,28 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix s2c:   <https://w3id.org/shacl2cypher#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix wl:    <https://bobflagg.github.io/Watchline/ontology/core#> .
+@prefix links: <https://bobflagg.github.io/Watchline/ontology/links#> .
+
+# Links shapes (design note 0026). Values between "generated" markers are written from vocab/ by scripts/sync_shape_values.py.
+
+links:MailDropAddressShape a sh:NodeShape ; sh:targetClass links:MailDropAddress ; s2c:key "maildrop_key" ;
+  sh:node wl:ProvenanceShape ;
+  sh:property [ sh:path links:maildrop_key ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern " [0-9]{5}$" ] ;
+  sh:property [ sh:path links:zip5 ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9]{5}$" ] ;
+  sh:property [ sh:path links:kind ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
+    # generated:address-kind begin
+    ( "registered_agent" "law_firm" "management_office" "unknown" )
+    # generated:address-kind end
+  ] ;
+  sh:property [ sh:path links:basis ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path links:dos_process_entities ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path links:hpd_agent_registrations ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path links:bor_degree ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path links:bor_address_ids ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path links:list_sources ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path links:list_note ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path wl:reliability ; sh:in ( "II" ) ] ;
+  sh:property [ sh:path wl:source_category ; sh:in ( "project_derived" ) ] ;
+  sh:property [ sh:path wl:review_status ; sh:minCount 1 ] ;
+  sh:property [ sh:path wl:source ; sh:in ( "mail_drop_list" ) ] .

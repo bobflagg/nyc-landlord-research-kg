@@ -24,7 +24,8 @@ def test_dataset_covers_each_question_and_anchor():
     for e in EX:
         by_q.setdefault(e["metadata"]["question_id"], []).append(e["metadata"]["anchor"])
     assert {q: len(v) for q, v in by_q.items()} == {"Q2": 7, "Q3": 7, "Q4": 7, "Q5": 10, "Q24": 4, "Q15": 7, "Q17": 7, "Q27": 7, "Q28": 7, "Q12": 7, "Q13": 7, "Q14": 7,
-                                                  "Q9": 6, "Q8": 4, "Q10": 3, "Q19": 7, "Q21": 2, "Q26": 4}
+                                                  "Q9": 6, "Q8": 4, "Q10": 3, "Q19": 7, "Q21": 2, "Q26": 4,
+                                                  "Q6": 3, "Q7": 1, "Q11": 2, "Q18": 1, "Q22": 4, "Q23": 2}
     assert set(by_q["Q2"]) == set("ABCDEFG")
 
 

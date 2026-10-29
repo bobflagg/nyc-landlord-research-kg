@@ -16,3 +16,4 @@ One row per address (rule A2 of design note 0006: unit text dropped, street suff
 - **Rule:** every row, whatever its kind, links nothing on its own. A `management_office` is masked because many unrelated landlords share it, which is not the same as a mail drop.
 - **`review_status`** is `unreviewed` on every row. Only a person changes it (design note 0003).
 - **Not yet done:** a person's review of the `unknown` rows; classification of addresses below the thresholds; ACRIS party addresses and DOS CEO addresses; a decision on whether BOR will take this list over (open in note 0001).
+- **In the graph** (design note 0026): `etl.run_build --modules maildrop` loads each row that has a ZIP as a `MailDropAddress` node keyed `<address_key> <zip5>`. A row without a ZIP (one, `120 BROADWAY`) cannot match a party's address key and is not loaded; it needs a ZIP or a review.

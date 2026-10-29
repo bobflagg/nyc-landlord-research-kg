@@ -12,9 +12,10 @@ OWL modules and SHACL shapes (design note 0010).
 | `dos.ttl`, `dos.shapes.ttl` | NY DOS entity (design note 0016) |
 | `conditions.ttl`, `conditions.shapes.ttl` | HPD violations, complaint summaries and litigation (design note 0020) |
 | `bor.ttl`, `bor.shapes.ttl` | The Owner Portfolio and Operational Network layers of a frozen BOR release: run, group, node, decision, deed evidence, link set, masked address, method metric (design note 0024) |
+| `links.ttl`, `links.shapes.ttl` | The project's mail-drop list as `MailDropAddress` nodes (design note 0026) |
 | `generated/` | Cypher compiled from the shapes by `scripts/compile_shapes.py` (shacl2cypher). Committed; do not edit |
 
-Domain modules are separate pairs of files that import core: PLUTO, HPD, ACRIS, DOS, conditions and BOR in Slice 4.
+Domain modules are separate pairs of files that import core: PLUTO, HPD, ACRIS, DOS, conditions, BOR and links.
 
 Checks that SHACL cannot express are hand-written in `etl/checks/` (snapshot references, role attachment). A violation from any of them fails the build.
 

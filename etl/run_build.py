@@ -10,6 +10,7 @@
   uv run python -m etl.run_build --modules references         # recorded references between mortgage-family documents in the graph (note 0022)
   uv run python -m etl.run_build --modules complaints         # HPD complaint counts by building, year, type and category (note 0020)
   uv run python -m etl.run_build --modules bor --verify-only  # check the BOR release against the source tables; load nothing (note 0024)
+  uv run python -m etl.run_build --modules maildrop           # the project's mail-drop list as nodes (note 0026)
   uv run python -m etl.run_build --modules bor                # verify, then load the BOR Owner Portfolio and Operational Network layers
 
 Re-runnable: a second run creates nothing new. The snapshot id is the one BOR's release names (note 0008).
@@ -21,6 +22,7 @@ from datetime import date
 
 from etl import bor, source
 from etl.bor_build import build_bor
+from etl.maildrop import maildrop_nodes
 from etl.build import build, build_acris, build_dos, build_complaints, build_litigation, build_references, build_violations
 from etl.config import ROOT, connect
 from etl.schema import load_schema
@@ -71,7 +73,7 @@ def main() -> None:
     driver, database = connect()
     with src, driver, driver.session(database=database) as session:
         mods = set(args.modules.split(","))
-        if not mods <= {"hpd", "acris", "dos", "litigation", "violations", "complaints", "mortgages", "references", "bor"}:
+        if not mods <= {"hpd", "acris", "dos", "litigation", "violations", "complaints", "mortgages", "references", "bor", "maildrop"}:
             raise SystemExit(f"unknown module in {args.modules!r}")
         if "hpd" in mods:
             totals = build(session, schema, args.snapshot_id, args.snapshot_date,
@@ -104,6 +106,11 @@ def main() -> None:
             as_of = source.as_of(src, "hpd_complaints_and_problems", "receiveddate", date.today())
             groups = {g: source.complaint_groups(src, g, date.today()) for g in ("type", "category")}
             print("loaded (complaints):", build_complaints(session, schema, args.snapshot_id, args.snapshot_date, groups, source.graph_lots(src), as_of), "as of", as_of)
+        if "maildrop" in mods:
+            from etl.load import apply_schema, load_nodes, register_snapshot
+            apply_schema(session, schema)
+            session.execute_write(register_snapshot, args.snapshot_id, "justfixwow", args.snapshot_date)
+            print("loaded (maildrop):", session.execute_write(load_nodes, schema, "MailDropAddress", maildrop_nodes()), "addresses")
         if "bor" in mods:
             rel, verified = bor_release(args, src)
             if args.verify_only:

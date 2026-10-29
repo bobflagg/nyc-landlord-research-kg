@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix akind: <https://bobflagg.github.io/Watchline/vocab/address-kind/> .
+
+akind: a skos:ConceptScheme ;
+    dcterms:title "Address kind"@en ;
+    dcterms:description "What kind of shared address a mail-drop-list row is (design note 0026, P1)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The notation is stored in kind on MailDropAddress. A kind is assigned only when the evidence in basis supports it; everything else is unknown until a person reviews it. Whatever the kind, the address links nothing on its own."@en ;
+    skos:hasTopConcept akind:registered_agent, akind:law_firm, akind:management_office, akind:unknown .
+
+akind:registered_agent a skos:Concept ;
+    skos:inScheme akind: ;
+    skos:topConceptOf akind: ;
+    skos:notation "registered_agent" ;
+    skos:prefLabel "Registered agent"@en ;
+    skos:definition "A filing or registered-agent service is at least 25% of the process names of the entities using the address."@en .
+
+akind:law_firm a skos:Concept ;
+    skos:inScheme akind: ;
+    skos:topConceptOf akind: ;
+    skos:notation "law_firm" ;
+    skos:prefLabel "Law firm"@en ;
+    skos:definition "Law-firm names are at least 25% of the process names of the entities using the address."@en .
+
+akind:management_office a skos:Concept ;
+    skos:inScheme akind: ;
+    skos:topConceptOf akind: ;
+    skos:notation "management_office" ;
+    skos:prefLabel "Management office"@en ;
+    skos:definition "An HPD managing-agent contact is at the address on at least 75% of the registrations that list it. Masked because many unrelated landlords share it, which is not the same as a mail drop."@en .
+
+akind:unknown a skos:Concept ;
+    skos:inScheme akind: ;
+    skos:topConceptOf akind: ;
+    skos:notation "unknown" ;
+    skos:prefLabel "Unknown"@en ;
+    skos:definition "The evidence does not support a kind; a person has not reviewed the row."@en .
+

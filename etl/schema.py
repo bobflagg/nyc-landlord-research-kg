@@ -14,7 +14,7 @@ SNAPSHOT_ID = re.compile(r"^[a-z][a-z0-9]*-\d{4}-\d{2}-\d{2}(-r\d+)?$")  # note 
 
 # Indexed for lookup, not unique: "who else uses this address" (note 0010, item 2).
 INDEXED = {"Lot": ["address_key"], "Building": ["address_key"], "HpdParty": ["business_address_key", "name_n1", "person_name_n1"],
-           "AcrisParty": ["address_key", "name_n1"], "Document": ["crfn"], "DosEntity": ["name_n1", "dos_id"],
+           "AcrisParty": ["address_key", "name_n1"], "Document": ["crfn"], "DosEntity": ["name_n1", "dos_id", "process_address_line1"],
            "BorGroup": ["group_id"], "BorNode": ["node_id", "cluster_id", "group_id"], "BorDecision": ["cluster_id", "subject_id"], "BorEvidence": ["document_id"]}
 
 
