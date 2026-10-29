@@ -1,0 +1,35 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lkind: <https://bobflagg.github.io/Watchline/vocab/lead-kind/> .
+
+lkind: a skos:ConceptScheme ;
+    dcterms:title "Lead kind"@en ;
+    dcterms:description "What a lead is (design note 0030, I3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "Only entity names and addresses are followed. A person's name is logged in its recorded role and not followed."@en ;
+    skos:hasTopConcept lkind:entity_name, lkind:address, lkind:person_name .
+
+lkind:entity_name a skos:Concept ;
+    skos:inScheme lkind: ;
+    skos:topConceptOf lkind: ;
+    skos:notation "entity_name" ;
+    skos:prefLabel "Entity name"@en ;
+    skos:definition "The name of an organization that appears in a recorded or retrieved source."@en .
+
+lkind:address a skos:Concept ;
+    skos:inScheme lkind: ;
+    skos:topConceptOf lkind: ;
+    skos:notation "address" ;
+    skos:prefLabel "Address"@en ;
+    skos:definition "A business address that appears in a recorded or retrieved source."@en .
+
+lkind:person_name a skos:Concept ;
+    skos:inScheme lkind: ;
+    skos:topConceptOf lkind: ;
+    skos:notation "person_name" ;
+    skos:prefLabel "Person name"@en ;
+    skos:definition "A person's name in the role a record gives it; logged, never followed."@en .
+

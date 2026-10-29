@@ -4,6 +4,7 @@ Rules: the query is the recorded entity's exact name (or a recorded address); in
 name (rule N1) or exact address appears in the text, with the quote shown verbatim; a similar name is a lead about a different entity. Fetched text is untrusted: it is read only
 by an extractor that has no tools, its instructions are never followed, and it never reaches a query or Cypher. A claim in a report is a claim that was published."""
 import re
+import threading
 from datetime import date
 from typing import Protocol
 from urllib.parse import urlparse
@@ -55,15 +56,28 @@ relationship or fact the records do not hold; conflicts = it differs from a reco
 attributed ('the passage says'); never as fact. Never infer ownership or control from a signatory or a mention."""
 
 
+_READ_LOCK = threading.Lock()
+
+
 class LLMExtractor:
     def __init__(self, model: str | None = None):
-        import os
-        from langchain.chat_models import init_chat_model
-        self.llm = init_chat_model(model or os.environ.get("AGENT_MODEL", "anthropic:claude-sonnet-5-5")).with_structured_output(Reading, method="json_schema")
+        from agent.costs import chat_model, model_for
+        self.model = model or model_for("reader")          # reading a quote is mechanical: the cheap model (READER_MODEL overrides)
+        self.llm = chat_model(self.model).with_structured_output(Reading, method="json_schema")
 
     def read(self, entity: str, quote: str, recorded: str) -> Reading:
-        r = self.llm.invoke(PROMPT.format(entity=entity, recorded=recorded or "(none found)", quote=quote))
-        return r if r.relation in ("agrees", "adds", "conflicts", "unrelated") else r.model_copy(update={"relation": "unrelated"})
+        """The reading is cached with the retrieval (a week), so a replay of a dossier gets the same reading and the evidence hash is stable."""
+        from agent.web.cache import Cache
+        cache, params = Cache(), {"model": self.model, "entity": entity, "quote": quote, "recorded": recorded}
+        with _READ_LOCK:       # two searches running in parallel threads must not read the same quote twice and keep different readings
+            hit = cache.get("extract", {"reading": params})
+            if hit:
+                return Reading(**hit["response"])
+            r = self.llm.invoke(PROMPT.format(entity=entity, recorded=recorded or "(none found)", quote=quote))
+            r = r if r.relation in ("agrees", "adds", "conflicts", "unrelated") else r.model_copy(update={"relation": "unrelated"})
+            from agent.web.evidence import now_iso
+            cache.put("extract", {"reading": params}, r.model_dump(), now_iso())
+            return r
 
 
 def is_entity_name(name: str) -> bool:

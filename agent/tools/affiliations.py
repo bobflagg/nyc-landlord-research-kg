@@ -94,10 +94,10 @@ def affiliations(runner, bbl: str) -> dict:
                                    "mail_drop_list": (mail_drop(runner, pk) or {}).get("kind"), "source": "nys_corporations", "reliability": "I"}))
     out = {**base, "status": "found" if (roles or rows) else "no_relationships_found", "lot_has_hpd_registration": registered,
            "by_type": {
-               "lender": {"relationship": "financing", "count": len(lenders), "parties": [_clean({**e, "document_types": sorted(e["document_types"])}) for e in sorted(lenders.values(), key=lambda e: -e["documents"])]},
-               "joint_borrower": {"relationship": "a shared borrower record on one document, not common control", "documents": len(joint), "examples": sorted(joint, key=lambda j: j["recorded"] or "")[:10]},
-               "managing_agent": {"relationship": "management, not ownership", "parties": sorted(mgmt.values(), key=lambda e: (e["role"], e["name"]))},
-               "registered_principal": {"relationship": "a person or company in an HPD role, as recorded", "parties": sorted(principals.values(), key=lambda e: (e["role"], e["name"]))},
+               "lender": {"relationship": "financing", "count": len(lenders), "parties": [_clean({**e, "document_types": sorted(e["document_types"])}) for e in sorted(lenders.values(), key=lambda e: (-e["documents"], e["name"]))]},
+               "joint_borrower": {"relationship": "a shared borrower record on one document, not common control", "documents": len(joint), "examples": sorted(joint, key=lambda j: (j["recorded"] or "", j["document_id"]))[:10]},
+               "managing_agent": {"relationship": "management, not ownership", "parties": sorted(mgmt.values(), key=lambda e: (e["role"], e["name"], e["registration_id"]))},
+               "registered_principal": {"relationship": "a person or company in an HPD role, as recorded", "parties": sorted(principals.values(), key=lambda e: (e["role"], e["name"], e["registration_id"]))},
                "process_agent": {"relationship": "where the state forwards papers", "entities": process}}}
     if not registered:
         out["note"] = "The lot has no HPD registration, so no HPD role is here and the mortgage family is not loaded for it; nothing here says it has no affiliations."

@@ -294,3 +294,20 @@ def test_a_bare_name_in_a_title_is_not_an_item_and_a_government_page_is_not_repo
              "https://data.nyc.gov/doc": {"title": "d", "published": "2025-01-01", "text": "The tax bill for the year lists 5413 Plaza LLC as the owner of the building on Seventh Avenue."}}
     r, _ = run(runner, ENTITY, pages)
     assert [i["url"] for i in r["items"]] == ["https://data.nyc.gov/doc"] and r["items"][0]["source_category"] == "web_content"
+
+
+def test_a_reading_is_cached_and_parallel_readers_agree(tmp_path, monkeypatch):
+    import threading
+    from agent.web.reports import LLMExtractor
+    monkeypatch.setenv("WEB_CACHE_PATH", str(tmp_path / "w.sqlite"))
+    class Fake:
+        n = 0
+        def invoke(self, prompt):
+            Fake.n += 1
+            return Reading(claim=f"reading {Fake.n}", relation="adds", relation_note="n")
+    ex = LLMExtractor.__new__(LLMExtractor)
+    ex.model, ex.llm = "m", Fake()
+    got = []
+    ts = [threading.Thread(target=lambda: got.append(ex.read("E LLC", "E LLC did a thing today.", "rec").claim)) for _ in range(6)]
+    [t.start() for t in ts]; [t.join() for t in ts]
+    assert Fake.n == 1 and len(set(got)) == 1

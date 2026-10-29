@@ -5,6 +5,7 @@ description = "Ontology-first knowledge graph course and capstone: an NYC landlo
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "deepagents>=0.7.32",
     "httpx>=0.28.1",
     "langchain>=1.4.7",
     "langchain-anthropic>=1.7.6",

@@ -21,6 +21,8 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `address-kind.ttl` | Address kind | `kind` on mail-drop-list addresses (note 0026) |
 | `deed-pattern.ttl` | Deed pattern | the patterns `classify_deeds` reports (note 0026) |
 | `affiliation-type.ttl` | Affiliation type | the relationship types `get_affiliations` reports (note 0026) |
+| `evidence-relation.ttl`, `match-basis.ttl`, `extraction-method.ttl`, `lead-reason.ttl` | Session evidence | the coded values of Slice 6 evidence items and unresolved leads (notes 0028, 0030) |
+| `claim-label.ttl`, `stop-reason.ttl`, `lead-disposition.ttl`, `lead-kind.ttl` | Dossier | the labels, stop reasons and lead dispositions of the investigator (note 0030) |
 
 `skos:hiddenLabel` with the language tag `x-hpd` carries the HPD code a concept maps from; `x-bor` carries BOR's own code for the four BOR schemes, whose notation is that code as the release writes it. The loader and the shapes read the vocabulary: `etl/vocab.py` for the mappings and `scripts/sync_shape_values.py` for the allowed values in `ontology/*.shapes.ttl`.
 

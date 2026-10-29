@@ -1,0 +1,35 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix clabel: <https://bobflagg.github.io/Watchline/vocab/claim-label/> .
+
+clabel: a skos:ConceptScheme ;
+    dcterms:title "Claim label"@en ;
+    dcterms:description "How a dossier claim is labelled, taken from the weakest source it cites (design note 0030, I2)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "A claim is never labelled stronger than its sources. A hypothesis is a derived or reported lead, never a finding."@en ;
+    skos:hasTopConcept clabel:recorded_assertion, clabel:derived_lead, clabel:reported_claim .
+
+clabel:recorded_assertion a skos:Concept ;
+    skos:inScheme clabel: ;
+    skos:topConceptOf clabel: ;
+    skos:notation "recorded_assertion" ;
+    skos:prefLabel "Recorded assertion"@en ;
+    skos:definition "Type I: a public record states it, or it follows from joining records on an official identifier."@en .
+
+clabel:derived_lead a skos:Concept ;
+    skos:inScheme clabel: ;
+    skos:topConceptOf clabel: ;
+    skos:notation "derived_lead" ;
+    skos:prefLabel "Derived lead"@en ;
+    skos:definition "Type II: a method of the project (BOR layers, name or address comparison, the mail-drop list) links or classifies where the records do not say so."@en .
+
+clabel:reported_claim a skos:Concept ;
+    skos:inScheme clabel: ;
+    skos:topConceptOf clabel: ;
+    skos:notation "reported_claim" ;
+    skos:prefLabel "Reported claim"@en ;
+    skos:definition "A third party's published claim or a web page's text: reliable only as to the fact that it was published."@en .
+

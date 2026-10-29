@@ -120,14 +120,39 @@ Saying the same name appears in several records is fine; saying it is the same p
 that something is not proven, is fine. Details left out are not claims."""
 
 
+_VERDICTS = ROOT / "data" / "cache" / "judge.json"
+
+
+def _verdict_key(question: str, answer: str, results: str, model: str) -> str:
+    import hashlib
+    return hashlib.sha256("\x00".join([model, JUDGE_PROMPT, question, answer, results]).encode()).hexdigest()
+
+
 def make_judge(model: str | None = None):
-    """An evaluator that asks the judge model (JUDGE_MODEL in .env, a LangChain model string) to check grounding."""
-    from langchain.chat_models import init_chat_model
-    llm = init_chat_model(model or os.environ.get("JUDGE_MODEL", DEFAULT_JUDGE)).with_structured_output(Verdict, method="json_schema")
+    """An evaluator that asks the judge model (JUDGE_MODEL in .env, default the cheap model; see agent/costs.py) to check grounding.
+
+    Two cost controls: when a deterministic check already fails the answer is not judged (the comment says 'skipped'), and a verdict is cached by
+    (model, prompt, question, answer, results), so judging the same answer twice costs nothing."""
+    import json
+    from agent.costs import chat_model, model_for
+    name = model or model_for("judge")
+    llm = chat_model(name).with_structured_output(Verdict, method="json_schema")
 
     def grounded(inputs: dict, outputs: dict, reference_outputs: dict) -> dict:
+        failing = [f.__name__ for f in DETERMINISTIC if f(inputs, outputs, reference_outputs)["score"] < 1]
+        if failing:
+            return _result("grounded", 0.0, f"skipped: not judged because a deterministic check failed ({', '.join(failing)})")
         results = "\n\n".join(f"[{r['name']}]\n{r['content'][:40000]}" for r in outputs.get("tool_results", [])) or "(no tool was called)"
-        v = llm.invoke(JUDGE_PROMPT.format(question=inputs["question"], results=results, answer=outputs.get("answer", "")))
+        key = _verdict_key(inputs["question"], outputs.get("answer", ""), results, name)
+        cache = json.loads(_VERDICTS.read_text()) if _VERDICTS.exists() else {}
+        if key in cache:
+            v = Verdict(**cache[key])
+        else:
+            v = llm.invoke(JUDGE_PROMPT.format(question=inputs["question"], results=results, answer=outputs.get("answer", "")))
+            _VERDICTS.parent.mkdir(parents=True, exist_ok=True)
+            cache = json.loads(_VERDICTS.read_text()) if _VERDICTS.exists() else {}
+            cache[key] = v.model_dump()
+            _VERDICTS.write_text(json.dumps(cache))
         ok = not v.unsupported_claims and not v.presents_match_as_finding
         return _result("grounded", 1.0 if ok else 0.0, v.reason + (f" | unsupported: {v.unsupported_claims}" if v.unsupported_claims else "")
                        + (" | presents a match as a finding" if v.presents_match_as_finding else ""))

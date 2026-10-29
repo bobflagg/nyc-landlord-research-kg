@@ -8,6 +8,9 @@ import os
 
 from dotenv import load_dotenv
 from langchain.agents import create_agent
+from langchain_anthropic.middleware import AnthropicPromptCachingMiddleware
+
+from agent.costs import chat_model, model_for
 
 from agent.tools.conditions import get_hpd_complaints, get_hpd_litigation, get_hpd_violations, get_registration_status
 from agent.tools.dos import get_dos_record
@@ -69,7 +72,7 @@ Rules (state a limit or caveat only when it applies to a tool you actually used;
 
 def build_agent():
     load_dotenv(ROOT / ".env")
-    return create_agent(model=os.environ.get("AGENT_MODEL", DEFAULT_MODEL), tools=[find_lot_by_address, get_hpd_registrations, get_hpd_contacts, compare_deed_grantee_with_hpd_owner, get_dos_record,
+    return create_agent(model=chat_model(model_for("agent")), middleware=[AnthropicPromptCachingMiddleware()], tools=[find_lot_by_address, get_hpd_registrations, get_hpd_contacts, compare_deed_grantee_with_hpd_owner, get_dos_record,
                                                     find_records_by_name, get_hpd_litigation, get_hpd_violations, get_hpd_complaints, get_registration_status, get_deed_history, get_mortgage_history, get_title_and_registrant_on_date,
                                                     get_owner_portfolio, get_operational_network, explain_why_grouped, compare_ownership_layers, rank_violations_in_group, explain_what_is_missing,
                                                     check_address_aggregator, get_shared_evidence, get_affiliations, classify_deeds, compare_entities, get_agent_footprint, search_reports, lookup_registry],

@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix stopreason: <https://bobflagg.github.io/Watchline/vocab/stop-reason/> .
+
+stopreason: a skos:ConceptScheme ;
+    dcterms:title "Stop reason"@en ;
+    dcterms:description "Why an investigation ended; exactly one per dossier, decided by code from the ledger (design note 0030, I3)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "The reason is computed from the leads and the budget, not chosen by the agent."@en ;
+    skos:hasTopConcept stopreason:reached_registered_agent_mail_drop_or_masked_address, stopreason:no_further_recorded_link, stopreason:needs_payment_or_inaccessible, stopreason:budget_reached, stopreason:conflicting_records_unresolved .
+
+stopreason:reached_registered_agent_mail_drop_or_masked_address a skos:Concept ;
+    skos:inScheme stopreason: ;
+    skos:topConceptOf stopreason: ;
+    skos:notation "reached_registered_agent_mail_drop_or_masked_address" ;
+    skos:prefLabel "Reached a registered-agent, mail-drop or masked address"@en ;
+    skos:definition "The trail reached an address that links nothing on its own, and nothing else was open."@en .
+
+stopreason:no_further_recorded_link a skos:Concept ;
+    skos:inScheme stopreason: ;
+    skos:topConceptOf stopreason: ;
+    skos:notation "no_further_recorded_link" ;
+    skos:prefLabel "No further recorded link"@en ;
+    skos:definition "Every lead was followed or set aside and no new entity name or address remains."@en .
+
+stopreason:needs_payment_or_inaccessible a skos:Concept ;
+    skos:inScheme stopreason: ;
+    skos:topConceptOf stopreason: ;
+    skos:notation "needs_payment_or_inaccessible" ;
+    skos:prefLabel "Next source needs payment or is inaccessible"@en ;
+    skos:definition "The next step is behind a fee, a login, a CAPTCHA or an outage."@en .
+
+stopreason:budget_reached a skos:Concept ;
+    skos:inScheme stopreason: ;
+    skos:topConceptOf stopreason: ;
+    skos:notation "budget_reached" ;
+    skos:prefLabel "Budget reached"@en ;
+    skos:definition "The call, lead or time budget was spent while leads remained open."@en .
+
+stopreason:conflicting_records_unresolved a skos:Concept ;
+    skos:inScheme stopreason: ;
+    skos:topConceptOf stopreason: ;
+    skos:notation "conflicting_records_unresolved" ;
+    skos:prefLabel "Conflicting records left unresolved"@en ;
+    skos:definition "Records disagree and nothing more could settle it."@en .
+

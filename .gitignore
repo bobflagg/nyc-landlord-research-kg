@@ -236,3 +236,5 @@ ignore-this-directory/
 
 # Retrieval cache for web and registry lookups (design note 0028)
 data/cache/
+# Investigator dossiers (design note 0030): they hold retrieved third-party text
+data/dossiers/

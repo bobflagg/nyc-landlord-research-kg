@@ -1,0 +1,42 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldisp: <https://bobflagg.github.io/Watchline/vocab/lead-disposition/> .
+
+ldisp: a skos:ConceptScheme ;
+    dcterms:title "Lead disposition"@en ;
+    dcterms:description "Where a lead stands in the ledger (design note 0030, I2)."@en ;
+    dcterms:created "2026-10-29"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:scopeNote "A lead not followed or not resolved is listed with its reason."@en ;
+    skos:hasTopConcept ldisp:queued, ldisp:set_aside, ldisp:resolved, ldisp:unresolved .
+
+ldisp:queued a skos:Concept ;
+    skos:inScheme ldisp: ;
+    skos:topConceptOf ldisp: ;
+    skos:notation "queued" ;
+    skos:prefLabel "Queued"@en ;
+    skos:definition "The lead met the lead rule and is open for the agent to follow."@en .
+
+ldisp:set_aside a skos:Concept ;
+    skos:inScheme ldisp: ;
+    skos:topConceptOf ldisp: ;
+    skos:notation "set_aside" ;
+    skos:prefLabel "Set aside"@en ;
+    skos:definition "The lead was logged and not followed, with the reason."@en .
+
+ldisp:resolved a skos:Concept ;
+    skos:inScheme ldisp: ;
+    skos:topConceptOf ldisp: ;
+    skos:notation "resolved" ;
+    skos:prefLabel "Resolved"@en ;
+    skos:definition "The lead was followed and what it led to is recorded in claims."@en .
+
+ldisp:unresolved a skos:Concept ;
+    skos:inScheme ldisp: ;
+    skos:topConceptOf ldisp: ;
+    skos:notation "unresolved" ;
+    skos:prefLabel "Unresolved"@en ;
+    skos:definition "The lead was followed as far as it could be and stopped, with the reason."@en .
+

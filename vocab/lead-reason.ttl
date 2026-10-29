@@ -10,7 +10,7 @@ lreason: a skos:ConceptScheme ;
     dcterms:created "2026-10-29"^^xsd:date ;
     owl:versionInfo "0.1.0" ;
     skos:scopeNote "A lead lists what was tried and why it stopped. It is never a finding and never a link."@en ;
-    skos:hasTopConcept lreason:needs_payment, lreason:inaccessible, lreason:unreadable, lreason:partial, lreason:not_found, lreason:budget_exhausted .
+    skos:hasTopConcept lreason:masked_address, lreason:mail_drop_address, lreason:no_further_record, lreason:conflicting_records, lreason:person_not_followed, lreason:already_followed, lreason:needs_payment, lreason:inaccessible, lreason:unreadable, lreason:partial, lreason:not_found, lreason:budget_exhausted .
 
 lreason:needs_payment a skos:Concept ;
     skos:inScheme lreason: ;
@@ -53,4 +53,46 @@ lreason:budget_exhausted a skos:Concept ;
     skos:notation "budget_exhausted" ;
     skos:prefLabel "Budget exhausted"@en ;
     skos:definition "The step or time budget ended before this step."@en .
+
+lreason:masked_address a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "masked_address" ;
+    skos:prefLabel "Masked address"@en ;
+    skos:definition "BOR masked the address because many landlord records share it; it links nothing on its own."@en .
+
+lreason:mail_drop_address a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "mail_drop_address" ;
+    skos:prefLabel "Mail-drop address"@en ;
+    skos:definition "The address is on the project's mail-drop list or is shared by many parties; it links nothing on its own."@en .
+
+lreason:no_further_record a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "no_further_record" ;
+    skos:prefLabel "No further record"@en ;
+    skos:definition "The lead was searched and nothing further was found."@en .
+
+lreason:conflicting_records a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "conflicting_records" ;
+    skos:prefLabel "Conflicting records"@en ;
+    skos:definition "The records disagree and neither is chosen."@en .
+
+lreason:person_not_followed a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "person_not_followed" ;
+    skos:prefLabel "Person not followed"@en ;
+    skos:definition "A person's name is logged in its recorded role and is not followed."@en .
+
+lreason:already_followed a skos:Concept ;
+    skos:inScheme lreason: ;
+    skos:topConceptOf lreason: ;
+    skos:notation "already_followed" ;
+    skos:prefLabel "Already followed"@en ;
+    skos:definition "The same entity or address is already in the ledger."@en .
 
