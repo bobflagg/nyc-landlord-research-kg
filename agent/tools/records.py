@@ -11,6 +11,7 @@ from langchain.tools import tool
 from agent.db import read_session
 from etl.config import ROOT
 from etl.names import n1
+from etl.vocab import deed_family_types
 
 PROV = ".reliability, .source_category, .source, .snapshot_id"
 CAVEATS_Q3 = [
@@ -23,7 +24,8 @@ CAVEATS_Q3 = [
 ]
 CAVEATS_Q24 = [
     "Records are matched on the exact normalized name (rule N1). Other spellings are not searched for, and a name match is a lead, not a finding.",
-    "ACRIS coverage is the deed family on lots in the graph; mortgages and other document types are not loaded yet. A deed recorded for $0 is not "
+    "ACRIS coverage is the deed family on lots in the graph and the mortgage family (mortgages, assignments, satisfactions and related instruments) on HPD-registered lots only; "
+    "other document types are not loaded. A deed recorded for $0 is not "
     "necessarily a sale. DOS holds active entities only: no DOS record is not 'does not exist'. A DOS entity is not tied to any lot, and its CEO and "
     "officer fields are not carried for LLCs, so their absence does not mean there are none.",
     "A person's name is returned only in the role the record gives it, with its source. This is what was found in the snapshot, not a claim of completeness.",
@@ -77,7 +79,7 @@ def _name_counts(runner, name_n1: str) -> dict:
 # ---- Q3 -----------------------------------------------------------------------------------------------------
 
 DEEDS = f"""
-MATCH (l:Lot {{bbl: $bbl}})<-[:ON_LOT]-(d:Document) WHERE d.doc_type IS NOT NULL AND d.doc_type <> 'deed_correction'
+MATCH (l:Lot {{bbl: $bbl}})<-[:ON_LOT]-(d:Document) WHERE d.doc_type IN $deed_types AND d.doc_type <> 'deed_correction'
 RETURN d {{.document_id, .doc_type, .doc_type_raw, .doc_date, .doc_date_raw, .recorded, .amount, {PROV}}} AS d
 ORDER BY d.recorded DESC, d.doc_date DESC, d.document_id
 """
@@ -144,7 +146,7 @@ def compare_deed_and_owner(runner, bbl: str) -> dict:
     lot = runner.run("MATCH (l:Lot {bbl: $bbl}) RETURN l.bbl AS bbl", bbl=bbl).single()
     if lot is None:
         return {"status": "lot_absent", "bbl": bbl, "note": "The graph holds no such lot.", **snapshot(runner)}
-    deeds = [r["d"] for r in runner.run(DEEDS, bbl=bbl)]
+    deeds = [r["d"] for r in runner.run(DEEDS, bbl=bbl, deed_types=deed_family_types())]
     owners = runner.run(OWNERS, bbl=bbl).data()
     base = {"bbl": bbl, **snapshot(runner), "mail_drop_list": MAIL_DROP_NOTE, "deeds_on_lot": len(deeds), "caveats": CAVEATS_Q3, "ordering": "most recent by recording date, then document date; ties are all reported"}
     if not deeds:

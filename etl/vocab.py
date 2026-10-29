@@ -1,7 +1,7 @@
 """Source-code mappings read from the vocab files, so the vocabulary stays the one place they are written."""
 from functools import cache
 
-from rdflib import Graph, Namespace
+from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import SKOS
 
 from etl.config import ROOT
@@ -38,15 +38,44 @@ def acris_doc_type(code: str | None) -> str | None:
     return _codes("document-type", "x-acris").get((code or "").strip().casefold())
 
 
-def deed_family_codes() -> list[str]:
-    """ACRIS document type codes that have a concept: the codes a build loads."""
+def _family_codes(family: str) -> list[str]:
     g = Graph().parse(ROOT / "vocab" / "document-type.ttl")
-    return sorted(str(l) for l in g.objects(None, SKOS.hiddenLabel) if l.language == "x-acris")
+    parent = URIRef(f"{BASE}document-type/{family}")
+    return sorted(str(l) for c in g.subjects(SKOS.broader, parent) for l in g.objects(c, SKOS.hiddenLabel) if l.language == "x-acris")
+
+
+def mortgage_family_types() -> list[str]:
+    """doc_type notations of the mortgage family, as stored on Document nodes."""
+    g = Graph().parse(ROOT / "vocab" / "document-type.ttl")
+    parent = URIRef(f"{BASE}document-type/mortgage_family")
+    return sorted(str(g.value(c, SKOS.notation)) for c in g.subjects(SKOS.broader, parent))
+
+
+def deed_family_types() -> list[str]:
+    """doc_type notations of the deed family, as stored on Document nodes."""
+    g = Graph().parse(ROOT / "vocab" / "document-type.ttl")
+    parent = URIRef(f"{BASE}document-type/deed_family")
+    return sorted(str(g.value(c, SKOS.notation)) for c in g.subjects(SKOS.broader, parent))
+
+
+def deed_family_codes() -> list[str]:
+    """ACRIS document type codes of the deed family: the codes the deed build loads."""
+    return _family_codes("deed_family")
+
+
+def mortgage_family_codes() -> list[str]:
+    """ACRIS document type codes of the mortgage family (note 0022)."""
+    return _family_codes("mortgage_family")
 
 
 def acris_role_type(doc_type: str | None, party_type) -> str | None:
-    """Party type to role_type for a deed-family document. Party 3 means life estate retained on DEED, LE only;
-    elsewhere it has no confirmed meaning and maps to nothing."""
+    """Party type to role_type. Deed family: party 3 means life estate retained on DEED, LE only; elsewhere it has no confirmed meaning and
+    maps to nothing. Mortgage family: the meaning of party 1 and 2 depends on the document type (vocab/role-type.ttl, x-acris-by-type)."""
+    by_type = _codes("role-type", "x-acris-by-type").get(f"{doc_type}:{str(party_type).strip()}".casefold())
+    if by_type is not None:
+        return by_type
+    if doc_type is None or not doc_type.startswith("deed"):
+        return None     # a mortgage-class party code with no confirmed meaning for its document type
     role = _codes("role-type", "x-acris").get(str(party_type).strip())
     if role == "life_estate_retained" and doc_type != "deed_life_estate":
         return None

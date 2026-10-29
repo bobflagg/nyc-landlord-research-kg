@@ -1,0 +1,1696 @@
+{
+ "snapshot_id": "justfixwow-2026-05-29",
+ "derived": "2026-10-28",
+ "source": "justfixwow PostgreSQL (read-only); queries in slice3.sql",
+ "how_to_read": "Expected answers for the Slice 3 questions on the anchors A-G, taken from the snapshot the graph is built from. Q12 counts documents, not lots; party names are as recorded (design note 0009).",
+ "anchors": {
+  "A": {
+   "bbl": "3008260002"
+  },
+  "B": {
+   "bbl": "3008260005"
+  },
+  "C": {
+   "bbl": "3008070024"
+  },
+  "D": {
+   "bbl": "3008210012"
+  },
+  "E": {
+   "bbl": "3008210019"
+  },
+  "F": {
+   "bbl": "3008970014"
+  },
+  "G": {
+   "bbl": "3008080025"
+  }
+ },
+ "questions": {
+  "Q12": {
+   "A": {
+    "deeds": 7,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 6,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "BK_6630032700447",
+      "doc_type": "DEED",
+      "doc_date": "1966-12-29",
+      "recorded": "1966-12-29",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "H & B MANAGEMENT INC"
+      ],
+      "grantees": [
+       "FISHMAN BENJAMIN",
+       "FISHMAN HERMAN W"
+      ]
+     },
+     {
+      "document_id": "BK_7330061600026",
+      "doc_type": "DEED",
+      "doc_date": "1973-02-23",
+      "recorded": "1973-02-23",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "FISHMAN BENJAMIN",
+       "FISHMAN HERMAN W"
+      ],
+      "grantees": [
+       "DASS REALTY CORP"
+      ]
+     },
+     {
+      "document_id": "BK_7330061700406",
+      "doc_type": "DEED",
+      "doc_date": "1973-03-01",
+      "recorded": "1973-03-01",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "DASS REALTY CORP"
+      ],
+      "grantees": [
+       "ALHADEFF NISSIN",
+       "DIAMANTIS HARALAMBOS",
+       "SEKAS GEORGE",
+       "SEKAS GUS",
+       "STAMBULES KOSTAS"
+      ]
+     },
+     {
+      "document_id": "BK_7830101801938",
+      "doc_type": "DEED",
+      "doc_date": "1978-09-13",
+      "recorded": "1978-09-13",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "ALHADEFF NISSIM",
+       "DIAMANDIS HARALAMBOS",
+       "DIAMANTIS HARALAMBOS",
+       "SEKAS GEORGE",
+       "SEKAS GUS",
+       "STAMBULES KOSTAS"
+      ],
+      "grantees": [
+       "KORNBLUM DANIEL"
+      ]
+     },
+     {
+      "document_id": "2003020300253001",
+      "doc_type": "DEEDO",
+      "doc_date": "2002-12-05",
+      "recorded": "2003-05-28",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "KORNBLUM, DANIEL"
+      ],
+      "grantees": [
+       "5413  7TH AVENUE LLC"
+      ]
+     },
+     {
+      "document_id": "2021022201130003",
+      "doc_type": "DEED",
+      "doc_date": "2021-02-16",
+      "recorded": "2021-02-26",
+      "amount": 5000000,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "5413 7TH AVENUE LLC"
+      ],
+      "grantees": [
+       "5413 PLAZA LLC"
+      ]
+     },
+     {
+      "document_id": "2025032100031001",
+      "doc_type": "DEED",
+      "doc_date": "2025-03-14",
+      "recorded": "2025-04-02",
+      "amount": 0,
+      "lots": [
+       "3008260002"
+      ],
+      "grantors": [
+       "5413 PLAZA LLC"
+      ],
+      "grantees": [
+       "5413 PLAZA LLC"
+      ]
+     }
+    ]
+   },
+   "B": {
+    "deeds": 13,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 12,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "BK_7230058700739",
+      "doc_type": "DEED",
+      "doc_date": "1972-10-10",
+      "recorded": "1972-10-10",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "PRINCE FRANCES",
+       "PRINCE MATTHEW",
+       "PRINCE MILTON S"
+      ],
+      "grantees": [
+       "TOM TOY INC"
+      ]
+     },
+     {
+      "document_id": "BK_7230058700741",
+      "doc_type": "DEED",
+      "doc_date": "1972-10-10",
+      "recorded": "1972-10-10",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "TOM TOY INC"
+      ],
+      "grantees": [
+       "PRINCE FRANCES",
+       "PRINCE MATTHEW",
+       "PRINCE MILTON S"
+      ]
+     },
+     {
+      "document_id": "BK_7730091600649",
+      "doc_type": "DEED",
+      "doc_date": "1977-04-26",
+      "recorded": "1977-04-26",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "PRINCE FRANCES DECD EXECUTORS OF"
+      ],
+      "grantees": [
+       "PRINCE MATTHEW",
+       "PRINCE MILTON S"
+      ]
+     },
+     {
+      "document_id": "BK_7830098300841",
+      "doc_type": "DEED",
+      "doc_date": "1978-03-23",
+      "recorded": "1978-03-23",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "BARANGA RLTY CORP"
+      ],
+      "grantees": [
+       "RACHTEL RLTY CORP"
+      ]
+     },
+     {
+      "document_id": "BK_7830098300843",
+      "doc_type": "DEED",
+      "doc_date": "1978-03-23",
+      "recorded": "1978-03-23",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "PRINCE MATTHEW",
+       "PRINCE MILTON S"
+      ],
+      "grantees": [
+       "BARANGA RLTY CORP"
+      ]
+     },
+     {
+      "document_id": "BK_7930107100841",
+      "doc_type": "DEED",
+      "doc_date": "1979-05-09",
+      "recorded": "1979-05-09",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "RACHTEL REALTY CORP"
+      ],
+      "grantees": [
+       "T W F  DEVELOPMENT CORP"
+      ]
+     },
+     {
+      "document_id": "BK_7930107901553",
+      "doc_type": "DEED",
+      "doc_date": "1979-06-18",
+      "recorded": "1979-06-18",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "RACHETEL REALTY CORP"
+      ],
+      "grantees": [
+       "T W F DEVELOPMENT CORP"
+      ]
+     },
+     {
+      "document_id": "BK_7930107901555",
+      "doc_type": "DEED",
+      "doc_date": "1979-06-18",
+      "recorded": "1979-06-18",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "T W F DVLPT CORP"
+      ],
+      "grantees": [
+       "RACHTEL RLTY CORP"
+      ]
+     },
+     {
+      "document_id": "BK_8130121200259",
+      "doc_type": "DEED",
+      "doc_date": "1981-01-21",
+      "recorded": "1981-01-21",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "RACHTEL REALTY CORP",
+       "TWF DEVELOPMENT CORP (AS AGENT FOR)",
+       "WFB ASSOCIATES"
+      ],
+      "grantees": [
+       "KORNBLUM CAROL",
+       "KORNBLUM DANIEL"
+      ]
+     },
+     {
+      "document_id": "FT_3240007675524",
+      "doc_type": "DEED",
+      "doc_date": "2001-04-30",
+      "recorded": "2001-05-31",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "KORNBLUM, CAROL",
+       "KORNBLUM, DANIEL B"
+      ],
+      "grantees": [
+       "KORNBLUM, DANIEL B"
+      ]
+     },
+     {
+      "document_id": "2003012200923001",
+      "doc_type": "DEEDO",
+      "doc_date": "2002-12-05",
+      "recorded": "2003-01-28",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "KORNBLUM, DANIEL B"
+      ],
+      "grantees": [
+       "702 54TH STREET LLC"
+      ]
+     },
+     {
+      "document_id": "2021022201130001",
+      "doc_type": "DEED",
+      "doc_date": "2021-02-05",
+      "recorded": "2021-02-26",
+      "amount": 0,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "KORNBLUM, DANIEL B"
+      ],
+      "grantees": [
+       "702 54 STREET LLC"
+      ]
+     },
+     {
+      "document_id": "2021022201130002",
+      "doc_type": "DEED",
+      "doc_date": "2021-02-16",
+      "recorded": "2021-02-26",
+      "amount": 6800000,
+      "lots": [
+       "3008260005"
+      ],
+      "grantors": [
+       "702 54 STREET LLC"
+      ],
+      "grantees": [
+       "702 PLAZA LLC"
+      ]
+     }
+    ]
+   },
+   "C": {
+    "deeds": 3,
+    "deeds_for_value": 0,
+    "deeds_for_zero_dollars": 3,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "FT_3590001635159",
+      "doc_type": "DEED",
+      "doc_date": "1991-08-15",
+      "recorded": "1991-08-28",
+      "amount": 0,
+      "lots": [
+       "3008070024"
+      ],
+      "grantors": [
+       "LUTHERAN MEDICAL CENTER"
+      ],
+      "grantees": [
+       "TREASURE NINE REALTYINC"
+      ]
+     },
+     {
+      "document_id": "FT_3530005404653",
+      "doc_type": "DEED",
+      "doc_date": "1996-10-18",
+      "recorded": "1996-10-31",
+      "amount": 0,
+      "lots": [
+       "3008070024"
+      ],
+      "grantors": [
+       "TREASURE NINE REALTYINC"
+      ],
+      "grantees": [
+       "ALROSE REALTY LLC"
+      ]
+     },
+     {
+      "document_id": "FT_3620008345262",
+      "doc_type": "DEED",
+      "doc_date": "2002-03-14",
+      "recorded": "2002-04-01",
+      "amount": 0,
+      "lots": [
+       "3008070024"
+      ],
+      "grantors": [
+       "ALROSE REALTY LLC"
+      ],
+      "grantees": [
+       "438 52ND ST OWNERS CORP"
+      ]
+     }
+    ]
+   },
+   "D": {
+    "deeds": 5,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 4,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "BK_7630087700475",
+      "doc_type": "DEED",
+      "doc_date": "1976-10-12",
+      "recorded": "1976-10-12",
+      "amount": 0,
+      "lots": [
+       "3008210012"
+      ],
+      "grantors": [
+       "RAMADHIN DOOLAD AYE",
+       "RAMADHIN RAJUMAR"
+      ],
+      "grantees": [
+       "RAMADHIN DOOLAD AYE",
+       "RAMADHIN RAJUMAR"
+      ]
+     },
+     {
+      "document_id": "BK_8030114801971",
+      "doc_type": "DEED",
+      "doc_date": "1980-03-21",
+      "recorded": "1980-03-21",
+      "amount": 0,
+      "lots": [
+       "3008210012"
+      ],
+      "grantors": [
+       "RAMADHIN DOOLADAYE",
+       "RAMADHIN RAJKUMA"
+      ],
+      "grantees": [
+       "HARBRO DEVELOPMENT CORP"
+      ]
+     },
+     {
+      "document_id": "FT_3130000937813",
+      "doc_type": "DEED",
+      "doc_date": "1982-12-06",
+      "recorded": "1982-12-08",
+      "amount": 0,
+      "lots": [
+       "3008210012"
+      ],
+      "grantors": [
+       "HARBRO DEVELOPMENT CORP"
+      ],
+      "grantees": [
+       "NEIGHBORHOOD STAB. ASO I"
+      ]
+     },
+     {
+      "document_id": "2017061600025001",
+      "doc_type": "DEED",
+      "doc_date": "2017-06-13",
+      "recorded": "2017-06-28",
+      "amount": 0,
+      "lots": [
+       "3007640036",
+       "3007920056",
+       "3007990025",
+       "3008090002",
+       "3008090003",
+       "3008090004",
+       "3008090005",
+       "3008090006",
+       "3008090007",
+       "3008160036",
+       "3008160037",
+       "3008170001",
+       "3008170005",
+       "3008210012",
+       "3008300033",
+       "3008300035",
+       "3008320051",
+       "3008390006"
+      ],
+      "grantors": [
+       "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P."
+      ],
+      "grantees": [
+       "CLL2 LLC",
+       "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+       "SUNSET IV EQUITIES LLC"
+      ]
+     },
+     {
+      "document_id": "2017061600025002",
+      "doc_type": "DEED",
+      "doc_date": "2017-06-13",
+      "recorded": "2017-06-28",
+      "amount": 45839605,
+      "lots": [
+       "3007640036",
+       "3007920056",
+       "3007990025",
+       "3008090002",
+       "3008090003",
+       "3008090004",
+       "3008090005",
+       "3008090006",
+       "3008090007",
+       "3008160036",
+       "3008160037",
+       "3008170001",
+       "3008170005",
+       "3008210012",
+       "3008300033",
+       "3008300035",
+       "3008320051",
+       "3008390006"
+      ],
+      "grantors": [
+       "CLL2 LLC",
+       "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+       "SUNSET IV EQUITIES LLC"
+      ],
+      "grantees": [
+       "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+       "SUNSET PARK OWNER I LLC"
+      ]
+     }
+    ]
+   },
+   "E": {
+    "deeds": 2,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 1,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "BK_7830102900876",
+      "doc_type": "DEED",
+      "doc_date": "1978-10-27",
+      "recorded": "1978-10-27",
+      "amount": 0,
+      "lots": [
+       "3008210019"
+      ],
+      "grantors": [
+       "FRANJO REALTY CORP"
+      ],
+      "grantees": [
+       "PAGAN ANGEL LUIS"
+      ]
+     },
+     {
+      "document_id": "2026042100334001",
+      "doc_type": "DEED",
+      "doc_date": "2026-03-23",
+      "recorded": "2026-04-21",
+      "amount": 800000,
+      "lots": [
+       "3008210019"
+      ],
+      "grantors": [
+       "THE ESTATE OF ANGEL PAGAN BY ANA RODRIGUEZ EXECUTO"
+      ],
+      "grantees": [
+       "234 54TH ST LLC"
+      ]
+     }
+    ]
+   },
+   "F": {
+    "deeds": 1,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 0,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "2024091700040001",
+      "doc_type": "DEED",
+      "doc_date": "2024-09-11",
+      "recorded": "2024-10-01",
+      "amount": 12000000,
+      "lots": [
+       "3008970014"
+      ],
+      "grantors": [
+       "ST. JOHNS ROMAN CATHOLIC CHURCH IN THE CITY OF"
+      ],
+      "grantees": [
+       "259 22ND STREET LLC"
+      ]
+     }
+    ]
+   },
+   "G": {
+    "deeds": 6,
+    "deeds_for_value": 1,
+    "deeds_for_zero_dollars": 5,
+    "corrections": 0,
+    "timeline": [
+     {
+      "document_id": "BK_7930109401635",
+      "doc_type": "DEED",
+      "doc_date": "1979-08-20",
+      "recorded": "1979-08-20",
+      "amount": 0,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "FERLAINO JOHN C",
+       "FRATIANNI JOHN R"
+      ],
+      "grantees": [
+       "HEROLD PAULINE S",
+       "HEROLD ROBERT D"
+      ]
+     },
+     {
+      "document_id": "BK_8030119701585",
+      "doc_type": "DEED",
+      "doc_date": "1980-11-14",
+      "recorded": "1980-11-14",
+      "amount": 0,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "HEROLD PAULINE S",
+       "HEROLD ROBERT D"
+      ],
+      "grantees": [
+       "HEENAN DAVID"
+      ]
+     },
+     {
+      "document_id": "FT_3830000912683",
+      "doc_type": "DEED",
+      "doc_date": "1982-05-26",
+      "recorded": "1982-05-28",
+      "amount": 0,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "DEMATTEO, SALVATOREREF",
+       "FERLAINO, JOHN C DEF/ETL"
+      ],
+      "grantees": [
+       "KORNBLUM, CAROL",
+       "KORNBLUM, DANIEL B."
+      ]
+     },
+     {
+      "document_id": "FT_3210007664321",
+      "doc_type": "DEED",
+      "doc_date": "2001-04-30",
+      "recorded": "2001-05-23",
+      "amount": 0,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "KORNBLUM, CAROL",
+       "KORNBLUM, DANIEL B"
+      ],
+      "grantees": [
+       "KORNBLUM, DANIEL B"
+      ]
+     },
+     {
+      "document_id": "2003011500231001",
+      "doc_type": "DEEDO",
+      "doc_date": "2002-12-05",
+      "recorded": "2003-02-07",
+      "amount": 0,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "KORNBLUM, DANIEL"
+      ],
+      "grantees": [
+       "548 52ND STREET"
+      ]
+     },
+     {
+      "document_id": "2018092900072001",
+      "doc_type": "DEED",
+      "doc_date": "2018-09-26",
+      "recorded": "2018-10-18",
+      "amount": 4000000,
+      "lots": [
+       "3008080025"
+      ],
+      "grantors": [
+       "548 52ND STREET LLC"
+      ],
+      "grantees": [
+       "AADVA REALTY LLC",
+       "K S TURNPIKE LLC"
+      ]
+     }
+    ]
+   }
+  },
+  "Q13": {
+   "A": {
+    "documents": 11,
+    "by_type": {
+     "AGMT": 1,
+     "AL&R": 1,
+     "ASST": 1,
+     "MTGE": 4,
+     "SAGE": 1,
+     "SAT": 2,
+     "TL&R": 1
+    },
+    "mortgages": 4,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_7330061600028",
+     "BK_8130121400597",
+     "FT_3550001271755",
+     "2021031601183001"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_7130045701213",
+      "doc_type": "ASST",
+      "recorded": "1971-01-07",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7330061600028",
+      "doc_type": "MTGE",
+      "recorded": "1973-02-23",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_8130121400597",
+      "doc_type": "MTGE",
+      "recorded": "1981-01-28",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3550001271755",
+      "doc_type": "MTGE",
+      "recorded": "1987-06-08",
+      "amount": 474175,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3560001271756",
+      "doc_type": "AGMT",
+      "recorded": "1987-06-08",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3560001773456",
+      "doc_type": "SAT",
+      "recorded": "1993-05-19",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2018111500579001",
+      "doc_type": "SAT",
+      "recorded": "2018-11-19",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2021031601183001",
+      "doc_type": "MTGE",
+      "recorded": "2021-03-22",
+      "amount": 8750000,
+      "cites": [],
+      "cited_by": [
+       "2021031601183002",
+       "2023061400729001"
+      ]
+     },
+     {
+      "document_id": "2021031601183002",
+      "doc_type": "AL&R",
+      "recorded": "2021-03-22",
+      "amount": 8750000,
+      "cites": [
+       "2021031601183001"
+      ],
+      "cited_by": [
+       "2023061200959001"
+      ]
+     },
+     {
+      "document_id": "2023061200959001",
+      "doc_type": "TL&R",
+      "recorded": "2023-06-15",
+      "amount": 0,
+      "cites": [
+       "2021031601183002"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2023061400729001",
+      "doc_type": "SAGE",
+      "recorded": "2023-06-16",
+      "amount": 0,
+      "cites": [
+       "2021031601183001"
+      ],
+      "cited_by": []
+     }
+    ]
+   },
+   "B": {
+    "documents": 10,
+    "by_type": {
+     "AGMT": 1,
+     "AL&R": 1,
+     "ASST": 1,
+     "MTGE": 3,
+     "SAGE": 2,
+     "SAT": 1,
+     "TL&R": 1
+    },
+    "mortgages": 3,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_7830098900402",
+     "FT_3180000903718",
+     "2021031601183001"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_7230059600552",
+      "doc_type": "SAGE",
+      "recorded": "1972-11-20",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7730091101837",
+      "doc_type": "ASST",
+      "recorded": "1977-04-01",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7830098900402",
+      "doc_type": "MTGE",
+      "recorded": "1978-04-20",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7930107901557",
+      "doc_type": "AGMT",
+      "recorded": "1979-06-18",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3180000903718",
+      "doc_type": "MTGE",
+      "recorded": "1982-03-17",
+      "amount": 76100,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3330001638933",
+      "doc_type": "SAT",
+      "recorded": "1991-09-17",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2021031601183001",
+      "doc_type": "MTGE",
+      "recorded": "2021-03-22",
+      "amount": 8750000,
+      "cites": [],
+      "cited_by": [
+       "2021031601183002",
+       "2023061400729001"
+      ]
+     },
+     {
+      "document_id": "2021031601183002",
+      "doc_type": "AL&R",
+      "recorded": "2021-03-22",
+      "amount": 8750000,
+      "cites": [
+       "2021031601183001"
+      ],
+      "cited_by": [
+       "2023061200959001"
+      ]
+     },
+     {
+      "document_id": "2023061200959001",
+      "doc_type": "TL&R",
+      "recorded": "2023-06-15",
+      "amount": 0,
+      "cites": [
+       "2021031601183002"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2023061400729001",
+      "doc_type": "SAGE",
+      "recorded": "2023-06-16",
+      "amount": 0,
+      "cites": [
+       "2021031601183001"
+      ],
+      "cited_by": []
+     }
+    ]
+   },
+   "C": {
+    "documents": 17,
+    "by_type": {
+     "AGMT": 3,
+     "AL&R": 2,
+     "ASST": 3,
+     "MTGE": 6,
+     "SAGE": 1,
+     "SAT": 2
+    },
+    "mortgages": 6,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_8030114900597",
+     "FT_3660005404666",
+     "FT_3890006810189",
+     "FT_3540008990654",
+     "2005051102117002",
+     "2015032301122001"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_8030114900597",
+      "doc_type": "MTGE",
+      "recorded": "1980-03-24",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3490000939649",
+      "doc_type": "SAT",
+      "recorded": "1982-12-21",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3360005404036",
+      "doc_type": "ASST",
+      "recorded": "1996-10-31",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3660005404666",
+      "doc_type": "MTGE",
+      "recorded": "1996-10-31",
+      "amount": 500000,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3890006810189",
+      "doc_type": "MTGE",
+      "recorded": "1999-09-24",
+      "amount": 100000,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3600007786760",
+      "doc_type": "SAT",
+      "recorded": "2001-08-23",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3080008345608",
+      "doc_type": "SAGE",
+      "recorded": "2002-04-01",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3540008990654",
+      "doc_type": "MTGE",
+      "recorded": "2002-11-20",
+      "amount": 580390,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3800009002580",
+      "doc_type": "ASST",
+      "recorded": "2002-11-20",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3870009002587",
+      "doc_type": "AGMT",
+      "recorded": "2002-11-20",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2005051102117001",
+      "doc_type": "ASST",
+      "recorded": "2005-06-22",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2005051102117002",
+      "doc_type": "MTGE",
+      "recorded": "2005-06-22",
+      "amount": 840180,
+      "cites": [],
+      "cited_by": [
+       "2005051102117003",
+       "2005051102117004",
+       "2015032301122002",
+       "2015032301122003"
+      ]
+     },
+     {
+      "document_id": "2005051102117003",
+      "doc_type": "AGMT",
+      "recorded": "2005-06-22",
+      "amount": 2000000,
+      "cites": [
+       "2005051102117002"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2005051102117004",
+      "doc_type": "AL&R",
+      "recorded": "2005-06-22",
+      "amount": 2000000,
+      "cites": [
+       "2005051102117002"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2015032301122001",
+      "doc_type": "MTGE",
+      "recorded": "2015-04-08",
+      "amount": 1546326,
+      "cites": [],
+      "cited_by": [
+       "2015032301122002",
+       "2015032301122003"
+      ]
+     },
+     {
+      "document_id": "2015032301122002",
+      "doc_type": "AGMT",
+      "recorded": "2015-04-08",
+      "amount": 3200000,
+      "cites": [
+       "2005051102117002",
+       "2015032301122001"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2015032301122003",
+      "doc_type": "AL&R",
+      "recorded": "2015-04-08",
+      "amount": 3200000,
+      "cites": [
+       "2005051102117002",
+       "2015032301122001"
+      ],
+      "cited_by": []
+     }
+    ]
+   },
+   "D": {
+    "documents": 32,
+    "by_type": {
+     "AGMT": 10,
+     "AL&R": 4,
+     "ASST": 4,
+     "M&CON": 1,
+     "MTGE": 8,
+     "SAT": 2,
+     "TL&R": 3
+    },
+    "mortgages": 9,
+    "mortgages_cited_by_a_satisfaction": 5,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_7630087700466",
+     "BK_7630087700471",
+     "FT_3330000938233",
+     "2019120700129001"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_7630087700466",
+      "doc_type": "MTGE",
+      "recorded": "1976-10-12",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7630087700471",
+      "doc_type": "MTGE",
+      "recorded": "1976-10-12",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3330000938233",
+      "doc_type": "MTGE",
+      "recorded": "1982-12-10",
+      "amount": 9582900,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3340000938234",
+      "doc_type": "AGMT",
+      "recorded": "1982-12-10",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3350000938235",
+      "doc_type": "AGMT",
+      "recorded": "1982-12-10",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3750001068275",
+      "doc_type": "AGMT",
+      "recorded": "1985-02-06",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3760001068276",
+      "doc_type": "AGMT",
+      "recorded": "1985-02-06",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3840001345184",
+      "doc_type": "ASST",
+      "recorded": "1988-02-23",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3850001345185",
+      "doc_type": "ASST",
+      "recorded": "1988-02-23",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2004050601172001",
+      "doc_type": "MTGE",
+      "recorded": "2004-06-04",
+      "amount": 10000000,
+      "cites": [],
+      "cited_by": [
+       "2011110100755002",
+       "2014030300786001",
+       "2014030300786003",
+       "2014030300786004",
+       "2017061600025009",
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2011110100755001",
+      "doc_type": "MTGE",
+      "recorded": "2011-11-14",
+      "amount": 9430135,
+      "cites": [],
+      "cited_by": [
+       "2011110100755002",
+       "2014030300786001",
+       "2014030300786003",
+       "2014030300786004",
+       "2017061600025009",
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2011110100755002",
+      "doc_type": "M&CON",
+      "recorded": "2011-11-14",
+      "amount": 18668000,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001"
+      ],
+      "cited_by": [
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2011110100755004",
+      "doc_type": "AGMT",
+      "recorded": "2011-11-14",
+      "amount": 0,
+      "cites": [],
+      "cited_by": [
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2014030300786001",
+      "doc_type": "ASST",
+      "recorded": "2014-03-07",
+      "amount": 0,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001"
+      ],
+      "cited_by": [
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2014030300786002",
+      "doc_type": "MTGE",
+      "recorded": "2014-03-07",
+      "amount": 7348352,
+      "cites": [],
+      "cited_by": [
+       "2014030300786003",
+       "2014030300786004",
+       "2017061600025009",
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2014030300786003",
+      "doc_type": "AGMT",
+      "recorded": "2014-03-07",
+      "amount": 25400000,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001",
+       "2014030300786002"
+      ],
+      "cited_by": [
+       "2020103000310001"
+      ]
+     },
+     {
+      "document_id": "2014030300786004",
+      "doc_type": "AL&R",
+      "recorded": "2014-03-07",
+      "amount": 25400000,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001",
+       "2014030300786002"
+      ],
+      "cited_by": [
+       "2020103000310002"
+      ]
+     },
+     {
+      "document_id": "2015042100104001",
+      "doc_type": "MTGE",
+      "recorded": "2015-04-29",
+      "amount": 7350000,
+      "cites": [],
+      "cited_by": [
+       "2015042100104002",
+       "2017061600025006",
+       "2020050100273001"
+      ]
+     },
+     {
+      "document_id": "2015042100104002",
+      "doc_type": "AL&R",
+      "recorded": "2015-04-29",
+      "amount": 7350000,
+      "cites": [
+       "2015042100104001"
+      ],
+      "cited_by": [
+       "2020050100273002"
+      ]
+     },
+     {
+      "document_id": "2017061600025003",
+      "doc_type": "AGMT",
+      "recorded": "2017-06-28",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2017061600025004",
+      "doc_type": "AGMT",
+      "recorded": "2017-06-28",
+      "amount": 0,
+      "cites": [],
+      "cited_by": [
+       "2019120700129005"
+      ]
+     },
+     {
+      "document_id": "2017061600025006",
+      "doc_type": "AL&R",
+      "recorded": "2017-06-28",
+      "amount": 7350000,
+      "cites": [
+       "2015042100104001"
+      ],
+      "cited_by": [
+       "2020050100273003"
+      ]
+     },
+     {
+      "document_id": "2017061600025009",
+      "doc_type": "AL&R",
+      "recorded": "2017-06-28",
+      "amount": 25400000,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001",
+       "2014030300786002"
+      ],
+      "cited_by": [
+       "2020103000310002"
+      ]
+     },
+     {
+      "document_id": "2019120700129001",
+      "doc_type": "MTGE",
+      "recorded": "2019-12-09",
+      "amount": 49999900,
+      "cites": [],
+      "cited_by": [
+       "2021021601440001"
+      ]
+     },
+     {
+      "document_id": "2019120700129002",
+      "doc_type": "AGMT",
+      "recorded": "2019-12-09",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2019120700129005",
+      "doc_type": "AGMT",
+      "recorded": "2019-12-09",
+      "amount": 0,
+      "cites": [
+       "2017061600025004"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2020050100273001",
+      "doc_type": "SAT",
+      "recorded": "2020-05-01",
+      "amount": 0,
+      "cites": [
+       "2015042100104001"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2020050100273002",
+      "doc_type": "TL&R",
+      "recorded": "2020-05-01",
+      "amount": 0,
+      "cites": [
+       "2015042100104002"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2020050100273003",
+      "doc_type": "TL&R",
+      "recorded": "2020-05-01",
+      "amount": 0,
+      "cites": [
+       "2017061600025006"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2020103000310001",
+      "doc_type": "SAT",
+      "recorded": "2020-11-10",
+      "amount": 0,
+      "cites": [
+       "2004050601172001",
+       "2011110100755001",
+       "2011110100755002",
+       "2011110100755004",
+       "2014030300786001",
+       "2014030300786002",
+       "2014030300786003"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2020103000310002",
+      "doc_type": "TL&R",
+      "recorded": "2020-11-10",
+      "amount": 0,
+      "cites": [
+       "2014030300786004",
+       "2017061600025009"
+      ],
+      "cited_by": []
+     },
+     {
+      "document_id": "2021021601440001",
+      "doc_type": "ASST",
+      "recorded": "2021-03-05",
+      "amount": 0,
+      "cites": [
+       "2019120700129001"
+      ],
+      "cited_by": []
+     }
+    ]
+   },
+   "E": {
+    "documents": 2,
+    "by_type": {
+     "MTGE": 1,
+     "SAT": 1
+    },
+    "mortgages": 1,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_7830102900878"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_7830102900878",
+      "doc_type": "MTGE",
+      "recorded": "1978-10-27",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3480001412848",
+      "doc_type": "SAT",
+      "recorded": "1988-11-22",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     }
+    ]
+   },
+   "F": {
+    "documents": 3,
+    "by_type": {
+     "AL&R": 1,
+     "MTGE": 2
+    },
+    "mortgages": 2,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "2025061700455001",
+     "2025061700455002"
+    ],
+    "timeline": [
+     {
+      "document_id": "2025061700455001",
+      "doc_type": "MTGE",
+      "recorded": "2025-07-02",
+      "amount": 18855623,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2025061700455002",
+      "doc_type": "MTGE",
+      "recorded": "2025-07-02",
+      "amount": 3244377,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2025061700455003",
+      "doc_type": "AL&R",
+      "recorded": "2025-07-02",
+      "amount": 22100000,
+      "cites": [],
+      "cited_by": []
+     }
+    ]
+   },
+   "G": {
+    "documents": 9,
+    "by_type": {
+     "ASST": 3,
+     "MTGE": 3,
+     "SAGE": 1,
+     "SAT": 2
+    },
+    "mortgages": 3,
+    "mortgages_cited_by_a_satisfaction": 0,
+    "mortgages_with_no_satisfaction_citing_them": [
+     "BK_7930109401639",
+     "BK_8030119701588",
+     "2018122900023001"
+    ],
+    "timeline": [
+     {
+      "document_id": "BK_7230059500151",
+      "doc_type": "SAGE",
+      "recorded": "1972-11-14",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_7930109401639",
+      "doc_type": "MTGE",
+      "recorded": "1979-08-20",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "BK_8030119701588",
+      "doc_type": "MTGE",
+      "recorded": "1980-11-14",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3360000912736",
+      "doc_type": "SAT",
+      "recorded": "1982-05-28",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "FT_3290000914429",
+      "doc_type": "SAT",
+      "recorded": "1982-06-14",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2016061001524001",
+      "doc_type": "ASST",
+      "recorded": "2016-06-23",
+      "amount": 0,
+      "cites": [],
+      "cited_by": []
+     },
+     {
+      "document_id": "2018122900023001",
+      "doc_type": "MTGE",
+      "recorded": "2019-01-04",
+      "amount": 1906000,
+      "cites": [],
+      "cited_by": [
+       "2018122900023003",
+       "2019052901289001"
+      ]
+     },
+     {
+      "document_id": "2018122900023003",
+      "doc_type": "ASST",
+      "recorded": "2019-01-04",
+      "amount": 0,
+      "cites": [
+       "2018122900023001"
+      ],
+      "cited_by": [
+       "2019052901289001"
+      ]
+     },
+     {
+      "document_id": "2019052901289001",
+      "doc_type": "ASST",
+      "recorded": "2019-05-31",
+      "amount": 0,
+      "cites": [
+       "2018122900023001",
+       "2018122900023003"
+      ],
+      "cited_by": []
+     }
+    ]
+   }
+  }
+ }
+}

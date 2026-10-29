@@ -1,0 +1,5704 @@
+{
+ "_about": "Mortgage-family documents on the seven anchor lots A-G (latest version of each document), with their parties and legals, copied read-only from the justfixwow database (snapshot justfixwow-2026-05-29). Public records; names as recorded (design note 0009).",
+ "documents": [
+  {
+   "documentid": "2004050601172001",
+   "crfn": "2004000345843",
+   "doctype": "MTGE",
+   "docdate": "2004-04-29",
+   "docamount": 10000000,
+   "recordedfiled": "2004-06-04"
+  },
+  {
+   "documentid": "2005051102117001",
+   "crfn": "2005000356624",
+   "doctype": "ASST",
+   "docdate": "2005-05-06",
+   "docamount": 0,
+   "recordedfiled": "2005-06-22"
+  },
+  {
+   "documentid": "2005051102117002",
+   "crfn": "2005000356625",
+   "doctype": "MTGE",
+   "docdate": "2005-05-06",
+   "docamount": 840180,
+   "recordedfiled": "2005-06-22"
+  },
+  {
+   "documentid": "2005051102117003",
+   "crfn": "2005000356626",
+   "doctype": "AGMT",
+   "docdate": "2005-05-06",
+   "docamount": 2000000,
+   "recordedfiled": "2005-06-22"
+  },
+  {
+   "documentid": "2005051102117004",
+   "crfn": "2005000356627",
+   "doctype": "AL&R",
+   "docdate": "2005-05-06",
+   "docamount": 2000000,
+   "recordedfiled": "2005-06-22"
+  },
+  {
+   "documentid": "2011110100755001",
+   "crfn": "2011000395910",
+   "doctype": "MTGE",
+   "docdate": "2011-10-26",
+   "docamount": 9430135,
+   "recordedfiled": "2011-11-14"
+  },
+  {
+   "documentid": "2011110100755002",
+   "crfn": "2011000395911",
+   "doctype": "M&CON",
+   "docdate": "2011-10-26",
+   "docamount": 18668000,
+   "recordedfiled": "2011-11-14"
+  },
+  {
+   "documentid": "2011110100755004",
+   "crfn": "2011000395913",
+   "doctype": "AGMT",
+   "docdate": "2011-10-26",
+   "docamount": 0,
+   "recordedfiled": "2011-11-14"
+  },
+  {
+   "documentid": "2014030300786001",
+   "crfn": "2014000081000",
+   "doctype": "ASST",
+   "docdate": "2014-02-27",
+   "docamount": 0,
+   "recordedfiled": "2014-03-07"
+  },
+  {
+   "documentid": "2014030300786002",
+   "crfn": "2014000081001",
+   "doctype": "MTGE",
+   "docdate": "2014-02-28",
+   "docamount": 7348352,
+   "recordedfiled": "2014-03-07"
+  },
+  {
+   "documentid": "2014030300786003",
+   "crfn": "2014000081002",
+   "doctype": "AGMT",
+   "docdate": "2014-02-28",
+   "docamount": 25400000,
+   "recordedfiled": "2014-03-07"
+  },
+  {
+   "documentid": "2014030300786004",
+   "crfn": "2014000081003",
+   "doctype": "AL&R",
+   "docdate": "2014-02-28",
+   "docamount": 25400000,
+   "recordedfiled": "2014-03-07"
+  },
+  {
+   "documentid": "2015032301122001",
+   "crfn": "2015000118092",
+   "doctype": "MTGE",
+   "docdate": "2015-03-20",
+   "docamount": 1546326,
+   "recordedfiled": "2015-04-08"
+  },
+  {
+   "documentid": "2015032301122002",
+   "crfn": "2015000118093",
+   "doctype": "AGMT",
+   "docdate": "2015-03-20",
+   "docamount": 3200000,
+   "recordedfiled": "2015-04-08"
+  },
+  {
+   "documentid": "2015032301122003",
+   "crfn": "2015000118094",
+   "doctype": "AL&R",
+   "docdate": "2015-03-20",
+   "docamount": 3200000,
+   "recordedfiled": "2015-04-08"
+  },
+  {
+   "documentid": "2015042100104001",
+   "crfn": "2015000143229",
+   "doctype": "MTGE",
+   "docdate": "2015-04-16",
+   "docamount": 7350000,
+   "recordedfiled": "2015-04-29"
+  },
+  {
+   "documentid": "2015042100104002",
+   "crfn": "2015000143230",
+   "doctype": "AL&R",
+   "docdate": "2015-04-16",
+   "docamount": 7350000,
+   "recordedfiled": "2015-04-29"
+  },
+  {
+   "documentid": "2016061001524001",
+   "crfn": "2016000211433",
+   "doctype": "ASST",
+   "docdate": "2016-05-25",
+   "docamount": 0,
+   "recordedfiled": "2016-06-23"
+  },
+  {
+   "documentid": "2017061600025003",
+   "crfn": "2017000237744",
+   "doctype": "AGMT",
+   "docdate": "2017-06-13",
+   "docamount": 0,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2017061600025004",
+   "crfn": "2017000237745",
+   "doctype": "AGMT",
+   "docdate": "2017-06-13",
+   "docamount": 0,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2017061600025006",
+   "crfn": "2017000237747",
+   "doctype": "AL&R",
+   "docdate": "2017-06-13",
+   "docamount": 7350000,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2017061600025009",
+   "crfn": "2017000237750",
+   "doctype": "AL&R",
+   "docdate": "2017-06-13",
+   "docamount": 25400000,
+   "recordedfiled": "2017-06-28"
+  },
+  {
+   "documentid": "2018111500579001",
+   "crfn": "2018000383156",
+   "doctype": "SAT",
+   "docdate": "2018-11-08",
+   "docamount": 0,
+   "recordedfiled": "2018-11-19"
+  },
+  {
+   "documentid": "2018122900023001",
+   "crfn": "2019000004408",
+   "doctype": "MTGE",
+   "docdate": "2018-12-20",
+   "docamount": 1906000,
+   "recordedfiled": "2019-01-04"
+  },
+  {
+   "documentid": "2018122900023003",
+   "crfn": "2019000004410",
+   "doctype": "ASST",
+   "docdate": "2018-12-20",
+   "docamount": 0,
+   "recordedfiled": "2019-01-04"
+  },
+  {
+   "documentid": "2019052901289001",
+   "crfn": "2019000170544",
+   "doctype": "ASST",
+   "docdate": "2019-05-08",
+   "docamount": 0,
+   "recordedfiled": "2019-05-31"
+  },
+  {
+   "documentid": "2019120700129001",
+   "crfn": "2019000402044",
+   "doctype": "MTGE",
+   "docdate": "2019-11-21",
+   "docamount": 49999900,
+   "recordedfiled": "2019-12-09"
+  },
+  {
+   "documentid": "2019120700129002",
+   "crfn": "2019000402045",
+   "doctype": "AGMT",
+   "docdate": "2019-11-21",
+   "docamount": 0,
+   "recordedfiled": "2019-12-09"
+  },
+  {
+   "documentid": "2019120700129005",
+   "crfn": "2019000402048",
+   "doctype": "AGMT",
+   "docdate": "2019-11-21",
+   "docamount": 0,
+   "recordedfiled": "2019-12-09"
+  },
+  {
+   "documentid": "2020050100273001",
+   "crfn": "2020000137383",
+   "doctype": "SAT",
+   "docdate": "2019-12-23",
+   "docamount": 0,
+   "recordedfiled": "2020-05-01"
+  },
+  {
+   "documentid": "2020050100273002",
+   "crfn": "2020000137384",
+   "doctype": "TL&R",
+   "docdate": "2019-12-23",
+   "docamount": 0,
+   "recordedfiled": "2020-05-01"
+  },
+  {
+   "documentid": "2020050100273003",
+   "crfn": "2020000137385",
+   "doctype": "TL&R",
+   "docdate": "2019-12-23",
+   "docamount": 0,
+   "recordedfiled": "2020-05-01"
+  },
+  {
+   "documentid": "2020103000310001",
+   "crfn": "2020000314094",
+   "doctype": "SAT",
+   "docdate": "2019-12-18",
+   "docamount": 0,
+   "recordedfiled": "2020-11-10"
+  },
+  {
+   "documentid": "2020103000310002",
+   "crfn": "2020000314095",
+   "doctype": "TL&R",
+   "docdate": "2019-12-18",
+   "docamount": 0,
+   "recordedfiled": "2020-11-10"
+  },
+  {
+   "documentid": "2021021601440001",
+   "crfn": "2021000080517",
+   "doctype": "ASST",
+   "docdate": "2020-07-16",
+   "docamount": 0,
+   "recordedfiled": "2021-03-05"
+  },
+  {
+   "documentid": "2021031601183001",
+   "crfn": "2021000105233",
+   "doctype": "MTGE",
+   "docdate": "2021-02-16",
+   "docamount": 8750000,
+   "recordedfiled": "2021-03-22"
+  },
+  {
+   "documentid": "2021031601183002",
+   "crfn": "2021000105234",
+   "doctype": "AL&R",
+   "docdate": "2021-02-16",
+   "docamount": 8750000,
+   "recordedfiled": "2021-03-22"
+  },
+  {
+   "documentid": "2023061200959001",
+   "crfn": "2023000149809",
+   "doctype": "TL&R",
+   "docdate": "2023-02-14",
+   "docamount": 0,
+   "recordedfiled": "2023-06-15"
+  },
+  {
+   "documentid": "2023061400729001",
+   "crfn": "2023000151703",
+   "doctype": "SAGE",
+   "docdate": "2023-02-09",
+   "docamount": 0,
+   "recordedfiled": "2023-06-16"
+  },
+  {
+   "documentid": "2025061700455001",
+   "crfn": "2025000175057",
+   "doctype": "MTGE",
+   "docdate": "2025-06-11",
+   "docamount": 18855623,
+   "recordedfiled": "2025-07-02"
+  },
+  {
+   "documentid": "2025061700455002",
+   "crfn": "2025000175058",
+   "doctype": "MTGE",
+   "docdate": "2025-06-11",
+   "docamount": 3244377,
+   "recordedfiled": "2025-07-02"
+  },
+  {
+   "documentid": "2025061700455003",
+   "crfn": "2025000175059",
+   "doctype": "AL&R",
+   "docdate": "2025-06-11",
+   "docamount": 22100000,
+   "recordedfiled": "2025-07-02"
+  },
+  {
+   "documentid": "BK_7130045701213",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": "1971-01-07",
+   "docamount": 0,
+   "recordedfiled": "1971-01-07"
+  },
+  {
+   "documentid": "BK_7230059500151",
+   "crfn": null,
+   "doctype": "SAGE",
+   "docdate": "1972-11-14",
+   "docamount": 0,
+   "recordedfiled": "1972-11-14"
+  },
+  {
+   "documentid": "BK_7230059600552",
+   "crfn": null,
+   "doctype": "SAGE",
+   "docdate": "1972-11-20",
+   "docamount": 0,
+   "recordedfiled": "1972-11-20"
+  },
+  {
+   "documentid": "BK_7330061600028",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1973-02-23",
+   "docamount": 0,
+   "recordedfiled": "1973-02-23"
+  },
+  {
+   "documentid": "BK_7630087700466",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1976-10-12",
+   "docamount": 0,
+   "recordedfiled": "1976-10-12"
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1976-10-12",
+   "docamount": 0,
+   "recordedfiled": "1976-10-12"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": "1977-04-01",
+   "docamount": 0,
+   "recordedfiled": "1977-04-01"
+  },
+  {
+   "documentid": "BK_7830098900402",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1978-04-20",
+   "docamount": 0,
+   "recordedfiled": "1978-04-20"
+  },
+  {
+   "documentid": "BK_7830102900878",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1978-10-27",
+   "docamount": 0,
+   "recordedfiled": "1978-10-27"
+  },
+  {
+   "documentid": "BK_7930107901557",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": "1979-06-18",
+   "docamount": 0,
+   "recordedfiled": "1979-06-18"
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1979-08-20",
+   "docamount": 0,
+   "recordedfiled": "1979-08-20"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1980-03-24",
+   "docamount": 0,
+   "recordedfiled": "1980-03-24"
+  },
+  {
+   "documentid": "BK_8030119701588",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1980-11-14",
+   "docamount": 0,
+   "recordedfiled": "1980-11-14"
+  },
+  {
+   "documentid": "BK_8130121400597",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": "1981-01-28",
+   "docamount": 0,
+   "recordedfiled": "1981-01-28"
+  },
+  {
+   "documentid": "FT_3080008345608",
+   "crfn": null,
+   "doctype": "SAGE",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "2002-04-01"
+  },
+  {
+   "documentid": "FT_3180000903718",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 76100,
+   "recordedfiled": "1982-03-17"
+  },
+  {
+   "documentid": "FT_3290000914429",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1982-06-14"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 9582900,
+   "recordedfiled": "1982-12-10"
+  },
+  {
+   "documentid": "FT_3330001638933",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1991-09-17"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1982-12-10"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1982-12-10"
+  },
+  {
+   "documentid": "FT_3360000912736",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1982-05-28"
+  },
+  {
+   "documentid": "FT_3360005404036",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1996-10-31"
+  },
+  {
+   "documentid": "FT_3480001412848",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1988-11-22"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1982-12-21"
+  },
+  {
+   "documentid": "FT_3540008990654",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 580390,
+   "recordedfiled": "2002-11-20"
+  },
+  {
+   "documentid": "FT_3550001271755",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 474175,
+   "recordedfiled": "1987-06-08"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1987-06-08"
+  },
+  {
+   "documentid": "FT_3560001773456",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1993-05-19"
+  },
+  {
+   "documentid": "FT_3600007786760",
+   "crfn": null,
+   "doctype": "SAT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "2001-08-23"
+  },
+  {
+   "documentid": "FT_3660005404666",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 500000,
+   "recordedfiled": "1996-10-31"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1985-02-06"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1985-02-06"
+  },
+  {
+   "documentid": "FT_3800009002580",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "2002-11-20"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1988-02-23"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "crfn": null,
+   "doctype": "ASST",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "1988-02-23"
+  },
+  {
+   "documentid": "FT_3870009002587",
+   "crfn": null,
+   "doctype": "AGMT",
+   "docdate": null,
+   "docamount": 0,
+   "recordedfiled": "2002-11-20"
+  },
+  {
+   "documentid": "FT_3890006810189",
+   "crfn": null,
+   "doctype": "MTGE",
+   "docdate": null,
+   "docamount": 100000,
+   "recordedfiled": "1999-09-24"
+  }
+ ],
+ "parties": [
+  {
+   "documentid": "2025061700455003",
+   "partytype": 2,
+   "name": "PREFERRED BANK",
+   "address1": "601 SOUTH FIGUEROA STREET, 48TH FLOOR",
+   "address2": null,
+   "city": "LOS ANGELES",
+   "state": "NY",
+   "zip": "90017",
+   "country": "US"
+  },
+  {
+   "documentid": "2025061700455001",
+   "partytype": 2,
+   "name": "PREFERRED BANK",
+   "address1": "601 SOUTH FIGUEROA STREET, 48TH FLOOR",
+   "address2": null,
+   "city": "LOS ANGELES",
+   "state": "NY",
+   "zip": "90017",
+   "country": "US"
+  },
+  {
+   "documentid": "2025061700455002",
+   "partytype": 1,
+   "name": "259 22ND STREET LLC",
+   "address1": "100 JERICHO QUADRANGLE, SUITE 220",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "2025061700455002",
+   "partytype": 2,
+   "name": "PREFERRED BANK",
+   "address1": "601 SOUTH FIGUEROA STREET, 48TH FLOOR",
+   "address2": null,
+   "city": "LOS ANGELES",
+   "state": "NY",
+   "zip": "90017",
+   "country": "US"
+  },
+  {
+   "documentid": "2025061700455001",
+   "partytype": 1,
+   "name": "259 22ND STREET LLC",
+   "address1": "100 JERICHO QUADRANGLE, SUITE 220",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "2025061700455003",
+   "partytype": 1,
+   "name": "259 22ND STREET LLC",
+   "address1": "100 JERICHO QUADRANGLE, SUITE 220",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "2023061200959001",
+   "partytype": 1,
+   "name": "CONNECTONE BANK",
+   "address1": "301 SYLVAN AVENUE",
+   "address2": null,
+   "city": "ENGLEWOOD CLIFFS",
+   "state": "NY",
+   "zip": "07632",
+   "country": "US"
+  },
+  {
+   "documentid": "2023061200959001",
+   "partytype": 2,
+   "name": "5413 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2023061200959001",
+   "partytype": 2,
+   "name": "702 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2023061400729001",
+   "partytype": 1,
+   "name": "5413 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2023061400729001",
+   "partytype": 2,
+   "name": "CONNECTONE BANK",
+   "address1": "301 SYLVAN AVENUE",
+   "address2": null,
+   "city": "ENGLEWOOD CLIFFS",
+   "state": "NJ",
+   "zip": "07632",
+   "country": "US"
+  },
+  {
+   "documentid": "2021021601440001",
+   "partytype": 2,
+   "name": "GRANDBRIDGE REAL ESTATE CAPITAL LLC",
+   "address1": "3000 RIVERCHASE GALLERIA, SUITE 1020",
+   "address2": null,
+   "city": "BIRMINGHAM",
+   "state": "CA",
+   "zip": "35244",
+   "country": "US"
+  },
+  {
+   "documentid": "2021021601440001",
+   "partytype": 1,
+   "name": "TRUIST BANK",
+   "address1": "33 BLOOMFIELD HILLS PARKWAY, SUITE 125",
+   "address2": null,
+   "city": "BLOOMFIELD HILLS",
+   "state": "MI",
+   "zip": "48304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021021601440001",
+   "partytype": 2,
+   "name": "GRANDBRIDGE REAL ESTATE CAPITAL LLC",
+   "address1": "3000 RIVERCHASE GALLERIA, SUITE 1020",
+   "address2": null,
+   "city": "BIRMINGHAM",
+   "state": "CA",
+   "zip": "35244",
+   "country": "US"
+  },
+  {
+   "documentid": "2021021601440001",
+   "partytype": 1,
+   "name": "TRUIST BANK",
+   "address1": "33 BLOOMFIELD HILLS PARKWAY, SUITE 125",
+   "address2": null,
+   "city": "BLOOMFIELD HILLS",
+   "state": "MI",
+   "zip": "48304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183002",
+   "partytype": 2,
+   "name": "CONNECTONE BANK",
+   "address1": "301 SYLVAN AVENUE",
+   "address2": null,
+   "city": "ENGLEWOOD CLIFFS",
+   "state": "NJ",
+   "zip": "07632",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183002",
+   "partytype": 1,
+   "name": "702 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183002",
+   "partytype": 1,
+   "name": "5413 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183001",
+   "partytype": 2,
+   "name": "CONNECTONE BANK",
+   "address1": "301 SYLVAN AVENUE",
+   "address2": null,
+   "city": "ENGLEWOOD CLIFFS",
+   "state": "NJ",
+   "zip": "07632",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183001",
+   "partytype": 1,
+   "name": "702 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2021031601183001",
+   "partytype": 1,
+   "name": "5413 PLAZA LLC",
+   "address1": "5 CROMWELL CIRCLE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "10304",
+   "country": "US"
+  },
+  {
+   "documentid": "2020103000310001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310001",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEVELOPMENT FUND COMPANY",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310001",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310001",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310002",
+   "partytype": 1,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2020103000310002",
+   "partytype": 2,
+   "name": "HP SUNSET PARK I HOUSING DEVELOPMENT FUND COMPANY",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310002",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020103000310002",
+   "partytype": 2,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020050100273002",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273002",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273002",
+   "partytype": 1,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273003",
+   "partytype": 2,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273003",
+   "partytype": 2,
+   "name": "HP SUNSET PARK I HDFC INC.",
+   "address1": "242 WEST, 36TH STREET, 3RD FLOOR",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10018",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273003",
+   "partytype": 1,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2020050100273001",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020050100273001",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2020050100273001",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HDFC INC.",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2019120700129001",
+   "partytype": 2,
+   "name": "SUNTRUST BANK",
+   "address1": "33 BLOOMFIELD HILLS PARKWAY",
+   "address2": "SUITE 125",
+   "city": "BLOOMFIELD HILLS",
+   "state": "MI",
+   "zip": "48304",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129001",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEVELOPMENT FUND CO, INC",
+   "address1": "C/O NYC PARTNERSHIP HOUSING DEVELOPMENT COMPANY,",
+   "address2": "253 WEST 35TH STREET, 3RD FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10001",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129001",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "250 WEST 55TH STREET",
+   "address2": "35TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129002",
+   "partytype": 2,
+   "name": "UNITED STATES DEPT OF HOUSING & URBAN DEVELOPMENT",
+   "address1": "26 FEDERAL PLAZA",
+   "address2": "SUITE 3541",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "102780068",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129002",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEVELOPMENT FUND CO, INC",
+   "address1": "C/O NYC PARTNERSHIP HOUSING DEVELOPMENT COMPANY,",
+   "address2": "253 WEST 35TH STREET, 3RD FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10001",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129002",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "250 WEST 55TH STREET",
+   "address2": "35TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129005",
+   "partytype": 2,
+   "name": "HP SUNSET PARK I HOUSING DEVELOPMENT FUND CO, INC",
+   "address1": "C/O NYC PARTNERSHIP HOUSING DEVELOPMENT COMPANY,",
+   "address2": "253 WEST 35TH STREET, 3RD FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10001",
+   "country": "US"
+  },
+  {
+   "documentid": "2019120700129005",
+   "partytype": 1,
+   "name": "CITY OF NY, DEPARTMENT OF HPD",
+   "address1": "100 GOLD STREET",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10007",
+   "country": "US"
+  },
+  {
+   "documentid": "2019052901289001",
+   "partytype": 2,
+   "name": "U.S. BANK NATIONAL ASSOCIATION, AS TRUSTEE*",
+   "address1": "ONE FEDERAL STREET, 3RD FL., MAIL CODE EX-MA-FED",
+   "address2": null,
+   "city": "BOSTON",
+   "state": "MA",
+   "zip": "02110",
+   "country": "US"
+  },
+  {
+   "documentid": "2019052901289001",
+   "partytype": 1,
+   "name": "FEDERAL HOME LOAN MORTGAGE CORPORATION",
+   "address1": "8200 JONES BRANCH DRIVE",
+   "address2": null,
+   "city": "MCLEAN",
+   "state": "VA",
+   "zip": "22102",
+   "country": "US"
+  },
+  {
+   "documentid": "2018122900023001",
+   "partytype": 2,
+   "name": "GREYSTONE SERVICING CORPORATION, INC.",
+   "address1": "419 BELLE AIR LANE",
+   "address2": null,
+   "city": "WARRENTON",
+   "state": "VA",
+   "zip": "20186",
+   "country": "US"
+  },
+  {
+   "documentid": "2018122900023001",
+   "partytype": 1,
+   "name": "K S TURNPIKE LLC",
+   "address1": "6 STEVEN LANE",
+   "address2": null,
+   "city": "GREAT NECK",
+   "state": "NY",
+   "zip": "11024",
+   "country": "US"
+  },
+  {
+   "documentid": "2018122900023001",
+   "partytype": 1,
+   "name": "AADVA REALTY LLC",
+   "address1": "14 SINCLAIR DRIVE",
+   "address2": null,
+   "city": "KINGS POINT",
+   "state": "NY",
+   "zip": "11024",
+   "country": "US"
+  },
+  {
+   "documentid": "2018122900023003",
+   "partytype": 2,
+   "name": "FEDERAL HOME LOAN MORTGAGE CORPORATION",
+   "address1": "8200 JONES BRANCH DRIVE",
+   "address2": null,
+   "city": "MC LEAN",
+   "state": "VA",
+   "zip": "22102",
+   "country": "US"
+  },
+  {
+   "documentid": "2018122900023003",
+   "partytype": 1,
+   "name": "GREYSTONE SERVICING CORPORATION",
+   "address1": "419 BELLE AIR LANE",
+   "address2": null,
+   "city": "WARRENTON",
+   "state": "VA",
+   "zip": "20186",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "METROPOLITAN SAVINGS BANK",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "METROPOLITAN SAVINGS BANK",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 1,
+   "name": "DASS REALTY CORP",
+   "address1": "5413 7TH AVE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11220",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "CROSSLAND SAVINGS, FSB",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "REPUBIC NATIONAL BANK OF NEW YORK",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "HSBC BANK USA, NATIONAL ASSOCIATION",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "HSBC BANK (USA)",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2018111500579001",
+   "partytype": 2,
+   "name": "CROSSLAND FEDERAL SAVINGS BANK",
+   "address1": "2929 WALDEN AVE",
+   "address2": null,
+   "city": "DEPEW",
+   "state": "NY",
+   "zip": "14043",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025004",
+   "partytype": 2,
+   "name": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+   "address1": "242 WEST, 36TH STREET, 3RD FLOOR",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10018",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025004",
+   "partytype": 1,
+   "name": "CITY OF NEW YORK",
+   "address1": "CITY HALL",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10007",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025006",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025003",
+   "partytype": 2,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025003",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025004",
+   "partytype": 2,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025009",
+   "partytype": 1,
+   "name": "SUNSET PARK OWNER I LLC",
+   "address1": "152 WEST 57TH STREET",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10019",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025004",
+   "partytype": 1,
+   "name": "DEPARTMENT OF HOUSING PRESERVATION AND DEVELOPMENT",
+   "address1": "100 GOLD STREET",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10038",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025006",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+   "address1": "242 WEST, 36TH STREET, 3RD FLOOR",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10018",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025006",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025009",
+   "partytype": 1,
+   "name": "HP SUNSET PARK I HOUSING DEV FUND COMPANY, INC",
+   "address1": "242 WEST, 36TH STREET, 3RD FLOOR",
+   "address2": "36TH FLOOR",
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10018",
+   "country": "US"
+  },
+  {
+   "documentid": "2017061600025009",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2016061001524001",
+   "partytype": 2,
+   "name": "CHAMPION MORTGAGE COMPANY",
+   "address1": "8950 CYPRESS WATERS BOULEVARD",
+   "address2": null,
+   "city": "COPPELL",
+   "state": "TX",
+   "zip": "75019",
+   "country": "US"
+  },
+  {
+   "documentid": "2016061001524001",
+   "partytype": 2,
+   "name": "NATIONSTAR MORTGAGE LLC",
+   "address1": "8950 CYPRESS WATERS BOULEVARD",
+   "address2": null,
+   "city": "COPPELL",
+   "state": "TX",
+   "zip": "75019",
+   "country": "US"
+  },
+  {
+   "documentid": "2016061001524001",
+   "partytype": 1,
+   "name": "ADVISORS MORTGAGE GROUP LLC",
+   "address1": "POS BOX 2026",
+   "address2": null,
+   "city": "FLINT",
+   "state": "MI",
+   "zip": "48501",
+   "country": "US"
+  },
+  {
+   "documentid": "2016061001524001",
+   "partytype": 1,
+   "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+   "address1": "PO BOX 2026",
+   "address2": null,
+   "city": "FLINT",
+   "state": "MI",
+   "zip": "48501",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2011110100755001",
+   "partytype": 2,
+   "name": "ROCKHALL FUNDING CORP",
+   "address1": "11710 PLAZA AMERICA DRIVE",
+   "address2": "SUITE 2000",
+   "city": "RESTON",
+   "state": "VA",
+   "zip": "20190",
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117004",
+   "partytype": 2,
+   "name": "438 52ND ST. OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET, APT. 1D",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "partytype": 2,
+   "name": "METROPOLITAN SVGS BK/FKA",
+   "address1": "91  DEMOPOLIS AVE",
+   "address2": null,
+   "city": "SI",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7230059500151",
+   "partytype": 1,
+   "name": "FRATIANNI JOHN R",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3800009002580",
+   "partytype": 1,
+   "name": "ASTORIA FEDERAL SAVINGS AND LOAN ASSOC",
+   "address1": "2000  MARCUS AVENUE",
+   "address2": null,
+   "city": "LAKE SUCCESS",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3550001271755",
+   "partytype": 2,
+   "name": "CROSSLAND SAVS FSB",
+   "address1": "211  MONTAGUE ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "partytype": 1,
+   "name": "MAXWELL ETHYL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "partytype": 1,
+   "name": "RAMADHIN DOOLAND AYE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830102900878",
+   "partytype": 1,
+   "name": "PAGAN ANGEL LUIS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2004050601172001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "39 BROADWAY",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": "10006",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3660005404666",
+   "partytype": 2,
+   "name": "ASTORIA FEDERAL SAVINGS & LOAN ASSOCIATION",
+   "address1": "ONE  ASTORIA FEDERAL PLAZA",
+   "address2": null,
+   "city": "LAKE SUCCESS",
+   "state": "NY",
+   "zip": "11042",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "partytype": 1,
+   "name": "MAXWELL WILLIAM S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2014030300786004",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY",
+   "address1": "ONE JERICHO PLAZA",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3360000912736",
+   "partytype": 1,
+   "name": "J C R F CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7630087700466",
+   "partytype": 1,
+   "name": "RAMADHIN RAJKUMAR",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3540008990654",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "615  MERRICK AVE",
+   "address2": null,
+   "city": "WESTBURY",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "partytype": 1,
+   "name": "HEROLD ROBERT D",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3330001638933",
+   "partytype": 2,
+   "name": "NEW YORK LIFE INSURCO",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3360005404036",
+   "partytype": 1,
+   "name": "ALROSE REALTY LLC",
+   "address1": "91  WOODMERE BLVD",
+   "address2": null,
+   "city": "WOODMERE",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7130045701213",
+   "partytype": 2,
+   "name": "MILLER FRIEDA",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230059500151",
+   "partytype": 1,
+   "name": "ANCHOR SAVS BK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "partytype": 2,
+   "name": "FRATIANNI JOHN R",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2005051102117001",
+   "partytype": 1,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "ONE JERICHO PLAZA",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3480001412848",
+   "partytype": 2,
+   "name": "FRANJO RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7330061600028",
+   "partytype": 1,
+   "name": "DASS REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098900402",
+   "partytype": 1,
+   "name": "RACHTEL REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3330001638933",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122003",
+   "partytype": 1,
+   "name": "438 52ND STREET OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET",
+   "address2": "APT 1 D",
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7330061600028",
+   "partytype": 2,
+   "name": "METROPOLITAN SAVINGS BANK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3560001773456",
+   "partytype": 2,
+   "name": "CROSSLAND SAVINGS FSB",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABIL.ASSO",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZA/A",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2014030300786003",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES 1",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "partytype": 1,
+   "name": "NEW YORK CITY",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7230059600552",
+   "partytype": 1,
+   "name": "ANCHOR SAVS BK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830102900878",
+   "partytype": 2,
+   "name": "FRANJO REALTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "partytype": 2,
+   "name": "NYC HOUSING DVLPT CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3290000914429",
+   "partytype": 2,
+   "name": "TITLE GUARANTEE TR CO",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3660005404666",
+   "partytype": 1,
+   "name": "ALROSE REALTY LLC",
+   "address1": "91  WOODMERE BLVD",
+   "address2": null,
+   "city": "WOODMERE",
+   "state": "NY",
+   "zip": "11598",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3330001638933",
+   "partytype": 1,
+   "name": "KORNBLUM, CAROL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2011110100755002",
+   "partytype": 2,
+   "name": "ROCKHALL FUNDING CORP",
+   "address1": "11710 PLAZA AMERICA DRIVE",
+   "address2": "SUITE 2000",
+   "city": "RESTON",
+   "state": "VA",
+   "zip": "20190",
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117002",
+   "partytype": 1,
+   "name": "438 52ND ST. OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET, APT. 1D",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122001",
+   "partytype": 1,
+   "name": "438 52ND STREET OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET",
+   "address2": "APT 1 D",
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8030119701588",
+   "partytype": 2,
+   "name": "HEROLD PAULINE S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3560001773456",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "partytype": 1,
+   "name": "LUTHERAN MEDICAL CENTER",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3290000914429",
+   "partytype": 1,
+   "name": "PATTNOR BUILDING CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117001",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3180000903718",
+   "partytype": 1,
+   "name": "KORNBLUM, CAROL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD S. ASSOCS I",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "partytype": 2,
+   "name": "MENTONIS JACK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117003",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "partytype": 2,
+   "name": "DE ROSE VINCENT",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3080008345608",
+   "partytype": 1,
+   "name": "ASTORIA FEDERAL SAVINGS AND LOAN ASSOCIATION",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "partytype": 2,
+   "name": "NEIGHBORHOOD STAB. ASSOC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7230059600552",
+   "partytype": 1,
+   "name": "TOM TOY INC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7830098900402",
+   "partytype": 2,
+   "name": "ANCHOR SAVINGS BANK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3550001271755",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": "91  DEMOPOLIS AVE",
+   "address2": null,
+   "city": "STATEN ISLAND",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "partytype": 1,
+   "name": "RAMADHIN RAYKUMAR",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7230059500151",
+   "partytype": 1,
+   "name": "FERLAINO JOHN C",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2011110100755004",
+   "partytype": 2,
+   "name": "SECRETARY OF URBAN AND HOUSING DEVELOPMENT",
+   "address1": "451 SEVENTH STREET",
+   "address2": null,
+   "city": "WASHINGTON DC",
+   "state": "MD",
+   "zip": "20410",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104001",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "102 DUFFY AVENUE, 3RD FLOOR",
+   "address2": null,
+   "city": "HICKSVILLE",
+   "state": "NY",
+   "zip": "11801",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3800009002580",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "615  MERRICK AVE",
+   "address2": null,
+   "city": "WESTBURY",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "partytype": 2,
+   "name": "NYC HOUSING DVLP CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL",
+   "address1": "91  DEMOPOLIS AVE",
+   "address2": null,
+   "city": "SI",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117004",
+   "partytype": 1,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "2014030300786002",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY",
+   "address1": "ONE JERICHO PLAZA",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "partytype": 2,
+   "name": "MEDICAL MALPRACTICE INSURANCE ASSOCIATION",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2014030300786002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3540008990654",
+   "partytype": 1,
+   "name": "438 52ND ST OWNERS'CORP",
+   "address1": "300  E 2ND ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "partytype": 2,
+   "name": "MEDICAL MALPRACTICEINS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "partytype": 2,
+   "name": "SECURITY PACIFIC NATL TR",
+   "address1": "127  JOHN ST",
+   "address2": null,
+   "city": "NY",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8130121400597",
+   "partytype": 2,
+   "name": "CITY OF NEW YORK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7630087700466",
+   "partytype": 2,
+   "name": "NATHANSON JACOB",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "partytype": 2,
+   "name": "NEW YORK CITY H. D.CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "partytype": 2,
+   "name": "FIRST WISCONSIN TR CO/TR",
+   "address1": "777  EAST WISCONSIN AVE",
+   "address2": null,
+   "city": "MILWAUKEE",
+   "state": "WI",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3600007786760",
+   "partytype": 2,
+   "name": "ZARA REALTY HOLDINGCORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3870009002587",
+   "partytype": 2,
+   "name": "438 52ND OWNERS CORP",
+   "address1": "300  E 2ND ST",
+   "address2": null,
+   "city": "BKLYN",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117003",
+   "partytype": 1,
+   "name": "438 52ND ST. OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET, APT. 1D",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3600007786760",
+   "partytype": 1,
+   "name": "ALROSE REALTY LLC",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2011110100755002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "2015042100104002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7630087700466",
+   "partytype": 1,
+   "name": "RAMADHIN DOOLAD AYE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2011110100755004",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "partytype": 2,
+   "name": "MENTONIS PENELOPE",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901557",
+   "partytype": 1,
+   "name": "ANCHOR SAVS BANK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2014030300786003",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY",
+   "address1": "ONE JERICHO PLAZA",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "2014030300786002",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES 1",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "partytype": 1,
+   "name": "HEROLD PAULINE S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3480001412848",
+   "partytype": 1,
+   "name": "PAGAN, ANGEL LUIS",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2014030300786004",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES 1",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3180000903718",
+   "partytype": 2,
+   "name": "HOUSING PRESV & DVLPT",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122003",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "partytype": 2,
+   "name": "CROSSLAND SAVINGS, FSB",
+   "address1": "91  DEMOPOLIS AVE",
+   "address2": null,
+   "city": "SI",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3890006810189",
+   "partytype": 2,
+   "name": "ZARA REALTY HOLDINGCORP",
+   "address1": "88-05  MERRICK BLVD",
+   "address2": null,
+   "city": "JAMAICA",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "2005051102117002",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122001",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122002",
+   "partytype": 2,
+   "name": "RIDGEWOOD SAVINGS BANK",
+   "address1": "71-02 FOREST AVENUE",
+   "address2": null,
+   "city": "RIDGEWOOD",
+   "state": "NY",
+   "zip": "11385",
+   "country": "US"
+  },
+  {
+   "documentid": "2014030300786001",
+   "partytype": 2,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "ONE JERICHO PLAZA",
+   "address2": null,
+   "city": "JERICHO",
+   "state": "NY",
+   "zip": "11753",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "partytype": 2,
+   "name": "PRINCE MATTHEW",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3360005404036",
+   "partytype": 2,
+   "name": "ASTORIA FEDERAL SAVINGS & LOAN ASSOCIATION",
+   "address1": "1  ASTORIA FEDERAL PLAZA",
+   "address2": null,
+   "city": "LAKE SUCCESS",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3360000912736",
+   "partytype": 2,
+   "name": "KORNREICH, BENJAMINM",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8030119701588",
+   "partytype": 2,
+   "name": "HEROLD ROBERT D",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_8030119701588",
+   "partytype": 1,
+   "name": "HEENAN DAVID",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3870009002587",
+   "partytype": 1,
+   "name": "NEW YORK COMMUNITY BANK",
+   "address1": "615  MERRICK AVE",
+   "address2": null,
+   "city": "WESTBURY",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "partytype": 2,
+   "name": "PRINCE MILTON S",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930107901557",
+   "partytype": 2,
+   "name": "RACHTEL RLTY CORP",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "partytype": 2,
+   "name": "FERLAINO JOHN C",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2011110100755001",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD STABILIZATION ASSOCIATES I, L.P.",
+   "address1": "1465A FLATBUSH AVENUE",
+   "address2": null,
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11210",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "partytype": 1,
+   "name": "LUTHERAN MEDICAL CENTER",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2004050601172001",
+   "partytype": 2,
+   "name": "ROCKHALL FUNDING CORP.",
+   "address1": "158-13 72ND AVENUE",
+   "address2": "SUITE 2-B",
+   "city": "FLUSHING",
+   "state": "NY",
+   "zip": "11365",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3180000903718",
+   "partytype": 1,
+   "name": "KORNBLUM, DANIEL B.",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "partytype": 1,
+   "name": "SECURITY PACIFIC NATL TR",
+   "address1": "127  JOHN ST",
+   "address2": null,
+   "city": "NY",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_8130121400597",
+   "partytype": 1,
+   "name": "KORNBLUM DANIEL",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "partytype": 1,
+   "name": "NYC HOUSING DVLPT CORP",
+   "address1": "75  MAIDEN LANE",
+   "address2": null,
+   "city": "NY",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "2015032301122002",
+   "partytype": 1,
+   "name": "438 52ND STREET OWNERS' CORP.",
+   "address1": "300 EAST SECOND STREET",
+   "address2": "APT 1 D",
+   "city": "BROOKLYN",
+   "state": "NY",
+   "zip": "11218",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "partytype": 2,
+   "name": "METROPOLITAN SV BK/FS FK",
+   "address1": "91  DEMOPOLIS AVE",
+   "address2": null,
+   "city": "SI",
+   "state": "NY",
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3890006810189",
+   "partytype": 1,
+   "name": "ALROSE REALTY LLC",
+   "address1": "286  SPRING ST",
+   "address2": null,
+   "city": "NEW YORK",
+   "state": "NY",
+   "zip": null,
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "partytype": 1,
+   "name": "NEIGHBORHOOD S. ASSOCS I",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  },
+  {
+   "documentid": "BK_7130045701213",
+   "partytype": 1,
+   "name": "SOUTH BKLYN SAVS BK",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": null,
+   "country": null
+  },
+  {
+   "documentid": "2014030300786001",
+   "partytype": 1,
+   "name": "ROCKHALL FUNDING CORP.",
+   "address1": "11710 PLAZA AMERICA DRIVE",
+   "address2": "SUITE 2000",
+   "city": "RESTON",
+   "state": "VA",
+   "zip": "20190",
+   "country": "US"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "partytype": 2,
+   "name": "HOUSING & URBAN DVLPT",
+   "address1": null,
+   "address2": null,
+   "city": null,
+   "state": null,
+   "zip": "00000",
+   "country": "US"
+  }
+ ],
+ "legals": [
+  {
+   "documentid": "2025061700455003",
+   "bbl": "3008970014"
+  },
+  {
+   "documentid": "2025061700455001",
+   "bbl": "3008970014"
+  },
+  {
+   "documentid": "2025061700455002",
+   "bbl": "3008970014"
+  },
+  {
+   "documentid": "2023061200959001",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2023061200959001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2023061400729001",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2023061400729001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008320003"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "1008090004"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008320003"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2021021601440001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2021031601183002",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2021031601183001",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2021031601183001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2021031601183002",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2020103000310002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2020103000310001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2020050100273001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2020050100273002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2020050100273003",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2019120700129001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2019120700129002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2019120700129005",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2019052901289001",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2018122900023001",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2018122900023003",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2018111500579001",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2017061600025009",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2017061600025004",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2017061600025003",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2017061600025006",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2016061001524001",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "bbl": "3007740002"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2005051102117004",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2015032301122002",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3600007786760",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3360005404036",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "BK_8130121400597",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "FT_3540008990654",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "FT_3080008345608",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "BK_7130045701213",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "BK_7630087700471",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3180000903718",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "BK_7830102900878",
+   "bbl": "3008210019"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "FT_3660005404666",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "1008090004"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "bbl": "3007740004"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008160038"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3360000912736",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3480001412848",
+   "bbl": "3008210019"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3560001271756",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3560001773456",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3890006810189",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2005051102117003",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3007990056"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "FT_3550001271755",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "BK_7230059600552",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7730091101837",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "FT_3800009002580",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2005051102117002",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "BK_7230059500151",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2015032301122003",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "1008090004"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008210013"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008160040"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3290000914429",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3870009002587",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "BK_7930109401639",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "BK_8030114900597",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "BK_7930107901557",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2015032301122001",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "bbl": "3007740004"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3330001638933",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "BK_7830098900402",
+   "bbl": "3008260005"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008300035"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3007990025"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "FT_3840001345184",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "2005051102117001",
+   "bbl": "3008070024"
+  },
+  {
+   "documentid": "2015042100104002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008170001"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "2014030300786004",
+   "bbl": "3008090004"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "BK_8030119701588",
+   "bbl": "3008080025"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008390006"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008210014"
+  },
+  {
+   "documentid": "FT_3490000939649",
+   "bbl": "3007740002"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008160039"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090005"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3008170005"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008160037"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008090003"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3750001068275",
+   "bbl": "3008170009"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008090007"
+  },
+  {
+   "documentid": "BK_7330061600028",
+   "bbl": "3008260002"
+  },
+  {
+   "documentid": "FT_3330000938233",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "BK_7630087700466",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2014030300786001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2011110100755004",
+   "bbl": "3008090002"
+  },
+  {
+   "documentid": "FT_3850001345185",
+   "bbl": "3008160036"
+  },
+  {
+   "documentid": "2011110100755001",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008090006"
+  },
+  {
+   "documentid": "FT_3350000938235",
+   "bbl": "3008210012"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "FT_3340000938234",
+   "bbl": "3008170007"
+  },
+  {
+   "documentid": "2015042100104001",
+   "bbl": "3008320051"
+  },
+  {
+   "documentid": "2011110100755002",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "2014030300786002",
+   "bbl": "3007920056"
+  },
+  {
+   "documentid": "2014030300786003",
+   "bbl": "3007640036"
+  },
+  {
+   "documentid": "2004050601172001",
+   "bbl": "3008300033"
+  },
+  {
+   "documentid": "FT_3760001068276",
+   "bbl": "3008170001"
+  }
+ ]
+}

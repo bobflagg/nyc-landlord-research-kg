@@ -33,7 +33,7 @@ def _expected_docs():
 
 def test_deed_family_codes_come_from_the_vocabulary():
     assert deed_family_codes() == sorted(["DEED", "DEED, TS", "DEED, LE", "DEEDO", "DEED COR", "DEED, RC", "DEEDP"])
-    assert acris_doc_type("deed, le") == "deed_life_estate" and acris_doc_type("MTGE") is None
+    assert acris_doc_type("deed, le") == "deed_life_estate" and acris_doc_type("MTGE") == "mortgage" and acris_doc_type("CMTG") is None
 
 
 def test_party_codes_map_to_roles_and_party_3_means_life_estate_only_on_a_life_estate_deed():

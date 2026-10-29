@@ -8,7 +8,7 @@ OWL modules and SHACL shapes (design note 0010).
 | `core.shapes.ttl` | What the data must satisfy. Allowed values between `generated` markers are written from `vocab/*.ttl` by `scripts/sync_shape_values.py` |
 | `pluto.ttl`, `pluto.shapes.ttl` | PLUTO lot attributes (design note 0014) |
 | `hpd.ttl`, `hpd.shapes.ttl` | Registration, HPD party and role (design notes 0006, 0014) |
-| `acris.ttl`, `acris.shapes.ttl` | Document, ACRIS party and role: deed family only (design note 0015) |
+| `acris.ttl`, `acris.shapes.ttl` | Document, ACRIS party and role: deed family (design note 0015) and mortgage family (design note 0022) |
 | `dos.ttl`, `dos.shapes.ttl` | NY DOS entity (design note 0016) |
 | `conditions.ttl`, `conditions.shapes.ttl` | HPD violations, complaint summaries and litigation (design note 0020) |
 | `generated/` | Cypher compiled from the shapes by `scripts/compile_shapes.py` (shacl2cypher). Committed; do not edit |

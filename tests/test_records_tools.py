@@ -101,7 +101,8 @@ def test_q24_5413_plaza_deed_rows_hpd_role_and_dos_record(graph):
     r = find_by_name(graph, "5413 PLAZA LLC")
     assert r["status"] == "found" and r["normalized_name"] == "5413 PLAZA LLC"
     want = {(d["document_id"], str(d["party_type"]), tuple(d["bbls"])) for d in Q24["acris_documents"]}
-    assert {(d["document_id"], d["party_type"], tuple(d["bbls"])) for d in r["acris_documents"]} == want
+    deeds = {(d["document_id"], d["party_type"], tuple(d["bbls"])) for d in r["acris_documents"] if d["doc_type"].startswith("deed")}
+    assert deeds == want      # the deed rows are the ones the snapshot expects; mortgage-family rows on registered lots come with them (note 0022)
     assert {(d["document_id"], d["role_type"]) for d in r["acris_documents"] if d["party_type"] == "2"} >= {("2021022201130003", "grantee")}
     hpd = Q24["hpd"][0]
     assert any((h["registration_id"], h["contact_id"], h["hpd_type"], hpd["bbl"] in h["bbls"], hpd["bin"] in h["bins"]) ==
@@ -110,10 +111,12 @@ def test_q24_5413_plaza_deed_rows_hpd_role_and_dos_record(graph):
     assert r["dos"][0]["entity_type"] == Q24["dos"]["entity_type"]
 
 
-def test_q24_says_deed_documents_only_and_a_match_is_a_lead(graph):
+def test_q24_says_which_document_families_were_searched_and_a_match_is_a_lead(graph):
     r = find_by_name(graph, "5413 PLAZA LLC")
     assert r["caveats"] == CAVEATS_Q24 and any("deed family" in c for c in r["caveats"]) and any("lead" in c for c in r["caveats"])
-    assert all(d["doc_type"].startswith("deed") for d in r["acris_documents"])
+    assert any("mortgage family" in c and "HPD-registered lots only" in c for c in r["caveats"])
+    from etl.vocab import deed_family_types, mortgage_family_types
+    assert {d["doc_type"] for d in r["acris_documents"]} <= set(deed_family_types()) | set(mortgage_family_types())
 
 
 def test_q24_finds_the_name_through_punctuation_and_case_but_not_a_different_spelling(graph):

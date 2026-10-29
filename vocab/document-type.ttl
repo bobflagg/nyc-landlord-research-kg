@@ -6,11 +6,11 @@
 
 doc: a skos:ConceptScheme ;
     dcterms:title "Document type"@en ;
-    dcterms:description "The kind of recorded document, as ACRIS classifies it. Only the deed family has concepts so far (design notes 0004 and 0015); other ACRIS document types are not loaded yet."@en ;
+    dcterms:description "The kind of recorded document, as ACRIS classifies it. The deed family (note 0015) and the mortgage family (note 0022) have concepts; other ACRIS document types are not loaded yet."@en ;
     dcterms:created "2026-10-27"^^xsd:date ;
     owl:versionInfo "0.1.0" ;
     skos:scopeNote "Each concept's skos:notation is the string stored in doc_type. skos:hiddenLabel with language tag x-acris is the ACRIS document type code the loader maps from. The vocabulary carries no flag for what counts as a transfer: that rule lives in the tools (note 0004). The raw code is always kept in doc_type_raw."@en ;
-    skos:hasTopConcept doc:deed_family .
+    skos:hasTopConcept doc:deed_family, doc:mortgage_family .
 
 doc:deed_family a skos:Concept ;
     skos:inScheme doc: ;
@@ -74,3 +74,98 @@ doc:deed_pre_rpt a skos:Concept ;
     skos:prefLabel "Deed, pre real property transfer tax"@en ;
     skos:hiddenLabel "DEEDP"@x-acris ;
     skos:definition "ACRIS DEEDP: a deed from before the real property transfer tax."@en .
+
+doc:mortgage_family a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:topConceptOf doc: ;
+    skos:notation "mortgage_family" ;
+    skos:prefLabel "Mortgage, assignment, satisfaction and related instrument"@en ;
+    skos:definition "ACRIS documents about a loan secured on the lot. A grouping; documents carry one of the narrower concepts. Loaded for HPD-registered lots only (note 0022). Other mortgage-class codes (CMTG, SMTG, DEMM, ASPM, SPRD, SUBM, REL, PREL, WSAT and the rest) are not loaded yet."@en .
+
+doc:mortgage a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "mortgage" ;
+    skos:prefLabel "Mortgage"@en ;
+    skos:hiddenLabel "MTGE"@x-acris ;
+    skos:definition "A mortgage. Party 1 is the mortgagor/borrower, party 2 the mortgagee/lender (ACRIS control codes)."@en .
+
+doc:mortgage_consolidation a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "mortgage_consolidation" ;
+    skos:prefLabel "Mortgage and consolidation"@en ;
+    skos:hiddenLabel "M&CON"@x-acris ;
+    skos:definition "ACRIS M&CON: a mortgage that consolidates earlier mortgages. Party 1 mortgagor, party 2 mortgagee."@en .
+
+doc:mortgage_correction a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "mortgage_correction" ;
+    skos:prefLabel "Mortgage correction"@en ;
+    skos:hiddenLabel "CORRM"@x-acris ;
+    skos:definition "ACRIS CORRM: a correction of a mortgage. Party 1 mortgagor/borrower, party 2 mortgagee/lender."@en .
+
+doc:assignment_of_mortgage a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "assignment_of_mortgage" ;
+    skos:prefLabel "Assignment of mortgage"@en ;
+    skos:hiddenLabel "ASST"@x-acris ;
+    skos:definition "ACRIS ASST: a mortgage assigned from the old lender (party 1) to the new lender (party 2)."@en .
+
+doc:satisfaction a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "satisfaction" ;
+    skos:prefLabel "Satisfaction of mortgage"@en ;
+    skos:hiddenLabel "SAT"@x-acris ;
+    skos:definition "ACRIS SAT: a recorded satisfaction. Party 1 is the mortgagor/borrower, party 2 the mortgagee/lender. A satisfaction is not a payment record: it says only what was filed."@en .
+
+doc:partial_satisfaction a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "partial_satisfaction" ;
+    skos:prefLabel "Partial satisfaction"@en ;
+    skos:hiddenLabel "PSAT"@x-acris ;
+    skos:definition "ACRIS PSAT: a partial satisfaction of a mortgage. Party 1 mortgagor/borrower, party 2 mortgagee/lender."@en .
+
+doc:agreement a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "agreement" ;
+    skos:prefLabel "Agreement"@en ;
+    skos:hiddenLabel "AGMT"@x-acris ;
+    skos:definition "ACRIS AGMT: an agreement filed in the mortgage class (modification, extension, consolidation and similar). The control codes name the parties only as party 1 and party 2, so roles carry no type."@en .
+
+doc:assignment_of_leases_rents a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "assignment_of_leases_rents" ;
+    skos:prefLabel "Assignment of leases and rents"@en ;
+    skos:hiddenLabel "AL&R"@x-acris ;
+    skos:definition "ACRIS AL&R: an assignment of leases and rents given with a loan. Party 1 assignor, party 2 assignee."@en .
+
+doc:assignment_of_assignment_lr a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "assignment_of_assignment_lr" ;
+    skos:prefLabel "Assignment of an assignment of leases and rents"@en ;
+    skos:hiddenLabel "AALR"@x-acris ;
+    skos:definition "ACRIS AALR. Party 1 assignor, party 2 assignee."@en .
+
+doc:termination_lr a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "termination_lr" ;
+    skos:prefLabel "Termination of assignment of leases and rents"@en ;
+    skos:hiddenLabel "TL&R"@x-acris ;
+    skos:definition "ACRIS TL&R. A termination is not proof that a loan was paid. The control codes name the parties only as party one and party two, so roles carry no type."@en .
+
+doc:sundry_agreement a skos:Concept ;
+    skos:inScheme doc: ;
+    skos:broader doc:mortgage_family ;
+    skos:notation "sundry_agreement" ;
+    skos:prefLabel "Sundry agreement"@en ;
+    skos:hiddenLabel "SAGE"@x-acris ;
+    skos:definition "ACRIS SAGE. The control codes name the parties only as party 1 and party 2, so roles carry no type."@en .

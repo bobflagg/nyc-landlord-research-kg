@@ -8,6 +8,7 @@ from datetime import date
 from langchain.tools import tool
 
 from agent.db import read_session
+from etl.vocab import deed_family_types
 from agent.tools.records import N1_RULE, PROV, _clean, _plain, snapshot
 
 CAVEATS_Q28 = [
@@ -69,7 +70,7 @@ ORDER BY reg.registration_id
 """
 LOT_FACTS = "MATCH (l:Lot {bbl: $bbl}) RETURN l.units_residential AS res, l.units_total AS total, l.year_built AS year_built, l.year_built_raw AS year_built_raw, l.building_class AS cls, l.source AS source"
 LATEST_DEEDS = f"""
-MATCH (l:Lot {{bbl: $bbl}})<-[:ON_LOT]-(d:Document) WHERE d.doc_type IS NOT NULL AND d.doc_type <> 'deed_correction' AND d.recorded IS NOT NULL
+MATCH (l:Lot {{bbl: $bbl}})<-[:ON_LOT]-(d:Document) WHERE d.doc_type IN $deed_types AND d.doc_type <> 'deed_correction' AND d.recorded IS NOT NULL
 WITH d ORDER BY d.recorded DESC, d.document_id LIMIT 3
 RETURN d {{.document_id, .doc_type, .recorded, .doc_date, .amount, {PROV}}} AS d
 """
@@ -205,7 +206,7 @@ def registration_status(runner, bbl: str) -> dict:
         out["recently_built"] = ("Built in the last few years before the snapshot: a new building can be unregistered for a legitimate reason. "
                                  "This tool does not know whether it was required to register yet.")
     regs = runner.run(REG_ROWS, bbl=bbl).data()
-    deeds = [r["d"] for r in runner.run(LATEST_DEEDS, bbl=bbl).data()]
+    deeds = [r["d"] for r in runner.run(LATEST_DEEDS, bbl=bbl, deed_types=deed_family_types()).data()]
     latest_deed = _clean(deeds[0]) if deeds else None
     out["latest_deed"] = latest_deed
     if latest_deed and latest_deed.get("amount") == 0:

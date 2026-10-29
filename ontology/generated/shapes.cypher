@@ -238,7 +238,7 @@ RETURN 'AcrisRoleShape.on_lot.maxCount' AS ruleId, 'Violation' AS severity, viol
 MATCH (v0:`AcrisRole`)
 UNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained', 'borrower', 'lender', 'assignor', 'assignee'], false))
 RETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:role_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
        {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:role_type' AS message, [] AS details
 LIMIT coalesce($limit, 9223372036854775807);
@@ -248,7 +248,7 @@ LIMIT coalesce($limit, 9223372036854775807);
 MATCH (v0:`AcrisRole`)
 UNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained', 'borrower', 'lender', 'assignor', 'assignee'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
@@ -293,7 +293,7 @@ RETURN 'AcrisRoleShape.source.in' AS ruleId, 'Violation' AS severity, violationC
 MATCH (v0:`AcrisRole`)
 UNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3', 'mortgage:1', 'mortgage_consolidation:1', 'mortgage_correction:1', 'satisfaction:1', 'partial_satisfaction:1', 'mortgage:2', 'mortgage_consolidation:2', 'mortgage_correction:2', 'satisfaction:2', 'partial_satisfaction:2', 'assignment_of_mortgage:1', 'assignment_of_leases_rents:1', 'assignment_of_assignment_lr:1', 'assignment_of_mortgage:2', 'assignment_of_leases_rents:2', 'assignment_of_assignment_lr:2'], false))
 RETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
        {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:source_role_code' AS message, [] AS details
 LIMIT coalesce($limit, 9223372036854775807);
@@ -303,7 +303,7 @@ LIMIT coalesce($limit, 9223372036854775807);
 MATCH (v0:`AcrisRole`)
 UNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3', 'mortgage:1', 'mortgage_consolidation:1', 'mortgage_correction:1', 'satisfaction:1', 'partial_satisfaction:1', 'mortgage:2', 'mortgage_consolidation:2', 'mortgage_correction:2', 'satisfaction:2', 'partial_satisfaction:2', 'assignment_of_mortgage:1', 'assignment_of_leases_rents:1', 'assignment_of_assignment_lr:1', 'assignment_of_mortgage:2', 'assignment_of_leases_rents:2', 'assignment_of_assignment_lr:2'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
@@ -490,7 +490,7 @@ RETURN 'DocumentShape.doc_date_raw.maxCount' AS ruleId, 'Violation' AS severity,
 MATCH (v0:`Document`)
 UNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt', 'mortgage', 'mortgage_consolidation', 'mortgage_correction', 'assignment_of_mortgage', 'satisfaction', 'partial_satisfaction', 'agreement', 'assignment_of_leases_rents', 'assignment_of_assignment_lr', 'termination_lr', 'sundry_agreement'], false))
 RETURN 'DocumentShape.doc_type.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
        {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type' AS message, [] AS details
 LIMIT coalesce($limit, 9223372036854775807);
@@ -500,7 +500,7 @@ LIMIT coalesce($limit, 9223372036854775807);
 MATCH (v0:`Document`)
 UNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt', 'mortgage', 'mortgage_consolidation', 'mortgage_correction', 'assignment_of_mortgage', 'satisfaction', 'partial_satisfaction', 'agreement', 'assignment_of_leases_rents', 'assignment_of_assignment_lr', 'termination_lr', 'sundry_agreement'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'DocumentShape.doc_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
@@ -526,7 +526,7 @@ RETURN 'DocumentShape.doc_type.maxCount' AS ruleId, 'Violation' AS severity, vio
 MATCH (v0:`Document`)
 UNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP', 'MTGE', 'M&CON', 'CORRM', 'ASST', 'SAT', 'PSAT', 'AGMT', 'AL&R', 'AALR', 'TL&R', 'SAGE'], false))
 RETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,
        {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type_raw' AS message, [] AS details
 LIMIT coalesce($limit, 9223372036854775807);
@@ -536,7 +536,7 @@ LIMIT coalesce($limit, 9223372036854775807);
 MATCH (v0:`Document`)
 UNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1
 WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))
+WHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP', 'MTGE', 'M&CON', 'CORRM', 'ASST', 'SAT', 'PSAT', 'AGMT', 'AL&R', 'AALR', 'TL&R', 'SAGE'], false))
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
@@ -681,6 +681,25 @@ WITH v0
 WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`recorded` IS NULL THEN [] WHEN v0.`recorded` IS :: LIST<ANY> THEN v0.`recorded` ELSE [v0.`recorded`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'DocumentShape.recorded.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
+
+// name: DocumentShape.references.class
+// ruleId: acris:DocumentShape/acris:references/sh:class
+MATCH (v0:`Document`)
+MATCH (v0)-[:`REFERENCES`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Document`)
+RETURN 'DocumentShape.references.class' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:references' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,
+       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'acris:DocumentShape violates sh:class on acris:references' AS message, [] AS details
+LIMIT coalesce($limit, 9223372036854775807);
+
+// name: DocumentShape.references.class#summary
+// ruleId: acris:DocumentShape/acris:references/sh:class
+MATCH (v0:`Document`)
+MATCH (v0)-[:`REFERENCES`]->(v1)
+WITH DISTINCT v0, v1
+WHERE NOT (v1:`Document`)
+WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
+RETURN 'DocumentShape.references.class' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
 // name: DocumentShape.node
 // ruleId: acris:DocumentShape/sh:node
@@ -2238,42 +2257,6 @@ WITH v0
 WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`inspection_date_raw` IS NULL THEN [] WHEN v0.`inspection_date_raw` IS :: LIST<ANY> THEN v0.`inspection_date_raw` ELSE [v0.`inspection_date_raw`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
 WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
 RETURN 'ViolationShape.inspection_date_raw.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
-// name: ViolationShape.nov_description.datatype
-// ruleId: cond:ViolationShape/cond:nov_description/sh:datatype
-MATCH (v0:`Violation`)
-UNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1
-WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
-RETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:nov_description' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: ViolationShape.nov_description.datatype#summary
-// ruleId: cond:ViolationShape/cond:nov_description/sh:datatype
-MATCH (v0:`Violation`)
-UNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1
-WITH DISTINCT v0, v1
-WHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample;
-
-// name: ViolationShape.nov_description.maxCount
-// ruleId: cond:ViolationShape/cond:nov_description/sh:maxCount
-MATCH (v0:`Violation`)
-WITH v0
-WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
-RETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,
-       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:nov_description' AS message, [] AS details
-LIMIT coalesce($limit, 9223372036854775807);
-
-// name: ViolationShape.nov_description.maxCount#summary
-// ruleId: cond:ViolationShape/cond:nov_description/sh:maxCount
-MATCH (v0:`Violation`)
-WITH v0
-WHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)
-WITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample
-RETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample;
 
 // name: ViolationShape.nov_issued_date.datatype
 // ruleId: cond:ViolationShape/cond:nov_issued_date/sh:datatype

@@ -9,8 +9,8 @@ role: a skos:ConceptScheme ;
     dcterms:description "What a record says a party is to a building or lot, normalized across sources. Names the role the record gives and never implies ownership or control."@en ;
     dcterms:created "2026-10-26"^^xsd:date ;
     owl:versionInfo "0.1.0" ;
-    skos:scopeNote "Each concept's skos:notation is the string stored in role_type. skos:hiddenLabel with language tag x-hpd is the HPD contact type the loader maps from (design notes 0004 and 0014). The two groupings name what the record says, not who controls the building. skos:hiddenLabel with language tag x-acris is the ACRIS party type code, read together with the document type (note 0015). DOS roles are added with their module."@en ;
-    skos:hasTopConcept role:registered_principal, role:management, role:deed_party .
+    skos:scopeNote "Each concept's skos:notation is the string stored in role_type. skos:hiddenLabel with language tag x-hpd is the HPD contact type the loader maps from (design notes 0004 and 0014). The two groupings name what the record says, not who controls the building. skos:hiddenLabel with language tag x-acris is the ACRIS party type code, read together with the document type (note 0015). skos:hiddenLabel with language tag x-acris-by-type is the document type notation and the party code joined by a colon, for the parties of mortgage-family documents, whose meaning depends on the document type (note 0022); a party code with no label for its document type gets no role type. DOS roles are added with their module."@en ;
+    skos:hasTopConcept role:registered_principal, role:management, role:deed_party, role:loan_party .
 
 role:registered_principal a skos:Concept ;
     skos:inScheme role: ;
@@ -115,3 +115,54 @@ role:life_estate_retained a skos:Concept ;
     skos:hiddenLabel "3"@x-acris ;
     skos:scopeNote "Confirmed only on DEED, LE. Party 3 on any other deed code has no concept and is kept as the raw code (note 0015)."@en ;
     skos:definition "Party 3 on a DEED, LE document: the party that retains the life estate."@en .
+
+role:loan_party a skos:Concept ;
+    skos:inScheme role: ;
+    skos:topConceptOf role: ;
+    skos:notation "loan_party" ;
+    skos:prefLabel "Party to a loan document"@en ;
+    skos:definition "A party a mortgage-class document names. A grouping of what the record says; it implies no ownership or control."@en .
+
+role:borrower a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:loan_party ;
+    skos:notation "borrower" ;
+    skos:prefLabel "Borrower"@en ;
+    skos:hiddenLabel "mortgage:1"@x-acris-by-type ;
+    skos:hiddenLabel "mortgage_consolidation:1"@x-acris-by-type ;
+    skos:hiddenLabel "mortgage_correction:1"@x-acris-by-type ;
+    skos:hiddenLabel "satisfaction:1"@x-acris-by-type ;
+    skos:hiddenLabel "partial_satisfaction:1"@x-acris-by-type ;
+    skos:definition "The mortgagor or borrower a mortgage-class document names (party 1 on a mortgage, consolidation, correction, satisfaction or partial satisfaction). What the record says; it implies nothing about the building's owner."@en .
+
+role:lender a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:loan_party ;
+    skos:notation "lender" ;
+    skos:prefLabel "Lender"@en ;
+    skos:hiddenLabel "mortgage:2"@x-acris-by-type ;
+    skos:hiddenLabel "mortgage_consolidation:2"@x-acris-by-type ;
+    skos:hiddenLabel "mortgage_correction:2"@x-acris-by-type ;
+    skos:hiddenLabel "satisfaction:2"@x-acris-by-type ;
+    skos:hiddenLabel "partial_satisfaction:2"@x-acris-by-type ;
+    skos:definition "The mortgagee or lender a mortgage-class document names (party 2 on the same document types). What the record says."@en .
+
+role:assignor a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:loan_party ;
+    skos:notation "assignor" ;
+    skos:prefLabel "Assignor"@en ;
+    skos:hiddenLabel "assignment_of_mortgage:1"@x-acris-by-type ;
+    skos:hiddenLabel "assignment_of_leases_rents:1"@x-acris-by-type ;
+    skos:hiddenLabel "assignment_of_assignment_lr:1"@x-acris-by-type ;
+    skos:definition "The assignor of a mortgage (the old lender) or of leases and rents."@en .
+
+role:assignee a skos:Concept ;
+    skos:inScheme role: ;
+    skos:broader role:loan_party ;
+    skos:notation "assignee" ;
+    skos:prefLabel "Assignee"@en ;
+    skos:hiddenLabel "assignment_of_mortgage:2"@x-acris-by-type ;
+    skos:hiddenLabel "assignment_of_leases_rents:2"@x-acris-by-type ;
+    skos:hiddenLabel "assignment_of_assignment_lr:2"@x-acris-by-type ;
+    skos:definition "The assignee of a mortgage (the new lender) or of leases and rents."@en .

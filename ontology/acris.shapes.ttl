@@ -4,7 +4,7 @@
 @prefix wl:    <https://bobflagg.github.io/Watchline/ontology/core#> .
 @prefix acris: <https://bobflagg.github.io/Watchline/ontology/acris#> .
 
-# ACRIS shapes (design note 0015). Values between "generated" markers are written from vocab/ by
+# ACRIS shapes (design notes 0015 and 0022). Values between "generated" markers are written from vocab/ by
 # scripts/sync_shape_values.py ("name:x-acris" takes the ACRIS codes on skos:hiddenLabel).
 
 acris:DocumentShape a sh:NodeShape ; sh:targetClass acris:Document ; s2c:key "document_id" ;
@@ -12,13 +12,13 @@ acris:DocumentShape a sh:NodeShape ; sh:targetClass acris:Document ; s2c:key "do
   sh:property [ sh:path acris:document_id ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[A-Za-z0-9_]+$" ] ;
   sh:property [ sh:path acris:crfn ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
   sh:property [ sh:path acris:doc_type ; sh:maxCount 1 ; sh:in
-    # generated:document-type begin only=deed,deed_timeshare,deed_life_estate,deed_other,deed_correction,deed_restrictive_covenant,deed_pre_rpt
-    ( "deed" "deed_timeshare" "deed_life_estate" "deed_other" "deed_correction" "deed_restrictive_covenant" "deed_pre_rpt" )
+    # generated:document-type begin only=deed,deed_timeshare,deed_life_estate,deed_other,deed_correction,deed_restrictive_covenant,deed_pre_rpt,mortgage,mortgage_consolidation,mortgage_correction,assignment_of_mortgage,satisfaction,partial_satisfaction,agreement,assignment_of_leases_rents,assignment_of_assignment_lr,termination_lr,sundry_agreement
+    ( "deed" "deed_timeshare" "deed_life_estate" "deed_other" "deed_correction" "deed_restrictive_covenant" "deed_pre_rpt" "mortgage" "mortgage_consolidation" "mortgage_correction" "assignment_of_mortgage" "satisfaction" "partial_satisfaction" "agreement" "assignment_of_leases_rents" "assignment_of_assignment_lr" "termination_lr" "sundry_agreement" )
     # generated:document-type end
   ] ;
   sh:property [ sh:path acris:doc_type_raw ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
     # generated:document-type:x-acris begin
-    ( "DEED" "DEED, TS" "DEED, LE" "DEEDO" "DEED COR" "DEED, RC" "DEEDP" )
+    ( "DEED" "DEED, TS" "DEED, LE" "DEEDO" "DEED COR" "DEED, RC" "DEEDP" "MTGE" "M&CON" "CORRM" "ASST" "SAT" "PSAT" "AGMT" "AL&R" "AALR" "TL&R" "SAGE" )
     # generated:document-type:x-acris end
   ] ;
   sh:property [ sh:path acris:doc_date ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
@@ -27,6 +27,7 @@ acris:DocumentShape a sh:NodeShape ; sh:targetClass acris:Document ; s2c:key "do
   sh:property [ sh:path acris:amount ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
   # A document is loaded only when it is on a lot in the graph.
   sh:property [ sh:path wl:on_lot ; sh:class wl:Lot ; sh:minCount 1 ] ;
+  sh:property [ sh:path acris:references ; sh:class acris:Document ] ;
   sh:property [ sh:path wl:source ; sh:in ( "acris_master" ) ] ;
   sh:property [ sh:path wl:review_status ; sh:maxCount 0 ] .
 
@@ -40,13 +41,13 @@ acris:AcrisPartyShape a sh:NodeShape ; sh:targetClass acris:AcrisParty ;
 acris:AcrisRoleShape a sh:NodeShape ; sh:targetClass acris:AcrisRole ;
   # role_type is absent for a party code with no confirmed meaning on this document type (note 0015).
   sh:property [ sh:path wl:role_type ; sh:maxCount 1 ; sh:in
-    # generated:role-type begin only=grantor,grantee,life_estate_retained
-    ( "grantor" "grantee" "life_estate_retained" )
+    # generated:role-type begin only=grantor,grantee,life_estate_retained,borrower,lender,assignor,assignee
+    ( "grantor" "grantee" "life_estate_retained" "borrower" "lender" "assignor" "assignee" )
     # generated:role-type end
   ] ;
   sh:property [ sh:path wl:source_role_code ; sh:minCount 1 ; sh:maxCount 1 ; sh:in
     # generated:role-type:x-acris begin
-    ( "1" "2" "3" )
+    ( "1" "2" "3" "mortgage:1" "mortgage_consolidation:1" "mortgage_correction:1" "satisfaction:1" "partial_satisfaction:1" "mortgage:2" "mortgage_consolidation:2" "mortgage_correction:2" "satisfaction:2" "partial_satisfaction:2" "assignment_of_mortgage:1" "assignment_of_leases_rents:1" "assignment_of_assignment_lr:1" "assignment_of_mortgage:2" "assignment_of_leases_rents:2" "assignment_of_assignment_lr:2" )
     # generated:role-type:x-acris end
   ] ;
   sh:property [ sh:path acris:in_document ; sh:class acris:Document ; sh:minCount 1 ; sh:maxCount 1 ] ;

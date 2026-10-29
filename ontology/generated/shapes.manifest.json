@@ -5,12 +5,12 @@
   {
    "path": "ontology/acris.shapes.ttl",
    "role": "shapes",
-   "sha256": "2437a72b642fc08fd9cdb09666cdf42068716eabc9b6bd1eb6cd85c3f6867b5f"
+   "sha256": "970cfb62bb4e8c8e22f213e5a6da4e01e048a53aaeb9fb6e3cc27a2f4420ec10"
   },
   {
    "path": "ontology/conditions.shapes.ttl",
    "role": "shapes",
-   "sha256": "2553729cddcffad1f6b9605062845219b7fee1a4a31bef58bff73c6936b3c2ae"
+   "sha256": "727568283d15d45d37aeba8491edff71965de9edd06bc327c4fe79a63f2eee31"
   },
   {
    "path": "ontology/core.shapes.ttl",
@@ -112,7 +112,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 35
+    "line": 36
    },
    "status": "compiled"
   },
@@ -132,7 +132,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 35
+    "line": 36
    },
    "status": "compiled"
   },
@@ -152,7 +152,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 37
+    "line": 38
    },
    "status": "compiled"
   },
@@ -172,7 +172,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 37
+    "line": 38
    },
    "status": "compiled"
   },
@@ -192,7 +192,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 36
+    "line": 37
    },
    "status": "compiled"
   },
@@ -212,7 +212,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 36
+    "line": 37
    },
    "status": "compiled"
   },
@@ -232,7 +232,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 34
+    "line": 35
    },
    "status": "compiled"
   },
@@ -252,7 +252,7 @@
    "shape": "acris:AcrisPartyShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 38
+    "line": 39
    },
    "status": "compiled"
   },
@@ -272,7 +272,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -292,7 +292,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -312,7 +312,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 52
+    "line": 53
    },
    "status": "compiled"
   },
@@ -332,7 +332,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 54
+    "line": 55
    },
    "status": "compiled"
   },
@@ -352,27 +352,27 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 55
+    "line": 56
    },
    "status": "compiled"
   },
   {
    "constraint": "sh:in",
    "costClass": "scan",
-   "fingerprint": "e2f53c5b4bbf450e",
+   "fingerprint": "bd7807fb55b4c196",
    "message": "acris:AcrisRoleShape violates sh:in on wl:role_type",
    "name": "AcrisRoleShape.role_type.in",
    "path": "wl:role_type",
    "queries": {
-    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:role_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained', 'borrower', 'lender', 'assignor', 'assignee'], false))\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:role_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:role_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`role_type` IS NULL THEN [] WHEN v0.`role_type` IS :: LIST<ANY> THEN v0.`role_type` ELSE [v0.`role_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['grantor', 'grantee', 'life_estate_retained', 'borrower', 'lender', 'assignor', 'assignee'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.role_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
    },
    "ruleId": "acris:AcrisRoleShape/wl:role_type/sh:in",
    "severity": "Violation",
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 44
+    "line": 45
    },
    "status": "compiled"
   },
@@ -392,7 +392,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 42
+    "line": 43
    },
    "status": "compiled"
   },
@@ -412,27 +412,27 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 56
+    "line": 57
    },
    "status": "compiled"
   },
   {
    "constraint": "sh:in",
    "costClass": "scan",
-   "fingerprint": "e6736510b6504057",
+   "fingerprint": "b34e2700746d53ea",
    "message": "acris:AcrisRoleShape violates sh:in on wl:source_role_code",
    "name": "AcrisRoleShape.source_role_code.in",
    "path": "wl:source_role_code",
    "queries": {
-    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:source_role_code' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+    "detail": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3', 'mortgage:1', 'mortgage_consolidation:1', 'mortgage_correction:1', 'satisfaction:1', 'partial_satisfaction:1', 'mortgage:2', 'mortgage_consolidation:2', 'mortgage_correction:2', 'satisfaction:2', 'partial_satisfaction:2', 'assignment_of_mortgage:1', 'assignment_of_leases_rents:1', 'assignment_of_assignment_lr:1', 'assignment_of_mortgage:2', 'assignment_of_leases_rents:2', 'assignment_of_assignment_lr:2'], false))\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'acris:AcrisRoleShape' AS shape, 'wl:source_role_code' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:AcrisRoleShape violates sh:in on wl:source_role_code' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`AcrisRole`)\nUNWIND CASE WHEN v0.`source_role_code` IS NULL THEN [] WHEN v0.`source_role_code` IS :: LIST<ANY> THEN v0.`source_role_code` ELSE [v0.`source_role_code`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['1', '2', '3', 'mortgage:1', 'mortgage_consolidation:1', 'mortgage_correction:1', 'satisfaction:1', 'partial_satisfaction:1', 'mortgage:2', 'mortgage_consolidation:2', 'mortgage_correction:2', 'satisfaction:2', 'partial_satisfaction:2', 'assignment_of_mortgage:1', 'assignment_of_leases_rents:1', 'assignment_of_assignment_lr:1', 'assignment_of_mortgage:2', 'assignment_of_leases_rents:2', 'assignment_of_assignment_lr:2'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['AcrisRole']] + labels(v0)), key: null, keyValue: null, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'AcrisRoleShape.source_role_code.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
    },
    "ruleId": "acris:AcrisRoleShape/wl:source_role_code/sh:in",
    "severity": "Violation",
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 49
+    "line": 50
    },
    "status": "compiled"
   },
@@ -452,7 +452,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 47
+    "line": 48
    },
    "status": "compiled"
   },
@@ -472,7 +472,7 @@
    "shape": "acris:AcrisRoleShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 47
+    "line": 48
    },
    "status": "compiled"
   },
@@ -639,13 +639,13 @@
   {
    "constraint": "sh:in",
    "costClass": "scan",
-   "fingerprint": "d86adab31e602c63",
+   "fingerprint": "e7758e7405f49f52",
    "message": "acris:DocumentShape violates sh:in on acris:doc_type",
    "name": "DocumentShape.doc_type.in",
    "path": "acris:doc_type",
    "queries": {
-    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt', 'mortgage', 'mortgage_consolidation', 'mortgage_correction', 'assignment_of_mortgage', 'satisfaction', 'partial_satisfaction', 'agreement', 'assignment_of_leases_rents', 'assignment_of_assignment_lr', 'termination_lr', 'sundry_agreement'], false))\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type` IS NULL THEN [] WHEN v0.`doc_type` IS :: LIST<ANY> THEN v0.`doc_type` ELSE [v0.`doc_type`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['deed', 'deed_timeshare', 'deed_life_estate', 'deed_other', 'deed_correction', 'deed_restrictive_covenant', 'deed_pre_rpt', 'mortgage', 'mortgage_consolidation', 'mortgage_correction', 'assignment_of_mortgage', 'satisfaction', 'partial_satisfaction', 'agreement', 'assignment_of_leases_rents', 'assignment_of_assignment_lr', 'termination_lr', 'sundry_agreement'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
    },
    "ruleId": "acris:DocumentShape/acris:doc_type/sh:in",
    "severity": "Violation",
@@ -679,13 +679,13 @@
   {
    "constraint": "sh:in",
    "costClass": "scan",
-   "fingerprint": "11307e41b723f68d",
+   "fingerprint": "d266ac70e3aa9e6d",
    "message": "acris:DocumentShape violates sh:in on acris:doc_type_raw",
    "name": "DocumentShape.doc_type_raw.in",
    "path": "acris:doc_type_raw",
    "queries": {
-    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
+    "detail": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP', 'MTGE', 'M&CON', 'CORRM', 'ASST', 'SAT', 'PSAT', 'AGMT', 'AL&R', 'AALR', 'TL&R', 'SAGE'], false))\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:doc_type_raw' AS path, 'sh:in' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'acris:DocumentShape violates sh:in on acris:doc_type_raw' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nUNWIND CASE WHEN v0.`doc_type_raw` IS NULL THEN [] WHEN v0.`doc_type_raw` IS :: LIST<ANY> THEN v0.`doc_type_raw` ELSE [v0.`doc_type_raw`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT (coalesce(v1 IN ['DEED', 'DEED, TS', 'DEED, LE', 'DEEDO', 'DEED COR', 'DEED, RC', 'DEEDP', 'MTGE', 'M&CON', 'CORRM', 'ASST', 'SAT', 'PSAT', 'AGMT', 'AL&R', 'AALR', 'TL&R', 'SAGE'], false))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.doc_type_raw.in' AS ruleId, 'Violation' AS severity, violationCount, sample"
    },
    "ruleId": "acris:DocumentShape/acris:doc_type_raw/sh:in",
    "severity": "Violation",
@@ -857,6 +857,26 @@
    "status": "compiled"
   },
   {
+   "constraint": "sh:class",
+   "costClass": "scan+expand",
+   "fingerprint": "6c0d2c68701c06cb",
+   "message": "acris:DocumentShape violates sh:class on acris:references",
+   "name": "DocumentShape.references.class",
+   "path": "acris:references",
+   "queries": {
+    "detail": "MATCH (v0:`Document`)\nMATCH (v0)-[:`REFERENCES`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Document`)\nRETURN 'DocumentShape.references.class' AS ruleId, 'acris:DocumentShape' AS shape, 'acris:references' AS path, 'sh:class' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)} AS focus, {label: head(labels(v1)), keyValue: null, elementId: elementId(v1)} AS value, 'acris:DocumentShape violates sh:class on acris:references' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
+    "summary": "MATCH (v0:`Document`)\nMATCH (v0)-[:`REFERENCES`]->(v1)\nWITH DISTINCT v0, v1\nWHERE NOT (v1:`Document`)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Document']] + labels(v0)), key: 'document_id', keyValue: v0.`document_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'DocumentShape.references.class' AS ruleId, 'Violation' AS severity, violationCount, sample"
+   },
+   "ruleId": "acris:DocumentShape/acris:references/sh:class",
+   "severity": "Violation",
+   "shape": "acris:DocumentShape",
+   "source": {
+    "file": "ontology/acris.shapes.ttl",
+    "line": 30
+   },
+   "status": "compiled"
+  },
+  {
    "constraint": "sh:node",
    "costClass": "scan",
    "fingerprint": "c9ba47791d05ee24",
@@ -932,7 +952,7 @@
    "shape": "acris:DocumentShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 31
+    "line": 32
    },
    "status": "compiled"
   },
@@ -952,7 +972,7 @@
    "shape": "acris:DocumentShape",
    "source": {
     "file": "ontology/acris.shapes.ttl",
-    "line": 30
+    "line": 31
    },
    "status": "compiled"
   },
@@ -972,7 +992,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 47
+    "line": 46
    },
    "status": "compiled"
   },
@@ -992,7 +1012,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 47
+    "line": 46
    },
    "status": "compiled"
   },
@@ -1012,7 +1032,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 46
+    "line": 45
    },
    "status": "compiled"
   },
@@ -1032,7 +1052,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 46
+    "line": 45
    },
    "status": "compiled"
   },
@@ -1052,7 +1072,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 46
+    "line": 45
    },
    "status": "compiled"
   },
@@ -1072,7 +1092,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 41
+    "line": 40
    },
    "status": "compiled"
   },
@@ -1092,7 +1112,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 41
+    "line": 40
    },
    "status": "compiled"
   },
@@ -1112,7 +1132,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 41
+    "line": 40
    },
    "status": "compiled"
   },
@@ -1132,7 +1152,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 42
+    "line": 41
    },
    "status": "compiled"
   },
@@ -1152,7 +1172,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 42
+    "line": 41
    },
    "status": "compiled"
   },
@@ -1172,7 +1192,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 40
+    "line": 39
    },
    "status": "compiled"
   },
@@ -1192,7 +1212,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 40
+    "line": 39
    },
    "status": "compiled"
   },
@@ -1212,7 +1232,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 40
+    "line": 39
    },
    "status": "compiled"
   },
@@ -1232,7 +1252,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 48
+    "line": 47
    },
    "status": "compiled"
   },
@@ -1252,7 +1272,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 48
+    "line": 47
    },
    "status": "compiled"
   },
@@ -1272,7 +1292,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 45
+    "line": 44
    },
    "status": "compiled"
   },
@@ -1292,7 +1312,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 45
+    "line": 44
    },
    "status": "compiled"
   },
@@ -1312,7 +1332,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 45
+    "line": 44
    },
    "status": "compiled"
   },
@@ -1332,7 +1352,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 44
+    "line": 43
    },
    "status": "compiled"
   },
@@ -1352,7 +1372,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 44
+    "line": 43
    },
    "status": "compiled"
   },
@@ -1372,7 +1392,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 44
+    "line": 43
    },
    "status": "compiled"
   },
@@ -1392,7 +1412,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 39
+    "line": 38
    },
    "status": "compiled"
   },
@@ -1412,7 +1432,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 39
+    "line": 38
    },
    "status": "compiled"
   },
@@ -1432,7 +1452,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 39
+    "line": 38
    },
    "status": "compiled"
   },
@@ -1452,7 +1472,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 43
+    "line": 42
    },
    "status": "compiled"
   },
@@ -1472,7 +1492,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 43
+    "line": 42
    },
    "status": "compiled"
   },
@@ -1492,7 +1512,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 43
+    "line": 42
    },
    "status": "compiled"
   },
@@ -1512,7 +1532,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 38
+    "line": 37
    },
    "status": "compiled"
   },
@@ -1532,7 +1552,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 49
+    "line": 48
    },
    "status": "compiled"
   },
@@ -1552,7 +1572,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 49
+    "line": 48
    },
    "status": "compiled"
   },
@@ -1572,7 +1592,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 51
+    "line": 50
    },
    "status": "compiled"
   },
@@ -1592,7 +1612,7 @@
    "shape": "cond:ComplaintSummaryShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 50
+    "line": 49
    },
    "status": "compiled"
   },
@@ -1612,7 +1632,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 66
+    "line": 65
    },
    "status": "compiled"
   },
@@ -1632,7 +1652,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 66
+    "line": 65
    },
    "status": "compiled"
   },
@@ -1652,7 +1672,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 67
+    "line": 66
    },
    "status": "compiled"
   },
@@ -1672,7 +1692,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 67
+    "line": 66
    },
    "status": "compiled"
   },
@@ -1692,7 +1712,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 68
+    "line": 67
    },
    "status": "compiled"
   },
@@ -1712,7 +1732,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 68
+    "line": 67
    },
    "status": "compiled"
   },
@@ -1732,7 +1752,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 69
+    "line": 68
    },
    "status": "compiled"
   },
@@ -1752,7 +1772,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 69
+    "line": 68
    },
    "status": "compiled"
   },
@@ -1772,7 +1792,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 58
+    "line": 57
    },
    "status": "compiled"
   },
@@ -1792,7 +1812,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 56
+    "line": 55
    },
    "status": "compiled"
   },
@@ -1812,7 +1832,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 63
+    "line": 62
    },
    "status": "compiled"
   },
@@ -1832,7 +1852,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 61
+    "line": 60
    },
    "status": "compiled"
   },
@@ -1852,7 +1872,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 61
+    "line": 60
    },
    "status": "compiled"
   },
@@ -1872,7 +1892,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 72
+    "line": 71
    },
    "status": "compiled"
   },
@@ -1892,7 +1912,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 72
+    "line": 71
    },
    "status": "compiled"
   },
@@ -1912,7 +1932,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 71
+    "line": 70
    },
    "status": "compiled"
   },
@@ -1932,7 +1952,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 71
+    "line": 70
    },
    "status": "compiled"
   },
@@ -1952,7 +1972,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 55
+    "line": 54
    },
    "status": "compiled"
   },
@@ -1972,7 +1992,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 55
+    "line": 54
    },
    "status": "compiled"
   },
@@ -1992,7 +2012,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 55
+    "line": 54
    },
    "status": "compiled"
   },
@@ -2012,7 +2032,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 55
+    "line": 54
    },
    "status": "compiled"
   },
@@ -2032,7 +2052,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 70
+    "line": 69
    },
    "status": "compiled"
   },
@@ -2052,7 +2072,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 70
+    "line": 69
    },
    "status": "compiled"
   },
@@ -2072,7 +2092,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 73
+    "line": 72
    },
    "status": "compiled"
   },
@@ -2092,7 +2112,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 73
+    "line": 72
    },
    "status": "compiled"
   },
@@ -2112,7 +2132,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 75
+    "line": 74
    },
    "status": "compiled"
   },
@@ -2132,7 +2152,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 76
+    "line": 75
    },
    "status": "compiled"
   },
@@ -2152,7 +2172,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 74
+    "line": 73
    },
    "status": "compiled"
   },
@@ -2172,7 +2192,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 74
+    "line": 73
    },
    "status": "compiled"
   },
@@ -2192,7 +2212,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 54
+    "line": 53
    },
    "status": "compiled"
   },
@@ -2212,7 +2232,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 77
+    "line": 76
    },
    "status": "compiled"
   },
@@ -2232,7 +2252,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 77
+    "line": 76
    },
    "status": "compiled"
   },
@@ -2252,7 +2272,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 79
+    "line": 78
    },
    "status": "compiled"
   },
@@ -2272,7 +2292,7 @@
    "shape": "cond:LitigationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 78
+    "line": 77
    },
    "status": "compiled"
   },
@@ -2292,7 +2312,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 84
+    "line": 83
    },
    "status": "compiled"
   },
@@ -2312,7 +2332,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 84
+    "line": 83
    },
    "status": "compiled"
   },
@@ -2332,7 +2352,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 85
+    "line": 84
    },
    "status": "compiled"
   },
@@ -2352,7 +2372,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 85
+    "line": 84
    },
    "status": "compiled"
   },
@@ -2372,7 +2392,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 83
+    "line": 82
    },
    "status": "compiled"
   },
@@ -2392,7 +2412,7 @@
    "shape": "cond:SnapshotAsOfShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 83
+    "line": 82
    },
    "status": "compiled"
   },
@@ -2599,46 +2619,6 @@
   {
    "constraint": "sh:datatype",
    "costClass": "scan",
-   "fingerprint": "668ae180fd73649b",
-   "message": "cond:ViolationShape violates sh:datatype on cond:nov_description",
-   "name": "ViolationShape.nov_description.datatype",
-   "path": "cond:nov_description",
-   "queries": {
-    "detail": "MATCH (v0:`Violation`)\nUNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nRETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:datatype' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, v1 AS value, 'cond:ViolationShape violates sh:datatype on cond:nov_description' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Violation`)\nUNWIND CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END AS v1\nWITH DISTINCT v0, v1\nWHERE v1 IS NOT NULL AND NOT ((v1 IS :: STRING NOT NULL))\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'ViolationShape.nov_description.datatype' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "cond:ViolationShape/cond:nov_description/sh:datatype",
-   "severity": "Violation",
-   "shape": "cond:ViolationShape",
-   "source": {
-    "file": "ontology/conditions.shapes.ttl",
-    "line": 30
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:maxCount",
-   "costClass": "scan",
-   "fingerprint": "a61fc272b2d63adb",
-   "message": "cond:ViolationShape violates sh:maxCount on cond:nov_description",
-   "name": "ViolationShape.nov_description.maxCount",
-   "path": "cond:nov_description",
-   "queries": {
-    "detail": "MATCH (v0:`Violation`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nRETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'cond:ViolationShape' AS shape, 'cond:nov_description' AS path, 'sh:maxCount' AS `constraint`, 'Violation' AS severity,\n       {label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)} AS focus, null AS value, 'cond:ViolationShape violates sh:maxCount on cond:nov_description' AS message, [] AS details\nLIMIT coalesce($limit, 9223372036854775807)",
-    "summary": "MATCH (v0:`Violation`)\nWITH v0\nWHERE NOT (size(reduce(x2 = [], x1 IN CASE WHEN v0.`nov_description` IS NULL THEN [] WHEN v0.`nov_description` IS :: LIST<ANY> THEN v0.`nov_description` ELSE [v0.`nov_description`] END | CASE WHEN x1 IS NULL OR x1 IN x2 THEN x2 ELSE x2 + [x1] END)) <= 1)\nWITH count(*) AS violationCount, collect({label: head([l IN labels(v0) WHERE l IN ['Violation']] + labels(v0)), key: 'violation_id', keyValue: v0.`violation_id`, elementId: elementId(v0)})[0..$sampleSize] AS sample\nRETURN 'ViolationShape.nov_description.maxCount' AS ruleId, 'Violation' AS severity, violationCount, sample"
-   },
-   "ruleId": "cond:ViolationShape/cond:nov_description/sh:maxCount",
-   "severity": "Violation",
-   "shape": "cond:ViolationShape",
-   "source": {
-    "file": "ontology/conditions.shapes.ttl",
-    "line": 30
-   },
-   "status": "compiled"
-  },
-  {
-   "constraint": "sh:datatype",
-   "costClass": "scan",
    "fingerprint": "d4f8b97277a775d1",
    "message": "cond:ViolationShape violates sh:datatype on cond:nov_issued_date",
    "name": "ViolationShape.nov_issued_date.datatype",
@@ -2752,7 +2732,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 31
+    "line": 30
    },
    "status": "compiled"
   },
@@ -2772,7 +2752,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 31
+    "line": 30
    },
    "status": "compiled"
   },
@@ -3012,7 +2992,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 33
+    "line": 32
    },
    "status": "compiled"
   },
@@ -3032,7 +3012,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 33
+    "line": 32
    },
    "status": "compiled"
   },
@@ -3052,7 +3032,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 35
+    "line": 34
    },
    "status": "compiled"
   },
@@ -3072,7 +3052,7 @@
    "shape": "cond:ViolationShape",
    "source": {
     "file": "ontology/conditions.shapes.ttl",
-    "line": 34
+    "line": 33
    },
    "status": "compiled"
   },

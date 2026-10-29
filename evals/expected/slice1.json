@@ -1405,7 +1405,7 @@
    "variants": "none found: every ACRIS and HPD occurrence is spelled 5413 PLAZA LLC (HPD contact id 31610303). The related name 5413 7TH AVENUE LLC (grantor of the 2021 deed) is a different name, not a variant.",
    "caveat": "Party-type meaning for MTGE, AL&R, SAGE and TL&R is not settled (design notes 0004, 0006): report the code, not a role name. The 2021 mortgage and its assignment cover 3008260005 as well, so the name appears against two lots. This is the set found in the snapshot, not a claim of completeness.",
    "not_loaded_yet": {
-    "note": "Document types outside the deed family (mortgage, assignment, agreement, satisfaction and similar) are not in the graph until Slice 3 (Q12, Q13, design note 0015). These rows are what the snapshot holds; the Slice 1 answer must say that only deed documents were searched.",
+    "note": "Document types outside the deed family (mortgage, assignment, agreement, satisfaction and similar) are loaded from Slice 3 (design note 0022) for HPD-registered lots only. These rows are what the snapshot holds beyond the deed rows; a Slice 1 answer must say which families were searched.",
     "documents": [
      {
       "document_id": "2021031601183001",

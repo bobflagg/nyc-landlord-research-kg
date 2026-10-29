@@ -5,7 +5,7 @@
 @prefix wl:      <https://bobflagg.github.io/Watchline/ontology/core#> .
 @prefix acris:   <https://bobflagg.github.io/Watchline/ontology/acris#> .
 
-# ACRIS module (design note 0015): recorded documents, the parties and roles they name. Deed family only in Slice 1.
+# ACRIS module (design note 0015): recorded documents, the parties and roles they name. Deed family (note 0015) and mortgage family (note 0022).
 <https://bobflagg.github.io/Watchline/ontology/acris> a owl:Ontology ;
     owl:imports <https://bobflagg.github.io/Watchline/ontology/core> ;
     dcterms:title "Watchline ACRIS module"@en ;
@@ -42,6 +42,9 @@ acris:amount a owl:DatatypeProperty ; rdfs:domain acris:Document ; rdfs:range xs
 
 acris:in_document a owl:ObjectProperty ; rdfs:domain acris:AcrisRole ; rdfs:range acris:Document ;
     rdfs:comment "The document a role was recorded in. Structural. A document is on lots through wl:on_lot."@en .
+
+acris:references a owl:ObjectProperty ; rdfs:domain acris:Document ; rdfs:range acris:Document ;
+    rdfs:comment "A document the filer cites in this document's recorded references (design note 0022, T4), matched by CRFN or document id to a document in the graph. Structural. The filer's citation is recorded, not inferred, but it is not proof of anything about the loan: a satisfaction that cites a mortgage does not show it was paid in full, and a mortgage no document cites may still have been satisfied by a reference the graph does not hold (reel and page, a document off the registered lots)."@en .
 
 acris:party_name a owl:DatatypeProperty ; rdfs:domain acris:AcrisParty ; rdfs:range xsd:string ;
     rdfs:comment "The name as recorded. Shown with its role and source (note 0009)."@en .

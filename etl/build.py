@@ -270,3 +270,36 @@ def build_complaints(session, schema: Schema, snapshot_id: str, snapshot_date: d
             for k, v in session.execute_write(load_complaints, schema, batch, grouping, lots, snapshot_id).items():
                 totals[k] += v
     return dict(totals)
+
+
+def load_references(tx, refs: list[dict]) -> dict[str, int]:
+    """REFERENCES edges from a document to the document its recorded reference cites, by CRFN or document id, when that document is in the
+    graph (note 0022, T4). A reference by reel and page, or to a document off the graph, makes no edge and is counted. MERGE is on the
+    constrained document key and the indexed CRFN; the edge is structural, so it carries no provenance (note 0010 item 4)."""
+    by_crfn, by_id, reel_only = [], [], 0
+    for r in refs:
+        src = str(r["documentid"]).strip()
+        crfn, did = (r.get("referencebycrfn") or "").strip(), (str(r.get("referencebydocid")).strip() if r.get("referencebydocid") is not None else "")
+        if crfn:
+            by_crfn.append({"s": src, "t": crfn})
+        elif did:
+            by_id.append({"s": src, "t": did})
+        else:
+            reel_only += 1
+    made = 0
+    if by_crfn:
+        made += tx.run("UNWIND $rows AS row MATCH (a:Document {document_id: row.s}) MATCH (b:Document {crfn: row.t}) WHERE a <> b MERGE (a)-[:REFERENCES]->(b)", rows=by_crfn).consume().counters.relationships_created
+    if by_id:
+        made += tx.run("UNWIND $rows AS row MATCH (a:Document {document_id: row.s}) MATCH (b:Document {document_id: row.t}) WHERE a <> b MERGE (a)-[:REFERENCES]->(b)", rows=by_id).consume().counters.relationships_created
+    return {"REFERENCES": made, "references by CRFN or document id": len(by_crfn) + len(by_id), "references by reel and page only": reel_only}
+
+
+def build_references(session, schema: Schema, doc_ids, fetch_refs, chunk: int = 5000) -> dict:
+    """References of the given document ids, in write transactions of `chunk` documents. `fetch_refs(ids)` returns the reference rows
+    (a database query in the CLI, fixtures in a test)."""
+    totals: dict[str, int] = defaultdict(int)
+    it = iter(doc_ids)
+    while batch := list(islice(it, chunk)):
+        for k, v in session.execute_write(load_references, fetch_refs(batch)).items():
+            totals[k] += v
+    return dict(totals)

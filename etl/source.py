@@ -81,9 +81,17 @@ def graph_lots(conn, community_district: int | None = None) -> frozenset:
         return frozenset(r["bbl"].strip() for r in cur)
 
 
-def acris_documents(conn, codes: list[str], community_district: int | None = None) -> Iterator[dict]:
+def registered_lots(conn) -> frozenset:
+    """BBLs HPD has a registration for: the buildings the mortgage family is loaded for (note 0022, T2)."""
+    with conn.cursor() as cur:
+        cur.execute("select distinct bbl from hpd_registrations where bbl is not null")
+        return frozenset(r["bbl"].strip() for r in cur)
+
+
+def acris_documents(conn, codes: list[str], community_district: int | None = None, registered_only: bool = False) -> Iterator[dict]:
     """Latest version of each document of the given types that is on a graph lot, in document id order."""
     lots = ("select bbl from pluto_latest where cd = %s" if community_district
+            else "select bbl from hpd_registrations" if registered_only
             else "select bbl from pluto_latest union select bbl from hpd_registrations")
     return _stream(conn, "acris_documents", MASTER.format(lots=lots), (codes, *((community_district,) if community_district else ())))
 
@@ -164,3 +172,12 @@ def complaint_groups(conn, grouping: str, not_after: date, bbls: list[str] | Non
             cur.execute(sql, (not_after, bbls))
             return iter(cur.fetchall())
     return _stream(conn, f"complaints_{grouping}", sql, (not_after,))
+
+
+def acris_references(conn):
+    """A function that returns the recorded references (by CRFN or document id) of a list of document ids, by index lookup."""
+    def fetch(ids: list[str]) -> list[dict]:
+        with conn.cursor() as cur:
+            cur.execute("select documentid, referencebycrfn, referencebydocid, referencebyreelnbr from real_property_references where documentid = any(%s)", (ids,))
+            return cur.fetchall()
+    return fetch

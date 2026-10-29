@@ -14,7 +14,7 @@ SNAPSHOT_ID = re.compile(r"^[a-z][a-z0-9]*-\d{4}-\d{2}-\d{2}(-r\d+)?$")  # note 
 
 # Indexed for lookup, not unique: "who else uses this address" (note 0010, item 2).
 INDEXED = {"Lot": ["address_key"], "Building": ["address_key"], "HpdParty": ["business_address_key", "name_n1", "person_name_n1"],
-           "AcrisParty": ["address_key", "name_n1"], "DosEntity": ["name_n1", "dos_id"]}
+           "AcrisParty": ["address_key", "name_n1"], "Document": ["crfn"], "DosEntity": ["name_n1", "dos_id"]}
 
 
 def _local(uri) -> str:

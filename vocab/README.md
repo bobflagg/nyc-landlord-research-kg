@@ -7,8 +7,8 @@ Controlled vocabularies as SKOS concept schemes, in Turtle (design note 0004). T
 | `reliability.ttl` | Reliability (I, II) | `reliability` on every fact |
 | `source-category.ttl` | Source category | `source_category` on every fact |
 | `review-status.ttl` | Review status | `review_status` |
-| `role-type.ttl` | Role type | `role_type` on roles (HPD and ACRIS deed parties now; DOS with its module) |
-| `document-type.ttl` | Document type | `doc_type` on ACRIS documents (deed family only) |
+| `role-type.ttl` | Role type | `role_type` on roles (HPD, ACRIS deed and mortgage-class parties) |
+| `document-type.ttl` | Document type | `doc_type` on ACRIS documents (deed family and mortgage family) |
 | `entity-kind.ttl` | Entity kind | `owner_kind` on registrations |
 | `violation-class.ttl` | Violation class (A, B, C, I) | `violation_class` on violations |
 | `violation-status-group.ttl` | Violation status group | `status_group` (open, closed) |

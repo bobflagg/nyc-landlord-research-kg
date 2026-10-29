@@ -1,0 +1,407 @@
+{
+ "_about": "Recorded references of the mortgage-family documents in slice3_mortgages.json (read-only copy, justfixwow snapshot).",
+ "references": [
+  {
+   "documentid": "2005051102117001",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 3823
+  },
+  {
+   "documentid": "2005051102117001",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5907
+  },
+  {
+   "documentid": "2005051102117001",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5274
+  },
+  {
+   "documentid": "2005051102117003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5907
+  },
+  {
+   "documentid": "2005051102117003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5274
+  },
+  {
+   "documentid": "2005051102117003",
+   "referencebycrfn": null,
+   "referencebydocid": "2005051102117002",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2005051102117003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 3823
+  },
+  {
+   "documentid": "2005051102117004",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 3823
+  },
+  {
+   "documentid": "2005051102117004",
+   "referencebycrfn": null,
+   "referencebydocid": "2005051102117002",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2005051102117004",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5907
+  },
+  {
+   "documentid": "2005051102117004",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5274
+  },
+  {
+   "documentid": "2011110100755002",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2011110100755002",
+   "referencebycrfn": null,
+   "referencebydocid": "2011110100755001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786001",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786001",
+   "referencebycrfn": "2011000395910",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786003",
+   "referencebycrfn": "2011000395910",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786003",
+   "referencebycrfn": null,
+   "referencebydocid": "2014030300786002",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786003",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786004",
+   "referencebycrfn": "2011000395910",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786004",
+   "referencebycrfn": null,
+   "referencebydocid": "2014030300786002",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2014030300786004",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015032301122002",
+   "referencebycrfn": "2005000356625",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015032301122002",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 3823
+  },
+  {
+   "documentid": "2015032301122002",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5274
+  },
+  {
+   "documentid": "2015032301122002",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5907
+  },
+  {
+   "documentid": "2015032301122002",
+   "referencebycrfn": null,
+   "referencebydocid": "2015032301122001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015032301122003",
+   "referencebycrfn": "2005000356625",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015032301122003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5274
+  },
+  {
+   "documentid": "2015032301122003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 3823
+  },
+  {
+   "documentid": "2015032301122003",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 5907
+  },
+  {
+   "documentid": "2015032301122003",
+   "referencebycrfn": null,
+   "referencebydocid": "2015032301122001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015042100104002",
+   "referencebycrfn": null,
+   "referencebydocid": "2015042100104001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2015042100104002",
+   "referencebycrfn": null,
+   "referencebydocid": "2015042100104001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2016061001524001",
+   "referencebycrfn": "2012000352618",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025006",
+   "referencebycrfn": null,
+   "referencebydocid": "2017061600025005",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025006",
+   "referencebycrfn": "2015000143229",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025009",
+   "referencebycrfn": "2014000081001",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025009",
+   "referencebycrfn": "2011000395910",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025009",
+   "referencebycrfn": null,
+   "referencebydocid": "2017061600025008",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2017061600025009",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2018111500579001",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 2036
+  },
+  {
+   "documentid": "2018111500579001",
+   "referencebycrfn": null,
+   "referencebydocid": null,
+   "referencebyreelnbr": 616
+  },
+  {
+   "documentid": "2018122900023003",
+   "referencebycrfn": null,
+   "referencebydocid": "2018122900023001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2019052901289001",
+   "referencebycrfn": "2019000004410",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2019052901289001",
+   "referencebycrfn": "2019000004408",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2019120700129005",
+   "referencebycrfn": "2017000237745",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020050100273001",
+   "referencebycrfn": "2017000237746",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020050100273001",
+   "referencebycrfn": "2015000143229",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020050100273002",
+   "referencebycrfn": "2015000143230",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020050100273003",
+   "referencebycrfn": "2017000237747",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2014000081002",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2014000081001",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2014000081000",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2011000395913",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2011000395911",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2011000395910",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2004000345843",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310001",
+   "referencebycrfn": "2017000237749",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310002",
+   "referencebycrfn": "2017000237750",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2020103000310002",
+   "referencebycrfn": "2014000081003",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2021021601440001",
+   "referencebycrfn": null,
+   "referencebydocid": "2019120700129001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2021021601440001",
+   "referencebycrfn": null,
+   "referencebydocid": "2019120700129001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2021031601183002",
+   "referencebycrfn": null,
+   "referencebydocid": "2021031601183001",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2023061200959001",
+   "referencebycrfn": "2021000105234",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2023061400729001",
+   "referencebycrfn": "2021000105233",
+   "referencebydocid": null,
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2025061700455003",
+   "referencebycrfn": null,
+   "referencebydocid": "2025061700455002",
+   "referencebyreelnbr": 0
+  },
+  {
+   "documentid": "2025061700455003",
+   "referencebycrfn": null,
+   "referencebydocid": "2025061700455001",
+   "referencebyreelnbr": 0
+  }
+ ]
+}
